@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\http\Controllers\FormulaireController;
-
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +14,10 @@ use App\http\Controllers\FormulaireController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-   
-});
 
-Route::get('/connexion', [FormulaireController::class, 'create'])->name('Connexion.connect');
+
+Route::get('/', [LoginController::class, 'create'])->name('Connexion.connect');
+
+Route::get('/form', [LoginController::class, 'index'])->name('Formulaires.formulaireAcc');
+
+Route::post('login', 'App\Http\Controllers\LoginController@login');

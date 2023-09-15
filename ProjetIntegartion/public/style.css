@@ -1,11 +1,17 @@
   /* HEADER */
   header {
   
-    background-color:paleturquoise;
+    background-color:rgb(58, 149, 209);
    
   }
-  .bg
-  {
-    width: 100px;
-    height: 100px;
-  }
+  
+
+  /* Cibler les iPhones en mode paysage */
+@media only screen
+and (max-device-width: 896px) /* Largeur de l'iPhone 11 Pro Max en mode paysage */
+and (max-device-height: 414px) /* Hauteur de l'iPhone 11 Pro Max en mode paysage */
+and (orientation: landscape) {
+  /* Styles spécifiques pour les iPhones en mode paysage */
+}
+
+

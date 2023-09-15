@@ -3,17 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\View\View;
+use Log;
+use Auth;
+use DB;
+use Carbon\Carbon;
 
-class FormulaireController extends Controller
+class LoginController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *  @return \Illuminate\\View\View;
      */
     public function index()
     {
-       //
+        return View('Formulaires.formulaireAcc');
     }
 
     /**
@@ -21,7 +23,7 @@ class FormulaireController extends Controller
      */
     public function create()
     {
-        //
+        return View('Connexion.connect');
     }
 
     /**
@@ -63,4 +65,23 @@ class FormulaireController extends Controller
     {
         //
     }
+
+    public function login(Request $request)
+    {
+        Log::debug("Login Controller");
+
+        $reussi = Auth::attempt(['id_usager'=> $request->id_usager, 'mdp' => $request->mdp]);
+        
+        if($reussi)
+        {
+            log::debug('high');
+            return redirect()->route('Formulaires.formulaireAcc')->with('message', "Connexion réussie.");
+        }
+        else
+        {
+            return redirect()->route('Connexion.connect')->withErrors(['Informations invalides.']);
+        }
+    }
+
+    
 }

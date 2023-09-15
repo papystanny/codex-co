@@ -8,22 +8,31 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="{{asset('style.css')}}">
-    <title>Connexion</title>
+    <title> Page de Connexion</title>
 </head>
 <body>
     @extends('layouts.app')
 
     @section('contenu')
-    <section class="main-container">
+    <section class="main-container  align-items-center text-center h-100  py-5">
         <div class="container containerForm">
             <div style="width:50%;">
-                <h1 class="titreForm">Ajout d'un film</h1>
+                <h1 class="titreForm">Connexion</h1>
+                    <form method="POST">
+                        @csrf
+                        <div class="mb-3 ">
+                            <input type="id_usager" class="form-control" id="id_usager" name="id_usager" aria-describedby="emailHelp" placeholder="id_usager" required>
+                        </div>
+                        <div class="mb-3 py-3">
+                            <input type="password" class="form-control" id="password" name="mdp" placeholder="Password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Se Connecter</button>
 
-                    <button type="submit" class="btn btn-primary">Ajouter</button>
-                </form>
+                    </form>
+                </h1>
             </div>
         </div>
-    </div>
+    </section>
     @endsection
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     
