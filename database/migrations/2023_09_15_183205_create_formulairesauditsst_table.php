@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('formulairesauditsst', function (Blueprint $table) {
             $table->id();
+            $table->string('prenomNomEmploye',100);
+            $table->string('lieuTravail',100);
+            $table->string('date',100);
+            $table->time('heure');
+            $table->string('Epi',100);
+            $table->string('tenueLieux',100);
+            $table->string('signalisation',100);
+            
             $table->timestamps();
         });
     }
