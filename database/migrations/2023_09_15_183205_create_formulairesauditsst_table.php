@@ -20,7 +20,17 @@ return new class extends Migration
             $table->string('Epi',100);
             $table->string('tenueLieux',100);
             $table->string('signalisation',100);
-            
+            $table->string('fichesSignaletiques',100);
+            $table->string('traveauxEscavation',100);
+            $table->string('espaceClos',100);
+            $table->string('methodeTravail',100);
+            $table->string('autre',250);
+            $table->string('respectDistanciation',100);
+            $table->string('portEpi',100);
+            $table->string('respectProcedures',100);
+            $table->string('notifSup',100);
+            $table->string('notifAdmin',100);
+
             $table->timestamps();
         });
     }
