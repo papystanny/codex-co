@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('prenomNomEmploye',100);
             $table->string('lieuTravail',100);
-            $table->string('date',100);
+            $table->date('date',100);
             $table->time('heure');
             $table->string('Epi',100);
             $table->string('tenueLieux',100);

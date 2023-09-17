@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('formulairesAtelierMecaniques', function (Blueprint $table) {
             $table->id();
+            $table->integer('numUniteImplique');
+            $table->integer('departement');
+            $table->string('prenomNomEmploye',100);
+            $table->string('prenomNomSupImmediat',100);
+            $table->string('numPermisConduireEmploye',100);
+            $table->string('vehiculeCityonImplique',100);
+            $table->string('notifSup',100);
+            $table->string('notifAdmin',100);
             $table->timestamps();
         });
     }
