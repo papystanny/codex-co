@@ -18,13 +18,13 @@
         <div class="container containerForm">
             <div style="width:50%;">
                 <h1 class="titreForm">Connexion</h1>
-                    <form method="POST">
+                    <form method="POST"action="{{route('Formulaires.login')}}">
                         @csrf
                         <div class="mb-3 ">
-                            <input type="id_usager" class="form-control" id="id_usager" name="id_usager" aria-describedby="emailHelp" placeholder="id_usager" required>
+                            <input type="id" class="form-control" id="id" name="id" aria-describedby="emailHelp" placeholder="id" required>
                         </div>
                         <div class="mb-3 py-3">
-                            <input type="password" class="form-control" id="password" name="mdp" placeholder="Password" required>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Se Connecter</button>
 

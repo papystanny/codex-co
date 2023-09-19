@@ -70,7 +70,7 @@ class LoginController extends Controller
     {
         Log::debug("Login Controller");
 
-        $reussi = Auth::attempt(['id_usager'=> $request->id_usager, 'mdp' => $request->mdp]);
+        $reussi = Auth::attempt(['id'=> $request->id, 'password' => $request->password]);
         
         if($reussi)
         {

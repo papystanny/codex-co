@@ -16,8 +16,10 @@ use App\Http\Controllers\LoginController;
 
 
 
-Route::get('/', [LoginController::class, 'create'])->name('Connexion.connect');
+
 
 Route::get('/form', [LoginController::class, 'index'])->name('Formulaires.formulaireAcc');
 
-Route::post('login', 'App\Http\Controllers\LoginController@login');
+Route::post('/login', [LoginController::class, 'login'])->name('Formulaires.login');
+
+Route::get('/', [LoginController::class, 'create'])->name('Connexion.connect');

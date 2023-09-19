@@ -25,8 +25,8 @@ class UtilisateurRequest extends FormRequest
 
     return [
 
-        'id_usager'=>'required|min:3|max:30|alpha:ascii',
-         'mdp'=>'required|min:3|max:30',
+        'id'=>'required|min:3|max:30|alpha:ascii',
+         'password'=>'required|min:3|max:30',
 
     ];
 
@@ -39,11 +39,11 @@ class UtilisateurRequest extends FormRequest
 
     return [
 
-    'id_usager.unique'=>'Cet id_usager est déjà utilisé.',
-    'id_usager.min'=>'L\'id_usager doit avoir un minimum 5 caractères.',
-    'id_usager.max'=>'L\'id_usager doit avoir un maximum de 50 caractères.',
-    'id_usager.required'=>'id_usager est obligatoire.',
-    'mdp'=>'le Mot de passe  est obligatoire'
+    'id.unique'=>'Cet id_usager est déjà utilisé.',
+    'id.min'=>'L\'id_usager doit avoir un minimum 5 caractères.',
+    'id.max'=>'L\'id_usager doit avoir un maximum de 50 caractères.',
+    'id.required'=>'id_usager est obligatoire.',
+    'password'=>'le Mot de passe  est obligatoire'
     ];
         }
 
