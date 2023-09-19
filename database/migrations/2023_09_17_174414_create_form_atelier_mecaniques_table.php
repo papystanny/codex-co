@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('formulairesAtelierMecaniques', function (Blueprint $table) {
+        Schema::create('formAtelierMecaniques', function (Blueprint $table) {
             $table->id();
             $table->integer('numUniteImplique');
             $table->integer('departement');
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('formulairesAtelierMecaniques');
+        Schema::dropIfExists('formAtelierMecaniques');
     }
 };

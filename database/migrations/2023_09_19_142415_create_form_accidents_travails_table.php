@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('formulairesDeclarationAccidentsTravail', function (Blueprint $table) {
+        Schema::create('formAccidentsTravails', function (Blueprint $table) {
             $table->id();
             $table->string('nomEmploye',100);
             $table->string('fonctionMomentEvenement',100);
@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('dateAccident');
             $table->time('heureAccident');
             $table->string('nomsTemoins',255);
-            $tabe->string('endroitAccident',100);
+            $table->string('endroitAccident',100);
             $table->string('secteurActivite',255);
             $table->string('natureSiteBlessure',255);
             $table->string('descriptionBlessure',255);
@@ -48,6 +48,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('formulairesDeclarationAccidentsTravail');
+        Schema::dropIfExists('formAccidentsTravails');
     }
 };
