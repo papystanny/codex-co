@@ -7,6 +7,7 @@ use Log;
 use Auth;
 use DB;
 use Carbon\Carbon;
+use Validator;
 
 class LoginController extends Controller
 {
@@ -68,19 +69,26 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        Log::debug("Login Controller");
+       
+/*
+        request()->validate([
 
-        $reussi = Auth::attempt(['id'=> $request->id, 'password' => $request->password]);
+            'id' => ['required', 'id'],
+
+            'password' => ['required'],
+
+        ]);
+
         
-        if($reussi)
-        {
-            log::debug('high');
-            return redirect()->route('Formulaires.formulaireAcc')->with('message', "Connexion réussie.");
-        }
-        else
-        {
-            return redirect()->route('Connexion.connect')->withErrors(['Informations invalides.']);
-        }
+*/
+
+$request->validate([
+    'id' => 'required',
+    'password' => 'required',
+]);
+       
+
+        return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
     }
 
     
