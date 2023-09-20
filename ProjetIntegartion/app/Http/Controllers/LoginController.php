@@ -70,25 +70,20 @@ class LoginController extends Controller
     public function login(Request $request)
     {
        
-/*
-        request()->validate([
-
-            'id' => ['required', 'id'],
-
-            'password' => ['required'],
-
-        ]);
-
-        
-*/
-
-$request->validate([
-    'id' => 'required',
-    'password' => 'required',
-]);
-       
+            $request->validate([
+                'id' => 'required',
+                'password' => 'required',
+            ]);
 
         return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
+    
+    }
+  
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return redirect()->route('Connexion.connect')->withErrors(['Informations invalides.']);
     }
 
     

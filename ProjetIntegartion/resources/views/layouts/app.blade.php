@@ -26,9 +26,14 @@
                           <i class="fa-solid fa-user fa-6x"></i>
                        </div>   
                        <div class="">
-                       <form method=""> 
-                          <button type="submit" class="btnConnexion">Se déconnecter</button>
-                        </form>
+                       @auth
+                           <form method="POST" action="{{route('logout')}}" style="display:inline;">
+                              @csrf
+                              <button type="submit" class="btnConnexion">Se déconnecter</button>
+                           </form>
+                           @else
+                              <a href="{{route('Formulaires.login')}}">Se connecter</a>  
+                           @endauth
                        </div> 
                        
                 </div>

@@ -23,3 +23,5 @@ Route::get('/form', [LoginController::class, 'index'])->name('Formulaires.formul
 Route::post('/login', [LoginController::class, 'login'])->name('Formulaires.login');
 
 Route::get('/', [LoginController::class, 'create'])->name('Connexion.connect');
+
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
