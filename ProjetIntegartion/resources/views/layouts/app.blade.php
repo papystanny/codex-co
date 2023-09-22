@@ -14,7 +14,7 @@
         <!-- HEADER -->
         <header>
         <nav class="main-nav"> 
-        <div class="container-fluid parent">
+            <div class="container-fluid parent">
                 <div class="row  text-center h-100 border ">
                         <div class="">
                            <img src="img/examen.png" class="fluid" width="100px" height="100px"><br>
@@ -25,21 +25,8 @@
                        <div class=" bg">
                           <i class="fa-solid fa-user fa-6x"></i>
                        </div>   
-                       <div class="">
-                       @auth
-                           <form method="POST" action="{{route('logout')}}" style="display:inline;">
-                              @csrf
-                              <button type="submit" class="btnConnexion">Se déconnecter</button>
-                           </form>
-                           @else
-                              <a href="{{route('Formulaires.login')}}">Se connecter</a>  
-                           @endauth
-                       </div> 
-                       
-                </div>
-        </div> 
-      </nav>
-     
+             </div> 
+        </nav>
     </header>
     <!-- END OF HEADER -->
     <br><br><br>
@@ -52,7 +39,7 @@
     <!-- FOOTER -->
     <footer>
     <div class="row align-items-center text-center h-100  py-5">
-      <p>&copy 1997-2018 Netflix, Inc.</p>
+      <p>&copy 1997-2018 CODEXINC, Inc.</p>
     </footer>
    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

@@ -70,17 +70,42 @@ class LoginController extends Controller
     public function login(Request $request)
     {
        
-            $request->validate([
-                'id' => 'required',
-                'password' => 'required',
-            ]);
+        //     $request->validate([
+        //         'id' => 'required',
+        //         'password' => 'required',
+        //     ]);
 
-        return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
+        // return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
+
+
+        Log::debug("Login Controller");
+
+        $reussi = $request->validate([
+                   'id' => 'required',
+                   'password' => 'required',
+              ]);
+        
+        if($reussi)
+        {
+           
+            if(Auth::user()->droitEmploye =1)
+            return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
+            else if(Auth::user()->droitSuperieur == 1)
+            return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");      
+                else if(Auth::user()->droitAdmin == 1)
+                return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
+            else
+            {
+                return redirect()->route('login')->withErrors(['Informations invalides.']);
+            }
+        }
+
+        
     
     }
   
 
-    public function logout(Request $request)
+     public function logout(Request $request)
     {
         Auth::logout();
         return redirect()->route('Connexion.connect')->withErrors(['Informations invalides.']);
