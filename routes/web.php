@@ -13,11 +13,12 @@ use App\Http\Controllers\EmployesController;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('employes.index');
 /**page employé */
 
 Route::get('/employe',
 [EmployesController::class, 'index'])->name('employe.index');
     
-});
+Route::get('/AccidentTravail',
+[EmployesController::class, 'index'])->name('employe.index');
