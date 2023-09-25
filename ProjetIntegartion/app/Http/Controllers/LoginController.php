@@ -3,11 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Log;
-use Auth;
 use DB;
 use Carbon\Carbon;
 use Validator;
+use App\Models\Usager;
+
+use Illuminate\Support\Facades\Log;
+
+use Illuminate\Support\Facades\Auth;
+
+use Illuminate\Support\Facades\Hash;
+
+use Session;
+
+use App\Http\Requests\UsagerRequest;
 
 class LoginController extends Controller
 {
@@ -85,24 +94,52 @@ class LoginController extends Controller
                    'password' => 'required',
               ]);
         
-        if($reussi)
-        {
-           
-            if(Auth::user()->droitEmploye =1)
-            return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
-            else if(Auth::user()->droitSuperieur == 1)
-            return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");      
-                else if(Auth::user()->droitAdmin == 1)
-                return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
-            else
-            {
-                return redirect()->route('login')->withErrors(['Informations invalides.']);
-            }
-        }
+       
 
-        
-    
-    }
+            if( 'droitEmploye' == 1 && $reussi )
+             {
+
+            return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
+             }
+         
+     }
+           
+        //     if(Auth::user()->droitEmploye == 'null')
+        //     return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
+        //     // else if(Auth::user()->droitSuperieur == 1)
+        //     // return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");      
+        //     //     else if(Auth::user()->droitAdmin == 1)
+        //     //     return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
+        //     // else
+        //     // {
+        //     //     return redirect()->route('login')->withErrors(['Informations invalides.']);
+        //     // }
+        // }
+
+    //     $superAdmin = Auth::attempt(['id'=>$request->id,'password'=>$request->password, 'droitEmploye' => 1]);
+
+    //     $Admin = Auth::attempt(['id'=>$request->id,'password'=>$request->password, 'droitSuperieur' => 1]);
+
+    //     $client = Auth::attempt(['id'=>$request->id,'password'=>$request->password, 'droitAdmin' => 1]);
+
+
+    //   if ($superAdmin)
+
+    //     {       
+    //         return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
+    //     }
+
+    //     if ($Admin)
+
+    //     {       
+    //         return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
+    //     }
+    //     if ($client)
+
+    //     {       
+    //         return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
+    //     }
+    // }
   
 
      public function logout(Request $request)
