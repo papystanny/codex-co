@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('matriculeEmploye');
             $table->date('dateAccident');
             $table->time('heureAccident');
-            $table->string('nomsTemoins',255);
+            $table->string('nomsTemoins',255)->nullable();
             $table->string('endroitAccident',100);
             $table->string('secteurActivite',255);
             $table->string('natureSiteBlessure',255);

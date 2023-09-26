@@ -16,6 +16,12 @@ class EmployesController extends Controller
         return view('employes.index');
         //
     }
+    public function AccidentTravail()
+    {
+        return view('formAccidentTravail.formAccidentTravail');
+        //
+    }
+
 
     /**
      * Show the form for creating a new resource.
