@@ -96,25 +96,25 @@ class LoginController extends Controller
         
        
 
-            if( 'droitEmploye' == 1 && $reussi )
-             {
+            // if( 'droitEmploye' == 1 && $reussi )
+            //  {
 
-            return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
-             }
+            // return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
+            //  }
          
-     }
+    //  }
            
-        //     if(Auth::user()->droitEmploye == 'null')
-        //     return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
-        //     // else if(Auth::user()->droitSuperieur == 1)
-        //     // return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");      
-        //     //     else if(Auth::user()->droitAdmin == 1)
-        //     //     return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
-        //     // else
-        //     // {
-        //     //     return redirect()->route('login')->withErrors(['Informations invalides.']);
-        //     // }
-        // }
+            if(Auth::user()->droitEmploye == 1)
+            return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
+            else if(Auth::user()->droitSuperieur == 1)
+            return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");      
+                else if(Auth::user()->droitAdmin == 1)
+                return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
+            else
+            {
+                return redirect()->route('login')->withErrors(['Informations invalides.']);
+            }
+     
 
     //     $superAdmin = Auth::attempt(['id'=>$request->id,'password'=>$request->password, 'droitEmploye' => 1]);
 
@@ -139,7 +139,8 @@ class LoginController extends Controller
     //     {       
     //         return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
     //     }
-    // }
+     }
+
   
 
      public function logout(Request $request)
@@ -150,3 +151,4 @@ class LoginController extends Controller
 
     
 }
+
