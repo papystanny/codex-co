@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\EmployesController;
 use Illuminate\Support\Facades\Route;
-use App\http\Controllers\FormulaireController;
-use App\Http\Controllers\LoginController;
+
+use App\Http\Controllers\UsagersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,12 +15,21 @@ use App\Http\Controllers\LoginController;
 |
 */
 
+// --------------------------------------------Connexion( pour se connecter dans la base de donnée  ) ------------------------------------------------
+Route::get('/',
+[UsagersController::class, 'index'])->name('login.connexion'); 
+
+Route::get('/connexion',function(){
+return View('login.connexion');
+});
+
+Route::post('/connexion',
+[UsagersController::class,'connexion'])->name('login');
 
 
+// -------------------------------------- Accueil employe ----------------------------
+
+Route::get('/employeAccueil', 
+[EmployesController::class, 'index'])->name('employe.accueil');
 
 
-Route::get('/form', [LoginController::class, 'index'])->name('Formulaires.formulaireAcc');
-
-Route::post('/login', [LoginController::class, 'login'])->name('Formulaires.login');
-
-Route::get('/', [LoginController::class, 'create'])->name('Connexion.connect');
