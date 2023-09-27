@@ -2,9 +2,8 @@
 
 
 @section('content')
-<div class='container-fluid'>
 <form>
-<div class="form-group">
+  <div class="form-group">
     <label for="formGroupExampleInput">nom de l'employé</label>
     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="entrez le nom de l'employé">
   </div>
@@ -221,32 +220,64 @@
                     Inhalation
                     </label>
                 </div>
+                
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
                     <label class="form-check-label" for="flexCheckChecked">
                   Autres
                     </label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
                 </div>
-            </div>
-        </div>
+            </div>  
+        </div>  
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Violence(à cocher)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                    <label class="form-check-label" for="flexCheckChecked">
+                  Physique
+                    </label>
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                    <label class="form-check-label" for="flexCheckChecked">
+                  Verbale
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Décrivez la tâche éffectuée et comment s'est produit la blessure</label>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">premiers Soins</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                    <label for="formGroupExampleInput">nom du secouriste</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="entrez le nom de l'employé">
+                </div>
+                <div class="form-group">
+                   <h3 class="text-center">détail sur la durée de l'absence</h3>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="exampleCheck1">Accident ne nécessitant aucune absence </label>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="exampleCheck1">Accident nécessitant une consultation médicale</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                    <label class="form-check-label" for="flexCheckChecked">
+                  J'ai avisé mon supérieur immédiat de mon absence 
+                    </label>
+                  
+                </div>
+
     </div>
-  <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-    <label class="form-check-label" for="flexCheckChecked">
-        Checked checkbox
-    </label>
-  </div>
 
 
-
- 
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>    
-</div>
+
 
 
 @endsection
