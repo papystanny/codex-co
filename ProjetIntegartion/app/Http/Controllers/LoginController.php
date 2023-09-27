@@ -89,10 +89,10 @@ class LoginController extends Controller
 
         Log::debug("Login Controller");
 
-        $reussi = $request->validate([
+    /*    $reussi = $request->validate([
                    'id' => 'required',
                    'password' => 'required',
-              ]);
+              ]);*/
         
        
 
@@ -104,7 +104,7 @@ class LoginController extends Controller
          
     //  }
            
-            if(Auth::user()->droitEmploye == 1)
+       /*     if(Auth::user()->droitEmploye == 1)
             return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
             else if(Auth::user()->droitSuperieur == 1)
             return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");      
@@ -113,21 +113,21 @@ class LoginController extends Controller
             else
             {
                 return redirect()->route('login')->withErrors(['Informations invalides.']);
-            }
+            }*/
      
 
-    //     $superAdmin = Auth::attempt(['id'=>$request->id,'password'=>$request->password, 'droitEmploye' => 1]);
+       $superAdmin = Auth::attempt(['id'=>$request->id,'password'=>$request->password ]);
 
     //     $Admin = Auth::attempt(['id'=>$request->id,'password'=>$request->password, 'droitSuperieur' => 1]);
 
     //     $client = Auth::attempt(['id'=>$request->id,'password'=>$request->password, 'droitAdmin' => 1]);
 
 
-    //   if ($superAdmin)
+      if ($superAdmin)
 
-    //     {       
-    //         return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
-    //     }
+         {       
+            return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
+        }
 
     //     if ($Admin)
 
