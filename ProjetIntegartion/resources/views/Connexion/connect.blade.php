@@ -21,7 +21,7 @@
                     <form method="POST"action="{{route('Formulaires.login')}}">
                         @csrf
                         <div class="mb-6 ">
-                            <input type="id" class="form-control" id="id" name="id" aria-describedby="emailHelp" placeholder="id" required>
+                            <input type="id" class="form-control" id="matricule" name="matricule" aria-describedby="emailHelp" placeholder="id" required>
                         </div>
                         <div class="mb-6 py-3">
                             <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>

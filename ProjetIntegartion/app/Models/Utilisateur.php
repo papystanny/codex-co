@@ -13,6 +13,19 @@ class Utilisateur extends Authenticatable
     use Notifiable;
 
     protected $guard = 'utilisateur';
-    protected $fillable = ['id','password'];
+    protected $fillable = ['matricule','password'];
     protected $hidden = ['password','remember_token'];
+
+
+
+
+    
+public  function getauthPassword()
+{
+    return $this->password();
 }
+
+}
+
+
+

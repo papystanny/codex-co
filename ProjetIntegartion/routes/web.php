@@ -18,7 +18,7 @@ use App\Http\Controllers\LoginController;
 
 
 
-Route::get('/form', [LoginController::class, 'index'])->name('Formulaires.formulaireAcc');
+Route::get('/form', [LoginController::class, 'index2'])->name('Formulaires.formulaireAcc');
 
 Route::post('/login', [LoginController::class, 'login'])->name('Formulaires.login');
 

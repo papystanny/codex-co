@@ -25,6 +25,12 @@ class LoginController extends Controller
      */
     public function index()
     {
+        $usagers = Utilisateur::all();
+        return view('Usagers.index', compact('utilisateurs'));
+    }
+    
+    public function index2()
+    {
         return View('Formulaires.formulaireAcc');
     }
 
@@ -79,15 +85,30 @@ class LoginController extends Controller
     public function login(Request $request)
     {
        
-        //     $request->validate([
-        //         'id' => 'required',
-        //         'password' => 'required',
-        //     ]);
+            $request->validate([
+                'matricule' => 'required',
+                'password' => 'required',
+            ]);
 
-        // return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
+        return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
+     
+        $reussi = Auth::attempt(['email'=> $request->email, 'password' => $request->password]);
+        
+        if($reussi)
+        {
+            if(Auth::user()->typeCompte == 'superAdmin')
+                return redirect()->route('Utilisateurs.liste')->with('message', "Connexion réussie.");
+            else if(Auth::user()->typeCompte == 'admin')
+                return redirect()->route('Admins.index')->with('message', "Connexion réussie.");      
+                else if(Auth::user()->typeCompte == 'client')
+                    return redirect()->route('index')->with('message', "Connexion réussie.");
+        }
+        else
+        {
+            return redirect()->route('login')->withErrors(['Informations invalides.']);
+        }
 
-
-        Log::debug("Login Controller");
+ }
 
     /*    $reussi = $request->validate([
                    'id' => 'required',
@@ -96,11 +117,11 @@ class LoginController extends Controller
         
        
 
-            // if( 'droitEmploye' == 1 && $reussi )
-            //  {
+    //         if( 'droitEmploye' == 1 && $reussi )
+    //          {
 
-            // return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
-            //  }
+    //         return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
+    //          }
          
     //  }
            
@@ -116,18 +137,18 @@ class LoginController extends Controller
             }*/
      
 
-       $superAdmin = Auth::attempt(['id'=>$request->id,'password'=>$request->password ]);
+    //    $superAdmin = Auth::attempt(['matricule'=>$request->matricule,'password'=>$request->password ]);
 
     //     $Admin = Auth::attempt(['id'=>$request->id,'password'=>$request->password, 'droitSuperieur' => 1]);
 
     //     $client = Auth::attempt(['id'=>$request->id,'password'=>$request->password, 'droitAdmin' => 1]);
 
 
-      if ($superAdmin)
+    //   if ($superAdmin)
 
-         {       
-            return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
-        }
+    //      {       
+    //         return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
+    //     }
 
     //     if ($Admin)
 
@@ -139,7 +160,7 @@ class LoginController extends Controller
     //     {       
     //         return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
     //     }
-     }
+    //  }
 
   
 
