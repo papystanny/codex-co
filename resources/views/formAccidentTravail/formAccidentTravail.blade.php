@@ -269,7 +269,27 @@
                     <label class="form-check-label" for="flexCheckChecked">
                   J'ai avisé mon supérieur immédiat de mon absence 
                     </label>
-                  
+                    <br></br>
+                    <label for="formGroupExampleInput">nom en lettres moulées du supérieur</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                    <label for="inputPassword4">Date </label>
+                    <input type="date" class="form-control " id="inputPassword4" placeholder="" name="dateDebut" >
+                </div>
+                <div class="form-check">
+                    <label for="formGroupExampleInput">signature du supérieur immédiat</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                    <label for="formGroupExampleInput">no de poste</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                    <label for="inputPassword4">Date </label>
+                    <input type="date" class="form-control " id="inputPassword4" placeholder="" name="dateDebut" >
+                </div>
+                <div class="form-check">
+                <label for="formGroupExampleInput">signature du travailleur ou de la travailleuse</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                    <label for="formGroupExampleInput">no de poste</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                    <label for="inputPassword4">Date </label>
+                    <input type="date" class="form-control " id="inputPassword4" placeholder="" name="dateDebut" >
                 </div>
 
     </div>

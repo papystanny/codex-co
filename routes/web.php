@@ -21,4 +21,6 @@ Route::get('/employe',
 [EmployesController::class, 'index'])->name('employe.index');
     
 Route::get('/AccidentTravail',
-[EmployesController::class, 'AccidentTravail'])->name('employe.formAccidentTravail');
+[FormAccidentTravailController::class, 'AccidentTravail'])->name('employe.formAccidentTravail');
+Route::post('/AccidentTravailStore',
+[FormAccidentTravailController::class, 'store'])->name('employe.formAccidentTravailStore');

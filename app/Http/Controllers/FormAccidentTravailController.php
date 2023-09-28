@@ -6,18 +6,20 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
-class EmployesController extends Controller
+class FormAccidentTravailController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('employes.index');
         //
     }
-   
-
+    public function AccidentTravail()
+    {
+        return view('formAccidentTravail.formAccidentTravail');
+        //
+    }
 
     /**
      * Show the form for creating a new resource.
