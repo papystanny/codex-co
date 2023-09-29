@@ -28,16 +28,40 @@ class FormAccidentTravailController extends Controller
     
     
                $Formaccidentstravail = new Formaccidentstravail();
-               $Formaccidentstravail->
+               $Formaccidentstravail->nomEmploye = $request->input('nomEmploye');
+                $Formaccidentstravail->fonctionMomentEvenement = $request->input('fonctionMomentEvenement');
+                $Formaccidentstravail->matriculeEmploye = $request->input('matriculeEmploye');
+                $Formaccidentstravail->dateAccident = $request->input('dateAccident');
+                $Formaccidentstravail->heureAccident = $request->input('heureAccident');
+                $Formaccidentstravail->nomsTemoins = $request->input('nomsTemoins');
+                $Formaccidentstravail->endroitAccident = $request->input('endroitAccident');
+                $Formaccidentstravail->secteurActivite = $request->input('secteurActivite');
+                $Formaccidentstravail->natureSiteBlessure = $request->input('natureSiteBlessure');
+                $Formaccidentstravail->descriptionBlessure = $request->input('descriptionBlessure');
+                $Formaccidentstravail->violence = $request->input('violence');
+                $Formaccidentstravail->descriptionDeroulementBlessure = $request->input('descriptionDeroulementBlessure');
+                $Formaccidentstravail->premiersSoins = $request->input('premiersSoins');
+                $Formaccidentstravail->nomSecouriste = $request->input('nomSecouriste');
+                $Formaccidentstravail->necessiteAccident = $request->input('necessiteAccident');
+                $Formaccidentstravail->supAvise = $request->input('supAvise');
+                $Formaccidentstravail->nomSuperviseurAvise = $request->input('nomSuperviseurAvise');
+                $Formaccidentstravail->dateSuperviseurAvise = $request->input('dateSuperviseurAvise');
+                $Formaccidentstravail->signatureSupImmediat = $request->input('signatureSupImmediat');
+                $Formaccidentstravail->numPosteSupImmediat = $request->input('numPosteSupImmediat');
+                $Formaccidentstravail->dateSignatureSupImmediat = $request->input('dateSignatureSupImmediat');
+                $Formaccidentstravail->signatureEmploye = $request->input('signatureEmploye');
+                $Formaccidentstravail->numPosteEmploye = $request->input('numPosteEmploye');
+                $Formaccidentstravail->dateSignatureEmploye = $request->input('dateSignatureEmploye');
 
 
 
-               $Formaccidentstravail-> nom = $request->input('nom');
+
+              /* $Formaccidentstravail-> nom = $request->input('nom');
                $Formaccidentstravail-> dateDebut = $request->input('dateDebut');
                $Formaccidentstravail-> debutSondage = $request->input('debutSondage');
                $Formaccidentstravail-> finSondage = $request->input('finSondage');
                $Formaccidentstravail-> statut = "en cours";
-               $Formaccidentstravail -> usager_id =3; //<!-- Session::get('id');-->
+               $Formaccidentstravail -> usager_id =3; //<!-- Session::get('id');-->   */
                $Formaccidentstravail->save();
                
                return redirect()->route('professeur.creationsondage');
@@ -47,7 +71,7 @@ class FormAccidentTravailController extends Controller
              
                 Log::debug($e);
              //   return redirect()->route('campagne')->withErrors(['L\'ajout de campagne n\'a pas fonctionné']);
-             return redirect()->route('campagne');
+             return redirect()->route('employe.formAccidentTravail');
                }
                
                 
