@@ -18,10 +18,10 @@
         <div class="container containerForm">
             <div style="width:50%;">
                 <h1 class="titreForm">Connexion</h1>
-                    <form method="POST"action="{{route('Formulaires.login')}}">
+                    <form method="POST"action="{{ route('login')}}">
                         @csrf
                         <div class="mb-6 ">
-                            <input type="id" class="form-control" id="matricule" name="matricule" aria-describedby="emailHelp" placeholder="id" required>
+                            <input type="matricule" class="form-control" id="matricule" name="matricule" aria-describedby="emailHelp" placeholder="Matricule" required>
                         </div>
                         <div class="mb-6 py-3">
                             <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>

@@ -23,23 +23,29 @@ class LoginController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $usagers = Utilisateur::all();
-        return view('Usagers.index', compact('utilisateurs'));
-    }
+    // public function index()
+    // {
+    //     $usagers = Utilisateur::all();
+    //     return view('Usagers.index', compact('utilisateurs'));
+    // }
     
-    public function index2()
+    public function index()
     {
         return View('Formulaires.formulaireAcc');
     }
+    public function index2()
+    {
+        return View('Formulaires.formulaireSitdang');
+    }
+
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function showLoginForm()
     {
-        return View('Connexion.connect');
+        return view('login');
+
     }
 
     /**
@@ -85,89 +91,35 @@ class LoginController extends Controller
     public function login(Request $request)
     {
        
-            $request->validate([
-                'matricule' => 'required',
-                'password' => 'required',
-            ]);
+      
 
+
+    $reussi = Auth::attempt(['matricule'=> $request->matricule, 'password' => $request->password]);
+    
+    if($reussi)
+    {
+        if(Auth::user()->typeCompte == 'employe')
         return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
-     
-        $reussi = Auth::attempt(['email'=> $request->email, 'password' => $request->password]);
-        
-        if($reussi)
-        {
-            if(Auth::user()->typeCompte == 'superAdmin')
-                return redirect()->route('Utilisateurs.liste')->with('message', "Connexion réussie.");
+        else if(Auth::user()->typeCompte == 'superieur')
+        return redirect()->route('Formulaires.formulaireSitdang')->with('message',"Connexion réussie.");    
             else if(Auth::user()->typeCompte == 'admin')
-                return redirect()->route('Admins.index')->with('message', "Connexion réussie.");      
-                else if(Auth::user()->typeCompte == 'client')
-                    return redirect()->route('index')->with('message', "Connexion réussie.");
-        }
-        else
-        {
-            return redirect()->route('login')->withErrors(['Informations invalides.']);
-        }
+            return redirect()->route('Formulaires.formulaireSitdang')->with('message',"Connexion réussie.");
+    }
+    else
+    {
+        return redirect()->route('login')->withErrors(['Informations invalides.']);
+    }
+}
 
- }
 
-    /*    $reussi = $request->validate([
-                   'id' => 'required',
-                   'password' => 'required',
-              ]);*/
-        
-       
-
-    //         if( 'droitEmploye' == 1 && $reussi )
-    //          {
-
-    //         return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
-    //          }
-         
-    //  }
-           
-       /*     if(Auth::user()->droitEmploye == 1)
-            return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
-            else if(Auth::user()->droitSuperieur == 1)
-            return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");      
-                else if(Auth::user()->droitAdmin == 1)
-                return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
-            else
-            {
-                return redirect()->route('login')->withErrors(['Informations invalides.']);
-            }*/
      
-
-    //    $superAdmin = Auth::attempt(['matricule'=>$request->matricule,'password'=>$request->password ]);
-
-    //     $Admin = Auth::attempt(['id'=>$request->id,'password'=>$request->password, 'droitSuperieur' => 1]);
-
-    //     $client = Auth::attempt(['id'=>$request->id,'password'=>$request->password, 'droitAdmin' => 1]);
-
-
-    //   if ($superAdmin)
-
-    //      {       
-    //         return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
-    //     }
-
-    //     if ($Admin)
-
-    //     {       
-    //         return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
-    //     }
-    //     if ($client)
-
-    //     {       
-    //         return redirect()->route('Formulaires.formulaireAcc')->with('message',"Connexion réussie.");
-    //     }
-    //  }
 
   
 
      public function logout(Request $request)
     {
         Auth::logout();
-        return redirect()->route('Connexion.connect')->withErrors(['Informations invalides.']);
+        return redirect()->route('login')->withErrors(['Informations invalides.']);
     }
 
     

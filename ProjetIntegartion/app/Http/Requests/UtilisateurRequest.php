@@ -27,6 +27,7 @@ class UtilisateurRequest extends FormRequest
 
         'id'=>'required|min:3|max:30|alpha:ascii',
          'password'=>'required|min:3|max:30',
+         'matricule'=>'required|min:3|max:30',
 
     ];
 
@@ -43,7 +44,9 @@ class UtilisateurRequest extends FormRequest
     'id.min'=>'L\'id_usager doit avoir un minimum 5 caractères.',
     'id.max'=>'L\'id_usager doit avoir un maximum de 50 caractères.',
     'id.required'=>'id_usager est obligatoire.',
-    'password'=>'le Mot de passe  est obligatoire'
+    'password'=>'le Mot de passe est obligatoire',
+    'matricule'=>'le Matricule est obligatoire',
+    'matricule.required'=>'le matricule est obligatoire.',
     ];
         }
 

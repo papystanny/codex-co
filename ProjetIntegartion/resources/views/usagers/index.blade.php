@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{asset('style.css')}}">
     <title>Page de connexion</title>
 </head>
-<body class="bg-secondary">
+<!-- <body class="bg-secondary">
     
 @extends('layouts.app')
 @section('contenu')
@@ -47,6 +47,6 @@
 </section>
 @endif
 
-@endsection
+@endsection -->
 </body>
 </html>

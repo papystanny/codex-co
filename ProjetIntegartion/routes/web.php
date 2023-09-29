@@ -18,10 +18,16 @@ use App\Http\Controllers\LoginController;
 
 
 
-Route::get('/form', [LoginController::class, 'index2'])->name('Formulaires.formulaireAcc');
+Route::get('/form', [LoginController::class, 'index'])->name('Formulaires.formulaireAcc');
 
-Route::post('/login', [LoginController::class, 'login'])->name('Formulaires.login');
+Route::get('/form2', [LoginController::class, 'index2'])->name('Formulaires.formulaireSitdang');
 
-Route::get('/', [LoginController::class, 'create'])->name('Connexion.connect');
+// Route::post('/login', [LoginController::class, 'login'])->name('Formulaires.login');
 
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+// Route::get('/', [LoginController::class, 'showLoginForm'])->name('Connexion.connect');
+
+// Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/login', 'App\Http\Controllers\LoginController@showLoginForm')->name('login');
+Route::post('login', 'App\Http\Controllers\LoginController@login');
+Route::post('logout', 'App\Http\Controllers\LoginController@logout')->name('logout');
