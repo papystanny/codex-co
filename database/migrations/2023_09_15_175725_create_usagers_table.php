@@ -25,6 +25,7 @@ return new class extends Migration
              $table->integer('droitAdmin');
              $table->string('nomSuperviseur',100)->nullable();
              $table->foreignId('departement_id')->constrained();
+             $table->string('typeCompte',100)->nullable();
              $table->rememberToken()->nullable();
              $table->timestamps();
          });

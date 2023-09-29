@@ -38,6 +38,7 @@ class UsagersTableSeeder extends Seeder
                 'droitAdmin' => 0,
                 'nomSuperviseur' => 'Jane Dow',
                 'departement_id' => 1,
+                'typeCompte' => 'employe',
             ],
             [
                 'id' => 2,
@@ -51,6 +52,7 @@ class UsagersTableSeeder extends Seeder
                 'droitAdmin' => 0,
                 'nomSuperviseur' => 'Jane Dow',
                 'departement_id' => 1,
+                'typeCompte' => 'superieur',
             ],
             [
                 'id' => 3,
@@ -64,6 +66,7 @@ class UsagersTableSeeder extends Seeder
                 'droitAdmin' => 0,
                 'nomSuperviseur' => 'Jane Dow',
                 'departement_id' => 1,
+                'typeCompte' => 'employe',
             ],
             [
                 'id' => 4,
@@ -77,6 +80,7 @@ class UsagersTableSeeder extends Seeder
                 'droitAdmin' => 0,
                 'nomSuperviseur' => 'Jonathan Morinville',
                 'departement_id' => 1,
+                'typeCompte' => 'admin',
             ],
 
          ]);

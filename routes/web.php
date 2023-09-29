@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployesController;
+use App\Http\Controllers\FormAccidentTravailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
