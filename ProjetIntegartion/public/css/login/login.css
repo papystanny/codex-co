@@ -1,19 +1,51 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins',sans-serif;
+.main-section{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 375px; /* Largeur de votre div */
+  height: 280px; /* Hauteur de votre div */
+  background-color: rgb(123, 145, 175); /* Couleur de fond de votre div */
+  text-align: left; /* Pour centrer le contenu texte à l'intérieur de la div */
+  padding: 30px; /* Espacement interne pour le contenu */
+  border-radius: 20px; /* Coins arrondis de 10 pixels */
+  
 }
-body{
-  background: #1abc9c;
-  overflow: hidden;
-}
-::selection{
-  background: rgba(26,188,156,0.3);
-}
-.container{
- margin-top: 100px;
- background-color: #1abc9c;
 
+.image-un{
+  position: absolute;
+  top: 13%;
+  left: 62%;
+  transform: rotate(205deg); /* Fait pivoter l'image de 45 degrés */
+  width: 40%;
+}
+
+.image-deux{
+  position: absolute;
+  top: 73%;
+
+  transform: rotate( 22deg); /* Fait pivoter l'image de 45 degrés */
+  width: 40%;
+}
+
+.form-group{
+    margin-bottom: 20px;
+ }
+
+ .custom-input {
+  width: 100%; /* Largeur du champ de saisie en pixels */
+  height: 45px; /* Hauteur du champ de saisie en pixels */
+}
+
+.custom-submit{
+  text-align: center;
+  position: absolute;
+  left: 62%;
+}
+
+.custom-submit button{
+  border-radius: 15px; /* Coins arrondis de 10 pixels */
+  padding: 4px 8px;
+  background-color: rgb(170, 161, 111);
+ 
 }

@@ -19,21 +19,31 @@
     @section('contenu')
 
    
-    <div class="container">
-        <h2>Connexion</h2>
+
+    <div class ="image-un">
+        <img src="img/decor.png" class="img-fluid logo-marge-10" width="200%" height="100px">
+    </div> 
+
+    <div class="main-section" >
         <form  method="POST" action="/connexion"> <!-- Remplacez "login.php" par le script de traitement de la connexion -->
         @csrf
             <div class="form-group">
-                <label for="username">Nom d'utilisateur :</label>
-                <input type="number" id="username" name="matricule" required>
+                <h5> <i class="fas fa-user"></i>  Matricule : </h5>
+                <input type="text" id="username" name="matricule" required class="custom-input">
             </div>
             <div class="form-group">
-                <label for="password">Mot de passe :</label>
-                <input type="password" id="password" name="password" required>
+                <h5> <i class="fas fa-lock"></i>  Mot de passe : </h5>
+                <input type="password" id="username" name="password" required class="custom-input">
+             </div>
+             <div class="custom-submit">
+               <button type="submit" >Connexion</button>
             </div>
-            <button type="submit">Se connecter</button>
         </form>
     </div>
+
+    <div class ="image-deux" >
+        <img src="img/decor.png" class="img-fluid logo-marge-10" width="200%" height="100px">
+    </div> 
 
   
  

@@ -14,7 +14,7 @@
 </head>
 <body>
    
-<div class="prenav-in" style="display:none;">
+<div class="prenav-in" >
    <h7 class="" href="#"><i class="fas fa-sign-out-alt"></i><u> SE DÉCONNECTER </u></h7></li>          
 </div> 
 
@@ -27,7 +27,7 @@
             <img src="img/examen.png"  class="img-fluid logo-marge-10 " width="50px" height="50px">
         </div>
 
-        <div class="department-name" style="display:none;">
+        <div class="department-name" >
             <span class="department ">SÉCURITÉ</span>
             <span class="employee"> John Doe</span>
         </div>
@@ -36,14 +36,14 @@
 
     <div class="right-section" >
 
-         <div class="center-section" style="display:none;">
+         <div class="center-section" >
             <div class="user-notifications">
                   <img src="img/userImg.png" class="img-fluid logo-marge-10" width="50" height="50px">
             </div>
          </div>
 
-         <div class="hamburger-menu" style="display:none;">
-            <input id="menu__toggle" type="checkbox" style="display:none;"/>
+         <div class="hamburger-menu">
+            <input id="menu__toggle" type="checkbox" />
             <label class="menu__btn" for="menu__toggle">
                <span></span>
             </label>
@@ -60,7 +60,7 @@
             </ul>
          </div>
 
-         <div class="div-connexion">
+         <div class="div-connexion"  style="display:none;">
              <h3><strong> CONNEXION </strong> </h3>
          </div> 
 

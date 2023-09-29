@@ -9,6 +9,6 @@ class EmployesController extends Controller
 {
     public function index()
     { 
-        return view('login.connexion');
+        return view('employe.accueil');
     }
 }

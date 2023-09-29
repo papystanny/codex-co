@@ -132,7 +132,6 @@
   .right-section {
       flex: 2; /* Prend 2/12 de la largeur totale (hamburger) */
       display: flex;
-    
       align-items: center;
   }
 
