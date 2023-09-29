@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UsagersTableSeeder extends Seeder
 {
@@ -31,7 +32,7 @@ class UsagersTableSeeder extends Seeder
                 'nom' => 'Pepin',
                 'prenom' => 'Marc',
                 'matricule' => 123456,
-                'password' => 'fifi12',
+                'password' => Hash::make('fifi12'),
                 'poste' => 'journalier TP',
                 'droitEmploye' => 1,
                 'droitSuperieur' => 0,
@@ -45,7 +46,7 @@ class UsagersTableSeeder extends Seeder
                 'nom' => 'Reid',
                 'prenom' => 'Claudine',
                 'matricule' => 133456,
-                'password' => 'fifi13',
+                'password' =>Hash::make('fifi13') ,
                 'poste' => 'journalier TP',
                 'droitEmploye' => 1,
                 'droitSuperieur' => 0,
@@ -59,7 +60,7 @@ class UsagersTableSeeder extends Seeder
                 'nom' => 'Temps',
                 'prenom' => 'Paul',
                 'matricule' => 143456,
-                'password' => 'fifi14',
+                'password' => Hash::make('fifi14'),
                 'poste' => 'journalier TP',
                 'droitEmploye' => 1,
                 'droitSuperieur' => 0,
@@ -73,7 +74,7 @@ class UsagersTableSeeder extends Seeder
                 'nom' => 'daw',
                 'prenom' => 'Jane',
                 'matricule' => 153456,
-                'password' => 'fifi15',
+                'password' =>Hash::make('fifi15'),
                 'poste' => 'Cheffe dequipe',
                 'droitEmploye' => 1,
                 'droitSuperieur' => 1,
