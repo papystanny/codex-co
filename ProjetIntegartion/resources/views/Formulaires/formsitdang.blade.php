@@ -18,8 +18,9 @@
           @csrf
 
     <div class="row align-items-center text-center h-100  ">
-                        <div class="col-xl-3 border ">&nbsp</div>
-                        <div class="col-xl-9 border container  containerForm " style="width: 33rem; height: 8rem;"></h1>Création du Formulaire  Signalement d'une situation dangereuse,d'un acte de violence ou d'un  passé proche</h1></div>
+                  <!-- <div class="col-xl-3 border ">&nbsp</div> -->
+                <div class="col-xl-6  border container  containerForm " style="width: 33rem; height: 8rem;"></h1>Création du Formulaire  Signalement d'une situation dangereuse,d'un acte de violence ou d'un  passé proche</h1></div>
+                  <div class="col-xl-6 border container  containerForm " style="width: 33rem; height: 8rem;"></h1>Création du Formulaire  Signalement d'une situation dangereuse,d'un acte de violence ou d'un  passé proche</h1></div>
                 </div>
   
      </div>
