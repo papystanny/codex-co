@@ -20,7 +20,7 @@ use App\Http\Controllers\LoginController;
 
 Route::get('/form', [LoginController::class, 'index'])->name('Formulaires.formulaireAcc');
 
-Route::get('/form2', [LoginController::class, 'index2'])->name('Formulaires.formulaireSitdang');
+Route::get('/form2', [LoginController::class, 'showlogin'])->name('Formulaires.formulaireSitdang');
 
 // Route::post('/login', [LoginController::class, 'login'])->name('Formulaires.login');
 

@@ -33,7 +33,7 @@ class LoginController extends Controller
     {
         return View('Formulaires.formulaireAcc');
     }
-    public function index2()
+    public function showlogin()
     {
         return View('Formulaires.formulaireSitdang');
     }
