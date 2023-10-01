@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+
+use DB;
+
+use Validator;
 use App\Models\Usager;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
+
 use Session;
 
 class UsagersController extends Controller
@@ -16,38 +22,47 @@ class UsagersController extends Controller
         return view('login.connexion');
     }
 
-    public function connexion(Request $req)
+    public function connexion(Request $request)
     {
-        $employe= Auth::attempt(['matricule'=>$req->matricule,'password'=>$req->password ]);
+        $reussi = Auth::attempt(['matricule'=> $request->matricule, 'password' => $request->password]);
 
-
-        if ($req->has('matricule')) {
-            $id = $req->matricule; // Définition de la variable $id si 'id' est présent dans la requête
-            Log::info($id); // Enregistrement de la variable $id dans les journaux
-        } else {
-            Log::info('La variable $id n\'est pas définie.'); // Enregistrement d'un message d'erreur si $id n'est pas définie
-        }
-
-        if ($req->has('password')) {
-            $password = $req->password; // Définition de la variable $id si 'id' est présent dans la requête
-            Log::info($password); // Enregistrement de la variable $id dans les journaux
-        } else {
-            Log::info('La variable $password n\'est pas définie.'); // Enregistrement d'un message d'erreur si $id n'est pas définie
-        }
-
-
-
-        if($employe)
+        if($reussi)
         {
-            return redirect('/employeAccueil');
-        }
-        else 
-        {
-          Log::info('La connexion ne marche pas ');
-          return redirect('/connexion') ->with('alert', 'Erreur!');
-        
+            if(Auth::user()->typeCompte == 'employe')
+            {
+                $user = Usager::where('matricule', $request->matricule)->first();
+                Session::put('nom', $user->nom);       
+                Session::put('typeCompte', $user->typeCompte);
+                Session::put('departement', $user->departement_id);
+                return redirect()->route('employe.accueil')->with('message',"Connexion réussie.");
+            }
+            else if(Auth::user()->typeCompte == 'superieur')
+            {
+                $user = Usager::where('matricule', $request->matricule)->first();
+                Session::put('nom', $user->nom);       
+                Session::put('typeCompte', $user->typeCompte);
+                  return redirect()->route('Formulaires.formulaireSitdang')->with('message',"Connexion réussie.");   
+            }
+            else if(Auth::user()->typeCompte == 'admin')
+            {
+                $user = Usager::where('matricule', $request->matricule)->first();
+                Session::put('nom', $user->nom);       
+                Session::put('typeCompte', $user->typeCompte);
+                return redirect()->route('Formulaires.formulaireSitdang')->with('message',"Connexion réussie.");
+            }
         } 
-      
+         else 
+        {
+          return redirect('/connexion') ->with('alert', 'Conexxion échoué!');
+        } 
+                
+    }
+
+    public function logout()
+    {
+        Session::flush();
+        Auth::logout();
+        return redirect('/connexion');
     }
 
 }

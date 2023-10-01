@@ -26,10 +26,15 @@ return View('login.connexion');
 Route::post('/connexion',
 [UsagersController::class,'connexion'])->name('login');
 
+// --------------------------------------------Deconnexon -----------------------------------------------------------
+Route::post('/logout' , [UsagersController::class,'logout'])->name('logout');
 
 // -------------------------------------- Accueil employe ----------------------------
+Route::middleware(['auth'])->group(function () {
+   
+    Route::get('/employeAccueil', 
+    [EmployesController::class, 'index'])->name('employe.accueil');
+});
 
-Route::get('/employeAccueil', 
-[EmployesController::class, 'index'])->name('employe.accueil');
 
 

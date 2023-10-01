@@ -13,11 +13,19 @@
      <title>@yield('titre')</title>
 </head>
 <body>
+ 
+@if(Auth::check())
    
-<div class="prenav-in" >
-   <h7 class="" href="#"><i class="fas fa-sign-out-alt"></i><u> SE DÉCONNECTER </u></h7></li>          
-</div> 
-
+        @csrf
+            <div class="prenav-in" >
+                 <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <a onclick="this.closest('form').submit(); return false;" class="logout-button"> 
+                        <h6 class="" href="#"><i class="fas fa-sign-out-alt"></i><u> SE DÉCONNECTER </u></h6></li>  
+                    </a>
+                </form>        
+            </div> 
+@endauth
 
 
 <nav class="navbar">
@@ -26,23 +34,24 @@
         <div class="logo">
             <img src="img/examen.png"  class="img-fluid logo-marge-10 " width="50px" height="50px">
         </div>
+@if(Auth::check())
+        <div class="department-name">
 
-        <div class="department-name" >
             <span class="department ">SÉCURITÉ</span>
-            <span class="employee"> John Doe</span>
+            <span class="employee">  {{Session::get('nom')}}</span>
         </div>
-
+@endauth
     </div>
 
-    <div class="right-section" >
-
-         <div class="center-section" >
+    <div class="right-section"   >
+@if(Auth::check())
+         <div class="center-section"  >
             <div class="user-notifications">
-                  <img src="img/userImg.png" class="img-fluid logo-marge-10" width="50" height="50px">
+                  <img src="img/userLogo1.png" class="img-fluid logo-marge-10" width="50" height="50px">
             </div>
          </div>
 
-         <div class="hamburger-menu">
+         <div class="hamburger-menu" >
             <input id="menu__toggle" type="checkbox" />
             <label class="menu__btn" for="menu__toggle">
                <span></span>
@@ -59,11 +68,12 @@
               
             </ul>
          </div>
-
-         <div class="div-connexion"  style="display:none;">
+@endauth
+@if(!Auth::check())
+         <div class="div-connexion"  >
              <h3><strong> CONNEXION </strong> </h3>
          </div> 
-
+@endauth
     </div>
 </nav>
 
