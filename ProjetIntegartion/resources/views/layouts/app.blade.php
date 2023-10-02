@@ -15,9 +15,8 @@
 <body>
  
 @if(Auth::check())
-   
         @csrf
-            <div class="prenav-in" >
+            <div class="prenav-in" id="messageLogout" style="display:none" >
                  <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <a onclick="this.closest('form').submit(); return false;" class="logout-button"> 
@@ -25,6 +24,10 @@
                     </a>
                 </form>        
             </div> 
+
+            <div class="prenav-in" id="messageWelcome"  style="display:none">               
+                       <h5 class="" ><i class="fas fa-home"></i>  Bonjour <b>  {{Session::get('nom')}} </b></h5></li>                       
+           </div> 
 @endauth
 
 
@@ -38,7 +41,7 @@
         <div class="department-name">
 
             <span class="department ">SÉCURITÉ</span>
-            <span class="employee">  {{Session::get('nom')}}</span>
+            <span class="employee" id="messageNom" style="display:none"> {{Session::get('nom')}}</span>
         </div>
 @endauth
     </div>
@@ -61,11 +64,13 @@
                <li><a class="menu__item" href="#"><i class="fas fa-home"></i> ACCUEIL </a></li>
                <hr style="color: black;" />
                <li><a class="menu__item" href="#"><i class="far fa-clock"></i> FORMULAIRES </a></li>
+@if( Session::get('typeCompte') == 'superieur')          
                <hr style="color: black;" />
-               <li><a class="menu__item" href="#"><i class="fas fa-folder"></i> MES EMPLOYES </a></li>
+               <li><a class="menu__item" href="#"><i class="fas fa-folder"></i> MES EMPLOYES </a></li>  @endif
                <hr style="color: black;" />
-               <li><a class="menu__item" href="#"><i class="fas fa-sign-out-alt"></i> SE DÉCONNECTER </a></li>
-              
+               
+                    <li><a class="menu__item" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> SE DÉCONNECTER </a></li> 
+                                   
             </ul>
          </div>
 @endauth

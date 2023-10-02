@@ -32,6 +32,7 @@ class UsagersController extends Controller
             {
                 $user = Usager::where('matricule', $request->matricule)->first();
                 Session::put('nom', $user->nom);       
+                Session::put('prenom', $user->prenom);    
                 Session::put('typeCompte', $user->typeCompte);
                 Session::put('departement', $user->departement_id);
                 return redirect()->route('employe.accueil')->with('message',"Connexion réussie.");

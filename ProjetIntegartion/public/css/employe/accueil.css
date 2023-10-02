@@ -1,5 +1,32 @@
-.custom-span{
-    font-weight: 50;
-    padding: 5px 5px;
+Body{
+    background-color: rgb(155, 13, 13);
+}
 
+.accueil-titre{
+    background-color: rgb(167, 199, 158);
+    padding: 8px 10px;
+    border-top: 2px solid rgb(0, 0, 0); /* Bordure en haut de l'élément */
+    border-bottom: 2px solid rgb(0, 0, 0); /* Bordure en bas de l'élément */
+}
+
+.accueil-formulaire{
+    text-align: center;
+    
+}
+
+.formulaire {
+    margin : 30px 20px;
+    border: 1px   solid rgb(0, 0, 0); /* Bordure en bas de l'élément */
+    padding: 8px 5px;
+    border-radius: 10px ;
+    background-color: beige;
+}
+
+
+
+.custom-span{
+    font-size: 13px;
+    font-weight: 600;
+    padding: 5px 5px;
+    margin-top: 28%;
 }

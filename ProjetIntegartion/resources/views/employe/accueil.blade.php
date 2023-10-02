@@ -18,14 +18,62 @@
     @section('contenu')
 
     <div class ="custom-span">
-        <span>Accueil <span>
-           
+        <span>ACCUEIL <span>
     </div>
+
+
+    <div class="main-section">
+
+        <div class="accueil-titre">
+                <h2> <b> FORMULAIRE </b>  </h2>
+        </div>
+
+        <div class="accueil-formulaire">
+            
+            <div class="formulaire">
+                <h5> DÉCLARATION ACCIDENT DE TRAVAIL  </h5>
+            </div>
+            <div class="formulaire">
+                <h5> SIGNALEMENT ACTE DE VIOLENCE  </h5>
+            </div>
+@if( Session::get('typeCompte') == 'superieur')   
+            <div class="formulaire">
+                <h5> AUDI SST  </h5>
+            </div>    
+@endauth
+@if( Session::get('typeCompte') == 'superieur')   
+            <div class="formulaire">
+                <h5>MÉCANIQUE-RAPPORT D'ACCIDENT  </h5>
+            </div>
+@endauth
+        </div>
+
+
+        <div class="accueil-titre">
+            <h2> <b> PROCÉDURES DE TRAVAIL </b>  </h2>
+        </div>
+
+        <div class="accueil-formulaire">
+            <div class="formulaire">
+                <h5> DÉCLARATION ACCIDENT DE TRAVAIL  </h5>
+            </div>
+            <div class="formulaire">
+                <h5> SIGNALEMENT ACTE DE VIOLENCE  </h5>
+            </div>
+            <div class="formulaire">
+                <h5> PRÉSENCE AU TRAVAIL  </h5>
+            </div>
+        </div>
+
+    </div>
+
+    
       
        
   
  
     @endsection
+    <script src="js/employe/accueil.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </body>
 </html>

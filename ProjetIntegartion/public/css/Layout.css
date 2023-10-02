@@ -25,16 +25,7 @@
   font-style: normal; /* Style normal (non-italique) */
 }
 
-.prenav-in{
-  background-color: rgb(0, 0, 0);
-  display: flex;
-  align-items: center; /* Alignement vertical au centre */
-  justify-content: center; /* Alignement horizontal au centre */
-  color: white;
-  padding: 8px ;
-  font-family: 'Poppins', sans-serif;
 
-}
   
 .department {
   font-size: 1.1rem; /* Taille de texte plus grande pour le département */
@@ -52,7 +43,9 @@
     margin: 5px;
   }
 
-
+.prenav-in{
+  display: none;
+}
 
  
 
@@ -62,6 +55,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
  
   /* Autres styles de la navbar */
 }
@@ -101,6 +95,22 @@
 
 /* Styles pour la navbar en mode mobile (écran étroit) */
 @media (max-width: 768px) {
+  .prenav-in{
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center; /* Alignement vertical au centre */
+    justify-content: center; /* Alignement horizontal au centre */
+    color: white;
+    padding: 8px ;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    position: fixed; /* Rend la barre de navigation fixe */
+    top:0px;
+    width: 100%;
+    display: flex;
+    
+  }
+
   .navbar {
       display: flex;
       flex-wrap: wrap; /* Permettre le passage à la ligne des éléments */
@@ -109,6 +119,10 @@
       padding: 5px; /* Espacement interne pour l'espacement entre les éléments */
       background-color: rgb(0, 118, 213);
       overflow: hidden; /* Masquer le débordement horizontal */
+      position: fixed; /* Rend la barre de navigation fixe */
+      width: 100%; /* Largeur de la barre de navigation à 100% de la largeur de la fenêtre */
+      top: 5%;
+     display: flex;
   }
 
  
