@@ -1,0 +1,27 @@
+.parent{
+    background-color:black;
+    height:100%;
+    width:50%;
+}
+.enfant
+{
+    border: solid black 1px;
+}
+.enfant1{
+    background-color: red;
+}
+.enfant2{
+    background-color: blue;
+}
+.enfant3{
+    background-color: chartreuse;
+}
+.enfant4{
+    background-color: red;
+}
+.enfant5{
+    background-color: yellow;
+}
+body,html{
+    height: 100%;
+}
