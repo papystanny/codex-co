@@ -32,6 +32,9 @@
 .center {
   text-align: center;
 }
+.color{
+    background-color: gray;
+}
 </style>
 </head>
 <body>
@@ -55,15 +58,15 @@
           <div class="parent container-fluid">
              <div class="row">
                 <div class= "enfant enfant1 col-lg-4 p-4">
-                <label for="fname">Nom:</label>
+                <label for="fname">Nom:</label><br>
                 <input type="text" id="nom" name="nom">
                 </div>
                 <div class= "enfant enfant1 col-lg-4 p-4">
-                <label for="fname">Prenom:</label>
+                <label for="fname">Prenom:</label><br>
                 <input type="text" id="nom" name="nom">
                 </div>
-                <div class= "enfant enfant1 col-lg-4 p-3">
-                <label for="fname">Matricule:</label>
+                <div class= "enfant enfant1 col-lg-4 p-4">
+                <label for="fname">Matricule:</label><br>
                 <input type="text" id="nom" name="nom">
                 </div>
              </div>
@@ -76,7 +79,7 @@
                 <input type="text" id="nom" name="nom">
                 </div>
                 <div class= "enfant enfant1 col-lg-6 p-4">
-                <label for="fname">Secteur d'activité:</label>
+                <label for="fname">Secteur d'activité:</label><br>
                 <input type="text" id="nom" name="nom">
                 </div>
             </div>
@@ -86,6 +89,118 @@
                 <div class= " enfant enfant1 col-lg-12 "><h3>Description de la situation dangereuse ou du passé proche</h3></div>      
               </div>
           </div>
+
+        <div class="parent container-fluid">
+            <div class="row">
+                <div class= "enfant enfant1 col-lg-4 p-4">                              
+                    <form action="/action_page.php">
+                    <label for="Date">Date de L'Observation:</label>
+                    <input type="date" id="date" name="date">
+                    </form>
+                </div>
+                <div class= "enfant enfant1 col-lg-4 p-4">
+                    <form action="/action_page.php">
+                        <label for="heure">Heure de L'Observation:</label><br>
+                        <input type="time" id="heure" name="heure">
+                    </form>
+                </div>
+                <div class= "enfant enfant1 col-lg-4 p-4">
+                <form action="/action_page.php">
+                    <label for="fname">Témoin(s):</label>
+                    <input type="text" id="temoin" name="temoin">
+                </form>
+                </div>
+            </div>
+        </div>
+        <div class="parent container-fluid">
+              <div class="row">
+                <div class= " enfant enfant1 col-lg-12 "><h3>Lien</h3></div>      
+              </div>
+         </div>
+          
+        <div class="parent container-fluid">
+              <div class="row">
+                <input type="text" id="fname" name="fname">
+                <input type="text" id="fname" name="fname">
+                <input type="text" id="fname" name="fname">
+                <input type="text" id="fname" name="fname">
+                <input type="text" id="fname" name="fname">
+                <input type="text" id="fname" name="fname">
+                <input type="text" id="fname" name="fname">
+              </div>
+          </div>
+
+          <div class="parent container-fluid">
+              <div class="row">
+                <div class= " enfant enfant1 col-lg-12 "><h4>Correction(s) ou amélioration(s) proposée(s)</h4></div> 
+                <input type="text" id="fname" name="fname">
+                <input type="text" id="fname" name="fname">
+                <input type="text" id="fname" name="fname">
+                <input type="text" id="fname" name="fname">     
+              </div>
+         </div>
+         <div class="parent container-fluid">
+              <div class="row ">
+                <div class= " color enfant enfant1 col-lg-12 ">&nbsp</div>      
+              </div>
+          </div>
+          <div class="parent container-fluid">
+              <div class="row ">
+                <form action="/action_page.php">
+                <div class="col-lg-6">
+                        <input type="checkbox" id="aviser" name="aviser" value="aviser">
+                        <label for="aviser">J'ai aviser mon supérieur immédiate    le </label>
+                        <input type="date" id="date" name="date">
+                </div>
+                       
+                </form>  
+              </div>
+          </div>
+
+          <div class="parent container-fluid">
+              <div class="row ">
+                    <div class= " col-xl-12">
+                        <label for="fname">Nom en Caractères d'imprimerie:</label>
+                        <input type="text" id="nom" name="nom">
+                   </div>
+              </div>
+          </div>
+  
+          <div class="parent container-fluid">
+             <div class="row">
+                <div class= "enfant enfant1 col-lg-6 p-4">
+                <label for="fname">Signature du travailleur ou de la travailleuse:</label>
+                <input type="text" id="Signature" name="Signature">
+                </div>
+                <div class= "enfant enfant1 col-lg-6 p-4">
+                <label for="Date">Date:</label><br>
+                    <input type="date" id="date" name="date">
+                </div>
+            </div>
+           </div>
+           <div class="parent container-fluid">
+            <div class="row">
+                <div class= "enfant enfant1 col-lg-4 p-4">                              
+                    <form action="/action_page.php">
+                    <label for="Date">Signature du supérieur Immédiate:</label>
+                    <input type="text" id="temoin" name="temoin">
+                    </form>
+                </div>
+                <div class= "enfant enfant1 col-lg-4 p-4">
+                    <form action="/action_page.php">
+                        <label for="heure">N0 de Poste:</label><br>
+                        <input type="text" id="NoPoste" name="NoPoste">
+                    </form>
+                </div>
+                <div class= "enfant enfant1 col-lg-4 p-4">
+                <form action="/action_page.php">
+                    <label for="fname">date:</label><br>
+                    <input type="date" id="date" name="date">
+                </form>
+                </div>
+            </div>
+        </div>
+</form>
 
 </section>      
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
