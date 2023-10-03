@@ -36,8 +36,28 @@ class FormAccidentTravailController extends Controller
                 $Formaccidentstravail->nomsTemoins = $request->input('nomsTemoins');
                 $Formaccidentstravail->endroitAccident = $request->input('endroitAccident');
                 $Formaccidentstravail->secteurActivite = $request->input('secteurActivite');
-                $Formaccidentstravail->natureSiteBlessure = $request->input('natureSiteBlessure');
-                $Formaccidentstravail->descriptionBlessure = $request->input('descriptionBlessure');
+                //$Formaccidentstravail->natureSiteBlessure = $request->input('natureSiteBlessure',[]);
+                $natureSiteBlessureString=implode(',', $request->input('natureSiteBlessure',[]));
+                $FormaccidentsTravail->natureSiteBlessure = $natureSiteBlessureString;
+                /*
+                $dataArray = explode(',', $request->input('natureSiteBlessure',[]));
+                for( $i = 0; $i <count($dataArray) ; $i++){
+                    FormaccidentsTravail::where ('id',  $dataArray[$i])
+                    ->update(['natureSiteBlessure' => implode(',', $request->input('natureSiteBlessure',[])),
+                ]);
+                }
+                */
+
+              /*
+                FormaccidentsTravail::where('nomEmploye',$request->input('nomEmploye'))->update([
+                    'natureSiteBlessure' => implode(',', $request->input('natureSiteBlessure',[])), // Conservez les valeurs dans une chaîne séparée par des virgules (ou un autre séparateur)
+                ]);
+              */
+               // $Formaccidentstravail->descriptionBlessure = $request->input('descriptionBlessure',[]);
+
+                $descriptionBlessureString=implode(',', $request->input('descriptionBlessure',[]));
+                $FormaccidentsTravail->descriptionBlessure = $descriptionBlessureString;
+
                 $Formaccidentstravail->violence = $request->input('violence');
                 $Formaccidentstravail->descriptionDeroulementBlessure = $request->input('descriptionDeroulementBlessure');
                 $Formaccidentstravail->premiersSoins = $request->input('premiersSoins');
@@ -64,14 +84,14 @@ class FormAccidentTravailController extends Controller
                $Formaccidentstravail -> usager_id =3; //<!-- Session::get('id');-->   */
                $Formaccidentstravail->save();
                
-               return redirect()->route('professeur.creationsondage');
+               return view('employes.index');
                 }
                 
                catch (\Throwable $e) {
              
                 Log::debug($e);
              //   return redirect()->route('campagne')->withErrors(['L\'ajout de campagne n\'a pas fonctionné']);
-             return redirect()->route('employe.formAccidentTravail');
+             return view('formAccidentTravail.formAccidentTravail');
                }
                
                 
