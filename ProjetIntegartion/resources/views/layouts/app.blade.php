@@ -64,9 +64,12 @@
                <li><a class="menu__item" href="#"><i class="fas fa-home"></i> ACCUEIL </a></li>
                <hr style="color: black;" />
                <li><a class="menu__item" href="#"><i class="far fa-clock"></i> FORMULAIRES </a></li>
+               <hr style="color: black;" />
+               <li><a class="menu__item" href="#"><i class="far fa-clock"></i> PROCÉDURES  </a></li>
 @if( Session::get('typeCompte') == 'superieur')          
                <hr style="color: black;" />
-               <li><a class="menu__item" href="#"><i class="fas fa-folder"></i> MES EMPLOYES </a></li>  @endif
+               <li><a class="menu__item" href="#"><i class="fas fa-folder"></i> MES EMPLOYES </a></li> 
+ @endif
                <hr style="color: black;" />
                
                     <li><a class="menu__item" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> SE DÉCONNECTER </a></li> 

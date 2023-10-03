@@ -45,7 +45,7 @@
             <div class="formulaire">
                 <h5>MÉCANIQUE-RAPPORT D'ACCIDENT  </h5>
             </div>
-@endauth
+ @endauth
         </div>
 
 
@@ -55,13 +55,16 @@
 
         <div class="accueil-formulaire">
             <div class="formulaire">
-                <h5> DÉCLARATION ACCIDENT DE TRAVAIL  </h5>
+                <h5> CONSULTER SA PAIE  </h5>
             </div>
             <div class="formulaire">
-                <h5> SIGNALEMENT ACTE DE VIOLENCE  </h5>
+                <h5>  AVANTAGES SOCIAUX  </h5>
             </div>
             <div class="formulaire">
                 <h5> PRÉSENCE AU TRAVAIL  </h5>
+            </div>
+            <div class="formulaire">
+                <h5> RÉSPONSABILTÉ ET DROITS   </h5>
             </div>
         </div>
 
