@@ -49,111 +49,111 @@
                     <label for="formGroupExampleInput">Nature et site de la blessure(cochez s'il y'a lieu côté gauche ou droit)</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="tête,visage,nez,yeux,oreilles" id="flexCheckDefault" name="natureSiteBlessure">
+                    <input class="form-check-input" type="checkbox" value="tête,visage,nez,yeux,oreilles"  name="natureSiteBlessure[]">
                     <label class="form-check-label" for="flexCheckDefault">
                     tête,visage,nez,yeux,oreilles
                     </label>
-                    <input class="form-check-input" type="checkbox" value=" D" id="flexCheckDefault" name="natureSiteBlessure">
+                    <input class="form-check-input" type="checkbox" value=" D" name="natureSiteBlessure[]">
                     <label class="form-check-label" for="flexCheckDefault">
                     D/
                     </label>
-                    <input class="form-check-input" type="checkbox" value="G" id="flexCheckDefault" name="natureSiteBlessure">
+                    <input class="form-check-input" type="checkbox" value="G"  name="natureSiteBlessure[]">
                     <label class="form-check-label" for="flexCheckDefault">
                     G
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Torse" id="flexCheckChecked" name="natureSiteBlessure">
+                    <input class="form-check-input" type="checkbox" value="Torse" name="natureSiteBlessure[]">
                     <label class="form-check-label" for="flexCheckChecked">
                     Torse
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value=" Poumons" id="flexCheckChecked" name="natureSiteBlessure">
+                    <input class="form-check-input" type="checkbox" value=" Poumons"  name="natureSiteBlessure[]">
                     <label class="form-check-label" for="flexCheckChecked">
                     Poumons
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value=" Bras,épaules,coudes" id="flexCheckChecked " name="natureSiteBlessure">
+                    <input class="form-check-input" type="checkbox" value=" Bras,épaules,coudes"  name="natureSiteBlessure[]">
                     <label class="form-check-label" for="flexCheckChecked">
                     Bras,épaules,coudes
                     </label>
-                    <input class="form-check-input" type="checkbox" value="D" id="flexCheckDefault" name="natureSiteBlessure">
+                    <input class="form-check-input" type="checkbox" value="D"  name="natureSiteBlessure[]">
                     <label class="form-check-label" for="flexCheckDefault">
                     D/
                     </label>
-                    <input class="form-check-input" type="checkbox" value="G" id="flexCheckDefault" name="natureSiteBlessure">
+                    <input class="form-check-input" type="checkbox" value="G"  name="natureSiteBlessure[]">
                     <label class="form-check-label" for="flexCheckDefault">
                     G
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Poignets,mains,doigts" id="flexCheckChecked" name="natureSiteBlessure">
+                    <input class="form-check-input" type="checkbox" value="Poignets,mains,doigts"  name="natureSiteBlessure[]">
                     <label class="form-check-label" for="flexCheckChecked">
                     Poignets,mains,doigts
                     </label>
-                    <input class="form-check-input" type="checkbox" value=" D" id="flexCheckDefault" name="natureSiteBlessure">
+                    <input class="form-check-input" type="checkbox" value=" D"  name="natureSiteBlessure[]">
                     <label class="form-check-label" for="flexCheckDefault">
                     D/
                     </label>
-                    <input class="form-check-input" type="checkbox" value="G" id="flexCheckDefault" name="natureSiteBlessure">
+                    <input class="form-check-input" type="checkbox" value="G"  name="natureSiteBlessure[]">
                     <label class="form-check-label" for="flexCheckDefault">
                     G
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Dos" id="flexCheckChecked"name="natureSiteBlessure">
+                    <input class="form-check-input" type="checkbox" value="Dos" name="natureSiteBlessure[]">
                     <label class="form-check-label" for="flexCheckChecked">
                     Dos
                     </label>
-                    <input class="form-check-input" type="checkbox" value="haut" id="flexCheckDefault"name="natureSiteBlessure">
+                    <input class="form-check-input" type="checkbox" value="haut" name="natureSiteBlessure[]">
                     <label class="form-check-label" for="flexCheckDefault">
                     haut/
                     </label>
-                    <input class="form-check-input" type="checkbox" value="bas" id="flexCheckDefault" name="natureSiteBlessure">
+                    <input class="form-check-input" type="checkbox" value="bas"  name="natureSiteBlessure[]">
                     <label class="form-check-label" for="flexCheckDefault">
                     bas
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Hanche" id="flexCheckChecked" name="natureSiteBlessure">
+                    <input class="form-check-input" type="checkbox" value="Hanche"  name="natureSiteBlessure[]">
                     <label class="form-check-label" for="flexCheckChecked">
                     Hanche
                     </label>
-                    <input class="form-check-input" type="checkbox" value="D" id="flexCheckDefault" name="natureSiteBlessure">
+                    <input class="form-check-input" type="checkbox" value="D"  name="natureSiteBlessure[]">
                     <label class="form-check-label" for="flexCheckDefault">
                     D/
                     </label>
-                    <input class="form-check-input" type="checkbox" value="G" id="flexCheckDefault" name="natureSiteBlessure">
+                    <input class="form-check-input" type="checkbox" value="G"  name="natureSiteBlessure[]">
                     <label class="form-check-label" for="flexCheckDefault">
                     G
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Jambe,genou" id="flexCheckChecked"name="natureSiteBlessure">
+                    <input class="form-check-input" type="checkbox" value="Jambe,genou"name="natureSiteBlessure[]">
                     <label class="form-check-label" for="flexCheckChecked">
                     Jambe,genou
                     </label>
-                    <input class="form-check-input" type="checkbox" value="D" id="flexCheckDefault"name="natureSiteBlessure">
+                    <input class="form-check-input" type="checkbox" value="D" name="natureSiteBlessure[]">
                     <label class="form-check-label" for="flexCheckDefault">
                     D/
                     </label>
-                    <input class="form-check-input" type="checkbox" value="G" id="flexCheckDefault"name="natureSiteBlessure">
+                    <input class="form-check-input" type="checkbox" value="G" name="natureSiteBlessure[]">
                     <label class="form-check-label" for="flexCheckDefault">
                     G
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value=" Pied,Orteil,Cheville" id="flexCheckChecked" name="natureSiteBlessure">
+                    <input class="form-check-input" type="checkbox" value=" Pied,Orteil,Cheville"  name="natureSiteBlessure[]">
                     <label class="form-check-label" for="flexCheckChecked">
                     Pied,Orteil,Cheville
                     </label>
-                    <input class="form-check-input" type="checkbox" value="D" id="flexCheckDefault"name="natureSiteBlessure">
+                    <input class="form-check-input" type="checkbox" value="D" name="natureSiteBlessure[]">
                     <label class="form-check-label" for="flexCheckDefault">
                     D/
                     </label>
-                    <input class="form-check-input" type="checkbox" value="G" id="flexCheckDefault" name="natureSiteBlessure">
+                    <input class="form-check-input" type="checkbox" value="G" id="flexCheckDefault" name="natureSiteBlessure[]">
                     <label class="form-check-label" for="flexCheckDefault">
                     G
                     </label>
@@ -164,61 +164,61 @@
                     <label for="formGroupExampleInput">Description de la blessure(à cocher)</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Brûlure,engelure" id="flexCheckChecked"name="descriptionBlessure">
+                    <input class="form-check-input" type="checkbox" value="Brûlure,engelure" id="flexCheckChecked"name="descriptionBlessure[]">
                     <label class="form-check-label" for="flexCheckChecked">
                     Brûlure,engelure
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Comotion cérébrale" id="flexCheckChecked" name="descriptionBlessure">
+                    <input class="form-check-input" type="checkbox" value="Comotion cérébrale" id="flexCheckChecked" name="descriptionBlessure[]">
                     <label class="form-check-label" for="flexCheckChecked">
                    Comotion cérébrale
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Corps étranger" id="flexCheckChecked" name="descriptionBlessure">
+                    <input class="form-check-input" type="checkbox" value="Corps étranger" id="flexCheckChecked" name="descriptionBlessure[]">
                     <label class="form-check-label" for="flexCheckChecked">
                     Corps étranger
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Coupure,lacération,déchirure" id="flexCheckChecked" name="descriptionBlessure">
+                    <input class="form-check-input" type="checkbox" value="Coupure,lacération,déchirure" id="flexCheckChecked" name="descriptionBlessure[]">
                     <label class="form-check-label" for="flexCheckChecked">
                     Coupure,lacération,déchirure
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Douleur au dos" id="flexCheckChecked" name="descriptionBlessure">
+                    <input class="form-check-input" type="checkbox" value="Douleur au dos" id="flexCheckChecked" name="descriptionBlessure[]">
                     <label class="form-check-label" for="flexCheckChecked">
                     Douleur au dos
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="égratinure,éraflure,piqure,écharde" id="flexCheckChecked" name="descriptionBlessure">
+                    <input class="form-check-input" type="checkbox" value="égratinure,éraflure,piqure,écharde" id="flexCheckChecked" name="descriptionBlessure[]">
                     <label class="form-check-label" for="flexCheckChecked">
                     égratinure,éraflure,piqure,écharde
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Entorse,élongation,contusion,foulure,luxation" id="flexCheckChecked" name="descriptionBlessure">
+                    <input class="form-check-input" type="checkbox" value="Entorse,élongation,contusion,foulure,luxation" id="flexCheckChecked" name="descriptionBlessure[]">
                     <label class="form-check-label" for="flexCheckChecked">
                     Entorse,élongation,contusion,foulure,luxation
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Fracture,amputation" id="flexCheckChecked" name="descriptionBlessure">
+                    <input class="form-check-input" type="checkbox" value="Fracture,amputation" id="flexCheckChecked" name="descriptionBlessure[]">
                     <label class="form-check-label" for="flexCheckChecked">
                    Fracture,amputation
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Irritation,infection" id="flexCheckChecked" name="descriptionBlessure">
+                    <input class="form-check-input" type="checkbox" value="Irritation,infection" id="flexCheckChecked" name="descriptionBlessure[]">
                     <label class="form-check-label" for="flexCheckChecked">
                    Irritation,infection
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Inhalation" id="flexCheckChecked" name="descriptionBlessure">
+                    <input class="form-check-input" type="checkbox" value="Inhalation" id="flexCheckChecked" name="descriptionBlessure[]">
                     <label class="form-check-label" for="flexCheckChecked">
                     Inhalation
                     </label>
@@ -229,7 +229,7 @@
                     <label class="form-check-label" for="flexCheckChecked">
                   Autres
                     </label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" name="descriptionBlessure">
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" name="descriptionBlessure[]">
                 </div>
             </div>  
         </div>  

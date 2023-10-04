@@ -36,9 +36,30 @@ class FormAccidentTravailController extends Controller
                 $Formaccidentstravail->nomsTemoins = $request->input('nomsTemoins');
                 $Formaccidentstravail->endroitAccident = $request->input('endroitAccident');
                 $Formaccidentstravail->secteurActivite = $request->input('secteurActivite');
-                //$Formaccidentstravail->natureSiteBlessure = $request->input('natureSiteBlessure',[]);
-                $natureSiteBlessureString=implode(',', $request->input('natureSiteBlessure',[]));
+                Log::debug($request->input('secteurActivite',[]) );
+               // $Formaccidentstravail->natureSiteBlessure = $request->input('natureSiteBlessure',[]);
+                Log::debug($request->input('natureSiteBlessure',[]) );
+               // $d=implode('',$request->input('natureSiteBlessure',[]));
+             
+                $data=$request->input('natureSiteBlessure',[]);
+                $natureSiteBlessureString=implode(',',$data);
+                Log::debug($natureSiteBlessureString);
+                /*
+                for( $i = 0; $i <count($dataArray) ; $i++){
+                    $natureSiteBlessureString=implode(',',$data);
+                    Log::debug($natureSiteBlessureString);
+                    
+                }*/
+                Log::debug($request->input('descriptionBlessure',[]) );
+                $data2=$request->input('descriptionBlessure',[]);
+                $descriptionBlessureString=implode(',',$data2);
+                Log::debug($descriptionBlessureString);
+                $FormaccidentsTravail->descriptionBlessure = $descriptionBlessureString;
+
                 $FormaccidentsTravail->natureSiteBlessure = $natureSiteBlessureString;
+                //$natureSiteBlessureString=implode(',', $request->input('natureSiteBlessure'),[]);
+                
+                //$FormaccidentsTravail->natureSiteBlessure = $natureSiteBlessureString;
                 /*
                 $dataArray = explode(',', $request->input('natureSiteBlessure',[]));
                 for( $i = 0; $i <count($dataArray) ; $i++){
@@ -46,6 +67,19 @@ class FormAccidentTravailController extends Controller
                     ->update(['natureSiteBlessure' => implode(',', $request->input('natureSiteBlessure',[])),
                 ]);
                 }
+
+                // Récupérer les valeurs des cases à cocher cochées
+                $checkboxValues = $request->input('checkbox_values', []);
+
+                // Convertir les valeurs en une chaîne séparée par des virgules (ou un autre séparateur)
+                $checkboxValuesString = implode(',', $checkboxValues);
+
+                // Enregistrez les valeurs dans la base de données
+                $votreModele = new VotreModele;
+                $votreModele->champ_checkbox = $checkboxValuesString;
+                $votreModele->save();
+
+
                 */
 
               /*
@@ -55,8 +89,10 @@ class FormAccidentTravailController extends Controller
               */
                // $Formaccidentstravail->descriptionBlessure = $request->input('descriptionBlessure',[]);
 
-                $descriptionBlessureString=implode(',', $request->input('descriptionBlessure',[]));
-                $FormaccidentsTravail->descriptionBlessure = $descriptionBlessureString;
+               // $descriptionBlessureString=implode(',', $request->input('descriptionBlessure',[]));
+                
+
+                
 
                 $Formaccidentstravail->violence = $request->input('violence');
                 $Formaccidentstravail->descriptionDeroulementBlessure = $request->input('descriptionDeroulementBlessure');
