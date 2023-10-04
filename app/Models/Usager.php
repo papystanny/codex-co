@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\FormAccidentTravail;
+use App\Models\FormaccidentsTravail;
 use App\Models\Departement;
 class Usager extends Model
 {
@@ -14,7 +14,7 @@ class Usager extends Model
     public function formAccidentTravail()
    {
    // return $this->belongsToMany('App\Models\Campagne');
-   return $this->belongsToMany(FormAccidentTravail::class);
+   return $this->belongsToMany(FormaccidentsTravail::class);
    }
    public function departements()
    {
