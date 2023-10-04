@@ -20,7 +20,7 @@
 
    
 
-    <div class ="image-un">
+    <div class ="image-un" style="display: none;">
         <img src="img/decor.png" class="img-fluid logo-marge-10" width="200%" height="100px">
     </div> 
 

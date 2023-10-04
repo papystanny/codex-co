@@ -149,6 +149,28 @@
       align-items: center;
   }
 
+  .footer-section{
+    
+ 
+ 
+    text-align: center;
+    background-color:#eeeef0;
+    padding-top:40px;
+    padding-bottom: 20px;
+}
+
+  .encadre-backgroundUn{
+    background-color: #ffffff;
+    padding: 0px 45px;
+    margin: 10px 25px;
+
+  }
+  .encadre-background{
+    background-color: #ffffff;
+    padding: 5px 0px;
+    margin: 10px 25px;
+
+  }
   /* Autres styles pour le logo, département, nom de l'employé, cercle utilisateur, hamburger, etc. */
 }
 

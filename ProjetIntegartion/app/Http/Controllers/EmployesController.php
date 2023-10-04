@@ -11,4 +11,14 @@ class EmployesController extends Controller
     { 
         return view('employe.accueil');
     }
+
+    public function formulaire()
+    { 
+        return view('employe.formulaire');
+    }
+
+    public function procedure()
+    { 
+        return view('employe.procedure');
+    }
 }

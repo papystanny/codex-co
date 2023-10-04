@@ -34,6 +34,15 @@ Route::middleware(['auth'])->group(function () {
    
     Route::get('/employeAccueil', 
     [EmployesController::class, 'index'])->name('employe.accueil');
+
+    Route::get('/employeFormulaire', 
+    [EmployesController::class, 'formulaire'])->name('employe.formulaire');
+
+    Route::get('/employeProcedure', 
+    [EmployesController::class, 'procedure'])->name('employe.procedure');
+
+
+
 });
 
 

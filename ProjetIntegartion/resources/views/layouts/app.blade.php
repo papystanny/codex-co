@@ -14,6 +14,8 @@
 </head>
 <body>
  
+
+
 @if(Auth::check())
         @csrf
             <div class="prenav-in" id="messageLogout" style="display:none" >
@@ -28,6 +30,10 @@
             <div class="prenav-in" id="messageWelcome"  style="display:none">               
                        <h5 class="" ><i class="fas fa-home"></i>  Bonjour <b>  {{Session::get('nom')}} </b></h5></li>                       
            </div> 
+@else
+            <div class="prenav-in" id="messageWelcome" >               
+                <h5 class="" ><i class="fas fa-home"></i>  TrÈs Trois-Rivières </b></h5></li>                       
+            </div> 
 @endauth
 
 
@@ -35,7 +41,9 @@
     <div class="left-section">
 
         <div class="logo">
-            <img src="img/examen.png"  class="img-fluid logo-marge-10 " width="50px" height="50px">
+            <a href="{{ route('employe.accueil') }}">
+                <img src="img/examen.png"  class="img-fluid logo-marge-10 " width="50px" height="50px">
+            </a>
         </div>
 @if(Auth::check())
         <div class="department-name">
@@ -61,11 +69,11 @@
             </label>
 
             <ul class="menu__box">
-               <li><a class="menu__item" href="#"><i class="fas fa-home"></i> ACCUEIL </a></li>
+               <li><a class="menu__item" href="{{ route('employe.accueil') }}"><i class="fas fa-home"></i> ACCUEIL </a></li>
                <hr style="color: black;" />
-               <li><a class="menu__item" href="#"><i class="far fa-clock"></i> FORMULAIRES </a></li>
+               <li><a class="menu__item" href="{{ route('employe.formulaire') }}"><i class="far fa-clock"></i> FORMULAIRES </a></li>
                <hr style="color: black;" />
-               <li><a class="menu__item" href="#"><i class="far fa-clock"></i> PROCÉDURES  </a></li>
+               <li><a class="menu__item" href="{{ route('employe.procedure') }}"><i class="far fa-clock"></i> PROCÉDURES  </a></li>
 @if( Session::get('typeCompte') == 'superieur')          
                <hr style="color: black;" />
                <li><a class="menu__item" href="#"><i class="fas fa-folder"></i> MES EMPLOYES </a></li> 
@@ -93,7 +101,25 @@
     <!-- END OF LINKS -->
 
     <!-- FOOTER -->
-   
+@if(Auth::check())
+    <div class ="footer-section">
+        <h2>  Ville de Trois-Rivières  </h2> 
+        <div class="encadre-backgroundUn">
+            <p href=""> 1325,place de l'Hotel-de-ville, C.P.368  Trois-Rivières, QC G9A 5H3</p>
+        </div>
+
+        <div class="encadre-background">
+            <h3 href=""> <b>  Téléphone : 819 374-2002 </b> </h3> 
+        </div>
+
+        <div class="encadre-background">
+            <h5 href=""> <u> Courriel : 311@v3r.net </u> </h5>
+        </div>
+
+        <p>© Ville de Trois-Rivières. Tous droits réservés. </p>
+
+    </div>
+@endauth  
 
   
 </body>
