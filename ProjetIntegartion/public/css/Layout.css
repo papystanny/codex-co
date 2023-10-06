@@ -25,7 +25,10 @@
   font-style: normal; /* Style normal (non-italique) */
 }
 
-
+body{
+  margin: auto;
+  max-width:420px;
+}
   
 .department {
   font-size: 1.1rem; /* Taille de texte plus grande pour le département */

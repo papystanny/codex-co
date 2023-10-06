@@ -1,0 +1,35 @@
+.formulaire-section{
+ 
+}
+
+.btn-filtre{
+    margin: 15px;
+    padding: 3px;
+   
+}
+
+.historique-section{
+    border-radius: 10px;
+    background-color: beige;
+    padding: 8px 5px;
+    margin: 5px;
+}
+
+.left-fontAwesome{
+    margin-right: 10px;
+    font-size: 110%;
+}
+
+.right-fontAwesome{
+    margin-left: 10px;
+    font-size: 110%;
+}
+
+.historique-section span, i{
+    text-align: center;
+    justify-items: center;
+    display: flex;
+    flex-direction: column;
+
+}
+

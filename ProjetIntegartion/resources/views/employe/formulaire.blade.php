@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{asset('css/employe/accueil.css')}}">
     <link rel="stylesheet" href="{{asset('css/employe/accessoire/filtre.css')}}">
     <link rel="stylesheet" href="{{asset('css/employe/accessoire/modal.css')}}">
+    <link rel="stylesheet" href="{{asset('css/employe/formulaire.css')}}">
     <link rel="icon" href="https://tse1.mm.bing.net/th?id=OIP.BvE9Kz_K4pOY9ceOf4bLIQHaEK&pid=Api" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -57,10 +58,19 @@
             <h2> <b> HISTORIQUE FORMULAIRE </b>  </h2>
         </div>
         
+        <div class="">
+            <button id="ouvrirModalBtn" class="btn-filtre">
+                 <i class="fas fa-filter"></i> 
+            </button>
+
+            <div class="historique-section">
+                 
+                <h5><i class="fa-solid fa-folder left-fontAwesome " ></i>DÉCLARATION  DE TRAVAIL <i class="fa-solid fa-check right-fontAwesome "></i> </h5>
+                        <span > 2023-12-12</span>
+            </div>
+
+        </div>
         
-        <button id="ouvrirModalBtn">
-          <i class="fas fa-filter"></i> Filtre
-        </button>
 
 
 
@@ -69,29 +79,7 @@
     </div>
 
 
-    <div id="monModal" class="modal">
-      <div class="modal-content">
-          <span class="close" id="fermerModal">&times;</span>
-          <h2>Filtre de recherche</h2>
-          <form id="formulaireFiltre">
-              <label for="date_debut">Date de début :</label>
-              <input type="date" id="date_debut" name="date_debut" required>
-  
-              <label for="date_fin">Date de fin :</label>
-              <input type="date" id="date_fin" name="date_fin" required>
-  
-              <label for="type">Type de formulaire :</label>
-              <select id="type" name="type" required>
-                  <option value="type1">Type 1</option>
-                  <option value="type2">Type 2</option>
-                  <option value="type3">Type 2</option>
-                  <!-- Ajoutez d'autres options de type de formulaire au besoin -->
-              </select>
-  
-              <button type="submit">Rechercher</button>
-          </form>
-      </div>
-  </div>
+   
   
   
 
@@ -104,3 +92,32 @@
 </body>
 </html>
 
+
+
+<div id="monModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="fermerModal">&times;</span>
+        <h2>Filtre de recherche</h2>
+        <form id="formulaireFiltre">
+            <label for="date_debut">Date de début :</label>
+            <input type="date" id="date_debut" name="date_debut" required>
+
+            <label for="date_fin">Date de fin :</label>
+            <input type="date" id="date_fin" name="date_fin" required>
+
+            <label for="type">Type de formulaire :</label>
+            <select id="type" name="typeFormulaire" required>
+                <option value="type2">Tous les formulaires </option>
+                <option value="type1">Déclaration et accident de travail </option>
+                <option value="type2">Signalement d'acte de violence </option>
+@if( Session::get('typeCompte') == 'superieur')   
+              <option value="type1">Type 1</option>
+              <option value="type2">Type 2</option> 
+@endauth
+                <!-- Ajoutez d'autres options de type de formulaire au besoin -->
+            </select>
+
+            <button type="submit">Rechercher</button>
+        </form>
+    </div>
+</div>

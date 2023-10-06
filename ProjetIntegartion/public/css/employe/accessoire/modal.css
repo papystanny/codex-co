@@ -1,12 +1,15 @@
 .modal {
-    display: none;
+    display: flex;
     position: fixed;
     z-index: 1;
     left: 0;
     top: 100%;
-    width: 100%;
+    width: 80%;
     height: 80%;
     overflow: auto;
+    
+    align-items: center;
+    justify-content: center;
     background-color: rgba(224, 213, 213, 0.7);
 }
 
@@ -15,7 +18,9 @@
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    
+    width: 60%;
+    height: 75%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
@@ -43,13 +48,12 @@ p {
 /* Styles pour les appareils mobiles (largeur d'écran maximale de 768px) */
 @media (max-width: 768px) {
     .modal {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+       
     }
 
     .modal-content {
-        width: 90%;
+       
+       
     }
 
     /* Ajoutez d'autres styles pour personnaliser le modal mobile ici */
