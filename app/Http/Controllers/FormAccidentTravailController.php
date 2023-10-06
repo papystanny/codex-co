@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use App\Models\FormaccidentsTravail;
+use App\Models\Formaccidentstravail;
 class FormAccidentTravailController extends Controller
 {
     /**
@@ -43,7 +43,9 @@ class FormAccidentTravailController extends Controller
              
                 $data=$request->input('natureSiteBlessure',[]);
                 $natureSiteBlessureString=implode(',',$data);
-                Log::debug($natureSiteBlessureString);
+                Log::debug($natureSiteBlessureString);            
+                $Formaccidentstravail->natureSiteBlessure = $natureSiteBlessureString;
+
                 /*
                 for( $i = 0; $i <count($dataArray) ; $i++){
                     $natureSiteBlessureString=implode(',',$data);
@@ -54,9 +56,8 @@ class FormAccidentTravailController extends Controller
                 $data2=$request->input('descriptionBlessure',[]);
                 $descriptionBlessureString=implode(',',$data2);
                 Log::debug($descriptionBlessureString);
-                $FormaccidentsTravail->descriptionBlessure = $descriptionBlessureString;
+                $Formaccidentstravail->descriptionBlessure = $descriptionBlessureString;
 
-                $FormaccidentsTravail->natureSiteBlessure = $natureSiteBlessureString;
                 //$natureSiteBlessureString=implode(',', $request->input('natureSiteBlessure'),[]);
                 
                 //$FormaccidentsTravail->natureSiteBlessure = $natureSiteBlessureString;
@@ -108,7 +109,8 @@ class FormAccidentTravailController extends Controller
                 $Formaccidentstravail->signatureEmploye = $request->input('signatureEmploye');
                 $Formaccidentstravail->numPosteEmploye = $request->input('numPosteEmploye');
                 $Formaccidentstravail->dateSignatureEmploye = $request->input('dateSignatureEmploye');
-
+                $Formaccidentstravail->notifSup = 'oui';
+                $Formaccidentstravail->notifAdmin = 'oui';
 
 
 
