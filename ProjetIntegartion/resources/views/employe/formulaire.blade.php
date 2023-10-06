@@ -8,9 +8,13 @@
     <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="{{asset('css/employe/accueil.css')}}">
-    <link rel="stylesheet" href="{{asset('css/employe/filtre.css')}}">
+    <link rel="stylesheet" href="{{asset('css/employe/accessoire/filtre.css')}}">
+    <link rel="stylesheet" href="{{asset('css/employe/accessoire/modal.css')}}">
     <link rel="icon" href="https://tse1.mm.bing.net/th?id=OIP.BvE9Kz_K4pOY9ceOf4bLIQHaEK&pid=Api" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+
     <title> Formulaires</title>
 </head>
 <body>
@@ -53,12 +57,11 @@
             <h2> <b> HISTORIQUE FORMULAIRE </b>  </h2>
         </div>
         
-
-       
-        <button type="button"  data-toggle="modal" data-target="#myModal">
-            <i class="fas fa-filter"></i> Filtre
-        </button>
         
+        <button id="ouvrirModalBtn">
+          <i class="fas fa-filter"></i> Filtre
+        </button>
+
 
 
        
@@ -66,33 +69,37 @@
     </div>
 
 
-
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-  
-      <!-- Modal content-->
+    <div id="monModal" class="modal">
       <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
+          <span class="close" id="fermerModal">&times;</span>
+          <h2>Filtre de recherche</h2>
+          <form id="formulaireFiltre">
+              <label for="date_debut">Date de début :</label>
+              <input type="date" id="date_debut" name="date_debut" required>
   
-    </div>
+              <label for="date_fin">Date de fin :</label>
+              <input type="date" id="date_fin" name="date_fin" required>
+  
+              <label for="type">Type de formulaire :</label>
+              <select id="type" name="type" required>
+                  <option value="type1">Type 1</option>
+                  <option value="type2">Type 2</option>
+                  <option value="type3">Type 2</option>
+                  <!-- Ajoutez d'autres options de type de formulaire au besoin -->
+              </select>
+  
+              <button type="submit">Rechercher</button>
+          </form>
+      </div>
   </div>
+  
+  
 
     @endsection
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.5.2/js/bootstrap.min.js"></script>
+    <script src="js/employe/accessoire/modal.js" defer></script>
+  
 
 </body>
 </html>

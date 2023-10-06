@@ -121,14 +121,14 @@
       overflow: hidden; /* Masquer le débordement horizontal */
       position: fixed; /* Rend la barre de navigation fixe */
       width: 100%; /* Largeur de la barre de navigation à 100% de la largeur de la fenêtre */
-      top: 5%;
+      top: 5.5%;
      display: flex;
   }
 
  
 
   .left-section {
-      flex: 4.9; /* Prend 2/12 de la largeur totale (logo et département/nom) */
+      flex: 3.5; /* Prend 2/12 de la largeur totale (logo et département/nom) */
       display: flex;
       align-items: center;
   }
