@@ -34,15 +34,16 @@ class UsagersController extends Controller
                 Session::put('nom', $user->nom);       
                 Session::put('prenom', $user->prenom);    
                 Session::put('typeCompte', $user->typeCompte);
-                Session::put('departement', $user->departement_id);
+               // Session::put('departement', $user->departement_id);
                 return redirect()->route('employe.accueil')->with('message',"Connexion réussie.");
             }
             else if(Auth::user()->typeCompte == 'superieur')
             {
                 $user = Usager::where('matricule', $request->matricule)->first();
                 Session::put('nom', $user->nom);       
+                Session::put('prenom', $user->prenom);   
                 Session::put('typeCompte', $user->typeCompte);
-                  return redirect()->route('Formulaires.formulaireSitdang')->with('message',"Connexion réussie.");   
+                return redirect()->route('employe.accueil')->with('message',"Connexion réussie.");   
             }
             else if(Auth::user()->typeCompte == 'admin')
             {

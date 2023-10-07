@@ -13,6 +13,11 @@ Body{
     padding: 8px 10px;
     border-top: 2px solid rgb(0, 0, 0); /* Bordure en haut de l'élément */
     border-bottom: 2px solid rgb(0, 0, 0); /* Bordure en bas de l'élément */
+    display: flex;
+}
+
+.accueil-titre h2{
+    margin-right: 17px;
 }
 
 .accueil-formulaire{

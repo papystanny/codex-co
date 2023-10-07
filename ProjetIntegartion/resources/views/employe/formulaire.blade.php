@@ -55,26 +55,50 @@
         </div>
 
         <div class="accueil-titre">
-            <h2> <b> HISTORIQUE FORMULAIRE </b>  </h2>
-        </div>
-        
-        <div class="">
+            <h2> <b> HISTORIQUE FORMULAIRE </b> </h2>
             <button id="ouvrirModalBtn" class="btn-filtre">
                  <i class="fas fa-filter"></i> 
             </button>
-
-            <div class="historique-section">
-                 
-                <h5><i class="fa-solid fa-folder left-fontAwesome " ></i>DÉCLARATION  DE TRAVAIL <i class="fa-solid fa-check right-fontAwesome "></i> </h5>
-                        <span > 2023-12-12</span>
-            </div>
-
         </div>
         
-
-
-
        
+            
+
+            <div class="historique-section">
+                 <div class="historique-unite">
+                    <i class="fa-solid fa-folder left-fontAwesome " ></i>
+                    <h5> ACCIDENT  DE TRAVAIL  </h5>
+                    <i class="fa-solid fa-check right-fontAwesome "></i>
+                    <span > 2023-08-11</span> 
+                 </div>
+
+                 <div class="historique-unite">
+                    <i class="fa-solid fa-folder left-fontAwesome " ></i>
+                    <h5> ACCIDENT DE CIRCULATION </h5>
+                    <i class="fa-solid fa-check right-fontAwesome "></i>
+                    <span > 2021-08-22</span> 
+                 </div>
+
+                 <div class="historique-unite">
+                    <i class="fa-solid fa-folder left-fontAwesome " ></i>
+                    <h5> DÉCLARATION  DE TRAVAIL  </h5>
+                    <i class="fa-solid fa-check right-fontAwesome "></i>
+                    <span > 2023-12-12</span> 
+                 </div>
+            </div>
+
+            <div class="historique-section">
+                <div class="historique-unite">
+                   <i class="fa-regular fa-folder left-fontAwesome " ></i>
+                   <h5> AUCUN FORMULAIRE   </h5>
+                   <i class="fa-solid fa-xmark right-fontAwesome2 "></i>
+                   <span > Veuillez remplir un formulaire </span> 
+                </div>
+
+           </div>
+
+   
+      
 
     </div>
 
