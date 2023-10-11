@@ -32,8 +32,9 @@
         <div class="accueil-formulaire">
             
             <div class="formulaire">
-                <h5> DÉCLARATION ACCIDENT DE TRAVAIL  </h5>
+             <a href="/AccidentTravail">  <h5> DÉCLARATION ACCIDENT DE TRAVAIL  </h5> </a>
             </div>
+
             <div class="formulaire">
                 <h5> SIGNALEMENT ACTE DE VIOLENCE  </h5>
             </div>

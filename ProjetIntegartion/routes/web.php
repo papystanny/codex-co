@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\EmployesController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\FormAccidentTravailController;
 use App\Http\Controllers\UsagersController;
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +45,10 @@ Route::middleware(['auth'])->group(function () {
     [EmployesController::class, 'equipe'])->name('employe.equipe');
 
 
+    Route::get('/AccidentTravail',
+    [FormAccidentTravailController::class, 'AccidentTravail'])->name('employe.formAccidentTravail');
+    Route::post('/AccidentTravailStore',
+    [FormAccidentTravailController::class, 'store'])->name('employe.formAccidentTravailStore');
 
 });
 
