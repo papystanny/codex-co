@@ -1,0 +1,109 @@
+
+.equipe-section{
+    border-radius: 10px;
+    background-color: beige;
+    padding: 8px 5px;
+    margin: 15px 5px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    text-align: center;
+    max-width: 400px;
+    border: 2px solid #000; /* Largeur de la bordure de 4 pixels (vous pouvez ajuster cette valeur) */
+}
+   
+.equipe-unite{
+    border-radius: inherit;
+    background-color: inherit;
+    padding: 20px 20px;
+    margin: inherit;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-content: stretch;
+    text-align: inherit;
+    max-width: inherit;
+    border-bottom: 2px solid #000;
+    border-color: rgb(189, 54, 110);
+    justify-content: space-between;
+}
+
+
+.historique-section{
+    border-radius: 10px;
+    background-color: beige;
+    padding: 8px 5px;
+    margin: 15px 5px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: space-around;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    max-width: 400px;
+}
+   
+.historique-unite{
+    border-radius: inherit;
+    background-color: inherit;
+    padding: inherit;
+    margin: inherit;
+    display: inherit;
+    flex-wrap: inherit;
+    flex-direction: inherit;
+    align-content: inherit;
+    justify-content: inherit;
+    align-items: inherit;
+    text-align: inherit;
+    max-width: inherit;
+    border-bottom: 2px solid #000; /* Largeur de la bordure de 4 pixels (vous pouvez ajuster cette valeur) */
+    border-left: 2px solid #000; /* Largeur de la bordure de 4 pixels (vous pouvez ajuster cette valeur) */
+    border-color:  rgb(212, 74, 74);
+}
+
+.conteneur-scroll {
+    max-width: 400px; /* Largeur de la div parente */
+    height: 280px; /* Hauteur de la div parente */
+    overflow: auto; /* Activer la barre de défilement */
+    border-radius: 10px;
+}
+
+/* Styles pour les éléments à l'intérieur du conteneur de défilement */
+.element {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin: 5px;
+    background-color: #f0f0f0;
+}
+
+.left-fontAwesome{
+    margin-right: 10px;
+    font-size: 140%;
+}
+
+.right-fontAwesome{
+    margin-left: 10px;
+    font-size: 220%;
+    margin-left: 20px;
+    color: green;
+}
+
+.right-fontAwesome2{
+    margin-left: 10px;
+    font-size: 220%;
+    margin-left: 20px;
+    color:red;
+}
+
+.historique-section span{}
+
+   
+
+
+
+.historique-section h5{
+    max-width: 220px;
+}
