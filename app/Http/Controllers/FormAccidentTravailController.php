@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\FormAccidentTravailRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\Formaccidentstravail;
@@ -20,7 +21,7 @@ class FormAccidentTravailController extends Controller
         return view('formAccidentTravail.formAccidentTravail');
         //
     }
-     public function store(Request $request)
+     public function store(FormAccidentTravailRequest $request)
     {
         //
         {

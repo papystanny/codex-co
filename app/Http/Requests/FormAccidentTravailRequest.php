@@ -24,6 +24,17 @@ class FormAccidentTravailRequest extends FormRequest
     {
         return [
             //
+            'nomEmploye' => 'required',
+            'fonctionMomentEvenement' => 'required',
+            'matriculeEmploye' => 'required',
         ];
     }
+    public function messages()
+    {
+        return [
+            'nomEmploye.required' => 'Le nom de l\'employé est requis',
+            'fonctionMomentEvenement.required' => 'La fonction de l\'employé au moment de l\'événement est requise',
+            'matriculeEmploye.required' => 'Le matricule de l\'employé est requis',
+        ];
+    } 
 }
