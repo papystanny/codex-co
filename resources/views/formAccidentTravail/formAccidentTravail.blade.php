@@ -39,31 +39,49 @@
         @enderror
   <div class="form-check">
     <label for="temoins">Témoin(s)</label> 
-    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="{{old('flexRadioDefault')}}" >
+    <input class="form-check-input flexRadioDefault @error('flexRadioDefault') is-invalid @enderror" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="{{old('flexRadioDefault')}}" >
     <label class="form-check-label" for="exampleCheck1">oui</label>
-    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="{{old('flexRadioDefault')}}" >
+    @error('flexRadioDefault')
+        <span class="text-danger error-text">{{ $message }}</span>
+    @enderror
+    <input class="form-check-input flexRadioDefault @error('flexRadioDefault') is-invalid @enderror" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="{{old('flexRadioDefault')}}" >
     <label class="form-check-label" for="exampleCheck1">non</label>
+    @error('flexRadioDefault')
+        <span class="text-danger error-text">{{ $message }}</span>
+    @enderror
   </div>
   <div class="form-group">
     <label for="formGroupExampleInput">nom des temoins </label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder=""name="nomsTemoins" value="{{old('nomsTemoins')}}" >
+    <input type="text" class="form-control nomsTemoins @error('nomsTemoins') is-invalid @enderror " id="formGroupExampleInput" placeholder=""name="nomsTemoins" value="{{old('nomsTemoins')}}" >
+    @error('nomsTemoins')
+        <span class="text-danger error-text">{{ $message }}</span>
+    @enderror
   </div>
   <div class="form-group">
-    <label for="formGroupExampleInput">endroit de l'accident</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" name="endroitAccident" value="{{old('endroitAccident')}}" >
+    <label for="formGroupExampleInput ">endroit de l'accident</label>
+    <input type="text" class="form-control endroitAccident @error('endroitAccident') is-invalid @enderror " id="formGroupExampleInput" placeholder="" name="endroitAccident" value="{{old('endroitAccident')}}" >
+    @error('endroitAccident')
+        <span class="text-danger error-text">{{ $message }}</span>
+    @enderror
   </div>
   <div class="form-group">
     <label for="formGroupExampleInput">secteur d'activité</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" name="secteurActivite" value="{{old('secteurActivite')}}" >
+    <input type="text" class="form-control secteurActivite @error('secteurActivite') is-invalid @enderror  " id="formGroupExampleInput" placeholder="" name="secteurActivite" value="{{old('secteurActivite')}}" >
+    @error('secteurActivite')
+        <span class="text-danger error-text">{{ $message }}</span>
+    @enderror
   </div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-6">
                 <div class="form-group">
                     <label for="formGroupExampleInput">Nature et site de la blessure(cochez s'il y'a lieu côté gauche ou droit)</label>
+                        @error('natureSiteBlessure[]')
+                            <span class="text-danger error-text">{{ $message }}</span>
+                        @enderror
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="tête,visage,nez,yeux,oreilles"  name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
+                    <input class="form-check-input natureSiteBlessure[] @error('natureSiteBlessure[]') is-invalid @enderror  " type="checkbox" value="tête,visage,nez,yeux,oreilles"  name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
                     <label class="form-check-label" for="flexCheckDefault">
                     tête,visage,nez,yeux,oreilles
                     </label>
