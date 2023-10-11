@@ -76,7 +76,7 @@
                <li><a class="menu__item" href="{{ route('employe.procedure') }}"><i class="far fa-clock"></i> PROCÉDURES  </a></li>
 @if( Session::get('typeCompte') == 'superieur')          
                <hr style="color: black;" />
-               <li><a class="menu__item" href="#"><i class="fas fa-folder"></i> MES EMPLOYES </a></li> 
+               <li><a class="menu__item" href="{{ route('employe.equipe') }}"><i class="fas fa-folder"></i> MES EMPLOYES </a></li> 
  @endif
                <hr style="color: black;" />
                

@@ -21,4 +21,9 @@ class EmployesController extends Controller
     { 
         return view('employe.procedure');
     }
+
+    public function equipe()
+    { 
+        return view('employe.equipe');
+    }
 }

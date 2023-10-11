@@ -1,10 +1,35 @@
-.formulaire-section{
- 
+
+.equipe-section{
+    border-radius: 10px;
+    background-color: beige;
+    padding: 8px 5px;
+    margin: 15px 5px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    text-align: center;
+    max-width: 400px;
+    border: 2px solid #000; /* Largeur de la bordure de 4 pixels (vous pouvez ajuster cette valeur) */
+}
+   
+.equipe-unite{
+    border-radius: inherit;
+    background-color: inherit;
+    padding: 20px 20px;
+    margin: inherit;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-content: stretch;
+    text-align: inherit;
+    max-width: inherit;
+    border-bottom: 2px solid #000;
+    border-color: rgb(189, 54, 110);
+    justify-content: space-between;
 }
 
-.btn-filtre{
-    padding: 3px;
-}
 
 .historique-section{
     border-radius: 10px;
@@ -19,7 +44,6 @@
     align-items: center;
     text-align: center;
     max-width: 400px;
-    border: 1px solid #000; /* Largeur de la bordure de 4 pixels (vous pouvez ajuster cette valeur) */
 }
    
 .historique-unite{
@@ -37,7 +61,22 @@
     max-width: inherit;
     border-bottom: 2px solid #000; /* Largeur de la bordure de 4 pixels (vous pouvez ajuster cette valeur) */
     border-left: 2px solid #000; /* Largeur de la bordure de 4 pixels (vous pouvez ajuster cette valeur) */
-    border-color:  rgb(0, 118, 213);
+    border-color:  rgb(212, 74, 74);
+}
+
+.conteneur-scroll {
+    max-width: 400px; /* Largeur de la div parente */
+    height: 280px; /* Hauteur de la div parente */
+    overflow: auto; /* Activer la barre de défilement */
+    border-radius: 10px;
+}
+
+/* Styles pour les éléments à l'intérieur du conteneur de défilement */
+.element {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin: 5px;
+    background-color: #f0f0f0;
 }
 
 .left-fontAwesome{

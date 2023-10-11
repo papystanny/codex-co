@@ -52,7 +52,7 @@
                 <h5>MÉCANIQUE-RAPPORT D'ACCIDENT  </h5>
             </div>
  @endauth
-        </div>
+    </div>
 
         <div class="accueil-titre">
             <h2> <b> HISTORIQUE FORMULAIRE </b> </h2>
@@ -64,7 +64,7 @@
        
             
 
-            <div class="historique-section">
+    <div class="historique-section">
                  <div class="historique-unite">
                     <i class="fa-solid fa-folder left-fontAwesome " ></i>
                     <h5> ACCIDENT  DE TRAVAIL  </h5>
@@ -94,12 +94,9 @@
                    <i class="fa-solid fa-xmark right-fontAwesome2 "></i>
                    <span > Veuillez remplir un formulaire </span> 
                 </div>
-
            </div>
 
    
-      
-
     </div>
 
 
