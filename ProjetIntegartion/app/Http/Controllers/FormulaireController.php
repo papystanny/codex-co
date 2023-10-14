@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-//use Illuminate\Support\Facades\Validator;
 use App\Models\Form;
 use App\Http\Requests\FormulaireRequest;
+use Illuminate\Support\Facades\Log;
 use DB;
 use File;
 
@@ -20,18 +20,25 @@ class FormulaireController extends Controller
         return view('Formulaires.formsitdang');
     }
 
+    public function formulaireMec()
+    {
+        return view ('Formulaires.atelierMec');
+    }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return View('films.create');
+      
+        return View('formulaires.create');
+ 
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(FormulaireRequest $request)
+    public function store(Request $request)
     {
         try {
         $form = new Form($request->all());

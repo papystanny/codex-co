@@ -17,7 +17,7 @@ class FormulaireRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
+     *
      */
     public function rules(): array
     {
@@ -46,7 +46,9 @@ class FormulaireRequest extends FormRequest
     }
 
     public function messages(){
+
         return [
+            
             'nomEmploye.required'=>'Le nomEmploye est obligatoire.',
             'nomEmploye.min'=>'Le nomEmploye doit avoir un minimum de  3 caractères.',
             'nomEmploye.max'=>'Le nomEmploye doit avoir un maximum de 50 caractères.',

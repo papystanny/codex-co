@@ -18,3 +18,7 @@ use App\Http\Controllers\FormulaireController;
 
 Route::get('/' , [FormulaireController::class , 'index'])->name('Formulaires.formsitdang');
 Route::post('/formulaires',[FormulaireController::class, 'store'])->name('formulaires.store');
+Route::get('/creation/formulaires',[FormulaireController::class,'create'])->name('formulaires.create');
+
+
+Route::get('/formMec' , [FormulaireController::class , 'formulaireMec'])->name('Formulaires.atelierMec');

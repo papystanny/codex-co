@@ -42,7 +42,7 @@
 
            
 <section class="main-container border" >
-<h1 class="titreForm align-items center">Remplir le Formulaire de Signalement d'une Situation dangereuse,d'un acte de violence ou d'un passé proche</h1>
+<h2 class="titreForm align-items center">Remplir le Formulaire de Signalement d'une Situation dangereuse,d'un acte de violence ou d'un passé proche</h2>
     <form method="post" action="{{ route('formulaires.store') }}" enctype="multipart/form-data">
           @csrf
 
@@ -68,7 +68,7 @@
                                 <span class= "text-danger">{{$message}}</span>
                             @enderror
                 </div>
-                <div class= "enfant enfant1 col-lg-4 p-4">
+               <div class= "enfant enfant1 col-lg-4 p-4">
                     <label for="fname">Prenom:</label><br>
                     <input type="text"  placeholder="prenomEmploye" value="{{old('prenomEmploye')}}"   class="form-control @error('prenomEmploye') is-invalid @enderror" id="prenomEmploye" name="prenomEmploye" aria-describedby="prenomEmploye">
                             @error('prenomEmploye')
@@ -184,35 +184,36 @@
           </div>
   
           <div class="parent container-fluid">
-             <div class="row">
-                <div class= "enfant enfant1 col-lg-6 p-4">
-                <label for="fname">Signature du travailleur ou de la travailleuse:</label>
-                <input type="text" id="Signature" name="Signature">
+                <div class="row">
+                        <div class= "enfant enfant1 col-lg-6 p-4">
+                        <label for="fname">Signature du travailleur ou de la travailleuse:</label>
+                        <input type="text" id="Signature" name="Signature">
+                        </div>
+                        <div class= "enfant enfant1 col-lg-6 p-4">
+                        <label for="Date">Date:</label><br>
+                            <input type="date" id="date" name="date">
+                       </div>
                 </div>
-                <div class= "enfant enfant1 col-lg-6 p-4">
-                <label for="Date">Date:</label><br>
-                    <input type="date" id="date" name="date">
-                </div>
-            </div>
-           </div>
+          </div>
+
            <div class="parent container-fluid">
-            <div class="row">
-                <div class= "enfant enfant1 col-lg-4 p-4">                              
-                    <label for="Date">Signature du supérieur Immédiate:</label>
-                    <input type="text" id="temoin" name="temoin">
+                <div class="row">
+                        <div class= "enfant enfant1 col-lg-4 p-4">                              
+                            <label for="Date">Signature du supérieur Immédiate:</label>
+                            <input type="text" id="temoin" name="temoin">
+                        </div>
+                        <div class= "enfant enfant1 col-lg-4 p-4">
+                                <label for="heure">N0 de Poste:</label><br>
+                                <input type="text" id="NoPoste" name="NoPoste">
+                        </div>
+                        <div class= "enfant enfant1 col-lg-4 p-4">
+                            <label for="fname">date:</label><br>
+                            <input type="date" id="date" name="date">  
+                        </div>
+                
                 </div>
-                <div class= "enfant enfant1 col-lg-4 p-4">
-                        <label for="heure">N0 de Poste:</label><br>
-                        <input type="text" id="NoPoste" name="NoPoste">
-                </div>
-                <div class= "enfant enfant1 col-lg-4 p-4">
-                    <label for="fname">date:</label><br>
-                    <input type="date" id="date" name="date">  
-                </div>
-               
             </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Enregistrer</button>
+        <button type="submit" class="btn btn-primary col-4  align-items center " href="{{ route('formulaires.create') }}">Enregistrer</button>
 </form>
 </section>      
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
