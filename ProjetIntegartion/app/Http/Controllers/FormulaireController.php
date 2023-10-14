@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+//use Illuminate\Support\Facades\Validator;
 use App\Models\Form;
 use App\Http\Requests\FormulaireRequest;
 use DB;
 use File;
+
 
 class FormulaireController extends Controller
 {
@@ -30,12 +32,13 @@ class FormulaireController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(FormulaireRequest $request)
-    {try {
+    {
+        try {
         $form = new Form($request->all());
         $form->password=Hash::make($request->password);
         $form->save();
         
-        return redirect()->route('Formulaires.formsitdang')->with('message', 'L\'ajout de ' . $usager->nom . ' a fonctionné');
+        return redirect()->route('Formulaires.formsitdang')->with('message', 'L\'ajout a été effectué');
     }
     catch (\Throwable $e) {
         Log::debug($e);

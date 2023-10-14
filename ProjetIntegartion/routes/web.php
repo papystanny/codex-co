@@ -17,4 +17,4 @@ use App\Http\Controllers\FormulaireController;
 
 
 Route::get('/' , [FormulaireController::class , 'index'])->name('Formulaires.formsitdang');
-Route::post('/formulaires',[FormulaireController::class, 'store'])->name('formulaires.store')->middleware('auth');
+Route::post('/formulaires',[FormulaireController::class, 'store'])->name('formulaires.store');

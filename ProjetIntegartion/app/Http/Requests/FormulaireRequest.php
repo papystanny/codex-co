@@ -93,8 +93,7 @@ class FormulaireRequest extends FormRequest
             'notifAdmin.required'=>'Le prenomEmploye est obligatoire.',
             'notifAdmin.min'=>'Le prenomEmploye doit avoir un minimum de  3 caractères.',
             'notifAdmin.max'=>'Le prenomEmploye doit avoir un maximum de 200 caractères.',
-            
-            
+           
             
         ];
     }
