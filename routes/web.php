@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployesController;
 use App\Http\Controllers\FormAccidentTravailController;
+use App\Http\Controllers\SuperviseursController;
+use App\Http\Controllers\FormAuditSSTsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,14 +16,23 @@ use App\Http\Controllers\FormAccidentTravailController;
 |
 */
 
-/*Route::get('/', function () {
+Route::get('/', function () {
     return view('employes.index');
+});
 /**page employé */
 
 Route::get('/employe',
 [EmployesController::class, 'index'])->name('employe.index');
     
 Route::get('/AccidentTravail',
-[FormAccidentTravailController::class, 'AccidentTravail'])->name('employe.formAccidentTravail');
+[FormAccidentTravailController::class, 'accidentTravail'])->name('employe.formAccidentTravail');
 Route::post('/AccidentTravailStore',
 [FormAccidentTravailController::class, 'store'])->name('employe.formAccidentTravailStore');
+
+/***page superviseur */
+Route::get('/superviseur',
+[SuperviseursController::class, 'index'])->name('superviseur.index');
+Route::get('/AuditSST',
+[FormAuditSSTsController::class, 'formAuditSST'])->name('superviseur.formAuditSST');
+Route::post('/AuditSSTStore',
+[FormAuditSSTsController::class, 'store'])->name('superviseur.formAuditSSTStore');

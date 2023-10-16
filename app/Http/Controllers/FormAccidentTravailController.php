@@ -16,7 +16,7 @@ class FormAccidentTravailController extends Controller
     {
         //
     }
-    public function AccidentTravail()
+    public function accidentTravail()
     {
         return view('formAccidentTravail.formAccidentTravail');
         //
