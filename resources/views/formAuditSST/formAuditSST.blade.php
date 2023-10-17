@@ -4,42 +4,319 @@
 @section('content')
     <form class="marge" method="post" action="{{ route('superviseur.formAuditSSTStore') }}" enctype="multipart/form-data">
     @csrf
-        <h3>Nom du Département</h3>
-        <h5>Grille audit SST - formulaire simplifié</h5>
-        
-        <div class="mb-3">
-            <label for="formGroupExampleInput">nom de l'employé</label>
-            <input type="text" class="form-control nomEmploye @error('nomEmploye') is-invalid @enderror " id="formGroupExampleInput" placeholder="entrez le nom de l'employé" name="nomEmploye" value="{{old('nomEmploye')}}">
+        <div class="text-center">
+         <h3 >Nom du Département</h3>
+        <h5>Grille audit SST - formulaire simplifié</h5>    
         </div>
-        <div class="mb-3">
-            <label for="formGroupExampleInput">Lieu(x) des traveaux:</label>
-            <input type="text" class="form-control lieuTravail @error('lieuTravail') is-invalid @enderror " id="formGroupExampleInput"  name="lieuTravail" value="{{old('lieuTravail')}}">
-        </div>
-        <div class="mb-3">
-            <label for="inputPassword4">Date</label>
-            <input type="date" class="form-control dateAccident @error('dateAccident') is-invalid @enderror " id="inputPassword4" placeholder="" name="dateAccident" value="{{old('dateAccident')}}" >
-            @error('dateAccident')
-            <span class="text-danger error-text">{{ $message }}</span>
-            @enderror
-        </div>
-        <div class="mb-3">
-            <label for="inputPassword4">Heure accident</label>
-            <input type="time" id="appt" class="form-control heureAccident @error('heureAccident') is-invalid @enderror " name="heureAccident">
-            @error('heureAccident')
-            <span class="text-danger error-text">{{ $message }}</span>
-            @enderror
-        </div>
+       
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xl-2">
+                <div class="col-xl-1">
 
                 </div>
                 <div class="col-xl-4">
-                            
-
+                    <label for="formGroupExampleInput">nom complet de l'employé</label>
+                    <input type="text" class="form-control prenomNomEmploye @error('prenomNomEmploye') is-invalid @enderror " id="formGroupExampleInput" placeholder="entrez le nom complet de l'employé" name="prenomNomEmploye" value="{{old('prenomNomEmploye')}}">
                 </div>
             </div>
-            
-        </div>
+            <div class="row">
+                <div class="col-xl-1">
+
+                </div>
+                <div class="col-xl-4">
+                    <label for="formGroupExampleInput">Lieu(x) des traveaux:</label>
+                    <input type="text" class="form-control lieuTravail @error('lieuTravail') is-invalid @enderror " id="formGroupExampleInput"  name="lieuTravail" value="{{old('lieuTravail')}}">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-1">
+                </div>
+                <div class="col-xl-4">
+                    <label for="inputPassword4">Date</label>
+                    <input type="date" class="form-control date @error('date') is-invalid @enderror " id="inputPassword4" placeholder="" name="date" value="{{old('date')}}" >
+                    @error('dateAccident')
+                    <span class="text-danger error-text">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+        <!--    <div class="row">
+                <div class="col-xl-4">
+                    <label for="inputPassword4">Heure accident</label>
+                    <input type="time" id="appt" class="form-control heureAccident @error('heureAccident') is-invalid @enderror " name="heureAccident">
+                    @error('heureAccident')
+                    <span class="text-danger error-text">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+        </div>  -->
+       
+            <table class="table">
+                <thead>
+
+                    <tr>
+                        <th scope="col"></th>
+                        <td scope="col" >
+                                <label for="inputPassword4">Heure </label>
+                                <input type="time" id="appt" class="form-control heure @error('heure') is-invalid @enderror " name="heure">
+                                @error('heureAccident')
+                                <span class="text-danger error-text">{{ $message }}</span>
+                                @enderror
+                        </td>
+                        <th scope="col">Conforme</th>
+                        <th scope="col">Non conforme</th>
+                        <th scope="col">N/A</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>Epi</td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="conforme" name="Epi" value="{{old('Epi')}}" >
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value=" non conforme" name="Epi" value="{{old('Epi')}}" >
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="N/A" name="Epi" value="{{old('Epi')}}" >
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>tenue des lieux</td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="conforme" name="tenueLieux" value="{{old('tenueLieux')}}" >
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value=" non conforme" name="tenueLieux" value="{{old('tenueLieux')}}" >
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="N/A" name="tenueLieux" value="{{old('tenueLieux')}}" >
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>Comportement sécuritaire</td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="conforme" name="comportementSecuritaire" value="{{old('comportementSecuritaire')}}" >
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value=" non conforme" name="comportementSecuritaire" value="{{old('comportementSecuritaire')}}" >
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="N/A" name="comportementSecuritaire" value="{{old('comportementSecuritaire')}}" >
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>Signalisation</td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="conforme" name="signalisation" value="{{old('signalisation')}}" >
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value=" non conforme" name="signalisation" value="{{old('natureSiteBlessure[]')}}" >
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="N/A" name="signalisation" value="{{old('signalisation')}}" >
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>Fiches Signalétiques</td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="conforme" name="fichesSignaletiques" value="{{old('fichesSignaletiques')}}" >
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="non conforme" name="fichesSignaletiques" value="{{old('fichesSignaletiques')}}" >
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="N/A" name="fichesSignaletiques" value="{{old('fichesSignaletiques')}}" >
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>Travaux-Excavation</td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="conforme" name="travauxEscavation" value="{{old('travauxEscavation')}}" >
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="non conforme" name="travauxEscavation" value="{{old('travauxEscavation')}}" >
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="N/A" name="travauxEscavation" value="{{old('travauxEscavation')}}" >
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>Espace clos</td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="Conforme" name="espaceClos" value="{{old('espaceClos')}}" >
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="non conforme" name="espaceClos" value="{{old('espaceClos')}}" >
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="N/A" name="espaceClos" value="{{old('espaceClos')}}" >
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>Methode de travail</td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="conforme" name="methodeTravail" value="{{old('methodeTravail')}}" >
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="non conforme" name="methodeTravail" value="{{old('methodeTravail')}}" >
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="N/A" name="methodeTravail" value="{{old('methodeTravail')}}" >
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>Autre(s): Travaux en hauteur
+                        <input type="text" class="form-control" id="formGroupExampleInput"  name="autre" value="{{old('autre')}}">
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="conforme" name="autre" value="{{old('autre')}}" >
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="non conforme" name="autre" value="{{old('autre')}}" >
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="N/A" name="autre" value="{{old('autre')}}" >
+                            </div>
+                        </td>
+                    </tr>
+                    <tr >
+                        <th scope="row"></th>
+                        <td></td>
+                        <td class="text-center">COVID-19</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>Respect de la distanciation </td>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="conforme" name="respectDistanciation" value="{{old('respectDistanciation')}}" >
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="non conforme" name="respectDistanciation" value="{{old('respectDistanciation')}}" >
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="N/A" name="respectDistanciation" value="{{old('respectDistanciation')}}" >
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>Port des EPI(Masque/visiere)</td>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="conforme" name="portEpi" value="{{old('portEpi')}}" >
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="non conforme" name="portEpi" value="{{old('portEpi')}}" >
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="N/A" name="portEpi" value="{{old('portEpi')}}" >
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>Respect des procédures établies</td>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="conforme" name="respectProcedures" value="{{old('respectProcedures')}}" >
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="non conforme" name="respectProcedures" value="{{old('respectProcedures')}}" >
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="N/A" name="respectProcedures" value="{{old('respectProcedures')}}" >
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Description du travail en hauteur</label>
+                    <textarea class="form-control" name="descriptionTravailHauteur" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                        
+
+                      
     </form>
 @endsection
