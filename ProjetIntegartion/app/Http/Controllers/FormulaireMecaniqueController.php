@@ -3,26 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Form;
-use App\Http\Requests\FormulaireRequest;
+use App\Models\FormMec;
+use App\Http\Requests\FormulaireMecRequest;
 use Illuminate\Support\Facades\Log;
 use DB;
 
-
-
-class FormulaireController extends Controller
+class FormulaireMecaniqueController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('Formulaires.formsitdang');
-    }
-
-    public function formulaireMec()
-    {
-        return view ('Formulaires.atelierMec');
+        return view('formulaires.atelierMec');
     }
 
     /**
@@ -30,29 +23,27 @@ class FormulaireController extends Controller
      */
     public function create()
     {
-      
-        return View('formulaires.create');
- 
+        return View('formulairesMec.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(FormulaireMecRequest $request)
     {
         try {
-        $form = new Form($request->all());
-        $form->password=Hash::make($request->password);
-        $form->save();
-        
-        return redirect()->route('formulaires.atelierMec')->with('message', 'L\'ajout a été effectué');
-    }
-    catch (\Throwable $e) {
-        Log::debug($e);
-        return redirect()->route('Formulaires.formsitdang')->withErrors(['L\'ajout n\'a pas fonctionné.']);
-    }
-
-    return redirect()->route('Formulaires.formsitdang');
+            $formMec = new FormMec($request->all());
+            $formMec->password=Hash::make($request->password);
+            $formMec->save();
+            
+            return redirect()->route('Formulaires.formsitdang')->with('message', 'L\'ajout a été effectué');
+        }
+        catch (\Throwable $e) {
+            Log::debug($e);
+            return redirect()->route('formulaires.atelierMec')->withErrors(['L\'ajout n\'a pas fonctionné.']);
+        }
+    
+        return redirect()->route('Formulaires.formsitdang');
     }
 
     /**

@@ -11,8 +11,9 @@ class Form extends Model
 
 
     protected $fillable = ['id', 'nomEmploye', 'prenomEmploye', 'matriculeEmploye','fonctionLorsEvenement',
-    'secteurActivite', 'dateObservation', 'heureObservation' , 'temoins' , 'descriptionEvenement' , 'ameliorationsProposees' , 'supAvise' ,'nomSuperviseur' , 'dateSupeAvise' , 'signatureEmploye'
-, 'dateSignatureEmploye','signatureSuperviseur' , 'dateSignatureSuperviseur','numPosteSuperviseur', 'notifSup' , 'notifAdmin'];
+    'secteurActivite',  'descriptionEvenement','dateObservation', 'heureObservation' , 'temoins'  , 'ameliorationsProposees' , 'supAvise',
+    'dateone' ,'nom','Signature','datetwo','temoin',
+    'NoPoste','datetrois' ];
 
 
 }

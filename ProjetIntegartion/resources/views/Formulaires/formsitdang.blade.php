@@ -167,9 +167,9 @@
           <div class="parent container-fluid">
               <div class="row ">
                 <div class="col-lg-6">
-                        <input type="checkbox" id="aviser" name="aviser" value="aviser">
-                        <label for="aviser">J'ai aviser mon supérieur immédiate  le </label>
-                        <input type="date" id="date" name="date">
+                        <input type="checkbox" id="supAvise" name="supAvise" value="supAvise">
+                        <label for="supAvise">J'ai aviser mon supérieur immédiate  le </label>
+                        <input type="date" id="dateone" name="dateone">
                 </div> 
               </div>
           </div>
@@ -190,8 +190,8 @@
                         <input type="text" id="Signature" name="Signature">
                         </div>
                         <div class= "enfant enfant1 col-lg-6 p-4">
-                        <label for="Date">Date:</label><br>
-                            <input type="date" id="date" name="date">
+                        <label for="Dateone">Date:</label><br>
+                            <input type="date" id="datetwo" name="datetwo">
                        </div>
                 </div>
           </div>
@@ -207,8 +207,8 @@
                                 <input type="text" id="NoPoste" name="NoPoste">
                         </div>
                         <div class= "enfant enfant1 col-lg-4 p-4">
-                            <label for="fname">date:</label><br>
-                            <input type="date" id="date" name="date">  
+                            <label for="datetrois">date:</label><br>
+                            <input type="date" id="datetrois" name="datetrois">  
                         </div>
                 
                 </div>

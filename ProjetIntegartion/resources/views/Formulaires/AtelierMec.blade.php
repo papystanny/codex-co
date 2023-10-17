@@ -35,6 +35,9 @@
 .color{
     background-color: gray;
 }
+.red{
+    color:red;
+}
 </style>
 </head>
 <body>
@@ -43,18 +46,99 @@
            
 <section class="main-container border" >
           <h2 class="titreForm align-items center">Formulaire Atelier Mécanique - Rapport d'accident </h2><br><br>
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" action="{{ route('formulairesMec.store') }}" enctype="multipart/form-data">
           @csrf
 
           <div class="parent container-fluid">
              <div class="row h-25">
-                <!-- <div class= "enfant enfant1 col-lg-6 p-4">&nbsp</div> -->
+              
                 <div class="enfant  col-lg-12 p-4"><h1>Atelier Mécanique - Rapport d'accident</h1></div>
              </div>
           </div><br><br>
-            <div class = " align-items center">
-                <h3  class="titreForm col-6 p-4">Bonjour .Lorsque vous Soumettre ce formulaire,le propriétaire verra votre nom et votre adresse e-mail. </h3>
+            <div class = " center">
+                <h3  class="titreForm col-12 p-4">
+                    Bonjour
+                    .Lorsque vous Soumettre ce formulaire,le propriétaire verra votre nom et votre adresse e-mail. </h3>         
             </div>
+    
+            <div class = " center">
+                <h3  class="titreForm col-6 p-4">
+                   Obligatoire* </h3>         
+            </div>
+            
+            <div class = " center">
+                <h3  class="titreForm col-8 p-4">
+                1.Numéro(s) d'unités(s) impliqué(s)* 
+                 </h3>         
+            </div>
+            <div class = " center">
+            <input type="number" class="titreForm col-7 p-4 " placeholder="Entrez Votre Reponse"  class="form-control @error('reponseone') is-invalid @enderror" id="reponseone" name="reponseone" aria-describedby="reponseone">
+                            @error('reponseone')
+                                <span class= "text-danger">{{$message}}</span>
+                            @enderror
+            </div>
+            <div class = " center">
+                <h3  class="titreForm col-6 p-4">
+                2.Département* 
+                 </h3>         
+            </div>
+            <div class = " center">
+            <input type="text" class="titreForm col-7 p-4 " placeholder="Entrez Votre Reponse"   class="form-control @error('reponsetwo') is-invalid @enderror" id="reponsetwo" name="reponsetwo" aria-describedby="reponsetwo">
+                            @error('reponsetwo')
+                                <span class= "text-danger">{{$message}}</span>
+                            @enderror
+            </div>     
+            <div class = " center">
+                <h3  class="titreForm col-8 p-4">
+                3.Prenom et Nom de l'employé impliqué* 
+                 </h3>         
+            </div>
+            <div class = " center">
+            <input type="text" class="titreForm col-7 p-4 " placeholder="Entrez Votre Reponse" value="{{old('reponsetrois')}}"   class="form-control @error('reponsetrois') is-invalid @enderror" id="reponsetrois" name="reponsetrois" aria-describedby="reponsetrois">
+                            @error('reponsetrois')
+                                <span class= "text-danger">{{$message}}</span>
+                            @enderror
+            </div>    
+            <div class = " center">
+                <h3  class="titreForm col-8 p-4">
+                4.Prenom et Nom du supérieur immédiat* 
+                 </h3>         
+            </div>
+            <div class = " center">
+            <input type="text" class="titreForm col-7 p-4 " placeholder="Entrez Votre Reponse" value="{{old('reponsequatre')}}"   class="form-control @error('reponsequatre') is-invalid @enderror" id="reponsequatre" name="reponsequatre" aria-describedby="reponsequatre">
+                            @error('reponsequatre')
+                                <span class= "text-danger">{{$message}}</span>
+                            @enderror
+            </div>      
+            <div class = " center">
+                <h3  class="titreForm col-9 p-4">
+                5.Numéro du permis de conduire de l'employé* 
+                 </h3>         
+            </div>
+            <div class = " center">
+            <input type="number" class="titreForm col-7 p-4 " placeholder="Entrez Votre Reponse" value="{{old('reponsecinq')}}"   class="form-control @error('reponsecinq') is-invalid @enderror" id="reponsecinq" name="reponsecinq" aria-describedby="reponsecinq">
+                            @error('reponsecinq')
+                                <span class= "text-danger">{{$message}}</span>
+                            @enderror
+            </div> 
+            <div class = " center">
+                <h3  class="titreForm col-8 p-4">
+                6.Autres Véhicules impliqués(Citoyen)* 
+                 </h3>         
+            </div>   
+            <div class = " center titreForm col-6 p-2">
+            <input type="checkbox" id="oui" name="oui" value="oui" >
+                        <label for="aviser">Oui</label>        
+            </div>  
+
+            <div class = " center titreForm col-6 p-2">
+            <input type="checkbox" id="non" name="non" value="non" >
+                        <label for="aviser">Non</label>        
+            </div>        
+            </div>
+            <div class = " center titreForm col-12 p-4">
+            <button type="submit" class="btn btn-primary col-4 " href="{{ route('formulairesMec.create') }}">Enregistrer</button>
+            </div>                                             
     </form>
 </section>    
 

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormulaireController;
+use App\Http\Controllers\FormulaireMecaniqueController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +16,12 @@ use App\Http\Controllers\FormulaireController;
 */
 
 
-
+// Formulaires Dangereuses
 Route::get('/' , [FormulaireController::class , 'index'])->name('Formulaires.formsitdang');
 Route::post('/formulaires',[FormulaireController::class, 'store'])->name('formulaires.store');
 Route::get('/creation/formulaires',[FormulaireController::class,'create'])->name('formulaires.create');
 
-
-Route::get('/formMec' , [FormulaireController::class , 'formulaireMec'])->name('Formulaires.atelierMec');
+// Formulaires Mécanique
+Route::get('/formMeca' , [FormulaireMecaniqueController::class , 'index'])->name('formulaires.atelierMec');
+Route::post('/formulairesMeca',[FormulaireController::class, 'store'])->name('formulairesMec.store');
+Route::get('/creation/formulairesMeca',[FormulaireController::class,'create'])->name('formulairesMec.create');
