@@ -9,5 +9,5 @@ class FormMec extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['reponseone','reponsetwo','reponsetrois','reponsequatre','reponsecinq','oui','non'];
+    protected $fillable = ['numUniteImplique','departement','prenomNomEmploye','prenomNomSupImmediat','numPermisConduireEmploye','vehiculeCityonImplique'];
 }

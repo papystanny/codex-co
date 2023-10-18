@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Form;
 use App\Http\Requests\FormulaireRequest;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Hash;
 use DB;
 
 

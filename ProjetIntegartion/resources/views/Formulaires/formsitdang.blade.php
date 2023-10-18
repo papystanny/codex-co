@@ -213,7 +213,7 @@
                 
                 </div>
             </div>
-        <button type="submit" class="btn btn-primary col-4  align-items center " href="{{ route('formulaires.create') }}">Enregistrer</button>
+        <button type="submit" class="btn btn-primary col-4  align-items center ">Enregistrer</button>
 </form>
 </section>      
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

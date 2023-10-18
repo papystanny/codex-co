@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\FormMec;
 use App\Http\Requests\FormulaireMecRequest;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Hash;
 use DB;
 
 class FormulaireMecaniqueController extends Controller
@@ -29,11 +30,18 @@ class FormulaireMecaniqueController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(FormulaireMecRequest $request)
+    public function store(Request $request)
     {
         try {
-            $formMec = new FormMec($request->all());
-            $formMec->password=Hash::make($request->password);
+            $formMec = new FormMec();
+            $formMec->numUniteImplique =$request->input('numUniteImplique');
+            $formMec->departement =$request->input('departement');
+            $formMec->prenomNomEmploye =$request->input('prenomNomEmploye');
+            $formMec->prenomNomSupImmediat =$request->input('prenomNomSupImmediat');
+            $formMec->numPermisConduireEmploye =$request->input('numPermisConduireEmploye');
+            $formMec->vehiculeCityonImplique =$request->input('vehiculeCityonImplique');
+            $formMec->notifSup = 'oui';
+            $formMec->notifAdmin = 'oui';
             $formMec->save();
             
             return redirect()->route('Formulaires.formsitdang')->with('message', 'L\'ajout a été effectué');
