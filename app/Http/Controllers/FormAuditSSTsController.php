@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Formauditsst;
+use App\Models\Formulairesauditsst;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -40,27 +40,27 @@ class FormAuditSSTsController extends Controller
             try {
     
     
-               $Formauditsst = new Formauditsst();
-               $Formauditsst->prenomNomEmploye = $request->input('prenomNomEmploye');
-               $Formauditsst->lieuTravail = $request->input('lieuTravail');
-                $Formauditsst->date = $request->input('date');
-                $Formauditsst->heure = $request->input('heure');
-                $Formauditsst->Epi = $request->input('Epi');
-                $Formauditsst->tenueLieux = $request->input('tenueLieux');
-                $Formauditsst->comportementSecuritaire = $request->input('comportementSecuritaire');
-                $Formauditsst->signalisation= $request->input('signalisation');
-                $Formauditsst->fichesSignaletiques= $request->input('fichesSignaletiques');
-                $Formauditsst->traveauxEscavation= $request->input('travauxEscavation');
-                $Formauditsst->espaceClos= $request->input('espaceClos');
-                $Formauditsst->methodeTravail= $request->input('methodeTravail');
-                $Formauditsst->autre= $request->input('autre');
-                $Formauditsst->respectDistanciation= $request->input('respectDistanciation');
-                $Formauditsst->portEpi= $request->input('portEpi');
-                $Formauditsst->respectProcedures= $request->input('respectProcedures');
-                $Formauditsst->notifSup = 'oui';
-                $Formauditsst->notifAdmin = 'oui';
+               $Formulairesauditsst = new Formulairesauditsst();
+               $Formulairesauditsst->prenomNomEmploye = $request->input('prenomNomEmploye');
+               $Formulairesauditsst->lieuTravail = $request->input('lieuTravail');
+               $Formulairesauditsst->date = $request->input('date');
+                $Formulairesauditsst->heure = $request->input('heure');
+                $Formulairesauditsst->Epi = $request->input('Epi');
+                $Formulairesauditsst->tenueLieux = $request->input('tenueLieux');
+                $Formulairesauditsst->comportementSecuritaire = $request->input('comportementSecuritaire');
+                $Formulairesauditsst->signalisation= $request->input('signalisation');
+                $Formulairesauditsst->fichesSignaletiques= $request->input('fichesSignaletiques');
+                $Formulairesauditsst->traveauxEscavation= $request->input('travauxEscavation');
+                $Formulairesauditsst->espaceClos= $request->input('espaceClos');
+                $Formulairesauditsst->methodeTravail= $request->input('methodeTravail');
+                $Formulairesauditsst->autre= $request->input('autre');
+                $Formulairesauditsst->respectDistanciation= $request->input('respectDistanciation');
+                $Formulairesauditsst->portEpi= $request->input('portEpi');
+                $Formulairesauditsst->respectProcedures= $request->input('respectProcedures');
+                $Formulairesauditsst->notifSup = 'oui';
+                $Formulairesauditsst->notifAdmin = 'oui';
 
-               $Formauditsst->save();
+                $Formulairesauditsst->save();
                
                return view('superviseurs.index');
                 }

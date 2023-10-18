@@ -9,15 +9,12 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-
-     
- 
-
     public function up(): void
     {
-        Schema::create('departements', function (Blueprint $table) {
-            $table->id();
-            $table->string('nom',100);
+        Schema::create('departement_procedurestravail', function (Blueprint $table) {
+            $table->primary(['departement_id', 'procedurestravails_id']);
+            $table->foreignId('departement_id')->constrained()->onDelete('cascade');
+            $table->foreignId('procedurestravails_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('departements');
+        Schema::dropIfExists('departement_procedurestravail');
     }
 };
