@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Formauditsst;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class FormAuditSSTsController extends Controller
 {
@@ -58,9 +60,6 @@ class FormAuditSSTsController extends Controller
                 $Formauditsst->notifSup = 'oui';
                 $Formauditsst->notifAdmin = 'oui';
 
-
-
-             
                $Formauditsst->save();
                
                return view('superviseurs.index');
@@ -70,7 +69,7 @@ class FormAuditSSTsController extends Controller
              
                 Log::debug($e);
              //   return redirect()->route('campagne')->withErrors(['L\'ajout de campagne n\'a pas fonctionné']);
-             return view('formAccidentTravail.formAccidentTravail');
+             return view('formAuditSST.formAuditSST');
                }
                
                 

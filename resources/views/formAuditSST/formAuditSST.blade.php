@@ -39,17 +39,7 @@
                     @enderror
                 </div>
             </div>
-        <!--    <div class="row">
-                <div class="col-xl-4">
-                    <label for="inputPassword4">Heure accident</label>
-                    <input type="time" id="appt" class="form-control heureAccident @error('heureAccident') is-invalid @enderror " name="heureAccident">
-                    @error('heureAccident')
-                    <span class="text-danger error-text">{{ $message }}</span>
-                    @enderror
-                </div>
-            </div>
-        </div>  -->
-       
+            
             <table class="table">
                 <thead>
 
@@ -316,7 +306,7 @@
                     <textarea class="form-control" name="descriptionTravailHauteur" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
                         
-
+                <button type="submit" class="btn btn-primary">Submit</button>
                       
     </form>
 @endsection
