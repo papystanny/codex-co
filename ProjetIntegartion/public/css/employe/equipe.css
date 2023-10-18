@@ -1,4 +1,12 @@
 
+.btn-filtre{
+    padding: 3px;
+}
+
+.accueil-titre h2{
+    margin-right: 50px;
+}
+
 .equipe-section{
     border-radius: 10px;
     background-color: beige;

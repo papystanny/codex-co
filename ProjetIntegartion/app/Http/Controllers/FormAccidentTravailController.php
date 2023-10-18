@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\Formaccidentstravail;
+use Session;
 class FormAccidentTravailController extends Controller
 {
     /**
@@ -28,7 +29,7 @@ class FormAccidentTravailController extends Controller
     
     
                $Formaccidentstravail = new Formaccidentstravail();
-               $Formaccidentstravail->nomEmploye = $request->input('nomEmploye');
+               $Formaccidentstravail->nomEmploye = $request->input(Session::get('nom'));
                 $Formaccidentstravail->fonctionMomentEvenement = $request->input('fonctionMomentEvenement');
                 $Formaccidentstravail->matriculeEmploye = $request->input('matriculeEmploye');
                 $Formaccidentstravail->dateAccident = $request->input('dateAccident');
@@ -122,7 +123,7 @@ class FormAccidentTravailController extends Controller
                $Formaccidentstravail -> usager_id =3; //<!-- Session::get('id');-->   */
                $Formaccidentstravail->save();
                
-               return view('employes.index');
+               return view('employe.formulaire');
                 }
                 
                catch (\Throwable $e) {

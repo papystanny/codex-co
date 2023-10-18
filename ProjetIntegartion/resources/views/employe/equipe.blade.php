@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="{{asset('css/employe/accueil.css')}}">
     <link rel="stylesheet" href="{{asset('css/employe/equipe.css')}}">
+    <link rel="stylesheet" href="{{asset('css/employe/accessoire/filtre.css')}}">
+    <link rel="stylesheet" href="{{asset('css/employe/accessoire/modal.css')}}">
     <link rel="icon" href="https://tse1.mm.bing.net/th?id=OIP.BvE9Kz_K4pOY9ceOf4bLIQHaEK&pid=Api" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     
@@ -29,6 +31,9 @@
 
         <div class="accueil-titre">
             <h2> <b> FORMULAIRE D'ÉQUIPE </b>  </h2>
+            <button id="ouvrirModalBtn" class="btn-filtre">
+                <i class="fas fa-filter"></i> 
+           </button>
         </div>
         <div class="historique-section">
             <div class="historique-unite">
@@ -132,5 +137,47 @@
     @endsection
     <script src="js/employe/accueil.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="js/employe/accessoire/modal.js" defer></script>
 </body>
 </html>
+
+
+
+
+<div id="monModal" class="modal">
+    <div class="modal-content">
+       
+        <h2>Filtre de recherche</h2>
+        <form id="formulaireFiltre">
+            <label for="date_debut">Date de début :</label>
+            <input type="date" id="date_debut" name="date_debut" required>
+
+            <label for="date_fin">Date de fin :</label>
+            <input type="date" id="date_fin" name="date_fin" required>
+
+            <label for="type">Type de formulaire :</label>
+            <select id="typeFormulaire" name="typeFormulaire" required>
+                <option value="type2">Tous les formulaires </option>
+                <option value="type1">Déclaration et accident de travail </option>
+                <option value="type2">Signalement d'acte de violence </option>
+@if( Session::get('typeCompte') == 'superieur')   
+              <option value="type1">Type 1</option>
+              <option value="type2">Type 2</option> 
+@endauth
+                <!-- Ajoutez d'autres options de type de formulaire au besoin -->
+            </select>
+
+            <label for="type">Nom de l'employe :</label>
+            <select id="nomEmploye" name="nomEmploye" required>
+                <option value="type2">Stan Pharel </option>
+                <option value="type1">Laura Claire </option>
+                <option value="type2">Iris Dubois</option>
+
+                <!-- Ajoutez d'autres options de type de formulaire au besoin -->
+            </select>
+           
+            <button type="submit">Rechercher</button> 
+            <span class="close" id="fermerModal">&times;</span>
+        </form>
+    </div>
+</div>

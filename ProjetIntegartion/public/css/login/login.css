@@ -5,7 +5,7 @@
   transform: translate(-50%, -50%);
   width: 375px; /* Largeur de votre div */
   height: 280px; /* Hauteur de votre div */
-  background-color: rgb(77, 69, 69); /* Couleur de fond de votre div */
+  background-color: rgb(175, 207, 177); /* Couleur de fond de votre div */
   text-align: left; /* Pour centrer le contenu texte à l'intérieur de la div */
   padding: 30px; /* Espacement interne pour le contenu */
   border-radius: 20px; /* Coins arrondis de 10 pixels */
