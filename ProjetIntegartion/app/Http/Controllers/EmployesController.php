@@ -29,4 +29,9 @@ class EmployesController extends Controller
     { 
         return view('employe.equipe');
     }
+
+    public function adminAccueil()
+    { 
+        return view('admin.accueil');
+    }
 }

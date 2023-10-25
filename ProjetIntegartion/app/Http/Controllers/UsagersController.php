@@ -50,7 +50,7 @@ class UsagersController extends Controller
                 $user = Usager::where('matricule', $request->matricule)->first();
                 Session::put('nom', $user->nom);       
                 Session::put('typeCompte', $user->typeCompte);
-                return redirect()->route('Formulaires.formulaireSitdang')->with('message',"Connexion réussie.");
+                return redirect()->route('admin.accueil')->with('message',"Connexion réussie.");
             }
         } 
          else 

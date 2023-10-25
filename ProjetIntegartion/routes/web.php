@@ -44,6 +44,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/employeEquipe', 
     [EmployesController::class, 'equipe'])->name('employe.equipe');
 
+    Route::get('/adminAccueil', 
+    [EmployesController::class, 'adminAccueil'])->name('admin.accueil');
+
 
     Route::get('/AccidentTravail',
     [FormAccidentTravailController::class, 'AccidentTravail'])->name('employe.formAccidentTravail');
