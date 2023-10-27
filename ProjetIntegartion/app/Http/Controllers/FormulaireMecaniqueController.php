@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\FormMec;
+use App\Models\Formateliermecanique;
 use App\Http\Requests\FormulaireMecRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
@@ -33,7 +33,7 @@ class FormulaireMecaniqueController extends Controller
     public function store(Request $request)
     {
         try {
-            $formMec = new FormMec();
+            $formMec = new Formateliermecanique();
             $formMec->numUniteImplique =$request->input('numUniteImplique');
             $formMec->departement =$request->input('departement');
             $formMec->prenomNomEmploye =$request->input('prenomNomEmploye');

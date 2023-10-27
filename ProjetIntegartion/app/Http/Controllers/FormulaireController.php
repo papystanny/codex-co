@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Form;
+use App\Models\Formsitdangereuse;
 use App\Http\Requests\FormulaireRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
@@ -42,9 +42,28 @@ class FormulaireController extends Controller
     public function store(Request $request)
     {
         try {
-        $form = new Form($request->all());
-        $form->password=Hash::make($request->password);
-        $form->save();
+            $form = new Formsitdangereuse();
+            $form->nomEmploye =$request->input('nomEmploye');
+            $form->prenomEmploye =$request->input('prenomEmploye');
+            $form->matriculeEmploye =$request->input('matriculeEmploye');
+            $form->fonctionLorsEvenement =$request->input('fonctionLorsEvenement');
+            $form->secteurActivite =$request->input('secteurActivite');
+            $form->dateObservation =$request->input('dateObservation');
+            $form->heureObservation =$request->input('heureObservation');
+            $form->temoins =$request->input('temoins');
+            $form->descriptionEvenement =$request->input('descriptionEvenement');
+            $form->ameliorationsProposees =$request->input('ameliorationsProposees');
+            $form->supAvise =$request->input('supAvise');
+            $form->nomSuperviseur =$request->input('nomSuperviseur');
+            $form->signatureEmploye =$request->input('signatureEmploye');
+            $form->dateSupeAvise =$request->input('dateSupeAvise');
+            $form->dateSignatureEmploye =$request->input('dateSignatureEmploye');
+            $form->signatureSuperviseur =$request->input('signatureSuperviseur');
+            $form->dateSignatureSuperviseur =$request->input('dateSignatureSuperviseur');
+            $form->numPosteSuperviseur =$request->input('numPosteSuperviseur');
+            $form->notifSup = 'oui';
+            $form->notifAdmin = 'oui';
+            $form->save();
         
         return redirect()->route('formulaires.atelierMec')->with('message', 'L\'ajout a été effectué');
     }

@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Formateliermecanique extends Model
 {
+    protected $table = 'formateliermecaniques';
     use HasFactory;
+    protected $fillable = ['numUniteImplique','departement','prenomNomEmploye','prenomNomSupImmediat','numPermisConduireEmploye','vehiculeCityonImplique'];
 }
