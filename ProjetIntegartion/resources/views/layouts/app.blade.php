@@ -38,7 +38,7 @@
     @endauth
 
 
-    <nav class="navbar">
+    <nav class="navbar" >
         <div class="left-section">
 
             <div class="logo">
@@ -72,7 +72,7 @@
                 <ul class="menu__box">
                 <li><a class="menu__item" href="{{ route('employe.accueil') }}"><i class="fas fa-home"></i> ACCUEIL </a></li>
                 <hr style="color: black;" />
-                <li><a class="menu__item" href="{{ route('employe.formulaire') }}"><i class="far fa-clock"></i> FORMULAIRES </a></li>
+                <li><a class="menu__item" href="{{ route('employe.formulaire') }}"><i class="fas fa-file-alt fa-1x"></i> FORMULAIRES </a></li>
                 <hr style="color: black;" />
                 <li><a class="menu__item" href="{{ route('employe.procedure') }}"><i class="far fa-clock"></i> PROCÉDURES  </a></li>
     @if( Session::get('typeCompte') == 'superieur')          
@@ -100,19 +100,59 @@
 
         <div class="sidebar">
             <a href="{{ route('admin.accueil') }}">
-                <img src="img/examen.png"  class="img-fluid logo-marge-10 " width="100px" height="100px">
+                <img src="img/examen.png"  class="img-fluid logo-marge-10 " width="80px" height="80px">
             </a>
             <ul class="menu">
-                <li><a href="#"><i class="fas fa-file-alt"></i> Formulaire</a></li>
-                <li><a href="#"><i class="fas fa-users"></i> Équipe</a></li>
+                
+                <li><a href="#"><i class="fas fa-file-alt fa-1x"></i> <span>  Formulaire </span> </a></li>
+                <li><a href="#"><i class="fas fa-bell"></i></i> <span> Notifications  </span> </a></li>
+                <li><a href="#"><i class="fas fa-users fa-1x"></i> <span> Employé </span> </a></li>
+                <li><a href="#"><i class="far fa-clock"></i> <span> Procédures </span> </a></li>
+                <li><a href="#"><i class="fas fa-users fa-1x"></i> <span> Équipe </span> </a></li>
+
             </ul>
-            <div class="logout">Déconnexion</div>
+            <div class="logout"> <i class="fas fa-sign-out-alt"></i> <span>|   Déconnexion </span> </div>
         </div>
+       
+
+        <div class="top-bar">
+            <div class="search-bar">
+                <input type="text" placeholder="Rechercher...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+                <!-- Icône de notifications -->
+            <ul class="notif-section">
+                <li>  
+                    <div class="notification-icon">
+                        <i class="fas fa-bell "></i>
+                    </div>
+                </li>
+                <li> 
+                    <!-- Icône de paramètres -->
+                    <div class="settings-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                </li>
+                <li> 
+                    <!-- Icône de profil -->
+                    <div class="profile-icon">
+                        <i class="fas fa-user"></i>
+                        <span> {{Session::get('nom')}} </span>
+                    </div>
+                 </li>
+            </ul>
+        </div>
+
         <div class="content">
-            <!-- Contenu de la page -->
+            <div class ="custom-span-accueil">
+              <span>ACCUEIL <span>
+            </div>
         </div>
 
     </div>
+
+    
+
 
 
 

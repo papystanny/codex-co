@@ -1,5 +1,5 @@
 .sidebar {
-    width: 100px; /* Largeur initiale réduite */
+    width: 150px; /* Largeur initiale réduite */
     height: 100%;
     background-color: #333;
     position: fixed;
@@ -8,6 +8,13 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center; /* Centrage horizontal des icônes et du texte */
+    background-image: url('https://t4.ftcdn.net/jpg/04/90/42/41/360_F_490424126_7VGv6ef8SyFhkF0usoV5751U3UIgJQ9J.jpg');
+    background-size: cover;
+}
+
+.sidebar img
+{
+    margin: 20px;
 }
 
 .sidebar:hover {
@@ -27,62 +34,117 @@
     flex-direction: column;
     align-items: center;
 }
+.menu span{
+    
+    margin-left: 15px;
+}
 
 .menu li {
-    padding: 10px;
+    font-size: 18px;
+    padding: 8px 25px;
     width: 100%;
     position: relative;
+    margin-top: 20px;
+    
+    
 }
+
+.menu li:hover {
+    background-color: grey;
+    font-weight: bold; /* Gras en survol */
+}
+
+
 
 .menu a {
     text-decoration: none;
     color: white;
-    text-align: center;
-    display: flex;
+     display: flex;
     align-items: center; /* Centrage vertical des icônes et du texte */
     position: relative;
-}
-
-.menu i {
-    margin-right: 10px; /* Espace entre l'icône et le texte */
-}
-
-.menu a::before {
-    content: "";
-    width: 0;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #333;
-    transition: width 0.5s;
-}
-
-.menu li:hover a::before {
-    width: 100%; /* Largeur de fond pour afficher le texte au survol */
-}
-
-.menu a span {
-    opacity: 0;
-    position: absolute;
-    transition: opacity 0.5s;
-}
-
-.menu i::before {
-    display: block; /* Masquer le texte par défaut */
-    font-weight: normal;
-}
-
-.menu i::before::before {
-    content: attr(data-text); /* Afficher le texte lorsque le curseur est sur le navbar */
-    display: block;
-    font-weight: bold;
-    font-size: 16px;
-    margin-left: 10px;
 }
 
 .logout {
     text-align: center;
     padding: 10px;
     color: white;
+}
+
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.top-bar{
+  margin-left: 160px;
+  margin-right: 10px;
+
+  margin-bottom: 10px;
+  transition: margin-left 0.5s; /* Pour que la top-bar s'ajuste avec la side-bar */
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+    background-color: blueviolet;
+    align-items: center;
+    justify-content: space-between;
+    background-image: url('https://media.istockphoto.com/id/1205872379/vector/abstract-background-of-smooth-curves.jpg?b=1&s=612x612&w=0&k=20&c=gTETMnHnKCGzdMBzJybLIPuQkOSutXxZfK_lBtxMrYs=');
+background-size: cover;
+border-radius: 10px;
+
+}
+
+.sidebar:hover ~ .top-bar {
+    margin-left: 210px; /* Ajustez la marge pour suivre la largeur étendue de la side-bar */
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    border-radius: 20px; /* Coins arrondis */
+    padding: 5px 10px;
+    width: 200px; /* Ajustez la largeur selon vos besoins */
+    margin: 10px 40px;
+}
+
+
+.search-bar input {
+    border-radius: 20px; /* Coins arrondis */
+    width: 100%;
+    padding: 5px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+.search-bar:hover{
+    width: 400px;
+}
+
+.search-bar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px; /* Marge à gauche du bouton */
+}
+
+/* Au survol du bouton de recherche, vous pouvez ajouter des styles pour indiquer qu'il est cliquable */
+.search-bar button:hover {
+    color: blueviolet;
+}
+
+.notif-section{
+    list-style: none;
+    display: inherit;
+}
+
+.notif-section li{
+    font-size: 25px;
+    margin: 0px 50px;
+}
+
+.content{
+    margin-left: 160px;
+    
+}
+
+.sidebar:hover ~ .content {
+    margin-left: 210px; /* Ajustez la marge pour suivre la largeur étendue de la side-bar */
 }
