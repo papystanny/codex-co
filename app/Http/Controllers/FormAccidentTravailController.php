@@ -9,9 +9,7 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Formaccidentstravail;
 class FormAccidentTravailController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   
     public function index()
     {
         //
