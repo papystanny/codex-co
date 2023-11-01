@@ -9,7 +9,7 @@ use App\Models\Departement;
 class Usager extends Model
 {
     use HasFactory;
-    protected $fillable = ['nom',  'prenom' , 'matricule','password','poste','droitEmploye','droitSuperieur','droitAdmin','nomSuperviseur','departement_id'];
+    protected $fillable = ['nom',  'prenom' , 'matricule','password','poste','droitEmploye','droitSuperieur','droitAdmin','nomSuperviseur','courriel','departement_id'];
 
     public function formAccidentTravail()
    {

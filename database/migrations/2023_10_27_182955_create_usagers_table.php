@@ -24,6 +24,7 @@ return new class extends Migration
              $table->integer('droitSuperieur');
              $table->integer('droitAdmin');
              $table->string('nomSuperviseur',100)->nullable();
+             $table->string('courriel',250);
              $table->foreignId('departement_id')->constrained();
              $table->string('typeCompte',100)->nullable();
              $table->rememberToken()->nullable();
