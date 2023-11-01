@@ -34,4 +34,9 @@ class EmployesController extends Controller
     { 
         return view('admin.accueil');
     }
+
+    public function adminProcedure()
+    { 
+        return view('admin.procedure');
+    }
 }

@@ -56,4 +56,14 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
+Route::middleware(['auth', 'admin'])->group(function () {
+    // Les routes qui nécessitent un compte admin seulement
+    Route::get('/adminAccueil', 
+    [EmployesController::class, 'adminAccueil'])->name('admin.accueil');
+
+    Route::get('/adminProcedure', 
+    [EmployesController::class, 'adminProcedure'])->name('admin.procedure');
+});
+
+
 

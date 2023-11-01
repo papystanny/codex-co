@@ -23,7 +23,7 @@
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <a onclick="this.closest('form').submit(); return false;" class="logout-button"> 
-                            <h6 class="" href="#"><i class="fas fa-sign-out-alt"></i><u> SE DÉCONNECTER </u></h6></li>  
+                            <h6 class="" href="#"><i class="fas fa-sign-out-alt"></i><u> SE DÉCONNECTER  </u></h6></li>  
                         </a>
                     </form>        
                 </div> 
@@ -80,7 +80,6 @@
                 <li><a class="menu__item" href="{{ route('employe.equipe') }}"><i class="fas fa-folder"></i> MES EMPLOYES </a></li> 
     @endif
                 <hr style="color: black;" />
-                
                         <li><a class="menu__item" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> SE DÉCONNECTER </a></li> 
                                     
                 </ul>
@@ -93,6 +92,7 @@
     @endauth
         </div>
     </nav>
+    @yield('contenu')
 @endauth
 
 @if(Session::get('typeCompte') == 'admin' )
@@ -107,11 +107,16 @@
                 <li><a href="#"><i class="fas fa-file-alt fa-1x"></i> <span>  Formulaire </span> </a></li>
                 <li><a href="#"><i class="fas fa-bell"></i></i> <span> Notifications  </span> </a></li>
                 <li><a href="#"><i class="fas fa-users fa-1x"></i> <span> Employé </span> </a></li>
-                <li><a href="#"><i class="far fa-clock"></i> <span> Procédures </span> </a></li>
+                <li><a href="{{ route('admin.procedure') }}"><i class="far fa-clock"></i> <span> Procédures </span> </a></li>
                 <li><a href="#"><i class="fas fa-users fa-1x"></i> <span> Équipe </span> </a></li>
 
             </ul>
-            <div class="logout"> <i class="fas fa-sign-out-alt"></i> <span>|   Déconnexion </span> </div>
+            <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <a onclick="this.closest('form').submit(); return false;" class="logout" > 
+                            <span class="" href="#"><i class="fas fa-sign-out-alt"></i> SE DÉCONNECTER </span>
+                        </a>
+            </form>   
         </div>
        
 
@@ -137,16 +142,14 @@
                     <!-- Icône de profil -->
                     <div class="profile-icon">
                         <i class="fas fa-user"></i>
-                        <span> {{Session::get('nom')}} </span>
                     </div>
                  </li>
             </ul>
         </div>
 
         <div class="content">
-            <div class ="custom-span-accueil">
-              <span>ACCUEIL <span>
-            </div>
+              @yield('contenu')
+
         </div>
 
     </div>
@@ -158,8 +161,7 @@
 
 @endauth
 
-    @yield('contenu')
-
+   
     
     <!-- END OF LINKS -->
 

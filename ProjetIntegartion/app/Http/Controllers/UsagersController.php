@@ -48,10 +48,12 @@ class UsagersController extends Controller
             else if(Auth::user()->typeCompte == 'admin')
             {
                 $user = Usager::where('matricule', $request->matricule)->first();
-                Session::put('nom', $user->nom);       
+                $nom = ucfirst($user->nom); // Utilisation de ucfirst pour capitaliser la première lettre
+                Session::put('nom', $nom);
                 Session::put('typeCompte', $user->typeCompte);
-                return redirect()->route('admin.accueil')->with('message',"Connexion réussie.");
+                return redirect()->route('admin.accueil')->with('message', "Connexion réussie.");
             }
+            
         } 
          else 
         {

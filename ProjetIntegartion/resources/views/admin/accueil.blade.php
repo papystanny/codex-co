@@ -7,7 +7,7 @@
     
     <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" href="{{asset('css/employe/accueil.css')}}">
+    <link rel="stylesheet" href="{{asset('css/admin/accueil.css')}}">
     <link rel="icon" href="https://tse1.mm.bing.net/th?id=OIP.BvE9Kz_K4pOY9ceOf4bLIQHaEK&pid=Api" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     
@@ -17,8 +17,11 @@
     @extends('layouts.app')
 
     @section('contenu')
-
-
+    
+    <div class="messageAccueil">
+        <p> Bon retour     parmi nous <b>{{Session::get('nom')}}</b></p>
+        <span> Vous avez 10 notifications depuis votre dernière conenxion </span> 
+    </div>
 
 
     @endsection
