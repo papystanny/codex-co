@@ -8,18 +8,21 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Mail\Mailables\Address;
 
-class Mail extends Mailable
+class Password extends Mailable
 {
     use Queueable, SerializesModels;
+    public $password;
 
     /**
      * Create a new message instance.
      */
-
-    public function __construct(private $name)
+    public function __construct($password)
     {
-        //
+        $this->password = $password;
+        Log::debug($password);
     }
 
     /**
@@ -28,7 +31,8 @@ class Mail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Mail',
+            from: new Address('technique.informatique.tr@gmail.com', 'Technique Informatique'),
+            subject: 'Votre mot de passe',
         );
     }
 
@@ -38,8 +42,8 @@ class Mail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view:  'email.test-email',
-            with: ['name' => $this->name],
+            view: 'email.test-email',
+            with: ['password' => $this->password],
         );
     }
 

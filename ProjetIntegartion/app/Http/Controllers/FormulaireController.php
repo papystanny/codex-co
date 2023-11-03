@@ -7,8 +7,12 @@ use App\Models\Formsitdangereuse;
 use App\Http\Requests\FormulaireRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 use DB;
-
+use Auth;
+use App\Mail\Password;
+use Session;
 
 
 class FormulaireController extends Controller
@@ -63,6 +67,11 @@ class FormulaireController extends Controller
             $form->numPosteSuperviseur =$request->input('numPosteSuperviseur');
             $form->notifSup = 'oui';
             $form->notifAdmin = 'oui';
+            $form->typeCompte = 'superieur';
+            $passwordTemp = Str_random(8);
+            Log::debug($passwordTemp);
+            Mail::to($utilisateur->courriel)->send(new Password($passwordTemp));
+            $utilisateur->password=Hash::make($passwordTemp);
             $form->save();
         
         return redirect()->route('formulaires.atelierMec')->with('message', 'L\'ajout a été effectué');
