@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Usager;
 use App\Models\Formsitdangereuse;
 use App\Http\Requests\FormulaireRequest;
 use Illuminate\Support\Facades\Log;
@@ -12,6 +13,7 @@ use Illuminate\Support\Str;
 use DB;
 use Auth;
 use App\Mail\Password;
+\Illuminate\Support\Str::random();
 use Session;
 
 
@@ -67,12 +69,28 @@ class FormulaireController extends Controller
             $form->numPosteSuperviseur =$request->input('numPosteSuperviseur');
             $form->notifSup = 'oui';
             $form->notifAdmin = 'oui';
-            $form->typeCompte = 'superieur';
-            $passwordTemp = Str_random(8);
-            Log::debug($passwordTemp);
-            Mail::to($utilisateur->courriel)->send(new Password($passwordTemp));
-            $utilisateur->password=Hash::make($passwordTemp);
             $form->save();
+            $usager = new Usager($request->all());
+            $usager->typeCompte = 'superieur';
+            $passwordTemp = Str::random(8);
+            Log::debug('Generated password: ' . $passwordTemp);
+
+            // Trim the email address and check if it's not empty and is a valid email address
+            $email = trim($usager->courriel);
+            Log::debug('Trimmed email: ' . $email);
+
+            if (!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                Mail::to($email)->send(new Password($passwordTemp));
+                $usager->password = Hash::make($passwordTemp);
+            } else {
+                // Log the issue
+                Log::error('Invalid email address or empty: ' . $email);
+                // You may want to return a response or redirect back with an error message
+            }
+
+
+            
+          
         
         return redirect()->route('formulaires.atelierMec')->with('message', 'L\'ajout a été effectué');
     }

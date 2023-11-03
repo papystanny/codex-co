@@ -177,6 +177,15 @@
           <div class="parent container-fluid">
               <div class="row ">
                     <div class= " col-xl-12">
+                        <label for="fname">Courriel:</label>
+                        <input type="text" id="courriel" name="courriel">
+                   </div>
+              </div>
+          </div>
+
+          <div class="parent container-fluid">
+              <div class="row ">
+                    <div class= " col-xl-12">
                         <label for="fname">Nom en Caractères d'imprimerie:</label>
                         <input type="text" id="nomSuperviseur" name="nomSuperviseur">
                    </div>
