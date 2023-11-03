@@ -39,6 +39,18 @@ class FormAccidentTravailController extends Controller
                // $Formaccidentstravail->natureSiteBlessure = $request->input('natureSiteBlessure',[]);
                 Log::debug($request->input('natureSiteBlessure',[]) );
                // $d=implode('',$request->input('natureSiteBlessure',[]));
+
+/*
+               $validator = Validator::make($request->all(), [
+                'checkbox1' => 'required|boolea',
+                'checkbox2' => function ($attribute, $value, $fail) use ($request) {
+                    if ($value && !$request->has('checkbox1')) {
+                        $fail('Checkbox 1 must be checked before checking Checkbox 2.');
+                    }
+                },
+            ]);
+*/
+
              
                 $data=$request->input('natureSiteBlessure',[]);
                 $natureSiteBlessureString=implode(',',$data);

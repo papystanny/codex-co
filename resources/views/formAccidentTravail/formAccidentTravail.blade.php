@@ -446,7 +446,7 @@
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>    
 <script src="{{asset('js/multiselect.js')}}"></script>
-function checkCheckbox(checkbox) {
+<!--function checkCheckbox(checkbox) {
     var checkbox1 = document.getElementById('checkbox1');
     var checkbox2 = document.getElementById('checkbox2');
 
@@ -454,6 +454,6 @@ function checkCheckbox(checkbox) {
         checkbox2.checked = false; // Empêche la coche de checkbox2 si checkbox1 n'est pas coché
     }
 }
-
+-->
 @endsection
 
