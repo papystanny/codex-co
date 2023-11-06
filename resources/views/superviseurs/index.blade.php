@@ -15,10 +15,11 @@
         </div>
     </div>
 </div>
-<div class="contsiner-fluid">
+<div class="container-fluid">
     <div class="row ">
         <div class="col-md-8">
             <h1><b>notifications</b></h1>  
+            @ foreach ($)
    <!--         @foreach ($data as $item)
     @if ($item->nom_colonne === 'valeur_recherchee')
         <p>La valeur recherchée existe dans la base de données.</p>
