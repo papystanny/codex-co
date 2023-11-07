@@ -19,15 +19,15 @@
     <div class="row ">
         <div class="col-md-8">
             <h1><b>notifications</b></h1>  
-            @ foreach ($)
-   <!--         @foreach ($data as $item)
-    @if ($item->nom_colonne === 'valeur_recherchee')
-        <p>La valeur recherchée existe dans la base de données.</p>
-    @else
-        <p>La valeur recherchée n'existe pas dans la base de données.</p>
-    @endif
-@endforeach
--->
+            @foreach ($formAccidentsTravails as $formAccidentsTravail)
+            @if($formaccidentstravail->notifSup=='oui')
+            <p>La valeur recherchée n'existe pas dans la base de données.</p>
+            @else
+                <p>La valeur recherchée n'existe pas dans la base de données.</p>
+            @endif
+            @endforeach
+            
+
             <br>
         </div>
     </div>
