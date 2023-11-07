@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Formaccidentstravail;
 class FormAccidentTravailController extends Controller
 {
-   
+ /*  
     public function index()
     {
         //
-    }
+    }*/
     public function accidentTravail()
     {
         return view('formAccidentTravail.formAccidentTravail');
@@ -156,6 +156,12 @@ class FormAccidentTravailController extends Controller
         //
     }
 
+    public function showFormulaires()
+    {
+        
+        $Formaccidentstravail = FormaccidentsTravail::all();
+        return view('superviseurs.index',compact('Formaccidentstravail'));
+    }
     /**
      * Store a newly created resource in storage.
      */

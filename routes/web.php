@@ -31,7 +31,7 @@ Route::post('/AccidentTravailStore',
 
 /***page superviseur */
 Route::get('/superviseur',
-[SuperviseursController::class, 'index'])->name('superviseur.index');
+[FormAccidentTravailController::class, 'showFormulaires'])->name('superviseur.index');
 Route::get('/AuditSST',
 [FormAuditSSTsController::class, 'formAuditSST'])->name('superviseur.formAuditSST');
 Route::post('/AuditSSTStore',

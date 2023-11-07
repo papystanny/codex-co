@@ -19,7 +19,7 @@
     <div class="row ">
         <div class="col-md-8">
             <h1><b>notifications</b></h1>  
-            @foreach ($formAccidentsTravails as $formAccidentsTravail)
+            @foreach ($Formaccidentstravail as $formAccidentsTravail)
             @if($formaccidentstravail->notifSup=='oui')
             <p>La valeur recherchée n'existe pas dans la base de données.</p>
             @else
