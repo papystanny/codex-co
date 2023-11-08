@@ -13,6 +13,6 @@ class Usager extends  Authenticatable
     use HasFactory , Notifiable, HasApiTokens;
 
     protected  $guard ='usager';
-    protected $fillable = ['matricule','password'];
+    protected $fillable = ['matricule','password','courriel'];
     protected $hidden = ['password','remember_token'];
 }

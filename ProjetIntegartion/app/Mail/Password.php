@@ -31,7 +31,7 @@ class Password extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('technique.informatique.tr@gmail.com', 'Technique Informatique'),
+            from: new Address('email@example.com'),
             subject: 'Votre mot de passe',
         );
     }

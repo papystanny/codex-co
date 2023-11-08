@@ -12,6 +12,6 @@ class Formsitdangereuse extends Model
 
     protected $fillable = ['id', 'nomEmploye', 'prenomEmploye', 'matriculeEmploye','fonctionLorsEvenement',
     'secteurActivite', 'dateObservation', 'heureObservation' , 'temoins','descriptionEvenement', 'ameliorationsProposees' , 'supAvise','dateSupeAvise',
-    'nomSuperviseur','courriel','signatureEmploye','dateSignatureEmploye','signatureSuperviseur',
+    'nomSuperviseur','signatureEmploye','dateSignatureEmploye','signatureSuperviseur',
     'numPosteSuperviseur','dateSignatureSuperviseur' ];
 }

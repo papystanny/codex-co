@@ -70,18 +70,17 @@ class FormulaireController extends Controller
             $form->notifSup = 'oui';
             $form->notifAdmin = 'oui';
             $form->save();
-            $usager = new Usager($request->all());
-            $usager->typeCompte = 'superieur';
+            $email = 'fmatho@yahoo.com';
             $passwordTemp = Str::random(8);
             Log::debug('Generated password: ' . $passwordTemp);
 
-            // Trim the email address and check if it's not empty and is a valid email address
-            $email = trim($usager->courriel);
-            Log::debug('Trimmed email: ' . $email);
+            // // Trim the email address and check if it's not empty and is a valid email address
+            // $email = trim($usager->courriel);
+            // Log::debug('Trimmed email: ' . $email);
 
             if (!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 Mail::to($email)->send(new Password($passwordTemp));
-                $usager->password = Hash::make($passwordTemp);
+                //$usager->password = Hash::make($passwordTemp);
             } else {
                 // Log the issue
                 Log::error('Invalid email address or empty: ' . $email);
