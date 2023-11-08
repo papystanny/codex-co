@@ -39,4 +39,14 @@ class EmployesController extends Controller
     { 
         return view('admin.procedure');
     }
+
+    public function adminFormulaire()
+    { 
+        return view('admin.formulaire');
+    }
+
+    public function adminVoirFormulaireRempli()
+    { 
+        return view('admin.voirFormulaireRempli');
+    }
 }

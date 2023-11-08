@@ -30,7 +30,7 @@ Route::post('/connexion',
 Route::post('/logout' , [UsagersController::class,'logout'])->name('logout');
 
 // -------------------------------------- Accueil employe ----------------------------
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','employe'])->group(function () {
    
     Route::get('/employeAccueil', 
     [EmployesController::class, 'index'])->name('employe.accueil');
@@ -46,6 +46,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/adminAccueil', 
     [EmployesController::class, 'adminAccueil'])->name('admin.accueil');
+
+     
 
 
     Route::get('/AccidentTravail',
@@ -63,6 +65,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('/adminProcedure', 
     [EmployesController::class, 'adminProcedure'])->name('admin.procedure');
+
+    Route::get('/adminFormulaire', 
+    [EmployesController::class, 'adminFormulaire'])->name('admin.formulaire');
+
+    Route::get('/adminVoirFormulaireRempli', 
+    [EmployesController::class, 'adminVoirFormulaireRempli'])->name('admin.voirFormulaireRempli');
 });
 
 

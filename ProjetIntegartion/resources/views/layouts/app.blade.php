@@ -104,7 +104,7 @@
             </a>
             <ul class="menu">
                 
-                <li><a href="#"><i class="fas fa-file-alt fa-1x"></i> <span>  Formulaire </span> </a></li>
+                <li><a href="{{ route('admin.formulaire') }}"><i class="fas fa-file-alt fa-1x"></i> <span>  Formulaire </span> </a></li>
                 <li><a href="#"><i class="fas fa-bell"></i></i> <span> Notifications  </span> </a></li>
                 <li><a href="#"><i class="fas fa-users fa-1x"></i> <span> Employé </span> </a></li>
                 <li><a href="{{ route('admin.procedure') }}"><i class="far fa-clock"></i> <span> Procédures </span> </a></li>
