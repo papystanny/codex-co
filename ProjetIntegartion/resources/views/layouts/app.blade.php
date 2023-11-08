@@ -19,18 +19,11 @@
 @if(Session::get('typeCompte') == 'superieur' || Session::get('typeCompte') == 'employe')
     @if(Auth::check())
             @csrf
-                <div class="prenav-in" id="messageLogout" style="display:none" >
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <a onclick="this.closest('form').submit(); return false;" class="logout-button"> 
-                            <h6 class="" href="#"><i class="fas fa-sign-out-alt"></i><u> SE DÉCONNECTER  </u></h6></li>  
-                        </a>
-                    </form>        
-                </div> 
+               
 
                 <div class="prenav-in" id="messageWelcome"  style="display:none">               
                         <h5 class="" ><i class="fas fa-home"></i>  Bonjour <b>  {{Session::get('nom')}} </b></h5></li>                       
-            </div> 
+                </div> 
     @else
                 <div class="prenav-in" id="messageWelcome" >               
                     <h5 class="" ><i class="fas fa-home"></i>  TrÈs Trois-Rivières </b></h5></li>                       
@@ -169,6 +162,14 @@
 @if(Session::get('typeCompte') == 'superieur' || Session::get('typeCompte') == 'employe')
     @if(Auth::check())
         <div class ="footer-section">
+                <div class="prenav-in" id="messageLogout" style="display:none" >
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <a onclick="this.closest('form').submit(); return false;" class="logout-button"> 
+                            <h6 class="" href="#"><i class="fas fa-sign-out-alt"></i><u> SE DÉCONNECTER  </u></h6></li>  
+                        </a>
+                    </form>        
+                </div> 
             <h2>  Ville de Trois-Rivières  </h2> 
             <div class="encadre-backgroundUn">
                 <p href=""> 1325,place de l'Hotel-de-ville, C.P.368  Trois-Rivières, QC G9A 5H3</p>

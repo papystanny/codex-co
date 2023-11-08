@@ -30,7 +30,7 @@
                             <i class="fas fa-plus fa-2x"title="Ajouter de nouvelles procédures"></i>
                 </button>
                 <button id="ouvrirModalFiltreBtn" class="btn-filtre">
-                        <i class="fas fa-filter fa-2x" title="Filtrer les formulaires"></i> 
+                        <i class="fas fa-sort fa-2x" title="Filtrer les formulaires"></i> 
                 </button>
                
             </div>
@@ -143,39 +143,21 @@
 
             <ul class="modalMenu">
                 <li>
-                    <form id="formulaireFiltre">
-                        <div  class="sectionModal">
-                            <label for="date_debut">Date de début :</label>
-                            <input type="date" id="date_debut" name="date_debut" required>
-                        </div>
-
-                        <div  class="sectionModal">
-                            <label for="date_fin">Date de fin :</label>
-                            <input type="date" id="date_fin" name="date_fin" required>
-                        </div>
+                    <form id="procedureFiltre">
+                
 
                         <div  class="sectionModal">
                             <label for="type">Départements concernés :</label>
-                            <select id="type" name="nomEmploye" required>
-                                <option value="type2"> </option>
-                                <option value="type1"> Williams Antons </option>
-                                <option value="type3"> Lila Desmond </option>
-                                <option value="type4"> Richie Duchar</option>
+                            <select id="type" name="nomDepartement" required>
+                            <option value="type2">Tous les départements </option>
+                                <option value="type1">Soins</option>
+                                <option value="type3">Sécurité  </option>
+                                <option value="type4"> Paie </option>
                                        <!-- Ajoutez d'autres options de type de formulaire au besoin -->
                              </select>
                         </div>
 
-                        <div  class="sectionModal">
-                            <label for="type">Type de formulaire :</label>
-                            <select id="type" name="typeFormulaire" required>
-                                <option value="type2">Tous les formulaires </option>
-                                <option value="type1">Déclaration et accident de travail </option>
-                                <option value="type3">Soins et sécurité  </option>
-                                <option value="type4"> Paie et Pensoins</option>
-                                       <!-- Ajoutez d'autres options de type de formulaire au besoin -->
-                             </select>
-                        </div>
-
+                                                  
                         <div  class="submitModal">
                              <button type="submit">Rechercher</button>
                         </div>
