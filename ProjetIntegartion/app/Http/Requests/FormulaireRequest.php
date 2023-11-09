@@ -40,8 +40,6 @@ class FormulaireRequest extends FormRequest
             'dateSignatureEmploye'=>'required'|'date',
             'dateSignatureSuperviseur'=>'required'|'date',
             'numPosteSuperviseur'=>'required'|'integer',
-            'notifSup'=>'required|min:3|max:200',
-            'notifAdmin'=>'required|min:3|max:200',
         ];
     }
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Formateliermecanique;
-use App\Http\Requests\FormulaireMecRequest;
+use App\Http\Requests\FormateliermecaniqueRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
 use DB;
@@ -30,7 +30,7 @@ class FormulaireMecaniqueController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(FormateliermecaniqueRequest $request)
     {
         try {
             $formMec = new Formateliermecanique();
