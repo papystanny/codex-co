@@ -1,0 +1,145 @@
+#navbar{
+    background-color: var(--primary);
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    z-index: 3;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+}
+
+#navbar a{
+    text-decoration: none;
+    color: var(--lighter);
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+#navbar a:hover{
+    color: var(--light);
+}
+
+#logo li{
+    width: 200px;
+}
+
+#bouton{
+    display: flex;
+}
+
+#bouton li{
+    padding-left: 100px;
+}
+
+#barreRecherche{
+    justify-self: center;
+}
+.logout-buttonForm{
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* Smartphones */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+    /* Styles */
+    #bouton{
+        display: none;
+    }
+    #burgerMenu{
+        display: none;
+        background-color: var(--darkish);
+        width: 100%;
+        text-align: end;
+        position: fixed;
+        top: 0;
+        transform: translate(0, 94px);
+        z-index: 2;
+        animation-name: slideDown;
+        animation-duration: 0.5s;
+    }
+    #burgerMenu a{
+        width: 100%;
+        background-color: var(--darkish);
+        font-size: 1.5rem;
+        color: var(--lighter);
+        text-decoration: none; 
+    }
+    #burgerMenu li{
+        margin: 10px 20px 0 0;
+    }
+    .icon{
+        display: block;
+    }
+    @keyframes slideDown {
+        0% {
+            transform: translateY(-100%);
+        }
+        100% {
+            transform: translateY(94px);
+        }
+    }
+}
+/* iPads */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+    /* Styles */
+    #bouton{
+        display: none;
+    }
+    #burgerMenu{
+        display: none;
+        background-color: var(--darkish);
+        width: 100%;
+        text-align: end;
+        position: fixed;
+        top: 0;
+        transform: translate(0, 94px);
+        z-index: 2;
+        animation-name: slideDown;
+        animation-duration: 0.5s;
+    }
+    #burgerMenu a{
+        width: 100%;
+        background-color: var(--darkish);
+        font-size: 1.5rem;
+        color: var(--lighter);
+        text-decoration: none; 
+    }
+    #burgerMenu li{
+        margin: 10px 20px 0 0;
+        padding-bottom: 10px;
+    }
+    .icon{
+        display: block;
+    }
+    @keyframes slideDown {
+        0% {
+            transform: translateY(-100%);
+        }
+        100% {
+            transform: translateY(94px);
+        }
+    }
+}
+/* Pc */
+@media only screen
+and (min-width : 1224px) {
+    /* Styles */
+    #burgerMenu{
+        display: none;
+    }
+    .icon{
+        display: none;
+    }
+
+}
