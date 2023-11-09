@@ -26,8 +26,7 @@
                 <p>La valeur recherchée n'existe pas dans la base de données.</p>
             @endif
             @endforeach
-            
-            
+  
             <br>
         </div>
     </div>
