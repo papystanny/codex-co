@@ -1,0 +1,172 @@
+.sidebar {
+    width: 180px; /* Largeur initiale réduite */
+    height: 100%;
+    background-color: #333;
+    position: fixed;
+    transition: width 0.5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; /* Centrage horizontal des icônes et du texte */
+    background-image: url('https://t4.ftcdn.net/jpg/04/90/42/41/360_F_490424126_7VGv6ef8SyFhkF0usoV5751U3UIgJQ9J.jpg');
+    background-size: cover;
+}
+
+.sidebar img
+{
+    margin: 20px;
+}
+
+.sidebar:hover {
+    width: 230px; /* Largeur étendue au survol */
+}
+
+.logo {
+    text-align: center;
+    padding: 10px;
+    color: white;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.menu span{
+    
+    margin-left: 15px;
+}
+
+.menu li {
+    font-size: 18px;
+    padding: 8px 25px;
+    width: 100%;
+    position: relative;
+    margin-top: 20px;
+    
+    
+    
+}
+
+.menu li:hover {
+   
+    font-weight: bold; /* Gras en survol */
+    margin-left: 50px;
+}
+
+
+
+.menu a {
+    text-decoration: none;
+    color: white;
+     display: flex;
+    align-items: center; /* Centrage vertical des icônes et du texte */
+    position: relative;
+}
+
+.logout {
+    text-align: center;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+     margin-bottom: 30px;
+}
+
+.logout:hover {
+    background-color: grey;
+    border-radius: 15px;
+    padding: 10px 20px;
+   
+}
+
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.top-bar{
+  margin-left: 180px;
+  transition: margin-left 0.5s; /* Pour que la top-bar s'ajuste avec la side-bar */
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+    background-color: rgb(155, 161, 165);
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.sidebar:hover ~ .top-bar {
+    margin-left: 230px; /* Ajustez la marge pour suivre la largeur étendue de la side-bar */
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    border-radius: 20px; /* Coins arrondis */
+    padding: 5px 10px;
+    width: 200px; /* Ajustez la largeur selon vos besoins */
+    margin: 10px 40px;
+}
+
+
+.search-bar input {
+    border-radius: 20px; /* Coins arrondis */
+    width: 100%;
+    padding: 5px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+.search-bar:hover{
+    width: 400px;
+}
+
+.search-bar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px; /* Marge à gauche du bouton */
+}
+
+/* Au survol du bouton de recherche, vous pouvez ajouter des styles pour indiquer qu'il est cliquable */
+.search-bar button:hover {
+    color: blueviolet;
+    transition: margin-left 0.5s; /* Pour que la top-bar s'ajuste avec la side-bar */
+}
+
+.notif-section{
+    list-style: none;
+    display: inherit;
+}
+
+.notif-section li{
+    font-size: 25px;
+    margin: 0px 50px;
+}
+
+.content{
+    margin-left: 180px;
+    
+}
+
+.sidebar:hover ~ .content {
+    margin-left: 230px; /* Ajustez la marge pour suivre la largeur étendue de la side-bar */
+    transition: margin-left 0.5s; /* Pour que la top-bar s'ajuste avec la side-bar */
+}
+/*//////////////////////////////////////////////////////////////////////////////////////////*/
+.messageAccueil{
+    display: flex;
+    text-align: center;
+    background-color: rgb(155, 161, 165);
+    justify-content: flex-end;
+    flex-direction: column;
+    height: 200px;
+    padding-bottom: 20px;
+}
+
+.messageAccueil p{
+   font-size: 25px;
+}
+

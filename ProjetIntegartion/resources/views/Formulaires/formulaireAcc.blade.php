@@ -14,11 +14,12 @@
     <div class="container containerForm">
         <div style="width:50%;">
             <h1 class="titreForm">Connexion</h1>
-                <form method="POST" action="{{route('logout')}}">
+                <form method="POST">
                     @csrf
                     <h1>  welcome </H1>
-                        <button type="submit" class="btnConnexion">Se deconnecter</button>   
-                     </form>
+                    <button type="submit" class="btn btn-primary">Se Connecter</button>
+
+                </form>
             </h1>
         </div>
     </div>

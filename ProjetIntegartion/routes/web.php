@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\EmployesController;
 use Illuminate\Support\Facades\Route;
-use App\http\Controllers\FormulaireController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\FormAccidentTravailController;
+use App\Http\Controllers\UsagersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,20 +15,63 @@ use App\Http\Controllers\LoginController;
 |
 */
 
+// --------------------------------------------Connexion( pour se connecter dans la base de donnée  ) ------------------------------------------------
+Route::get('/',
+[UsagersController::class, 'index'])->name('login.connexion'); 
+
+Route::get('/connexion',function(){
+return View('login.connexion');
+});
+
+Route::post('/connexion',
+[UsagersController::class,'connexion'])->name('login');
+
+// --------------------------------------------Deconnexon -----------------------------------------------------------
+Route::post('/logout' , [UsagersController::class,'logout'])->name('logout');
+
+// -------------------------------------- Accueil employe ----------------------------
+Route::middleware(['auth','employe'])->group(function () {
+   
+    Route::get('/employeAccueil', 
+    [EmployesController::class, 'index'])->name('employe.accueil');
+
+    Route::get('/employeFormulaire', 
+    [EmployesController::class, 'formulaire'])->name('employe.formulaire');
+
+    Route::get('/employeProcedure', 
+    [EmployesController::class, 'procedure'])->name('employe.procedure');
+
+    Route::get('/employeEquipe', 
+    [EmployesController::class, 'equipe'])->name('employe.equipe');
+
+    Route::get('/adminAccueil', 
+    [EmployesController::class, 'adminAccueil'])->name('admin.accueil');
+
+     
+
+
+    Route::get('/AccidentTravail',
+    [FormAccidentTravailController::class, 'AccidentTravail'])->name('employe.formAccidentTravail');
+    Route::post('/AccidentTravailStore',
+    [FormAccidentTravailController::class, 'store'])->name('employe.formAccidentTravailStore');
+
+});
+
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    // Les routes qui nécessitent un compte admin seulement
+    Route::get('/adminAccueil', 
+    [EmployesController::class, 'adminAccueil'])->name('admin.accueil');
+
+    Route::get('/adminProcedure', 
+    [EmployesController::class, 'adminProcedure'])->name('admin.procedure');
+
+    Route::get('/adminFormulaire', 
+    [EmployesController::class, 'adminFormulaire'])->name('admin.formulaire');
+
+    Route::get('/adminVoirFormulaireRempli', 
+    [EmployesController::class, 'adminVoirFormulaireRempli'])->name('admin.voirFormulaireRempli');
+});
 
 
 
-
-Route::get('/form', [LoginController::class, 'index'])->name('Formulaires.formulaireAcc');
-
-Route::get('/form2', [LoginController::class, 'showlogin'])->name('Formulaires.formulaireSitdang');
-
-// Route::post('/login', [LoginController::class, 'login'])->name('Formulaires.login');
-
-// Route::get('/', [LoginController::class, 'showLoginForm'])->name('Connexion.connect');
-
-// Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
-Route::get('/login', 'App\Http\Controllers\LoginController@showLoginForm')->name('login');
-Route::post('login', 'App\Http\Controllers\LoginController@login');
-Route::post('logout', 'App\Http\Controllers\LoginController@logout')->name('logout');
