@@ -133,6 +133,7 @@ class FormAccidentTravailController extends Controller
                $Formaccidentstravail -> usager_id =3; //<!-- Session::get('id');-->   */
                $Formaccidentstravail->save();
                
+               
                return view('employes.index');
                 }
                 
