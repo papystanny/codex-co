@@ -7,6 +7,7 @@ if (largeurEcran < 768) {
            // var messageLogout = document.getElementById("messageLogout");
             var messageWelcome = document.getElementById("messageWelcome");
             var messageNom= document.getElementById("messageNom");
+            var navbar= document.getElementById("navbar");
 
             // Affichez le message
             //messageLogout.style.display = "none";
@@ -18,7 +19,9 @@ if (largeurEcran < 768) {
                 messageWelcome.style.display = "none";
                 //messageLogout.style.display = "none";
                 messageNom.style.display = "block";
-            }, 3000); 
+                if (window.innerWidth <= 768) {
+                } 
+            }, 5000); 
         });
 
     // Gerer l'apparition de la navbar

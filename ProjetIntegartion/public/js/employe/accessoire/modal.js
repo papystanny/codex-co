@@ -36,9 +36,24 @@ window.addEventListener("click", function(event) {
 });
 
 // Écouteur d'événement pour soumettre le formulaire
-document.getElementById("formulaireFiltre").addEventListener("submit", function(event) {
-    event.preventDefault(); // Empêche la soumission du formulaire
-    // Récupérez les valeurs du formulaire et effectuez le traitement de la recherche ici
-    // ...
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('formulaireFiltre').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            var dateDebut = document.getElementById('date_debut').value;
+            var dateFin = document.getElementById('date_fin').value;
+            var typeFormulaire = document.getElementById('type').value;
+
+            // Effectue la requête AJAX vers le serveur avec les paramètres du filtre
+            fetch('/chemin/vers/ta/route?dateDebut=' + dateDebut + '&dateFin=' + dateFin + '&typeFormulaire=' + typeFormulaire, {
+                method: 'GET',
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Met à jour la vue avec les nouveaux formulaires
+                document.getElementById('historique-section').innerHTML = data;
+            })
+            .catch(error => console.error('Erreur lors de la requête Fetch', error));
+    });
     fermerModal(); // Ferme le modal après la soumission du formulaire
 });

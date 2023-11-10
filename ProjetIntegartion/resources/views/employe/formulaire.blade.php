@@ -65,38 +65,30 @@
             
 
     <div class="historique-section">
-                 <div class="historique-unite">
-                    <i class="fa-solid fa-folder left-fontAwesome " ></i>
-                    <h5> ACCIDENT  DE TRAVAIL  </h5>
-                    <i class="fa-solid fa-check right-fontAwesome "></i>
-                    <span > 2023-08-11</span> 
-                 </div>
 
-                 <div class="historique-unite">
-                    <i class="fa-solid fa-folder left-fontAwesome " ></i>
-                    <h5> ACCIDENT DE CIRCULATION </h5>
-                    <i class="fa-solid fa-check right-fontAwesome "></i>
-                    <span > 2021-08-22</span> 
-                 </div>
+    
 
-                 <div class="historique-unite">
+            @forelse($formulaires ?? [] as $formulaire)
+            <div class="historique-unite">
                     <i class="fa-solid fa-folder left-fontAwesome " ></i>
-                    <h5> DÉCLARATION  DE TRAVAIL  </h5>
+                    <h5>{{ mb_strtoupper($formulaire->fonctionMomentEvenement, 'UTF-8') }}  </h5>
                     <i class="fa-solid fa-check right-fontAwesome "></i>
-                    <span > 2023-12-12</span> 
+                    <span> {{$formulaire->dateAcccident}}</span> 
                  </div>
-            </div>
-
-            <div class="historique-section">
-                <div class="historique-unite">
-                   <i class="fa-regular fa-folder left-fontAwesome " ></i>
-                   <h5> AUCUN FORMULAIRE   </h5>
-                   <i class="fa-solid fa-xmark right-fontAwesome2 "></i>
-                   <span > Veuillez remplir un formulaire </span> 
+            @empty
+                <div class="historique-section">
+                    <div class="historique-unite">
+                        <i class="fa-regular fa-folder left-fontAwesome " ></i>
+                        <h5> AUCUN FORMULAIRE   </h5>
+                        <i class="fa-solid fa-xmark right-fontAwesome2 "></i>
+                        <span > Veuillez remplir un formulaire </span> 
+                    </div>
                 </div>
-           </div>
+            @endforelse
+                 
 
-   
+            
+
     </div>
 
 
@@ -119,7 +111,7 @@
     <div class="modal-content">
         <span class="close" id="fermerModal">&times;</span>
         <h2>Filtre de recherche</h2>
-        <form id="formulaireFiltre">
+        <form id="formulaireFiltre" onsubmit="return filtrerFormulaire()">
             <label for="date_debut">Date de début :</label>
             <input type="date" id="date_debut" name="date_debut" required>
 

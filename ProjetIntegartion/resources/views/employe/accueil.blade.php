@@ -54,20 +54,19 @@
         <div class="accueil-titre">
             <h2> <b> PROCÉDURES DE TRAVAIL </b>  </h2>
         </div>
+       
+
 
         <div class="accueil-formulaire">
-            <div class="formulaire">
-                <h5> CONSULTER SA PAIE  </h5>
-            </div>
-            <div class="formulaire">
-                <h5>  AVANTAGES SOCIAUX  </h5>
-            </div>
-            <div class="formulaire">
-                <h5> PRÉSENCE AU TRAVAIL  </h5>
-            </div>
-            <div class="formulaire">
-                <h5> RÉSPONSABILTÉ ET DROITS   </h5>
-            </div>
+            @forelse($proceduresTravail ?? [] as $procedure)
+                <div class="formulaire">
+                    <h5>{{ mb_strtoupper($procedure->nom, 'UTF-8') }}</h5>
+                </div>
+            @empty
+                <div class="formulaire">
+                    <h1>Aucune procédure de travail disponible</h1>
+                </div>
+            @endforelse
         </div>
 
     </div>

@@ -30,8 +30,10 @@
                 </div> 
     @endauth
 
+    
 
-    <nav class="navbar" >
+
+    <nav class="navbar" id="navbar" >
         <div class="left-section">
 
             <div class="logo">
@@ -42,7 +44,7 @@
     @if(Auth::check())
             <div class="department-name">
 
-                <span class="department ">SÉCURITÉ</span>
+                <span class="department ">{{Session::get('nomDepartement')}}</span>
                 <span class="employee" id="messageNom" style="display:none"> {{Session::get('nom')}}</span>
             </div>
     @endauth
@@ -73,7 +75,13 @@
                 <li><a class="menu__item" href="{{ route('employe.equipe') }}"><i class="fas fa-folder"></i> MES EMPLOYES </a></li> 
     @endif
                 <hr style="color: black;" />
-                        <li><a class="menu__item" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> SE DÉCONNECTER </a></li> 
+                <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <a onclick="this.closest('form').submit(); return false;" class="logout" > 
+                        <li><span class="menu__item" ><i class="fas fa-sign-out-alt"></i> SE DÉCONNECTER </span></li>
+                        </a>
+                </form> 
+
                                     
                 </ul>
             </div>
@@ -85,6 +93,10 @@
     @endauth
         </div>
     </nav>
+
+    <div class="colliderNavbar">
+    </div>
+    
     @yield('contenu')
 @endauth
 

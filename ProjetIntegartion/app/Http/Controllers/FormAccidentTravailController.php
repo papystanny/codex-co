@@ -3,25 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\FormAccidentTravailRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\Formaccidentstravail;
-use Session;
 class FormAccidentTravailController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+ /*  
     public function index()
     {
         //
-    }
-    public function AccidentTravail()
+    }*/
+    public function accidentTravail()
     {
         return view('formAccidentTravail.formAccidentTravail');
         //
     }
-     public function store(Request $request)
+     public function store(FormAccidentTravailRequest $request)
     {
         //
         {
@@ -29,7 +27,7 @@ class FormAccidentTravailController extends Controller
     
     
                $Formaccidentstravail = new Formaccidentstravail();
-               $Formaccidentstravail->nomEmploye = $request->input(Session::get('nom'));
+               $Formaccidentstravail->nomEmploye = $request->input('nomEmploye');
                 $Formaccidentstravail->fonctionMomentEvenement = $request->input('fonctionMomentEvenement');
                 $Formaccidentstravail->matriculeEmploye = $request->input('matriculeEmploye');
                 $Formaccidentstravail->dateAccident = $request->input('dateAccident');
@@ -41,6 +39,18 @@ class FormAccidentTravailController extends Controller
                // $Formaccidentstravail->natureSiteBlessure = $request->input('natureSiteBlessure',[]);
                 Log::debug($request->input('natureSiteBlessure',[]) );
                // $d=implode('',$request->input('natureSiteBlessure',[]));
+
+/*
+               $validator = Validator::make($request->all(), [
+                'checkbox1' => 'required|boolea',
+                'checkbox2' => function ($attribute, $value, $fail) use ($request) {
+                    if ($value && !$request->has('checkbox1')) {
+                        $fail('Checkbox 1 must be checked before checking Checkbox 2.');
+                    }
+                },
+            ]);
+*/
+
              
                 $data=$request->input('natureSiteBlessure',[]);
                 $natureSiteBlessureString=implode(',',$data);
@@ -123,7 +133,7 @@ class FormAccidentTravailController extends Controller
                $Formaccidentstravail -> usager_id =3; //<!-- Session::get('id');-->   */
                $Formaccidentstravail->save();
                
-               return view('employe.formulaire');
+               return view('employes.index');
                 }
                 
                catch (\Throwable $e) {
@@ -146,6 +156,12 @@ class FormAccidentTravailController extends Controller
         //
     }
 
+    public function showFormulaires()
+    {
+        
+        $Formaccidentstravail = FormaccidentsTravail::all();
+        return view('superviseurs.index',compact('Formaccidentstravail'));
+    }
     /**
      * Store a newly created resource in storage.
      */

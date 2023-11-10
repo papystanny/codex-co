@@ -3,37 +3,27 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\FormaccidentsTravail;
+use App\Models\Departement;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 
-class Usager extends Authenticatable
+class  Usager extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    protected $fillable = ['nom',  'prenom' , 'matricule','password','poste','droitEmploye','droitSuperieur','droitAdmin','nomSuperviseur','courriel','departement_id'];
 
-    protected $table = 'usagers'; // Le nom de la table dans la base de données
+   
 
-    protected $fillable = ['id','nom',  'prenom' , 'matricule','password','poste','droitEmploye','droitSuperieur','droitAdmin','nomSuperviseur','departement_id'];
+   public function formAccidentTravail()
+   {
+       return $this->belongsToMany(FormaccidentsTravail::class, 'usager_formaccidentstravail', 'usager_id', 'formAccidentsTravail_id');
+   }
 
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    public function formAccidentTravail()
-    {
-    // return $this->belongsToMany('App\Models\Campagne');
-    return $this->belongsToMany(FormaccidentsTravail::class);
-    }
-
-    public function departements()
-    {
-    // return $this->belongsToMany('App\Models\Campagne');
-    //return $this->belongsTo('App\Models\Usager');
-    return $this->belongsTo(Departement::class);
-    }
-
+   public function departements()
+   {
+        return $this->belongsTo(Departement::class, 'departement_id');
+   }
 }
