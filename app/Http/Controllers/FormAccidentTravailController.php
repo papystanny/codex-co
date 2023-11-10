@@ -24,13 +24,13 @@ class FormAccidentTravailController extends Controller
     }
      public function store(FormAccidentTravailRequest $request)
     {
-        //
+        Log::debug("je rentre dabs le store");
         {
             try {
-    
-    
+
                $Formaccidentstravail = new Formaccidentstravail();
                $Formaccidentstravail->nomEmploye = $request->input('nomEmploye');
+               Log::debug($request->input('nomEmploye') );
                 $Formaccidentstravail->fonctionMomentEvenement = $request->input('fonctionMomentEvenement');
                 $Formaccidentstravail->matriculeEmploye = $request->input('matriculeEmploye');
                 $Formaccidentstravail->dateAccident = $request->input('dateAccident');
@@ -117,6 +117,7 @@ class FormAccidentTravailController extends Controller
                 $Formaccidentstravail->supAvise = $request->input('supAvise');
                 $Formaccidentstravail->nomSuperviseurAvise = $request->input('nomSuperviseurAvise');
                 $Formaccidentstravail->prenomSuperviseurAvise = $request->input('prenomSuperviseurAvise');
+                Log::debug( $request->input('prenomSuperviseurAvise'));
                 $Formaccidentstravail->dateSuperviseurAvise = $request->input('dateSuperviseurAvise');
                 $Formaccidentstravail->signatureSupImmediat = $request->input('signatureSupImmediat');
                 $Formaccidentstravail->numPosteSupImmediat = $request->input('numPosteSupImmediat');
@@ -149,7 +150,6 @@ class FormAccidentTravailController extends Controller
                catch (\Throwable $e) {
              
                 Log::debug($e);
-             //   return redirect()->route('campagne')->withErrors(['L\'ajout de campagne n\'a pas fonctionné']);
              return view('formAccidentTravail.formAccidentTravail');
                }
                
