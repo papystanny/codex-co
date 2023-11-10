@@ -30,20 +30,7 @@ class EmployesController extends Controller
         return view('employe.formulaire', compact('formulaires'));
     }
 
-    public function filtrerFormulaires(Request $request)
-    {
-        $dateDebut = $request->input('dateDebut');
-        $dateFin = $request->input('dateFin');
-        $typeFormulaire = $request->input('typeFormulaire');
-
-        $user = Usager::where('matricule', Session::get('matricule'))->first();
-
-        // Logique de filtrage et récupération des données
-
-        // Retourne les données en format JSON (à adapter selon tes besoins)
-        return response()->json($formulairesFiltres);
-    }
-
+   
     public function procedure()
     { 
         return view('employe.procedure');
