@@ -25,3 +25,8 @@ Route::post('/formulaires',[FormulaireController::class, 'store'])->name('formul
 Route::get('/formMeca' , [FormulaireMecaniqueController::class , 'index'])->name('formulaires.atelierMec');
 Route::post('/formulairesMeca',[FormulaireMecaniqueController::class, 'store'])->name('formulairesMec.store');
 //Route::get('/creation/formulairesMeca',[FormulaireController::class,'create'])->name('formulairesMec.create');
+
+
+//visualisez les formulaire remplir
+
+Route::get('/visualiser', [FormulaireController::class, 'visualisezForm'])->name('Formulaires.index');

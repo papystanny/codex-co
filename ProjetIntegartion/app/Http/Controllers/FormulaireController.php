@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 //use Illuminate\Http\Request;
 use App\Models\Formsitdangereuse;
+use App\Models\Formateliermecanique;
 use App\Http\Requests\FormsitdangereuseRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
@@ -29,6 +30,14 @@ class FormulaireController extends Controller
     public function formulaireMec()
     {
         return view ('Formulaires.atelierMec');
+    }
+
+    public function visualisezForm()
+    {
+        $formMec = Formateliermecanique::all();
+        $formsit = Formsitdangereuse::all();
+
+        return View('Formulaires.index');
     }
 
     /**
