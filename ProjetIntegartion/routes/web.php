@@ -56,11 +56,6 @@ Route::middleware(['auth','employe'])->group(function () {
     [FormAccidentTravailController::class, 'store'])->name('employe.formAccidentTravailStore');
 
 
-    
-
-    Route::get('/employeFormulaireFiltre',
-    [EmployesController::class, 'filtrerFormulaires'])->name('employe.formulaire');
-
 });
 
 
