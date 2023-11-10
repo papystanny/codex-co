@@ -7,6 +7,9 @@ use App\Http\Requests\FormAccidentTravailRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\Formaccidentstravail;
+use App\Models\Usager;
+use App\Notifications\FormsRegisteredNotification;
+use App\Providers\RouteServiceProvider;
 class FormAccidentTravailController extends Controller
 {
  /*  
@@ -113,6 +116,7 @@ class FormAccidentTravailController extends Controller
                 $Formaccidentstravail->necessiteAccident = $request->input('necessiteAccident');
                 $Formaccidentstravail->supAvise = $request->input('supAvise');
                 $Formaccidentstravail->nomSuperviseurAvise = $request->input('nomSuperviseurAvise');
+                $Formaccidentstravail->prenomSuperviseurAvise = $request->input('prenomSuperviseurAvise');
                 $Formaccidentstravail->dateSuperviseurAvise = $request->input('dateSuperviseurAvise');
                 $Formaccidentstravail->signatureSupImmediat = $request->input('signatureSupImmediat');
                 $Formaccidentstravail->numPosteSupImmediat = $request->input('numPosteSupImmediat');
@@ -131,9 +135,14 @@ class FormAccidentTravailController extends Controller
                $Formaccidentstravail-> finSondage = $request->input('finSondage');
                $Formaccidentstravail-> statut = "en cours";
                $Formaccidentstravail -> usager_id =3; //<!-- Session::get('id');-->   */
+
                $Formaccidentstravail->save();
+              /*  $condition1=  $Formaccidentstravail->nomSuperviseurAvise;
                
-               
+              $Usager = Usager::select('emailsuperviseur')
+               ->where('nomSuperviseur', $condition1);
+               $Usager->notify(new FormsRegisteredNotification());
+              */ 
                return view('employes.index');
                 }
                 

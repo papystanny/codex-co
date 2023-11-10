@@ -20,11 +20,10 @@ return new class extends Migration
              $table->integer('matricule')->unique();
              $table->string('password',100);
              $table->string('poste',100);
-             $table->integer('droitEmploye');
-             $table->integer('droitSuperieur');
-             $table->integer('droitAdmin');
              $table->string('nomSuperviseur',100)->nullable();
-             $table->string('courriel',250);
+             $table->string('prenomSuperviseur',100)->nullable();
+             $table->string('emailsuperviseur',250)->nullable();
+            $table->string('emailadmin',250);
              $table->foreignId('departement_id')->constrained();
              $table->string('typeCompte',100)->nullable();
              $table->rememberToken()->nullable();

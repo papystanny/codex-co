@@ -16,6 +16,7 @@ class FormsRegisteredNotification extends Notification
      */
     public function __construct()
     {
+        
         //
     }
 

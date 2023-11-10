@@ -8,7 +8,7 @@ use App\Models\Usager;
 class Formaccidentstravail extends Model
 {
     use HasFactory;
-    protected $fillable = ['nomEmploye','fonctionMomentEvenement','matriculeEmploye' , 'dateAccident', 'heureAccident', 'nomsTemoins', 'endroitAccident','secteurActivite','natureSiteBlessure','descriptionBlessure','violence','descriptionDeroulementBlessure','premiersSoins','nomSecouriste','necessiteAccident','supAvise','nomSuperviseurAvise','dateSuperviseurAvise','signatureSupImmediat','numPosteSupImmediat','dateSignatureSupImmediat','signatureEmploye','numPosteEmploye','dateSignatureEmploye','notifSup','notifAdmin' ];
+    protected $fillable = ['nomEmploye','fonctionMomentEvenement','matriculeEmploye' , 'dateAccident', 'heureAccident', 'nomsTemoins', 'endroitAccident','secteurActivite','natureSiteBlessure','descriptionBlessure','violence','descriptionDeroulementBlessure','premiersSoins','nomSecouriste','necessiteAccident','supAvise','nomSuperviseurAvise','prenomSuperviseurAvise','dateSuperviseurAvise','signatureSupImmediat','numPosteSupImmediat','dateSignatureSupImmediat','signatureEmploye','numPosteEmploye','dateSignatureEmploye','notifSup','notifAdmin' ];
 
     public function usagers()
     {

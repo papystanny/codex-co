@@ -390,8 +390,16 @@
                      @error('nomSuperviseurAvise')
                             <span class="text-danger error-text">{{ $message }}</span>
                     @enderror
+                <div class="form-check"> 
+                    <label for="formGroupExampleInput">prenom en lettres moulées du supérieur</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder=""name="prenomSuperviseurAvise" value="{{old('prenomSuperviseurAvise')}}" >
+                   
+                </div>
+                     @error('nomSuperviseurAvise')
+                            <span class="text-danger error-text">{{ $message }}</span>
+                    @enderror
                 <div class="form-check">
-                    <label for="inputPassword4">Date </label>
+                    <label for="inputPassword4">dateSuperviseurAvise </label>
                     <input type="date" class="form-control " id="inputPassword4" placeholder="" name="dateSuperviseurAvise" value="{{old('dateSuperviseurAvise')}}" >
                     @error('dateSuperviseurAvise')
                             <span class="text-danger error-text">{{ $message }}</span>
@@ -412,7 +420,7 @@
                     @enderror
                 </div>
                 <div class="form-check">
-                    <label for="inputPassword4">Date </label>
+                    <label for="inputPassword4">dateSignatureSupImmediat </label>
                     <input type="date" class="form-control " id="inputPassword4" placeholder="" name="dateSignatureSupImmediat" value="{{old('dateSignatureSupImmediat')}}" >
                     @error('dateSignatureSupImmediat')
                             <span class="text-danger error-text">{{ $message }}</span>
@@ -433,7 +441,7 @@
                     @enderror
                 </div>
                 <div class="form-check">
-                    <label for="inputPassword4">Date </label>
+                    <label for="inputPassword4">dateSignatureEmploye</label>
                     <input type="date" class="form-control " id="inputPassword4" placeholder="" name="dateSignatureEmploye" value="{{old('dateSignatureEmploye')}}" >
                     @error('dateSignatureEmploye')
                             <span class="text-danger error-text">{{ $message }}</span>
