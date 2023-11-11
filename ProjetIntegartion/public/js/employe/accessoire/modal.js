@@ -35,25 +35,67 @@ window.addEventListener("click", function(event) {
 
 });
 
+
+
 // Écouteur d'événement pour soumettre le formulaire
-    document.addEventListener('DOMContentLoaded', function () {
-        document.getElementById('formulaireFiltre').addEventListener('submit', function (event) {
-            event.preventDefault();
+function filtrerFormulaireAccidentTravail() {
+    // Récupère les valeurs du formulaire de filtrage
+    var dateDebut = document.getElementById('date_debut').value;
+    var dateFin = document.getElementById('date_fin').value;
+    var typeFormulaire = document.getElementById('type').value;
+    var csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
 
-            var dateDebut = document.getElementById('date_debut').value;
-            var dateFin = document.getElementById('date_fin').value;
-            var typeFormulaire = document.getElementById('type').value;
 
-            // Effectue la requête AJAX vers le serveur avec les paramètres du filtre
-            fetch('/chemin/vers/ta/route?dateDebut=' + dateDebut + '&dateFin=' + dateFin + '&typeFormulaire=' + typeFormulaire, {
-                method: 'GET',
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Met à jour la vue avec les nouveaux formulaires
-                document.getElementById('historique-section').innerHTML = data;
-            })
-            .catch(error => console.error('Erreur lors de la requête Fetch', error));
+    // Effectue la requête AJAX pour filtrer les formulaires
+    $.ajax({
+        type: 'POST',
+        url: '/filtrer-formulaires',
+        data: {
+            _token: csrfToken,
+            date_debut: dateDebut,
+            date_fin: dateFin,
+            typeFormulaire: typeFormulaire,
+        },
+        success: function(data) {
+            // Met à jour la vue avec les nouveaux formulaires
+            // (Cette étape dépend de la structure de ta vue et de la façon dont tu veux afficher les données)
+            var historiqueSection = document.getElementById('historique-section');
+            historiqueSection.innerHTML = ""; // Vide la section avant d'ajouter de nouveaux éléments
+
+            // Traite chaque formulaire
+                if (data.length > 0) {
+                    data.forEach(function(formulaire) {
+                        var formulaireDiv = document.createElement('div');
+                        formulaireDiv.innerHTML = '<i class="fa-solid fa-folder left-fontAwesome"></i>' +
+                                                '<h5>' + formulaire.fonctionMomentEvenement + '</h5>' +
+                                                '<i class="fa-solid fa-check right-fontAwesome"></i>' +
+                                                '<span>' + formulaire.dateAcccident + '</span>';
+
+                        historiqueSection.appendChild(formulaireDiv);
+                    });
+                } else {
+                    // Si aucun formulaire n'est retourné, affiche un message
+                    var messageDiv = document.createElement('div');
+                    messageDiv.innerHTML = '<i class="fa-regular fa-folder left-fontAwesome"></i>' +
+                                        '<h5>AUCUN FORMULAIRE</h5>' +
+                                        '<i class="fa-solid fa-xmark right-fontAwesome2"></i>' +
+                                        '<span>Veuillez remplir un formulaire</span>';
+
+                    historiqueSection.appendChild(messageDiv);
+                }
+        },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error('Status: ' + textStatus);
+                console.error('Error: ' + errorThrown);
+                console.error(jqXHR.responseText);
+        }
     });
+
     fermerModal(); // Ferme le modal après la soumission du formulaire
-});
+
+    // Empêche le formulaire de se soumettre normalement
+    return false;
+}
+
+
+   

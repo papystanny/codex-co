@@ -64,9 +64,7 @@
        
             
 
-    <div class="historique-section">
-
-    
+    <div class="historique-section" ìd="historique-section">
 
             @forelse($formulaires ?? [] as $formulaire)
             <div class="historique-unite">
@@ -97,9 +95,13 @@
   
 
     @endsection
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="js/employe/accessoire/modal.js" defer></script>
+ <!-- Inclure jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<!-- Inclure Bootstrap JS après jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+<!-- Inclure ton script modal.js -->
+<script src="js/employe/accessoire/modal.js" defer></script>
+
   
 
 </body>
@@ -111,7 +113,8 @@
     <div class="modal-content">
         <span class="close" id="fermerModal">&times;</span>
         <h2>Filtre de recherche</h2>
-        <form id="formulaireFiltre" onsubmit="return filtrerFormulaire()">
+        <form id="formulaireFiltrAccidentTravail" method="POST" onsubmit="return filtrerFormulaireAccidentTravail()">
+        @csrf
             <label for="date_debut">Date de début :</label>
             <input type="date" id="date_debut" name="date_debut" required>
 
@@ -120,9 +123,9 @@
 
             <label for="type">Type de formulaire :</label>
             <select id="type" name="typeFormulaire" required>
-                <option value="type2">Tous les formulaires </option>
-                <option value="type1">Déclaration et accident de travail </option>
-                <option value="type2">Signalement d'acte de violence </option>
+                <option value="type1" data-formulaire="formaccidentstravails">>Tous les formulaires </option>
+                <option value="formaccidentstravails" data-formulaire="formaccidentstravails">>Déclaration et accident de travail </option>
+                <option value="formsitdangereuses" data-formulaire="usager_formsitdangereuse">>Signalement d'acte de violence </option>
 @if( Session::get('typeCompte') == 'superieur')   
               <option value="type1">Type 1</option>
               <option value="type2">Type 2</option> 

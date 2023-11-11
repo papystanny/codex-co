@@ -57,9 +57,7 @@ Route::middleware(['auth','employe'])->group(function () {
 
 
     
-
-    Route::get('/employeFormulaireFiltre',
-    [EmployesController::class, 'filtrerFormulaires'])->name('employe.formulaire');
+    Route::post('/filtrer-formulaires', [EmployesController::class, 'filtrerFormulaires'])->name('formulaire.filtres');
 
 });
 

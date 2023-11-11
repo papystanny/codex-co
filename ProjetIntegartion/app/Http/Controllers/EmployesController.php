@@ -30,19 +30,7 @@ class EmployesController extends Controller
         return view('employe.formulaire', compact('formulaires'));
     }
 
-    public function filtrerFormulaires(Request $request)
-    {
-        $dateDebut = $request->input('dateDebut');
-        $dateFin = $request->input('dateFin');
-        $typeFormulaire = $request->input('typeFormulaire');
-
-        $user = Usager::where('matricule', Session::get('matricule'))->first();
-
-        // Logique de filtrage et récupération des données
-
-        // Retourne les données en format JSON (à adapter selon tes besoins)
-        return response()->json($formulairesFiltres);
-    }
+    
 
     public function procedure()
     { 
@@ -72,5 +60,46 @@ class EmployesController extends Controller
     public function adminVoirFormulaireRempli()
     { 
         return view('admin.voirFormulaireRempli');
+    }
+
+
+    public function filtrerFormulaires(Request $request)
+    {
+        $dateDebut = $request->input('date_debut');
+        $dateFin = $request->input('date_fin');
+        $typeFormulaire = $request->input('typeFormulaire');
+
+        $user = Usager::where('matricule', Session::get('matricule'))->first();
+
+        $formulairesFiltres = $this->getFormulairesByType($user, $typeFormulaire, $dateDebut, $dateFin);
+
+        // Retourne les données en format JSON (à adapter selon tes besoins)
+        return response()->json($formulairesFiltres);
+    }
+
+    // Fonction pour récupérer les formulaires en fonction du type
+    private function getFormulairesByType($user, $typeFormulaire, $dateDebut, $dateFin)
+    {
+        switch ($typeFormulaire) {
+            case 'type1':
+                return $user->formulairesType1()
+                    ->where('dateAccident', '>=', $dateDebut)
+                    ->where('dateAccident', '<=', $dateFin)
+                    ->get();
+            case 'type2':
+                return $user->formulairesType2()
+                    ->where('dateAccident', '>=', $dateDebut)
+                    ->where('dateAccident', '<=', $dateFin)
+                    ->get();
+            case 'type3':
+                return $user->formulairesType3()
+                    ->where('dateAccident', '>=', $dateDebut)
+                    ->where('dateAccident', '<=', $dateFin)
+                    ->get();
+            // Ajoute d'autres cas au besoin
+            default:
+                // Traite le cas par défaut
+                return null;
+        }
     }
 }
