@@ -110,13 +110,13 @@
                     </label>
                     
                     <div class="form-check">
-                      <input class="form-check-input"   id="checkbox2" onchange="checkCheckbox(this)" type="checkbox" value="D" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}">
+                      <input class="form-check-input"   id="checkbox2" onchange="checkCheckbox(this)" type="checkbox" value="Droit" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}">
                     <label class="form-check-label" for="flexCheckDefault">
                     Droit
                     </div >  
                     </span>
                     <div class="form-check">
-                       <input class="form-check-input" id="checkbox3"  type="checkbox" value="G" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
+                       <input class="form-check-input" id="checkbox3" onchange="checkCheckbox(this)" type="checkbox" value="Gauche" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
                     <label class="form-check-label" for="flexCheckDefault">
                     Gauche
                     </label> 
