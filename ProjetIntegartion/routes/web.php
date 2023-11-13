@@ -51,12 +51,14 @@ Route::middleware(['auth','employe'])->group(function () {
 
 
     Route::get('/AccidentTravail',
-    [FormAccidentTravailController::class, 'AccidentTravail'])->name('employe.formAccidentTravail');
+    [FormAccidentTravailController::class, 'accidentTravail'])->name('employe.formAccidentTravail');
     Route::post('/AccidentTravailStore',
     [FormAccidentTravailController::class, 'store'])->name('employe.formAccidentTravailStore');
 
 
 });
+
+
 
 
 Route::middleware(['auth', 'admin'])->group(function () {
