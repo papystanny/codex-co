@@ -17,7 +17,12 @@
 <body>
     
 
-   
+    <!-- Section pour afficher les messages d'erreur -->
+    @if(session('error'))
+        <div class="alert">
+            {{ session('error') }}
+        </div>
+    @endif
 
     <div class ="image-un" style="display: none;">
         <img src="img/decor.png" class="img-fluid logo-marge-10" width="200%" height="100px">
@@ -32,7 +37,7 @@
             </div>
             <div class="form-group">
                 <h5> <i class="fas fa-lock"></i>  Mot de passe : </h5>
-                <input type="password" id="username" name="password" required class="custom-input">
+                <input type="password" id="password" name="password" required class="custom-input">
              </div>
              <div class="custom-submit">
                <button type="submit" >Connexion</button>

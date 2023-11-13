@@ -53,6 +53,21 @@
     text-align: center;
     max-width: 400px;
 }
+
+.historique-section2{
+    border-radius: 10px;
+    background-color: beige;
+    padding: 8px 5px;
+    margin: 15px 5px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-content: space-around;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    max-width: 400px;
+}
    
 .historique-unite{
     border-radius: inherit;
@@ -72,9 +87,29 @@
     border-color:  rgb(212, 74, 74);
 }
 
+.historique-unite2{
+    border-radius: inherit;
+    background-color: inherit;
+    padding: inherit;
+    margin: inherit;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    text-align: inherit;
+    max-width: inherit;
+    border-bottom: 2px solid #000; /* Largeur de la bordure de 4 pixels (vous pouvez ajuster cette valeur) */
+    border-left: 2px solid #000; /* Largeur de la bordure de 4 pixels (vous pouvez ajuster cette valeur) */
+    border-color:  rgb(212, 74, 74);
+}
+
+.unite1 {
+    display: flex;
+    justify-content: space-around;
+}
+
 .conteneur-scroll {
     max-width: 400px; /* Largeur de la div parente */
-    height: 280px; /* Hauteur de la div parente */
+    max-height: 280px; /* Hauteur de la div parente */
     overflow: auto; /* Activer la barre de défilement */
     border-radius: 10px;
 }

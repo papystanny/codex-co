@@ -47,20 +47,24 @@ class UsagersController extends Controller
                // Log::debug($user );
                
                 
-               return view('employe.accueil', compact('proceduresTravail'));
+               return view('employe.accueil', compact('proceduresTravail'))->with('error', 'Connexion échouée !');
 
             }
             else if(Auth::user()->typeCompte == 'superieur')
             {
                 $user = Usager::where('matricule', $request->matricule)->first();
+                
                 $departement = $user->departements;
-                $nom = ucfirst($user->nom); // Utilisation de ucfirst pour capitaliser la première lettre
+                $proceduresTravail = $user->departements->proceduresTravails;
+                $nom = ucfirst($user->nom); 
 
                 Session::put('nom', $user->nom);       
+                Session::put('matricule', $user->matricule); 
                 Session::put('prenom', $user->prenom);   
                 Session::put('typeCompte', $user->typeCompte);
                 Session::put('nomDepartement', $departement->nom);
-                return redirect()->route('employe.accueil')->with('message',"Connexion réussie.");   
+
+                return view('employe.accueil', compact('proceduresTravail'))->with('error', 'Connexion échouée !');
             }
             else if(Auth::user()->typeCompte == 'admin')
             {
@@ -69,15 +73,19 @@ class UsagersController extends Controller
                 $nom = ucfirst($user->nom); // Utilisation de ucfirst pour capitaliser la première lettre
 
                 Session::put('nom', $nom);
+                Session::put('matricule', $user->matricule); 
                 Session::put('typeCompte', $user->typeCompte);
                 Session::put('nomDepartement', $departement->nom);
-                return redirect()->route('admin.accueil')->with('message', "Connexion réussie.");
+                return redirect()->route('admin.accueil')->with('error', "Connexion réussie.");
+            }
+            else{
+                return redirect('/connexion') ->with('error', 'Connexion ok mais connexion no');
             }
             
         } 
          else 
         {
-          return redirect('/connexion') ->with('alert', 'Conexxion échoué!');
+          return redirect('/connexion') ->with('error', 'TENTATIVE  ÉCHOUÉE!');
         } 
                 
     }

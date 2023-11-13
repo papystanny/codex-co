@@ -29,6 +29,7 @@ Route::post('/connexion',
 // --------------------------------------------Deconnexon -----------------------------------------------------------
 Route::post('/logout' , [UsagersController::class,'logout'])->name('logout');
 
+
 // -------------------------------------- Accueil employe ----------------------------
 Route::middleware(['auth','employe'])->group(function () {
    
@@ -58,6 +59,7 @@ Route::middleware(['auth','employe'])->group(function () {
 
     
     Route::post('/filtrer-formulaires', [EmployesController::class, 'filtrerFormulaires'])->name('formulaire.filtres');
+    Route::post('/filtrer-formulairesEquipes', [EmployesController::class, 'filtrerFormulairesEquipes'])->name('formulaireEquipe.filtres');
 
 });
 

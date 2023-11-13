@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
@@ -35,93 +36,68 @@
                 <i class="fas fa-filter"></i> 
            </button>
         </div>
-        <div class="historique-section">
-            <div class="historique-unite">
-               <i class="fa-solid fa-folder left-fontAwesome " ></i>
-               <h5> ACCIDENT  DE TRAVAIL  </h5>
-               <i class="fa-solid fa-check right-fontAwesome "></i>
-               <span > 2023-08-11</span> 
+
+    <div class="historique-section2">
+       @forelse($formulaires ?? [] as $formulaire)
+           
+                    <div class="historique-unite2" id="historique-section2">
+                        <div class="unite1">
+                            <i class="fa-solid fa-folder left-fontAwesome " ></i> 
+                            <h5 >  {{$formulaire->dateAcccident}}</h5> 
+                            <i class="fa-solid fa-xmark  right-fontAwesome2 "></i>
+                        </div>       
+                        <h5> {{ mb_strtoupper($formulaire->fonctionMomentEvenement, 'UTF-8') }}   </h5>
+                        <h5> {{$formulaire->nomEmploye}} </h5>
+                    </div>
+            @empty
+
+            <div class="historique-section" class="x1" id="x1">
+                    <div class="historique-unite" class="x2">
+                            <i class="fa-solid fa-user-tie  left-fontAwesome " ></i>
+                            <h5> AUCUN FORMULAIRE   </h5>
+                        <i class="fa-solid fa-xmark right-fontAwesome2 "></i>
+                        <span >Personne n'a rempli de formulaire </span> 
+                   </div>
             </div>
-            <div class="historique-unite">
-                <i class="fa-solid fa-folder left-fontAwesome " ></i>
-                <h5> ACCIDENT  DE TRAVAIL  </h5>
-                <i class="fa-solid fa-xmark  right-fontAwesome2 "></i>
-                <span > 2023-08-11</span> 
-             </div>
-       </div>
+            @endforelse
+    </div>
+     
 
 
-        <div class="historique-section">
-            <div class="historique-unite">
-               <i class="fa-solid fa-user-tie  left-fontAwesome " ></i>
-               <h5> AUCUN FORMULAIRE   </h5>
-               <i class="fa-solid fa-xmark right-fontAwesome2 "></i>
-               <span >Personne n'a rempli de formulaire </span> 
-            </div>
-       </div>
+  
 
 
 
         <div class="accueil-titre">
                 <h2> <b> MEMBRE D'ÉQUIPE </b>  </h2>
         </div>
-        <div class="equipe-section">
+
+    <div class="equipe-section">
             <div class="conteneur-scroll">
-                    <div class="equipe-unite">
-                    <i class="fa-solid fa-user-tie left-fontAwesome " ></i>
-                    <h5> DEL PIERROT  </h5>    
+                @forelse($usagers ?? [] as $usager)        
+                
+                            <div class="equipe-unite">
+                                <i class="fa-solid fa-user-tie left-fontAwesome " ></i>
+                                <h5> {{$usager->nom}} {{$usager->prenom}} </h5>    
+                            </div>
+                       
+                @empty
+                    <div class="historique-section">
+                    <div class="historique-unite">
+                        <i class="fa-solid fa-user-tie  left-fontAwesome " ></i>
+                        <h5> AUCUN MEMBRE   </h5>
+                        <i class="fa-solid fa-xmark right-fontAwesome2 "></i>
+                        <span > Vous n'avez pas d'employé en charge  </span> 
                     </div>
-
-                    <div class="equipe-unite">
-                    <i class="fa-solid fa-user-tie left-fontAwesome " ></i>
-                    <h5> SAMANTHA RIO </h5>
                     </div>
-
-                    <div class="equipe-unite">
-                        <i class="fa-solid fa-user-tie left-fontAwesome " ></i>
-                        <h5> MARI ROSE DUMONT</h5>
-                    </div>
-
-                    <div class="equipe-unite">
-                        <i class="fa-solid fa-user-tie left-fontAwesome " ></i>
-                        <h5> STAN PHAREL  </h5>
-                    </div>
-
-                    <div class="equipe-unite">
-                        <i class="fa-solid fa-user-tie left-fontAwesome " ></i>
-                        <h5> FRANCK DUROCHER  </h5>
-                    </div>
-
-                    <div class="equipe-unite">
-                        <i class="fa-solid fa-user-tie left-fontAwesome " ></i>
-                        <h5> ALEXANDRE DUCHAMP  </h5>
-                    </div>
-
-                    <div class="equipe-unite">
-                        <i class="fa-solid fa-user-tie left-fontAwesome " ></i>
-                        <h5> AIME PARFAIT  </h5>
-                    </div>
-
-                    <div class="equipe-unite">
-                        <i class="fa-solid fa-user-tie left-fontAwesome " ></i>
-                        <h5> TRUDEAU MARCEL  </h5>
-                    </div>
-
-                    <div class="equipe-unite">
-                        <i class="fa-solid fa-user-tie left-fontAwesome " ></i>
-                        <h5> VALÉRIE LAPLANTE  </h5>
-                    </div>
+                @endforelse
             </div>
-       </div>
+    </div>
 
-       <div class="historique-section">
-           <div class="historique-unite">
-              <i class="fa-solid fa-user-tie  left-fontAwesome " ></i>
-              <h5> AUCUN MEMBRE   </h5>
-              <i class="fa-solid fa-xmark right-fontAwesome2 "></i>
-              <span > Vous n'avez pas d'employé en charge  </span> 
-           </div>
-      </div>
+ 
+                    
+         
+    
 
 
 
@@ -148,32 +124,32 @@
     <div class="modal-content">
        
         <h2>Filtre de recherche</h2>
-        <form id="formulaireFiltre">
-            <label for="date_debut">Date de début :</label>
+        <form id="formulaireFiltrAccidentTravailEquipe" action="/filtrer-formulairesEquipes" method="POST" onsubmit="filtrerFormulaireAccidentTravailEquipe(event)">
+             @csrf
+             <label for="date_debut">Date de début :</label>
             <input type="date" id="date_debut" name="date_debut" required>
 
             <label for="date_fin">Date de fin :</label>
             <input type="date" id="date_fin" name="date_fin" required>
 
             <label for="type">Type de formulaire :</label>
-            <select id="typeFormulaire" name="typeFormulaire" required>
+            <select id="type" name="typeFormulaire" required>
                 <option value="type2">Tous les formulaires </option>
-                <option value="type1">Déclaration et accident de travail </option>
-                <option value="type2">Signalement d'acte de violence </option>
+                <option value="formaccidentstravails" data-formulaire="formaccidentstravails">Déclaration et accident de travail </option>
+                <option value="formsitdangereuses" data-formulaire="usager_formsitdangereuse">Signalement d'acte de violence </option>
 @if( Session::get('typeCompte') == 'superieur')   
-              <option value="type1">Type 1</option>
-              <option value="type2">Type 2</option> 
+                <option value="xxx">Audi SST</option>
+                <option value="xx">Rapport-Mécanique d'incident</option> 
 @endauth
                 <!-- Ajoutez d'autres options de type de formulaire au besoin -->
             </select>
 
             <label for="type">Nom de l'employe :</label>
             <select id="nomEmploye" name="nomEmploye" required>
-                <option value="type2">Stan Pharel </option>
-                <option value="type1">Laura Claire </option>
-                <option value="type2">Iris Dubois</option>
-
-                <!-- Ajoutez d'autres options de type de formulaire au besoin -->
+            @forelse($usagers ?? [] as $usager)             
+                <option value="{{$usager->matricule}}">{{$usager->nom}} {{$usager->prenom}} </option>
+            @empty
+            @endforelse
             </select>
            
             <button type="submit">Rechercher</button> 

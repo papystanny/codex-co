@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
@@ -64,7 +65,7 @@
        
             
 
-    <div class="historique-section" ìd="historique-section">
+    <div class="historique-section" id="historique-section">
 
             @forelse($formulaires ?? [] as $formulaire)
             <div class="historique-unite">
@@ -74,18 +75,15 @@
                     <span> {{$formulaire->dateAcccident}}</span> 
                  </div>
             @empty
-                <div class="historique-section">
+                
                     <div class="historique-unite">
                         <i class="fa-regular fa-folder left-fontAwesome " ></i>
                         <h5> AUCUN FORMULAIRE   </h5>
                         <i class="fa-solid fa-xmark right-fontAwesome2 "></i>
                         <span > Veuillez remplir un formulaire </span> 
                     </div>
-                </div>
-            @endforelse
-                 
 
-            
+            @endforelse
 
     </div>
 
@@ -113,8 +111,8 @@
     <div class="modal-content">
         <span class="close" id="fermerModal">&times;</span>
         <h2>Filtre de recherche</h2>
-        <form id="formulaireFiltrAccidentTravail" method="POST" onsubmit="return filtrerFormulaireAccidentTravail()">
-        @csrf
+       <form id="formulaireFiltrAccidentTravail" action="/filtrer-formulaires" method="POST" onsubmit="filtrerFormulaireAccidentTravail(event)">
+             @csrf
             <label for="date_debut">Date de début :</label>
             <input type="date" id="date_debut" name="date_debut" required>
 
@@ -123,12 +121,12 @@
 
             <label for="type">Type de formulaire :</label>
             <select id="type" name="typeFormulaire" required>
-                <option value="type1" data-formulaire="formaccidentstravails">>Tous les formulaires </option>
-                <option value="formaccidentstravails" data-formulaire="formaccidentstravails">>Déclaration et accident de travail </option>
-                <option value="formsitdangereuses" data-formulaire="usager_formsitdangereuse">>Signalement d'acte de violence </option>
+                <option value="type1" data-formulaire="formaccidentstravails">Tous les formulaires </option>
+                <option value="formaccidentstravails" data-formulaire="formaccidentstravails">Déclaration et accident de travail </option>
+                <option value="formsitdangereuses" data-formulaire="usager_formsitdangereuse">Signalement d'acte de violence </option>
 @if( Session::get('typeCompte') == 'superieur')   
-              <option value="type1">Type 1</option>
-              <option value="type2">Type 2</option> 
+              <option value="type1">Audi SST</option>
+              <option value="type2">Rapport-Mécanique d'incident</option> 
 @endauth
                 <!-- Ajoutez d'autres options de type de formulaire au besoin -->
             </select>
