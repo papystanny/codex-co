@@ -18,6 +18,11 @@
 @extends('layouts.app')
 
 @section('contenu')
+<div>
+    @foreach($usagers as $usager)
+    <h3> {{$usager->prenom}} {{$usager->nom}}</h3>
+    @endforeach
+</div>
 <form class="marge" method="post" action="{{ route('employe.formAccidentTravailStore') }}" enctype="multipart/form-data">
 @csrf
 
@@ -47,13 +52,20 @@
         @error('heureAccident')
         <span class="text-danger error-text">{{ $message }}</span>
         @enderror
+
+    <div>
+       <label for="temoins">Témoin(s)</label>       
+    </div>
+                           
   <div class="form-check">
-    <label for="temoins">Témoin(s)</label> 
+    
     <input class="form-check-input flexRadioDefault @error('flexRadioDefault') is-invalid @enderror" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="{{old('flexRadioDefault')}}" >
     <label class="form-check-label" for="exampleCheck1">oui</label>
     @error('flexRadioDefault')
         <span class="text-danger error-text">{{ $message }}</span>
     @enderror
+  </div>
+  <div class="form-check">
     <input class="form-check-input flexRadioDefault @error('flexRadioDefault') is-invalid @enderror" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="{{old('flexRadioDefault')}}" >
     <label class="form-check-label" for="exampleCheck1">non</label>
     @error('flexRadioDefault')
@@ -92,19 +104,19 @@
                             <span class="text-danger error-text">{{ $message }}</span>
                         @enderror
                 <div class="form-check">
-                    <input class="form-check-input  " type="checkbox" value="tête,visage,nez,yeux,oreilles"  name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
+                    <input class="form-check-input  " id="checkbox1" onchange="checkCheckbox(this)" type="checkbox" value="tête,visage,nez,yeux,oreilles"  name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
                     <label class="form-check-label" for="flexCheckDefault">
                     tête,visage,nez,yeux,oreilles
                     </label>
-                    <input class="form-check-input " type="checkbox" value=" D" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
+                    
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="D" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}">
+                      <input class="form-check-input"   id="checkbox2" onchange="checkCheckbox(this)" type="checkbox" value="D" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}">
                     <label class="form-check-label" for="flexCheckDefault">
                     Droit
                     </div >  
                     </span>
                     <div class="form-check">
-                       <input class="form-check-input" type="checkbox" value="G" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
+                       <input class="form-check-input" id="checkbox3"  type="checkbox" value="G" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
                     <label class="form-check-label" for="flexCheckDefault">
                     Gauche
                     </label> 
@@ -448,11 +460,13 @@
 
 
   <button type="submit" class="btn btn-primary">Submit</button>
+  <script src="{{asset('js/validationCases.js')}}" ></script>
 </form>    
 
 
 
 @endsection
+
 <script src="js/employe/accueil.js" defer></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </body>

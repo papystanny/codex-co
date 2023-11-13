@@ -7,6 +7,8 @@ use App\Http\Requests\FormAccidentTravailRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\Formaccidentstravail;
+use Session;
+use App\Models\Usager;
 class FormAccidentTravailController extends Controller
 {
  /*  
@@ -16,7 +18,11 @@ class FormAccidentTravailController extends Controller
     }*/
     public function accidentTravail()
     {
-        return view('formAccidentTravail.formAccidentTravail');
+        $usagers=Usager::where ('nom', Session::get('nom'))->get(); //Session::get('id'));
+       $user1= Session::get('nom');
+       Log::debug($user1);
+       Log::debug($usagers);
+        return view('formAccidentTravail.formAccidentTravail',compact('usagers'));
         //
     }
      public function store(FormAccidentTravailRequest $request)
