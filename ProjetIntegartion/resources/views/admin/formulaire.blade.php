@@ -43,16 +43,37 @@
                         </div>
                     </a>
                 </li>
-
-         
-
                 <li> 
-                    <div class="uniteProcedure"> 
-                        <i class="fa-solid fa-folder  fa-3x"></i>
-                        <span class="contentMenuElement">AUCUN FORMULAIRE EN COURS </span> 
-                        <i class="fa-solid fa-xmark  "></i>
-                    </div>
+                    <a href="{{ route('admin.voirFormulaireRempli') }}">
+                        <div class="uniteProcedure"> 
+                            <i class="fa-solid fa-folder  fa-3x"></i>
+                            <span class="contentMenuElement"> ACTE DE VIOLENCE</span> 
+                            <span class="contentMenuElement">EMPLOYE </span> 
+                            <i class="fas fa-trash fa-2x"></i>
+                        </div>
+                    </a>
                 </li>
+                <li> 
+                    <a href="{{ route('admin.voirFormulaireRempli') }}">
+                        <div class="uniteProcedure"> 
+                            <i class="fa-solid fa-folder  fa-3x"></i>
+                            <span class="contentMenuElement"> AUDIT SST </span> 
+                            <span class="contentMenuElement">SUPERIEUR </span> 
+                            <i class="fas fa-trash fa-2x"></i>
+                        </div>
+                    </a>
+                </li>
+                <li> 
+                    <a href="{{ route('admin.voirFormulaireRempli') }}">
+                        <div class="uniteProcedure"> 
+                            <i class="fa-solid fa-folder  fa-3x"></i>
+                            <span class="contentMenuElement"> RAPPORT D'ACCIDENT </span> 
+                            <span class="contentMenuElement">SUPERIEUR </span> 
+                            <i class="fas fa-trash fa-2x"></i>
+                        </div>
+                    </a>
+                </li>
+
             </ul>
         </div>
 
@@ -71,121 +92,39 @@
             </div>
 
             <ul class="menuProcedures">
-                <li> 
+            @forelse($formulairesTous ?? [] as $formulaire)
+            <li> 
                     <div class="uniteProcedure"> 
-
                         <div class="">
                              <i class="fa-solid fa-clock "></i>
-                            <span class="contentMenuElement">2023-02-28 </span> 
+                            <span class="contentMenuElement">{{$formulaire->dateAccident}}</span> 
                         </div>
-
-
                         <div class="">
                               <i class="fa-solid fa-folder "></i>
-                              <span class="contentMenuElement"> ACCIDENT DE TRAVAIL </span> 
+                              <span class="contentMenuElement">{{ mb_strtoupper($formulaire->fonctionMomentEvenement, 'UTF-8') }}  </span> 
                         </div>
-
                         <div class="">
                              <i class="fa-solid fa-user-tie "></i>
-                            <span class="contentMenuElement"> ALI DUBOIS </span> 
+                            <span class="contentMenuElement">{{$formulaire->nomEmploye}} </span> 
                         </div>
-
-                        <div class="">
-                             <i class="fa-solid fa-check "></i>
-                        </div>
-      
-                    </div>
-                </li>
-
-                <li> 
-                    <div class="uniteProcedure"> 
-
-                        <div class="">
-                             <i class="fa-solid fa-clock "></i>
-                            <span class="contentMenuElement">2023-08-28 </span> 
-                        </div>
-
-
-                        <div class="">
-                              <i class="fa-solid fa-folder "></i>
-                              <span class="contentMenuElement"> AUDI SST</span> 
-                        </div>
-
-                        <div class="">
-                             <i class="fa-solid fa-user-tie "></i>
-                            <span class="contentMenuElement">ALEX DUROCHER </span> 
-                        </div>
-
-                        <div class="">
-                             <i class="fa-solid fa-check "></i>
-                        </div>
-      
-                    </div>
-                </li>
-
-                <li> 
-                    <div class="uniteProcedure"> 
-
-                        <div class="">
-                             <i class="fa-solid fa-clock "></i>
-                            <span class="contentMenuElement">2023-10-28 </span> 
-                        </div>
-
-
-                        <div class="">
-                              <i class="fa-solid fa-folder "></i>
-                              <span class="contentMenuElement"> ACTE DE VIOLENCE </span> 
-                        </div>
-
-                        <div class="">
-                             <i class="fa-solid fa-user-tie "></i>
-                            <span class="contentMenuElement">STAN PHAREL </span> 
-                        </div>
-
-                        <div class="">
-                             <i class="fa-solid fa-check "></i>
-                        </div>
-      
-      
-                    </div>
-                </li>
-
-                <li> 
-                    <div class="uniteProcedure"> 
-
-                        <div class="">
-                             <i class="fa-solid fa-clock "></i>
-                            <span class="contentMenuElement">2023-05-28 </span> 
-                        </div>
-
-
-                        <div class="">
-                              <i class="fa-solid fa-folder "></i>
-                              <span class="contentMenuElement"> ACCIDENT DE TRAVAIL </span> 
-                        </div>
-
-                        <div class="">
-                             <i class="fa-solid fa-user-tie "></i>
-                            <span class="contentMenuElement">ALEX DUROCHER </span> 
-                        </div>
-
                         <div class="">
                              <i class="fa-solid fa-xmark  "></i>
                         </div>
-      
                     </div>
                 </li>
-
+            @empty
                 <li> 
-                    <div class="uniteProcedure"> 
-
-                        
+                    <div class="uniteProcedure">  
                               <i class="fa-solid fa-folder "></i>
                               <span class="contentMenuElement"> AUCUN FORMULAIRE REMPLI POUR LE MOMENT </span> 
                              <i class="fa-solid fa-xmark  "></i>
-      
                     </div>
                 </li>
+            @endforelse
+
+            
+
+            
 
             </ul>
         </div>

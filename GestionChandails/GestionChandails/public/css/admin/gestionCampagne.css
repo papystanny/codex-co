@@ -1,0 +1,82 @@
+.p ,h1 , h2 , h4, h3{
+    color: black; 
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.h5{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.parallax {
+    /* The image used */
+    background-image: url("https://media.istockphoto.com/id/1182091609/fr/photo/fond-rouge-noir-avec-le-d%C3%A9grad%C3%A9-noir-rouge-%C3%A9l%C3%A9gant-est-la-surface-avec-des-mod%C3%A8les-de-texture.jpg?s=170667a&w=0&k=20&c=q5ZdwuvDbjum7RyHD5lcgo2C79tEb_Lp5E5YwR02we0=");
+  
+    /* Set a specific height */
+    min-height: 180px;
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+  }
+
+.un_Row_1{
+    border: 2px solid black;
+}
+
+.un_Row_2{
+    border: 2px solid black;
+}
+
+
+.fermer_card{
+    border: 2px solid black;
+    border-radius:  10px ;
+}
+
+.fermer_card:hover{
+    transform: scale(0.9); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.un_deux{
+   margin-top: 30px;
+    border: 2px solid black;
+}
+
+.trois_un{
+    border: 2px solid black;
+}
+
+.trois-deux{
+   
+    margin-top:30px;
+   
+}
+
+.un_Row_3{
+    
+}
+
+.un_titre{
+    background-color: rgb(20,168,92);
+    text-align: center;
+}
+
+
+.deux_titre{
+
+padding-top: 20px;
+padding-bottom: 1px;
+}
+
+.centrer_items{
+    display:flex;
+     justify-content:center;
+     align-items: center;  
+}
+
+.option:hover{
+    background-color: #bfbaa1;
+}

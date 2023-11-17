@@ -30,8 +30,6 @@ class EmployesController extends Controller
         return view('employe.formulaire', compact('formulaires'));
     }
 
-    
-
     public function procedure()
     { 
         $user = Usager::where('matricule', Session::get('matricule'))->first();
@@ -64,12 +62,26 @@ class EmployesController extends Controller
 
     public function adminProcedure()
     { 
-        return view('admin.procedure');
+        $usagers = Usager::all();
+        $proceduresTravail = collect();
+
+        foreach ($usagers as $usager) {
+            $departement = $usager->departements; // Ceci est un seul Departement
+            $proceduresTravail = $proceduresTravail->merge($departement->proceduresTravails);
+        }
+        return view('admin.procedure', compact('proceduresTravail'));
     }
+
 
     public function adminFormulaire()
     { 
-        return view('admin.formulaire');
+        $usagers = Usager::all();
+        $formulairesTous = collect();
+        foreach ($usagers as $usager) {
+            $formulairesUsager = $usager->formAccidentTravail()->get();
+            $formulairesTous = $formulairesTous->merge($formulairesUsager);
+        }
+        return view('admin.formulaire', compact('usagers','formulairesTous'));
     }
 
     public function adminVoirFormulaireRempli()

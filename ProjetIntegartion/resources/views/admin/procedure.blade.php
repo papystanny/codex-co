@@ -37,34 +37,12 @@
         </div>
 
             <ul class="menuProcedures">
+                
+            @forelse($formulairesTous ?? [] as $formulaire)
                 <li> 
                     <div class="uniteProcedure"> 
                         <i class="far fa-clock fa-3x"></i>
-                        <span class="contentMenuElement"> Lire son talon de paie </span> 
-                        
-                        <span class="contentMenuElement"> Recouvrement </span> 
-                        <i class="fas fa-edit fa-2x"></i>
-                        <i class="fas fa-trash fa-2x" title="Supprimer la procédure"></i>
-
-                    </div>
-                </li>
-
-                <li> 
-                    <div class="uniteProcedure"> 
-                        <i class="far fa-clock fa-3x"></i>
-                        <span class="contentMenuElement">Effectuer une plainte  </span> 
-                        
-                        <span class="contentMenuElement"> Sécurité      </span> 
-                        <i class="fas fa-edit fa-2x"></i>
-                        <i class="fas fa-trash fa-2x"  title="Supprimer la procédure"></i>
-
-                    </div>
-                </li>
-
-                <li> 
-                    <div class="uniteProcedure"> 
-                        <i class="far fa-clock fa-3x"></i>
-                        <span class="contentMenuElement"> Démissioner </span> 
+                        <span class="contentMenuElement"> {{ mb_strtoupper($procedure->nom, 'UTF-8') }} </span> 
                        
                         <span class="contentMenuElement"> Soins </span> 
                         <i class="fas fa-edit fa-2x"></i>
@@ -72,6 +50,19 @@
 
                     </div>
                 </li>
+            @empty
+                <li> 
+                    <div class="uniteProcedure">  
+                              <i class="fa-solid fa-folder "></i>
+                              <span class="contentMenuElement"> AUCUNE PROCEDURE N'EST EN COURS</span> 
+                             <i class="fa-solid fa-xmark  "></i>
+                    </div>
+                </li>
+            @endforelse
+
+
+
+
             </ul>
         </div>
     </div> 
