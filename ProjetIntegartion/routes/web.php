@@ -4,7 +4,7 @@ use App\Http\Controllers\EmployesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormAccidentTravailController;
 use App\Http\Controllers\UsagersController;
-use App\Http\Controllers\FormulaireController;
+use App\Http\Controllers\FormulaireSitDangereuseController;
 use App\Http\Controllers\FormulaireMecaniqueController;
 /*
 |--------------------------------------------------------------------------
@@ -83,8 +83,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 
 // Formulaires Dangereuses
-Route::get('/' , [FormulaireController::class , 'index'])->name('Formulaires.formsitdang');
-Route::post('/formulaires',[FormulaireController::class, 'store'])->name('formulaires.store');
+Route::get('/formSit' , [FormulaireSitDangereuseController::class , 'index'])->name('Formulaires.formsitdang');
+Route::post('/formulaires',[FormulaireSitDangereuseController::class, 'store'])->name('formulaires.store');
 //Route::get('/creation/formulaires',[FormulaireController::class,'create'])->name('formulaires.create');
 
 // Formulaires Mécanique
@@ -95,5 +95,5 @@ Route::post('/formulairesMeca',[FormulaireMecaniqueController::class, 'store'])-
 
 //visualisez les formulaire remplir
 
-Route::get('/visualiser', [FormulaireController::class, 'visualisezForm'])->name('Formulaires.index');
+Route::get('/visualiser', [FormulaireSitDangereuseController::class, 'visualisezForm'])->name('Formulaires.index');
 
