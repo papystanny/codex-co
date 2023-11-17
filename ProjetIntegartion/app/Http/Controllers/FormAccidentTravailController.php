@@ -25,10 +25,9 @@ class FormAccidentTravailController extends Controller
         return view('formAccidentTravail.formAccidentTravail',compact('usagers'));
         //
     }
+
      public function store(FormAccidentTravailRequest $request)
     {
-        //
-        {
             try {
     
     
@@ -143,16 +142,16 @@ class FormAccidentTravailController extends Controller
                 }
                 
                catch (\Throwable $e) {
-             
-                Log::debug($e);
-             //   return redirect()->route('campagne')->withErrors(['L\'ajout de campagne n\'a pas fonctionné']);
-             return view('formAccidentTravail.formAccidentTravail');
+                    
+                        Log::debug("erreur store");
+                    //   return redirect()->route('campagne')->withErrors(['L\'ajout de campagne n\'a pas fonctionné']);
+                        return view('formAccidentTravail.formAccidentTravail');
                }
                
                 
     
             //
-        }
+        
     }
     /**
      * Show the form for creating a new resource.
