@@ -275,6 +275,8 @@
                     <br></br>
                     <label for="formGroupExampleInput">nom en lettres moulées du supérieur</label>
                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder=""name="nomSuperviseurAvise">
+                    <label for="formGroupExampleInput">prenom en lettres moulées du supérieur</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder=""name="prenomSuperviseurAvise">
                     <label for="inputPassword4">Date </label>
                     <input type="date" class="form-control " id="inputPassword4" placeholder="" name="dateSuperviseurAvise" >
                 </div>

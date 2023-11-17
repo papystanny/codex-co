@@ -102,6 +102,7 @@ class FormAccidentTravailController extends Controller
                 $Formaccidentstravail->necessiteAccident = $request->input('necessiteAccident');
                 $Formaccidentstravail->supAvise = $request->input('supAvise');
                 $Formaccidentstravail->nomSuperviseurAvise = $request->input('nomSuperviseurAvise');
+                $Formaccidentstravail->prenomSuperviseurAvise = $request->input('prenomSuperviseurAvise');
                 $Formaccidentstravail->dateSuperviseurAvise = $request->input('dateSuperviseurAvise');
                 $Formaccidentstravail->signatureSupImmediat = $request->input('signatureSupImmediat');
                 $Formaccidentstravail->numPosteSupImmediat = $request->input('numPosteSupImmediat');
