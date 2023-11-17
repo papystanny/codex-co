@@ -118,6 +118,7 @@ class FormAccidentTravailController extends Controller
                 $Formaccidentstravail->necessiteAccident = $request->input('necessiteAccident');
                 $Formaccidentstravail->supAvise = $request->input('supAvise');
                 $Formaccidentstravail->nomSuperviseurAvise = $request->input('nomSuperviseurAvise');
+                $Formaccidentstravail->prenomSuperviseurAvise = $request->input('prenomSuperviseurAvise');
                 $Formaccidentstravail->dateSuperviseurAvise = $request->input('dateSuperviseurAvise');
                 $Formaccidentstravail->signatureSupImmediat = $request->input('signatureSupImmediat');
                 $Formaccidentstravail->numPosteSupImmediat = $request->input('numPosteSupImmediat');
@@ -145,7 +146,7 @@ class FormAccidentTravailController extends Controller
                     
                         Log::debug("erreur store");
                     //   return redirect()->route('campagne')->withErrors(['L\'ajout de campagne n\'a pas fonctionné']);
-                        return view('formAccidentTravail.formAccidentTravail');
+                        return view('employe.accueil');
                }
                
                 

@@ -30,6 +30,7 @@ return new class extends Migration
             $table->string('necessiteAccident',255);
             $table->string('supAvise',100);
             $table->string('nomSuperviseurAvise',100);
+            $table->string('prenomSuperviseurAvise',100);
             $table->date('dateSuperviseurAvise');
             $table->string('signatureSupImmediat',100);
             $table->integer('numPosteSupImmediat');

@@ -406,6 +406,14 @@
                      @error('nomSuperviseurAvise')
                             <span class="text-danger error-text">{{ $message }}</span>
                     @enderror
+                    <div class="form-check"> 
+                    <label for="formGroupExampleInput">prenom en lettres moulées du supérieur</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder=""name="prenomSuperviseurAvise" value="{{old('prenomSuperviseurAvise')}}" >
+                   
+                </div>
+                     @error('nomSuperviseurAvise')
+                            <span class="text-danger error-text">{{ $message }}</span>
+                    @enderror
                 <div class="form-check">
                     <label for="inputPassword4">Date </label>
                     <input type="date" class="form-control " id="inputPassword4" placeholder="" name="dateSuperviseurAvise" value="{{old('dateSuperviseurAvise')}}" >
