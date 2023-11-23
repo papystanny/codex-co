@@ -53,25 +53,7 @@
         <span class="text-danger error-text">{{ $message }}</span>
         @enderror
 
-    <div>
-       <label for="temoins">Témoin(s)</label>       
-    </div>
-                           
-  <div class="form-check">
-    
-    <input class="form-check-input flexRadioDefault @error('flexRadioDefault') is-invalid @enderror" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="{{old('flexRadioDefault')}}" >
-    <label class="form-check-label" for="exampleCheck1">oui</label>
-    @error('flexRadioDefault')
-        <span class="text-danger error-text">{{ $message }}</span>
-    @enderror
-  </div>
-  <div class="form-check">
-    <input class="form-check-input flexRadioDefault @error('flexRadioDefault') is-invalid @enderror" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="{{old('flexRadioDefault')}}" >
-    <label class="form-check-label" for="exampleCheck1">non</label>
-    @error('flexRadioDefault')
-        <span class="text-danger error-text">{{ $message }}</span>
-    @enderror
-  </div>
+
   <div class="form-group">
     <label for="formGroupExampleInput">nom des temoins </label>
     <input type="text" class="form-control nomsTemoins @error('nomsTemoins') is-invalid @enderror " id="formGroupExampleInput" placeholder=""name="nomsTemoins" value="{{old('nomsTemoins')}}" >
@@ -463,7 +445,7 @@
                             <span class="text-danger error-text">{{ $message }}</span>
                     @enderror
                 </div>
-
+</div>
     </div>
 
 

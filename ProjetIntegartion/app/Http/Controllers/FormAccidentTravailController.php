@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\FormAccidentTravailRequest;
+use App\Http\Requests\AccidentTravailRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\Formaccidentstravail;
@@ -26,13 +27,13 @@ class FormAccidentTravailController extends Controller
         //
     }
 
-     public function store(FormAccidentTravailRequest $request)
+    public function store(AccidentTravailRequest $request)
     {
             try {
     
     
                $Formaccidentstravail = new Formaccidentstravail();
-               $Formaccidentstravail->nomEmploye = $request->input('nomEmploye');
+               $Formaccidentstravail->nomEmploye = Session::get('nom');;
                 $Formaccidentstravail->fonctionMomentEvenement = $request->input('fonctionMomentEvenement');
                 $Formaccidentstravail->matriculeEmploye = $request->input('matriculeEmploye');
                 $Formaccidentstravail->dateAccident = $request->input('dateAccident');
@@ -144,7 +145,7 @@ class FormAccidentTravailController extends Controller
                 
                catch (\Throwable $e) {
                     
-                        Log::debug("erreur store");
+                        Log::debug($e);
                     //   return redirect()->route('campagne')->withErrors(['L\'ajout de campagne n\'a pas fonctionné']);
                         return view('employe.accueil');
                }

@@ -9,7 +9,7 @@ class FormAccidentTravailRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool
+    public function authorize()
     
     {
         return true;
@@ -20,7 +20,7 @@ class FormAccidentTravailRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
-    public function rules(): array
+    public function rules()
     {
         return [
             //
