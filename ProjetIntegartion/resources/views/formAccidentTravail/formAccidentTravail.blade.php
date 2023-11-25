@@ -393,7 +393,7 @@
                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder=""name="prenomSuperviseurAvise" value="{{old('prenomSuperviseurAvise')}}" >
                    
                 </div>
-                     @error('nomSuperviseurAvise')
+                     @error('prenomSuperviseurAvise')
                             <span class="text-danger error-text">{{ $message }}</span>
                     @enderror
                 <div class="form-check">
