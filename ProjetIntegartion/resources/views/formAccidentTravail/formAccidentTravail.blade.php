@@ -82,7 +82,7 @@
                     <label for="formGroupExampleInput">Nature et site de la blessure(cochez s'il y'a lieu côté gauche ou droit)</label>
                         
                 </div>
-                        @error('natureSiteBlessure[]')
+                        @error('natureSiteBlessure')
                             <span class="text-danger error-text">{{ $message }}</span>
                         @enderror
                 <div class="form-check">
@@ -235,10 +235,12 @@
             <div class="col-xl-6">
                 <div class="form-group">
                     <label for="formGroupExampleInput">Description de la blessure(à cocher)</label>
-                       @error('descriptionBlessure[]')
+                       
+                </div>    
+                    @error('descriptionBlessure')
                             <span class="text-danger error-text">{{ $message }}</span>
                         @enderror
-                </div>
+                
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="Brûlure,engelure" id="flexCheckChecked"name="descriptionBlessure[]" value="{{old('descriptionBlessure[]')}}" >
                     <label class="form-check-label" for="flexCheckChecked">

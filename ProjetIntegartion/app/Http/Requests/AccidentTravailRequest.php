@@ -48,7 +48,7 @@ class AccidentTravailRequest extends FormRequest
             'numPosteEmploye'=> 'required',
             'dateSignatureEmploye'=> 'required|date|equal:today',
 
-
+          
 
         ];
     }
