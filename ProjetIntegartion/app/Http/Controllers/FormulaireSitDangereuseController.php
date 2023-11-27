@@ -26,7 +26,7 @@ class FormulaireSitDangereuseController extends Controller
         $formMec = Formateliermecanique::all();
         $formsit = Formsitdangereuse::all();
 
-        return View('Formulaires.index');
+        return View('Formulaires.index' , compact('formMec' , 'formsit'));
     }
 
     /**

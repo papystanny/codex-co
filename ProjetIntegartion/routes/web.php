@@ -93,7 +93,7 @@ Route::post('/formulairesMeca',[FormulaireMecaniqueController::class, 'store'])-
 //Route::get('/creation/formulairesMeca',[FormulaireController::class,'create'])->name('formulairesMec.create');
 
 
-//visualisez les formulaire remplir
+//visualisez les formulaire remplire
 
 Route::get('/visualiser', [FormulaireSitDangereuseController::class, 'visualisezForm'])->name('Formulaires.index');
 

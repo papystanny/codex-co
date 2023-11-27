@@ -83,7 +83,7 @@
                  </h3>         
             </div>
             <div class = " center">
-            <input type="text" class="titreForm col-7 p-4 " placeholder="Entrez Votre Reponse"   class="form-control @error('departement') is-invalid @enderror" id="departement" name="departement" aria-describedby="departement">
+            <input type="text" class="titreForm col-7 p-4 " placeholder="Entrez Votre Reponse"  value="{{old('departement')}}"  class="form-control @error('departement') is-invalid @enderror" id="departement" name="departement" aria-describedby="departement">
                             @error('departement')
                                 <span class= "text-danger">{{$message}}</span>
                             @enderror

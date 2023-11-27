@@ -27,7 +27,7 @@ class FormateliermecaniqueRequest extends FormRequest
             'prenomNomEmploye'=>'required|min:5|max:50',
             'prenomNomSupImmediat'=>'required|min:5|max:50',
             'numPermisConduireEmploye'=>'required|min:5|max:50',
-            'vehiculeCityonImplique'=>'required|min:5|max:50',
+         
             
             
         ];
@@ -49,8 +49,7 @@ class FormateliermecaniqueRequest extends FormRequest
             'prenomNomSupImmediat.max'=>'La prenomNomSupImmediat  doit avoir un maximum de 500 caractères.',
             'numPermisConduireEmploye.required'=>'Le numPermisConduireEmploye est obligatoire.',
             'numPermisConduireEmploye.min'=>'Le numPermisConduireEmploye doit avoir au moins 5 caractères.',
-            'vehiculeCityonImplique.required'=>'Le vehiculeCityonImplique est obligatoire.',
-            'vehiculeCityonImplique.min'=>'Le vehiculeCityonImplique doit avoir au moins 5 caractères.',
+           
         ];
     }
 }
