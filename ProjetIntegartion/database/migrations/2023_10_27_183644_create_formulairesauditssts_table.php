@@ -19,6 +19,7 @@ return new class extends Migration
             $table->time('heure');
             $table->string('Epi',100);
             $table->string('tenueLieux',100);
+            $table->string('comportementSecuritaire',100);
             $table->string('signalisation',100);
             $table->string('fichesSignaletiques',100);
             $table->string('traveauxEscavation',100);
@@ -28,6 +29,7 @@ return new class extends Migration
             $table->string('respectDistanciation',100);
             $table->string('portEpi',100);
             $table->string('respectProcedures',100);
+            $table->string('descriptionTravailHauteur',250)->nullable();
             $table->string('notifSup',100);
             $table->string('notifAdmin',100);
 

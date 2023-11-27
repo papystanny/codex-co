@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\FormAccidentTravailRequest;
+use App\Notifications\FormsRegisteredNotification;
 use App\Http\Requests\AccidentTravailRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\Formaccidentstravail;
+use App\Events\FormulaireSoumis;
+
 use Session;
 use App\Models\Usager;
 class FormAccidentTravailController extends Controller
@@ -108,9 +111,7 @@ class FormAccidentTravailController extends Controller
                // $Formaccidentstravail->descriptionBlessure = $request->input('descriptionBlessure',[]);
 
                // $descriptionBlessureString=implode(',', $request->input('descriptionBlessure',[]));
-                
 
-                
 
                 $Formaccidentstravail->violence = $request->input('violence');
                 $Formaccidentstravail->descriptionDeroulementBlessure = $request->input('descriptionDeroulementBlessure');
@@ -138,7 +139,28 @@ class FormAccidentTravailController extends Controller
                $Formaccidentstravail-> finSondage = $request->input('finSondage');
                $Formaccidentstravail-> statut = "en cours";
                $Formaccidentstravail -> usager_id =3; //<!-- Session::get('id');-->   */
+
+                  /*  $condition1= Session::get('nom');
+               
+              $Usager = Usager::select('emailsuperviseur')
+               ->where('nom', $condition1);
+               $Usager->notify(new FormsRegisteredNotification());
+              */ 
+
+              
                $Formaccidentstravail->save();
+               
+               $Usager->notify(new FormsRegisteredNotification());
+              
+             //  $condition1= Session::get('nom');
+               
+              /* $Usager = Usager::select('emailsuperviseur')
+                ->where('nom', $condition1);
+                $Usager = Usager::where('nom', $condition1)->first();
+                $Usager->notify(new FormsRegisteredNotification());*/
+             /*   event(new FormulaireSoumis($data));
+                Log::debug($data);
+             */
                
                return view('employe.formulaire');
                 }

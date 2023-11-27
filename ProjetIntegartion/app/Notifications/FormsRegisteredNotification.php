@@ -24,7 +24,7 @@ class FormsRegisteredNotification extends Notification
      *
      * @return array<int, string>
      */
-    public function via(object $notifiable): array
+    public function via($notifiable)
     {
         return ['mail'];
     }
@@ -32,10 +32,11 @@ class FormsRegisteredNotification extends Notification
     /**
      * Get the mail representation of the notification.
      */
-    public function toMail(object $notifiable): MailMessage
+    public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
+                    ->line('Bonjour, un nouveau formulaire a été soumis')
+                    ->line('vous pouvez en prendre connaissance en vous connectant à votre compte')
                     ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');
     }
