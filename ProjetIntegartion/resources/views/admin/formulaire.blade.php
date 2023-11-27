@@ -36,11 +36,11 @@
                 <li> 
                     <a href="{{ route('admin.voirFormulaireRempli') }}">
                         <div class="uniteProcedure"> 
-                            <i class="fa-solid fa-folder  fa-3x"></i>
-                            <span class="contentMenuElement"> ACCIDENT DE TRAVAIL </span> 
-                            <span class="contentMenuElement">EMPLOYE </span> 
-                            <i class="fas fa-trash fa-2x"></i>
-                        </div>
+                            <div> <i class="fa-solid fa-folder  fa-3x"></i></div> 
+                            <div> <span class="contentMenuElement"> ACCIDENT DE TRAVAIL </span> </div> 
+                            <div> <span class="contentMenuElement">EMPLOYE </span> </div> 
+                            <div> <i class="fas fa-trash fa-2x"></i>
+                        </div></div>
                     </a>
                 </li>
                 <li> 
@@ -97,21 +97,29 @@
                     <div class="uniteProcedure"> 
                         <div class="">
                              <i class="fa-solid fa-clock "></i>
-                            <span class="contentMenuElement">{{$formulaire->dateAccident}}</span> 
+                            <span class="contentMenuElement">{{ $formulaire->created_at->format('d/m/Y') }}</span> 
                         </div>
                         <div class="">
                               <i class="fa-solid fa-folder "></i>
-                              <span class="contentMenuElement">{{ mb_strtoupper($formulaire->fonctionMomentEvenement, 'UTF-8') }}  </span> 
+                              <span class="contentMenuElement">{{ mb_strtoupper($formulaire->nomFormulaire, 'UTF-8') }}  </span> 
                         </div>
                         <div class="">
-                             <i class="fa-solid fa-user-tie "></i>
-                            <span class="contentMenuElement">{{$formulaire->nomEmploye}} </span> 
+                                    <i class="fa-solid fa-user-tie "></i>
+                                    <span class="contentMenuElement">{{$formulaire->nomEmploye}} </span> 
                         </div>
-                        <div class="">
-                             <i class="fa-solid fa-xmark  "></i>
+@if($formulaire->notifSup == 0 )
+                        <div class="" style="color:red;">
+                            <i class="fa-solid fa-xmark  "></i>
                         </div>
+@elseif($formulaire->notifSup == 1 || $formulaire->notifSup == "oui")
+                         
+                        <div class="" style="color:green;" title="Formualire ">
+                            <i class="fa-solid fa-check   "></i>
+                        </div>
+@endif
+                        
                     </div>
-                </li>
+            </li>
             @empty
                 <li> 
                     <div class="uniteProcedure">  

@@ -9,15 +9,16 @@ Body{
 }
 
 .accueil-titre{
-    background-color: rgb(167, 199, 158);
+    background-color:rgb(11, 35, 65);
     padding: 8px 10px;
-    border-top: 2px solid rgb(0, 0, 0); /* Bordure en haut de l'élément */
-    border-bottom: 2px solid rgb(0, 0, 0); /* Bordure en bas de l'élément */
+    border-top: 1px solid rgb(120, 198, 224); /* Bordure en haut de l'élément */
+    border-bottom: 1px solid rgb(120, 198, 224);/* Bordure en bas de l'élément */
     display: flex;
 }
 
 .accueil-titre h2{
     margin-right: 17px;
+    color:rgb(120, 198, 224);
 }
 
 .accueil-formulaire{
@@ -25,10 +26,11 @@ Body{
 
 .formulaire {
     margin : 30px 20px;
-    border: 1px   solid rgb(0, 0, 0); /* Bordure en bas de l'élément */
+    border: 2px   solid #1E492D; /* Bordure en bas de l'élément */
     padding: 8px 5px;
     border-radius: 10px ;
-    background-color: beige;
+    background-color:#e0e0e0;
+    color :black;
 }
 
 

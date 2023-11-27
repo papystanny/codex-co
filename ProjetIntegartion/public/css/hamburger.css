@@ -87,14 +87,14 @@ margin: 0;
 padding: 80px 0;
 list-style: none;
 background-color:  rgb(11, 35, 65);
-box-shadow: 4px 4px 6px rgb(237, 140, 0);
-transition-duration: .25s;
+box-shadow: 4px 4px 6px rgb(231, 213, 224);
+transition-duration: .7s;
 }
 
 .menu__item {
 display: block;
 padding: 5px 15px;
-color: #ffffff;
+color: rgb(120, 198, 224);
 font-size: 20px;
 text-decoration: none;
 transition-duration: .25s;

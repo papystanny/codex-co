@@ -38,12 +38,11 @@
 
             <ul class="menuProcedures">
                 
-            @forelse($formulairesTous ?? [] as $formulaire)
+            @forelse($proceduresTravail ?? [] as $procedure)
                 <li> 
                     <div class="uniteProcedure"> 
                         <i class="far fa-clock fa-3x"></i>
-                        <span class="contentMenuElement"> {{ mb_strtoupper($procedure->nom, 'UTF-8') }} </span> 
-                       
+                        <span class="contentMenuElement"> {{ mb_strtoupper($procedure->nom, 'UTF-8') }} </span>       
                         <span class="contentMenuElement"> Soins </span> 
                         <i class="fas fa-edit fa-2x"></i>
                         <i class="fas fa-trash fa-2x"  title="Supprimer la procédure"></i>

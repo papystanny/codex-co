@@ -23,31 +23,68 @@
             {{ session('error') }}
         </div>
     @endif
-<div class="all"> 
-    <div class ="image-un" style="display: none;">
-        <img src="img/examen.png" class="img-fluid logo-marge-10" width="200%" height="100px">
-    </div> 
 
-    <div class ="titreImage" >
-    </div> 
+ <div class="vueMobile"  >
+    <div class="all"> 
+        <div class ="image-un" style="display: none;">
+            <img src="img/examen.png" class="img-fluid logo-marge-10" width="200%" height="100px">
+        </div> 
 
-    <div class="main-section" >
-        <form  method="POST" action="/connexion"> <!-- Remplacez "login.php" par le script de traitement de la connexion -->
-        @csrf
-            <div class="form-group">
-                <label>   Matricule  </label>
-             <div class="form-groupUnite">   <i class="fas fa-user"></i> <input type="number" id="username" name="matricule" required class="custom-input"> </div>
-            </div>
-            <div class="form-group">
-                <label>   Mot de passe  </label>
-             <div class="form-groupUnite"> <i class="fas fa-lock"></i>   <input type="password" id="password" name="password" required class="custom-input"> </div>
-             </div>
-             <div class="custom-submit">
-               <button type="submit" >Connexion</button>
-            </div>
-        </form>
+        <div class ="titreImage" >
+        </div> 
+
+        <div class="main-section" >
+            <form  method="POST" action="/connexion"> <!-- Remplacez "login.php" par le script de traitement de la connexion -->
+            @csrf
+                <div class="form-group">
+                    <label>   Matricule  </label>
+                <div class="form-groupUnite">   <i class="fas fa-user"></i> <input type="number" id="username" name="matricule" required class="custom-input"> </div>
+                </div>
+                <div class="form-group">
+                    <label>   Mot de passe  </label>
+                <div class="form-groupUnite"> <i class="fas fa-lock"></i>   <input type="password" id="password" name="password" required class="custom-input"> </div>
+                </div>
+                <div class="custom-submit">
+                <button type="submit" >Connexion</button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
+ </div>
+
+ <div class="vuePc" >
+    <div class="all"> 
+        <div class ="image-un" style="display: none;">
+            <img src="img/examen.png" class="img-fluid logo-marge-10" width="200%" height="100px">
+        </div> 
+
+        <div class ="titreImage" >
+        </div> 
+
+        <div class="main-section" >
+                <div class="section-gauche">
+                </div>
+
+                <div class="section-droite">
+                    <form  method="POST" action="/connexion"> <!-- Remplacez "login.php" par le script de traitement de la connexion -->
+                        @csrf
+                            <div class="form-group">
+                                <label>   Matricule  </label>
+                            <div class="form-groupUnite">   <i class="fas fa-user"></i> <input type="number" id="username" name="matricule" required class="custom-input"> </div>
+                            </div>
+                            <div class="form-group">
+                                <label>   Mot de passe  </label>
+                            <div class="form-groupUnite"> <i class="fas fa-lock"></i>   <input type="password" id="password" name="password" required class="custom-input"> </div>
+                            </div>
+                            <div class="custom-submit">
+                            <button type="submit" >Connexion</button>
+                            </div>
+                    </form>
+                </div>
+        </div>
+    </div>
+ </div>
+
    
  
     
@@ -75,6 +112,16 @@ const images = [
   'url("https://i.pinimg.com/564x/8f/ac/0a/8fac0a03fc04d7432ca55355ce22fb20.jpg")'
 ];
 
+const imagesPc = [
+  'url("https://w0.peakpx.com/wallpaper/342/133/HD-wallpaper-lovely-bridge-in-trois-rivieres-in-quebec-canada-r-bridge-arc-river-r-trees-clouds.jpg")',
+  'url("https://i.pinimg.com/564x/4f/75/ca/4f75ca16d8551dde2bff5ca636b88c65.jpg")',
+  'url("https://i.pinimg.com/564x/f3/b6/f7/f3b6f760fe350757871d6bed8c8fa68c.jpg")',
+  'url("https://i.pinimg.com/564x/9f/5b/a2/9f5ba213bbfadc1745b368c0a5f09736.jpg")',
+  'url("https://i.pinimg.com/564x/93/28/e6/9328e65301e611c6d15fb73b7318b255.jpg")',
+  'url("https://i.pinimg.com/564x/21/9b/5f/219b5fab300d704dc88c3abf23d81d99.jpg")',
+  'url("https://i.pinimg.com/564x/8f/ac/0a/8fac0a03fc04d7432ca55355ce22fb20.jpg")'
+];
+
 let currentIndex = 0;
 
 function changeBackground() {
@@ -82,7 +129,14 @@ function changeBackground() {
   currentIndex = (currentIndex + 1) % images.length;
 }
 
+function changeBackgroundPc() {
+  document.querySelector('.section-gauche').style.backgroundImage = images[currentIndex];
+  currentIndex = (currentIndex + 1) % imagesPC.length;
+}
+
 setInterval(changeBackground, 5000); 
+setInterval(changeBackgroundPC, 5000); 
+
 
 
 

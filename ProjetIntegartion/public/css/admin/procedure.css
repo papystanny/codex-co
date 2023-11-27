@@ -58,3 +58,17 @@ background-color: aqua;
     justify-content: space-between;
     align-items: center;
 }
+
+.uniteProcedure > div:not(:last-child) {
+    flex-basis: 35%; /* Ajustez ce pourcentage selon vos besoins */
+    /* Ou vous pouvez utiliser width: calc(33.33% - 10px); */
+}
+
+.uniteProcedure > div:last-child {
+    flex-grow: 1; /* Prend tout l'espace restant */
+}
+
+.uniteProcedure > div:nth-last-child(2) {
+    /* Appliquez votre style spécifique ici */
+    padding-left: 10%;
+}

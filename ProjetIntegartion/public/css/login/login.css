@@ -1,109 +1,175 @@
-.all{
-  background-image: url('https://us.123rf.com/450wm/foreverrich/foreverrich1705/foreverrich170500312/78766739-fond-clair-blanc-d%C3%A9grad%C3%A9-bleu-clair.jpg'); /* Chemin vers votre image */
+  @media (max-width: 768px) {
+    .vuePc{
+      display: none;
+    }
 
-  background-size: cover; /* Couvre entièrement la div, peut être ajusté */
-  background-repeat: no-repeat; /* Pour éviter que l'image se répète */
-  background-position: center center; /* Positionne l'image au centre */
-  width: 100%; /* Largeur de la div */
-  height: 100vh; /* Hauteur de la div */
-  position: relative; /* Position relative pour le placement */
-}
+    .vueMobile{
+      display: flex;
+    }
+    
+              
+    .all{
+      background-image: url('https://us.123rf.com/450wm/foreverrich/foreverrich1705/foreverrich170500312/78766739-fond-clair-blanc-d%C3%A9grad%C3%A9-bleu-clair.jpg'); /* Chemin vers votre image */
 
-.titreImage{
-  background-image: url('https://i.pinimg.com/564x/8f/ac/0a/8fac0a03fc04d7432ca55355ce22fb20.jpg'); /* Chemin vers votre image */
+      background-size: cover; /* Couvre entièrement la div, peut être ajusté */
+      background-repeat: no-repeat; /* Pour éviter que l'image se répète */
+      background-position: center center; /* Positionne l'image au centre */
+      width: 100%; /* Largeur de la div */
+      height: 100vh; /* Hauteur de la div */
+      position: relative; /* Position relative pour le placement */
+    }
 
-  background-size: cover; /* Couvre entièrement la div, peut être ajusté */
-  background-repeat: no-repeat; /* Pour éviter que l'image se répète */;
-  background-position: center center; /* Positionne l'image au centre */
-  width: 100%; /* Largeur de la div */
-  height: 60%;/* Hauteur de la div */
-  position: relative; /* Position relative pour le placement */
-  transition: background-image 0.5s ease-in-out;
-}
+    .titreImage{
+      background-image: url('https://i.pinimg.com/564x/8f/ac/0a/8fac0a03fc04d7432ca55355ce22fb20.jpg'); /* Chemin vers votre image */
+
+      background-size: cover; /* Couvre entièrement la div, peut être ajusté */
+      background-repeat: no-repeat; /* Pour éviter que l'image se répète */;
+      background-position: center center; /* Positionne l'image au centre */
+      width: 100%; /* Largeur de la div */
+      height: 60%;/* Hauteur de la div */
+      position: relative; /* Position relative pour le placement */
+      transition: background-image 0.5s ease-in-out;
+    }
 
 
 
-.main-section{
+    .main-section{
 
-  background-image: linear-gradient(to right, #ffffff, #f0f0f0, #d6e4f0);
+      background-image: linear-gradient(to right, #ffffff, #f0f0f0, #d6e4f0);
 
 
-  background-size: cover; /* Couvre entièrement la div, peut être ajusté */
-  background-repeat: no-repeat; /* Pour éviter que l'image se répète */;
-  background-position: center center; /* Positionne l'image au centre */
-position: fixed;
-z-index: 2;
-  width: 100%; /* Largeur de votre div */
-top : 50%;
-font-size: 110%;
-  text-align: left; /* Pour centrer le contenu texte à l'intérieur de la div */
-  padding: 30px; /* Espacement interne pour le contenu */
-  padding-top: 20%;
-  border-radius: 30px 30px 0 0; /* Coins arrondis de 25 pixels sur le haut gauche et le haut droit */
+      background-size: cover; /* Couvre entièrement la div, peut être ajusté */
+      background-repeat: no-repeat; /* Pour éviter que l'image se répète */;
+      background-position: center center; /* Positionne l'image au centre */
+    position: fixed;
+    z-index: 2;
+      width: 100%; /* Largeur de votre div */
+    top : 50%;
+    font-size: 110%;
+      text-align: left; /* Pour centrer le contenu texte à l'intérieur de la div */
+      padding: 30px; /* Espacement interne pour le contenu */
+      padding-top: 20%;
+      border-radius: 30px 30px 0 0; /* Coins arrondis de 25 pixels sur le haut gauche et le haut droit */
+
+      
+    }
+
+    input {
+      border: none;
+      background-color: transparent;
+    }
+
+    input:focus {
+      outline: none !important;
+    }
+
+
+    .form-group{
+        margin-bottom: 20px;
+    }
+
+    .custom-input {
+      width: 80%; /* Largeur du champ de saisie en pixels */
+    }
+
+
+
+
+    .custom-submit{
+      padding-top: 12%;
+      text-align: center;
+    }
+
+    .custom-submit button{
+      border-radius: 15px; /* Coins arrondis de 10 pixels */
+      padding: 6px 12px;
+      background-color:rgb(34, 139, 34);
+    
+    }
+
+    .form-groupUnite{
+      border-bottom: 1px solid rgb(0, 0, 0); /* Ajoute une bord*/
+    }
+
+
+    .form-groupUnite.active {
+      border-bottom: 1px solid green; /* Nouvelle couleur de bordure */
+    }
+  
+    label{
+      font-size: 90%;
+      color:grey;
+    }
+
+   
+  }
+
+  @media (min-width: 769px) {
+    .vueMobile{
+      display: none;
+    }
+    .vuePc{
+      display: flex;
+    }
+    .all{
+      background: linear-gradient(to right, grey 50%,rgb(0,118,213) 50%); /* Crée un gradient linéaire */
+      background-size: cover; /* Couvre entièrement la div, peut être ajusté */
+      background-repeat: no-repeat; /* Pour éviter que l'image se répète */
+      width: 100%; /* Largeur de la div */
+      height: 100vh; /* Hauteur de la div */
+      position: relative; /* Position relative pour le placement */
+    }
+
+    .main-section{
+      display: flex;
+      position: fixed; /* Fixe la div par rapport à la fenêtre du navigateur */
+      top: 50%; /* Positionne à 50% du haut de l'écran */
+      left: 50%; /* Positionne à 50% de la gauche de l'écran */
+      transform: translate(-50%, -50%); /* Centrer précisément la div */
+      background-color: rgba(255, 255, 255, 0.75); /* Couleur de fond blanche avec 50% de transparence */
+      padding: 20px; /* Espacement interne */
+      margin: 10px; /* Marge externe */
+      width: 75%;
+      height: 75%;
+      border-radius: 20px;
+    }
+
+    
+    .section-gauche {
+      background-image: 
+      url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Blason_ville_ca_Trois-Rivieres.svg/545px-Blason_ville_ca_Trois-Rivieres.svg.png'); 
+      flex: 1; /* Prend la moitié de l'espace disponible */
+      background-size: cover; /* Couvre entièrement la div, peut être ajusté */
+      background-repeat: no-repeat; /* Pour éviter que l'image se répète */
+      background-position: center;
+      background-size: contain;
+      transition: background-image 0.5s ease-in-out;
+    }
+
+    .section-droite {
+      flex: 1; /* Prend la moitié de l'espace disponible */
+      /* Autres styles spécifiques à cette section */
+      background-color: chartreuse;
+      padding-right: 18px;
+    }
 
   
-}
+  }
 
-input {
-  border: none;
-  background-color: transparent;
-}
-
-input:focus {
-  outline: none !important;
-}
-
-
-.form-group{
-    margin-bottom: 20px;
- }
-
- .custom-input {
-  width: 80%; /* Largeur du champ de saisie en pixels */
-}
-
-
-
-
-.custom-submit{
-  padding-top: 12%;
-  text-align: center;
-}
-
-.custom-submit button{
-  border-radius: 15px; /* Coins arrondis de 10 pixels */
-  padding: 6px 12px;
-  background-color:rgb(34, 139, 34);
- 
-}
-
-.form-groupUnite{
-   border-bottom: 1px solid rgb(0, 0, 0); /* Ajoute une bord*/
-}
-
-
-.form-groupUnite.active {
-  border-bottom: 1px solid green; /* Nouvelle couleur de bordure */
-}
-.alert{
-  left: 12%;
-  top: 42%;
-  font-size: 20px;
-  border-radius: 15px !important;
-  border: 1px solid rgb(0, 0, 0)!important;
-  margin: 59px 24px;
-  padding: 15px 12px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: stretch;
-  background-color: rgb(248, 248, 238);
-  color: rgb(0, 0, 0);
-  position: fixed !important;
-  z-index: 100; /* Assurez-vous que ce z-index est supérieur à celui des autres éléments de la page */
-}
-
-label{
-  font-size: 90%;
-  color:grey;
-}
+  .alert{
+      left: 12%;
+      top: 42%;
+      font-size: 20px;
+      border-radius: 15px !important;
+      border: 1px solid rgb(0, 0, 0)!important;
+      margin: 59px 24px;
+      padding: 15px 12px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: stretch;
+      background-color: rgb(248, 248, 238);
+      color: rgb(0, 0, 0);
+      position: fixed !important;
+      z-index: 100; /* Assurez-vous que ce z-index est supérieur à celui des autres éléments de la page */
+    }

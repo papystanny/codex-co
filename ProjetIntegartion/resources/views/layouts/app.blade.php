@@ -53,7 +53,7 @@
 
         <div class="right-section"   >
     @if(Auth::check())
-            <div class="center-section"  >
+            <div class="center-section" style="display:none;" >
                 <div class="user-notifications">
                     <img src="img/userLogo1.png" class="img-fluid logo-marge-10" width="50" height="50px">
                 </div>
@@ -100,6 +100,8 @@
     
     @yield('contenu')
 @endauth
+
+   <!-- ADMIN -->
 
 @if(Session::get('typeCompte') == 'admin' )
     <div class="navbarSectionAdmin">

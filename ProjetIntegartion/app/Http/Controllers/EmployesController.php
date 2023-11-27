@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Usager;
 use App\Models\Departement;
 use App\Models\FormaccidentsTravail;
+use App\Models\Formulairesauditsst;
+use App\Models\Formsitdangereuse;
+use App\Models\Formateliermecanique;
+use App\Models\ProceduresTravail;
 use Illuminate\Support\Facades\Auth;
 
 class EmployesController extends Controller
@@ -26,7 +30,7 @@ class EmployesController extends Controller
     public function formulaire()
     { 
         $user = Usager::where('matricule', Session::get('matricule'))->first();
-        $formulaires = $user->formAccidentTravail()->orderBy('dateAccident', 'desc')->get();
+        $formulaires = $user->formAccidentTravail()->orderBy('date', 'desc')->get();
         return view('employe.formulaire', compact('formulaires'));
     }
 
@@ -49,7 +53,6 @@ class EmployesController extends Controller
             $formulaires = $formulaires->merge($formulairesUsager); // Fusionner les collections
         }
 
-  
         Log::debug($formulaires);
         return view('employe.equipe', compact('formulaires', 'usagers'));
     }
@@ -60,29 +63,66 @@ class EmployesController extends Controller
         return view('admin.accueil');
     }
 
-    public function adminProcedure()
+  /*  public function adminProcedure()
     { 
         $usagers = Usager::all();
+        Log::debug($usagers);
+    
         $proceduresTravail = collect();
-
+    
         foreach ($usagers as $usager) {
             $departement = $usager->departements; // Ceci est un seul Departement
             $proceduresTravail = $proceduresTravail->merge($departement->proceduresTravails);
         }
+    
+        // Supprime les doublons de la collection
+        $proceduresTravail = $proceduresTravail->unique('id'); // Supposant que chaque procédure a un ID unique.
+
+    
+        Log::debug($proceduresTravail);
         return view('admin.procedure', compact('proceduresTravail'));
     }
+ */
+    public function adminProcedure()
+    { 
+        // Récupère toutes les procédures de travail de tous les départements
+        $proceduresTravail = ProceduresTravail::with('departements')
+                                            ->get()
+                                            ->unique('id');
+        Log::debug($proceduresTravail);
+        return view('admin.procedure', compact('proceduresTravail'));
+    }
+
+    
 
 
     public function adminFormulaire()
     { 
         $usagers = Usager::all();
         $formulairesTous = collect();
+    
         foreach ($usagers as $usager) {
-            $formulairesUsager = $usager->formAccidentTravail()->get();
-            $formulairesTous = $formulairesTous->merge($formulairesUsager);
+            $formulairesUsagerAcc = $usager->formAccidentTravail()->orderBy('created_at', 'desc')->get();
+            $formulairesUsagerAud = $usager->formulairesauditssts()->orderBy('created_at', 'desc')->get();
+            $formulairesUsagerSit = $usager->formulairessitdangeureuse()->orderBy('created_at', 'desc')->get();
+            $formulairesUsagerMec = $usager->formulairesateliermecanique()->orderBy('created_at', 'desc')->get();
+            $formulairesTous = $formulairesTous->merge($formulairesUsagerAcc)
+                                                ->merge($formulairesUsagerSit)
+                                                ->merge($formulairesUsagerMec)
+                                                ->merge($formulairesUsagerAud);
         }
-        return view('admin.formulaire', compact('usagers','formulairesTous'));
+    
+        // Tri global de la collection fusionnée
+        $formulairesTous = $formulairesTous->sortByDesc('created_at');
+    
+        foreach ($formulairesTous as $key => $value) {
+            Log::debug("$key => $value");
+        }
+    
+        return view('admin.formulaire', compact('usagers', 'formulairesTous'));
     }
+    
+    
 
     public function adminVoirFormulaireRempli()
     { 

@@ -72,7 +72,7 @@
                     <i class="fa-solid fa-folder left-fontAwesome " ></i>
                     <h5>{{ mb_strtoupper($formulaire->fonctionMomentEvenement, 'UTF-8') }}  </h5>
                     <i class="fa-solid fa-check right-fontAwesome "></i>
-                    <span> {{$formulaire->dateAcccident}}</span> 
+                    <span> {{$formulaire->created_at->format('d/m/Y') }}</span> 
                  </div>
             @empty
                 
@@ -110,7 +110,8 @@
 <div id="monModal" class="modal">
     <div class="modal-content">
         <span class="close" id="fermerModal">&times;</span>
-        <h2>Filtre de recherche</h2>
+        <div class="">  <h2>Filtre de recherche</h2></div>
+      
        <form id="formulaireFiltrAccidentTravail" action="/filtrer-formulaires" method="POST" onsubmit="filtrerFormulaireAccidentTravail(event)">
              @csrf
             <label for="date_debut">Date de début :</label>
@@ -130,7 +131,7 @@
 @endauth
                 <!-- Ajoutez d'autres options de type de formulaire au besoin -->
             </select>
-
+            
             <button type="submit">Rechercher</button>
         </form>
     </div>

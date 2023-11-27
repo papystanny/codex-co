@@ -4,11 +4,13 @@
 
 .btn-filtre{
     padding: 3px;
+    background-color: transparent;
+    color: green;
 }
 
 .historique-section{
     border-radius: 10px;
-    background-color: beige;
+    background-color: #e0e0e0;
     padding: 8px 5px;
     margin: 15px 5px;
     display: flex;
@@ -19,7 +21,7 @@
     align-items: center;
     text-align: center;
     max-width: 400px;
-    border: 1px solid #000; /* Largeur de la bordure de 4 pixels (vous pouvez ajuster cette valeur) */
+    border: 2px solid#1E492D; /* Largeur de la bordure de 4 pixels (vous pouvez ajuster cette valeur) */
 }
    
 .historique-unite{
@@ -32,12 +34,12 @@
     flex-direction: inherit;
     align-content: inherit;
     justify-content: inherit;
-    align-items: inherit;
     text-align: inherit;
     max-width: inherit;
     border-bottom: 2px solid #000; /* Largeur de la bordure de 4 pixels (vous pouvez ajuster cette valeur) */
     border-left: 2px solid #000; /* Largeur de la bordure de 4 pixels (vous pouvez ajuster cette valeur) */
-    border-color:  rgb(0, 118, 213);
+    border-color:  #78C6E0;
+    color:  #000000;;
 }
 
 .left-fontAwesome{
