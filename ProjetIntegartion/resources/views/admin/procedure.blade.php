@@ -42,11 +42,9 @@
                 <li> 
                     <div class="uniteProcedure"> 
                         <i class="far fa-clock fa-3x"></i>
-                        <span class="contentMenuElement"> {{ mb_strtoupper($procedure->nom, 'UTF-8') }} </span>       
-                        <span class="contentMenuElement"> Soins </span> 
-                        <i class="fas fa-edit fa-2x"></i>
-                        <i class="fas fa-trash fa-2x"  title="Supprimer la procédure"></i>
-
+                        <div> <span class="contentMenuElement"> {{ mb_strtoupper($procedure->nom, 'UTF-8') }} </span>      </div> 
+                        <div>  <span class="contentMenuElement"> Soins </span> </div>
+                       <i class="fas fa-trash fa-2x"  title="Supprimer la procédure"></i>
                     </div>
                 </li>
             @empty

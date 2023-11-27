@@ -46,30 +46,30 @@
                 <li> 
                     <a href="{{ route('admin.voirFormulaireRempli') }}">
                         <div class="uniteProcedure"> 
-                            <i class="fa-solid fa-folder  fa-3x"></i>
-                            <span class="contentMenuElement"> ACTE DE VIOLENCE</span> 
-                            <span class="contentMenuElement">EMPLOYE </span> 
-                            <i class="fas fa-trash fa-2x"></i>
+                            <div> <i class="fa-solid fa-folder  fa-3x"></i></div> 
+                            <div> <span class="contentMenuElement"> ACTE DE VIOLENCE</span> </div> 
+                            <div><span class="contentMenuElement">EMPLOYE </span> </div> 
+                            <div>  <i class="fas fa-trash fa-2x"></i></div> 
                         </div>
                     </a>
                 </li>
                 <li> 
                     <a href="{{ route('admin.voirFormulaireRempli') }}">
                         <div class="uniteProcedure"> 
-                            <i class="fa-solid fa-folder  fa-3x"></i>
-                            <span class="contentMenuElement"> AUDIT SST </span> 
-                            <span class="contentMenuElement">SUPERIEUR </span> 
-                            <i class="fas fa-trash fa-2x"></i>
+                            <div>  <i class="fa-solid fa-folder  fa-3x"></i></div> 
+                            <div> <span class="contentMenuElement"> AUDIT SST </span> </div> 
+                            <div> <span class="contentMenuElement">SUPERIEUR </span> </div> 
+                            <div>   <i class="fas fa-trash fa-2x"></i></div> 
                         </div>
                     </a>
                 </li>
                 <li> 
-                    <a href="{{ route('admin.voirFormulaireRempli') }}">
+                    <a href="{{ route('formulaires.atelierMec') }}">
                         <div class="uniteProcedure"> 
-                            <i class="fa-solid fa-folder  fa-3x"></i>
-                            <span class="contentMenuElement"> RAPPORT D'ACCIDENT </span> 
-                            <span class="contentMenuElement">SUPERIEUR </span> 
-                            <i class="fas fa-trash fa-2x"></i>
+                            <div>    <i class="fa-solid fa-folder  fa-3x"></i></div>
+                            <div>   <span class="contentMenuElement"> RAPPORT D'ACCIDENT </span> </div>
+                            <div>  <span class="contentMenuElement">SUPERIEUR </span> </div>
+                            <div>  <i class="fas fa-trash fa-2x"></i></div>
                         </div>
                     </a>
                 </li>

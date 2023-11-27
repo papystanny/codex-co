@@ -29,9 +29,26 @@ class EmployesController extends Controller
 
     public function formulaire()
     { 
-        $user = Usager::where('matricule', Session::get('matricule'))->first();
-        $formulaires = $user->formAccidentTravail()->orderBy('date', 'desc')->get();
-        return view('employe.formulaire', compact('formulaires'));
+        $usager = Usager::where('matricule', Session::get('matricule'))->first();
+        $formulairesTous = collect();
+       
+        $formulairesUsagerAcc = $usager->formAccidentTravail()->orderBy('created_at', 'desc')->get();
+        $formulairesUsagerAud = $usager->formulairesauditssts()->orderBy('created_at', 'desc')->get();
+        $formulairesUsagerSit = $usager->formulairessitdangeureuse()->orderBy('created_at', 'desc')->get();
+        $formulairesUsagerMec = $usager->formulairesateliermecanique()->orderBy('created_at', 'desc')->get();
+        $formulairesTous = $formulairesTous->merge($formulairesUsagerAcc)
+                                            ->merge($formulairesUsagerSit)
+                                            ->merge($formulairesUsagerMec)
+                                            ->merge($formulairesUsagerAud);
+
+    
+        // Tri global de la collection fusionnée
+        $formulairesTous = $formulairesTous->sortByDesc('created_at');
+    
+        foreach ($formulairesTous as $key => $value) {
+            Log::debug("$key => $value");
+        }
+        return view('employe.formulaire', compact('formulairesTous'));
     }
 
     public function procedure()
@@ -39,22 +56,28 @@ class EmployesController extends Controller
         $user = Usager::where('matricule', Session::get('matricule'))->first();
         $departement = $user->departements;
         $proceduresTravail = $user->departements->proceduresTravails;
-
         return view('employe.procedure', compact('proceduresTravail'));
     }
 
     public function equipe()
     { 
         $usagers = Usager::where('nomSuperviseur', Session::get('nom'))->get();
-        $formulaires = collect(); // Créer une collection vide
+        $formulairesTous = collect();
     
         foreach ($usagers as $usager) {
-            $formulairesUsager = $usager->formAccidentTravail()->orderBy('dateAccident', 'desc')->get();
-            $formulaires = $formulaires->merge($formulairesUsager); // Fusionner les collections
+            $formulairesUsagerAcc = $usager->formAccidentTravail()->orderBy('created_at', 'desc')->get();
+            $formulairesUsagerAud = $usager->formulairesauditssts()->orderBy('created_at', 'desc')->get();
+            $formulairesUsagerSit = $usager->formulairessitdangeureuse()->orderBy('created_at', 'desc')->get();
+            $formulairesUsagerMec = $usager->formulairesateliermecanique()->orderBy('created_at', 'desc')->get();
+            $formulairesTous = $formulairesTous->merge($formulairesUsagerAcc)
+                                                ->merge($formulairesUsagerSit)
+                                                ->merge($formulairesUsagerMec)
+                                                ->merge($formulairesUsagerAud);
         }
 
-        Log::debug($formulaires);
-        return view('employe.equipe', compact('formulaires', 'usagers'));
+        Log::debug($formulairesTous);
+        $formulairesTous = $formulairesTous->sortByDesc('created_at');
+        return view('employe.equipe', compact('formulairesTous', 'usagers'));
     }
     
 

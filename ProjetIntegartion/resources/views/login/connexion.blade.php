@@ -34,6 +34,7 @@
         </div> 
 
         <div class="main-section" >
+            
             <form  method="POST" action="/connexion"> <!-- Remplacez "login.php" par le script de traitement de la connexion -->
             @csrf
                 <div class="form-group">

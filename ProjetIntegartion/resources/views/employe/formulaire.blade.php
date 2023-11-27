@@ -67,12 +67,20 @@
 
     <div class="historique-section" id="historique-section">
 
-            @forelse($formulaires ?? [] as $formulaire)
+            @forelse($formulairesTous ?? [] as $formulaire)
             <div class="historique-unite">
                     <i class="fa-solid fa-folder left-fontAwesome " ></i>
-                    <h5>{{ mb_strtoupper($formulaire->fonctionMomentEvenement, 'UTF-8') }}  </h5>
-                    <i class="fa-solid fa-check right-fontAwesome "></i>
-                    <span> {{$formulaire->created_at->format('d/m/Y') }}</span> 
+                    <h5>{{ mb_strtoupper($formulaire->nomFormulaire, 'UTF-8') }}  </h5>
+@if($formulaire->notifSup == 0 )
+                   
+                        <i class="fa-solid fa-xmark  "style="color:red;"></i>
+                   
+@elseif($formulaire->notifSup == 1 || $formulaire->notifSup == "oui")
+               
+                        <i class="fa-solid fa-check   "style="color:green;"></i>
+                    
+@endif
+                    <span> {{$formulaire->created_at }}</span> 
                  </div>
             @empty
                 

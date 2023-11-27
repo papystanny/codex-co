@@ -35,11 +35,11 @@
     max-width: inherit;
     border-bottom: 2px solid #000;
     border-color: rgb(189, 54, 110);
-    justify-content: space-between;
 }
 
 
 .historique-section{
+  
     border-radius: 10px;
     background-color: beige;
     padding: 8px 5px;
@@ -55,6 +55,7 @@
 }
 
 .historique-section2{
+    border: 2px solid #000;
     border-radius: 10px;
     background-color: beige;
     padding: 8px 5px;

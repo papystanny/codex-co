@@ -35,9 +35,8 @@
 
     .main-section{
 
-      background-image: linear-gradient(to right, #ffffff, #f0f0f0, #d6e4f0);
-
-
+      background-image: url('https://perezartsplastiques.files.wordpress.com/2013/12/cheval-qui-court.gif');
+      /* filter: sepia(0.5) hue-rotate(-50deg) brightness(0.8);*/
       background-size: cover; /* Couvre entièrement la div, peut être ajusté */
       background-repeat: no-repeat; /* Pour éviter que l'image se répète */;
       background-position: center center; /* Positionne l'image au centre */
@@ -53,6 +52,7 @@
 
       
     }
+    
 
     input {
       border: none;

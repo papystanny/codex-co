@@ -3,6 +3,7 @@
 use App\Http\Controllers\EmployesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormAccidentTravailController;
+use App\Http\Controllers\FormulaireMecaniqueController;
 use App\Http\Controllers\UsagersController;
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +57,11 @@ Route::middleware(['auth','employe'])->group(function () {
     Route::post('/AccidentTravailStore',
     [FormAccidentTravailController::class, 'store'])->name('employe.formAccidentTravailStore');
 
+    
+    Route::get('/adminFormAtelier',
+    [FormulaireMecaniqueController::class, 'index'])->name('formulaires.atelierMec');
+    Route::post('/adminFormMeca',[FormulaireMecaniqueController::class, 'store'])->name('formulairesMec.store');
+
 
     
     Route::post('/filtrer-formulaires', [EmployesController::class, 'filtrerFormulaires'])->name('formulaire.filtres');
@@ -77,6 +83,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('/adminVoirFormulaireRempli', 
     [EmployesController::class, 'adminVoirFormulaireRempli'])->name('admin.voirFormulaireRempli');
+
+
 });
 
 

@@ -32,7 +32,7 @@
         <div class="accueil-formulaire">
             
             <div class="formulaire">
-             <a href="/AccidentTravail">  <h5> DÉCLARATION ACCIDENT DE TRAVAIL  </h5> </a>
+                <a href="/AccidentTravail">  <h5> DÉCLARATION ACCIDENT DE TRAVAIL  </h5> </a>
             </div>
 
             <div class="formulaire">
@@ -45,7 +45,7 @@
 @endauth
 @if( Session::get('typeCompte') == 'superieur')   
             <div class="formulaire">
-                <h5>MÉCANIQUE-RAPPORT D'ACCIDENT  </h5>
+                <a href="{{ route('formulaires.atelierMec') }}"> <h5>MÉCANIQUE-RAPPORT D'ACCIDENT  </h5> </a>
             </div>
  @endauth
         </div>
@@ -60,7 +60,7 @@
         <div class="accueil-formulaire">
             @forelse($proceduresTravail ?? [] as $procedure)
                 <div class="formulaire">
-                    <h5>{{ mb_strtoupper($procedure->nom, 'UTF-8') }}</h5>
+                    <a href="{{ $procedure->lien }}"><h5>{{ mb_strtoupper($procedure->nom, 'UTF-8') }}</h5> </a>
                 </div>
             @empty
                 <div class="formulaire">

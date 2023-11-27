@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,7 +34,7 @@
         <div class="accueil-formulaire">
             @forelse($proceduresTravail ?? [] as $procedure)
                 <div class="formulaire">
-                    <h5>{{ mb_strtoupper($procedure->nom, 'UTF-8') }}</h5>
+                    <a href="{{ $procedure->lien }}"><h5>{{ mb_strtoupper($procedure->nom, 'UTF-8') }}</h5> </a>
                 </div>
             @empty
                 <div class="formulaire">
