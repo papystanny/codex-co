@@ -55,7 +55,7 @@
 
 
   <div class="form-group">
-    <label for="formGroupExampleInput">nom des temoins </label>
+    <label for="formGroupExampleInput">nom des temoins(si aucun mentionnez le) </label>
     <input type="text" class="form-control nomsTemoins @error('nomsTemoins') is-invalid @enderror " id="formGroupExampleInput" placeholder=""name="nomsTemoins" value="{{old('nomsTemoins')}}" >
     @error('nomsTemoins')
         <span class="text-danger error-text">{{ $message }}</span>
@@ -106,7 +106,7 @@
                     
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Torse" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
+                    <input class="form-check-input"  type="checkbox" value="Torse" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
                     <label class="form-check-label" for="flexCheckChecked">
                     Torse
                     </label>
@@ -118,18 +118,18 @@
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value=" Bras,épaules,coudes"  name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
+                    <input class="form-check-input" id="checkbox4" onchange="checkCheckbox(this)" type="checkbox" value=" Bras,épaules,coudes"  name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
                     <label class="form-check-label" for="flexCheckChecked">
                     Bras,épaules,coudes
                     </label>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="D" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}">
+                      <input class="form-check-input" id="checkbox5" onchange="checkCheckbox(this)" type="checkbox" value="D" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}">
                     <label class="form-check-label" for="flexCheckDefault">
                     Droit
                     </div >  
                     </span>
                     <div class="form-check">
-                       <input class="form-check-input" type="checkbox" value="G" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
+                       <input class="form-check-input" id="checkbox6" onchange="checkCheckbox(this)" type="checkbox" value="G" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
                     <label class="form-check-label" for="flexCheckDefault">
                     Gauche
                     </label> 
@@ -137,18 +137,18 @@
                     
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Poignets,mains,doigts"  name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
+                    <input class="form-check-input" id="checkbox7" onchange="checkCheckbox(this)" type="checkbox" value="Poignets,mains,doigts"  name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
                     <label class="form-check-label" for="flexCheckChecked">
                     Poignets,mains,doigts
                     </label>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="D" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}">
+                      <input class="form-check-input" id="checkbox8" onchange="checkCheckbox(this)" type="checkbox" value="D" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}">
                     <label class="form-check-label" for="flexCheckDefault">
                     Droit
                     </div >  
                     </span>
                     <div class="form-check">
-                       <input class="form-check-input" type="checkbox" value="G" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
+                       <input class="form-check-input" id="checkbox9" onchange="checkCheckbox(this)" type="checkbox" value="G" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
                     <label class="form-check-label" for="flexCheckDefault">
                     Gauche
                     </label> 
@@ -156,18 +156,18 @@
                     
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Dos" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
+                    <input class="form-check-input" id="checkbox10" onchange="checkCheckbox(this)" type="checkbox" value="Dos" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
                     <label class="form-check-label" for="flexCheckChecked">
                     Dos
                     </label>
                     <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="haut" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
+                    <input class="form-check-input" id="checkbox11" onchange="checkCheckbox(this)" type="checkbox" value="haut" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
                     <label class="form-check-label" for="flexCheckDefault">
                     haut
                     </label>
                     </div>
                    <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="bas"  name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
+                    <input class="form-check-input" id="checkbox12" onchange="checkCheckbox(this)" type="checkbox" value="bas"  name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
                     <label class="form-check-label" for="flexCheckDefault">
                     bas
                     </label>
@@ -175,18 +175,18 @@
                    
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Hanche"  name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
+                    <input class="form-check-input" id="checkbox13" onchange="checkCheckbox(this)" type="checkbox" value="Hanche"  name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
                     <label class="form-check-label" for="flexCheckChecked">
                     Hanche
                     </label>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="D" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}">
+                      <input class="form-check-input" id="checkbox14" onchange="checkCheckbox(this)" type="checkbox" value="D" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}">
                     <label class="form-check-label" for="flexCheckDefault">
                     Droit
                     </div >  
                     </span>
                     <div class="form-check">
-                       <input class="form-check-input" type="checkbox" value="G" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
+                       <input class="form-check-input" id="checkbox15" onchange="checkCheckbox(this)" type="checkbox" value="G" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
                     <label class="form-check-label" for="flexCheckDefault">
                     Gauche
                     </label> 
@@ -194,18 +194,18 @@
                     
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Jambe,genou"name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
+                    <input class="form-check-input" id="checkbox16" onchange="checkCheckbox(this)" type="checkbox" value="Jambe,genou"name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
                     <label class="form-check-label" for="flexCheckChecked">
                     Jambe,genou
                     </label>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="D" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}">
+                      <input class="form-check-input" id="checkbox17" onchange="checkCheckbox(this)" type="checkbox" value="D" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}">
                     <label class="form-check-label" for="flexCheckDefault">
                     Droit
                     </div >  
                     </span>
                     <div class="form-check">
-                       <input class="form-check-input" type="checkbox" value="G" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
+                       <input class="form-check-input" id="checkbox18" onchange="checkCheckbox(this)" type="checkbox" value="G" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
                     <label class="form-check-label" for="flexCheckDefault">
                     Gauche
                     </label> 
@@ -213,18 +213,18 @@
                     
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value=" Pied,Orteil,Cheville"  name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
+                    <input class="form-check-input" id="checkbox19" onchange="checkCheckbox(this)" type="checkbox" value=" Pied,Orteil,Cheville"  name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
                     <label class="form-check-label" for="flexCheckChecked">
                     Pied,Orteil,Cheville
                     </label>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="D" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}">
+                      <input class="form-check-input" id="checkbox20" onchange="checkCheckbox(this)" type="checkbox" value="D" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}">
                     <label class="form-check-label" for="flexCheckDefault">
                     Droit
                     </div >  
                     </span>
                     <div class="form-check">
-                       <input class="form-check-input" type="checkbox" value="G" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
+                       <input class="form-check-input" id="checkbox21" onchange="checkCheckbox(this)" type="checkbox" value="G" name="natureSiteBlessure[]" value="{{old('natureSiteBlessure[]')}}" >
                     <label class="form-check-label" for="flexCheckDefault">
                     Gauche
                     </label> 
@@ -239,7 +239,7 @@
                 </div>    
                     @error('descriptionBlessure')
                             <span class="text-danger error-text">{{ $message }}</span>
-                        @enderror
+                     @enderror
                 
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="Brûlure,engelure" id="flexCheckChecked"name="descriptionBlessure[]" value="{{old('descriptionBlessure[]')}}" >

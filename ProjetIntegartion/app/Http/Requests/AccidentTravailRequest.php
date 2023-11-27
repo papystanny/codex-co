@@ -43,10 +43,10 @@ class AccidentTravailRequest extends FormRequest
             'dateSuperviseurAvise'=> 'required|date|before_or_equal:today',
             'signatureSupImmediat'=> 'required',
             'numPosteSupImmediat'=> 'required',
-            'dateSignatureSupImmediat'=> 'required|date|equal:today',
+            'dateSignatureSupImmediat'=> 'required|date|before_or_equal:today',
             'signatureEmploye'=> 'required',
             'numPosteEmploye'=> 'required',
-            'dateSignatureEmploye'=> 'required|date|equal:today',
+            'dateSignatureEmploye'=> 'required|date|before_or_equal:today',
 
           
 
@@ -63,15 +63,15 @@ class AccidentTravailRequest extends FormRequest
            'nomsTemoins.required' => 'Le nom des témoins est requis',
             'endroitAccident.required' => 'L\'endroit de l\'accident est requis',
             'secteurActivite.required' => 'Le secteur d\'activité est requis',
-            'natureSiteBlessure.required' => 'La nature du site de la blessure est requise',
+            'natureSiteBlessure.required' => 'vous devez selectionner aumoins un element',
             'natureSiteBlessure.min' => 'vous devez selectionner aumoins un element',
-            'descriptionBlessure.required' => 'La description de la blessure est requise',
+            'descriptionBlessure.required' => 'vous devez selectionner aumoins un element',
             'descriptionBlessure.min' => 'vous devez selectionner aumoins un element',
-            'violence.required' => 'La violence est requise',
-            'descriptionDeroulementBlessure.required' => 'La description du déroulement de la blessure est requise',
-            'premiersSoins.required' => 'Les premiers soins sont requis',
+            'violence.required' => 'vous devez cocher un élément',
+            'descriptionDeroulementBlessure.required' => 'ce champ est requis',
+            'premiersSoins.required' => 'veillez renseigner ce champ',
             'nomSecouriste.required' => 'Le nom du secouriste est requis',
-            'necessiteAccident.required' => 'La nécessité de l\'accident est requise',
+            'necessiteAccident.required' => 'cochez un élément',
             'supAvise.required' => 'veillez indiquer si le superviseur a été avisé',
             'nomSuperviseurAvise.required' => 'Le nom du superviseur avisé est requis',
             'prenomSuperviseurAvise.required' => 'Le prénom du superviseur avisé est requis',
@@ -80,11 +80,11 @@ class AccidentTravailRequest extends FormRequest
             'signatureSupImmediat.required' => 'La signature du superviseur immédiat est requise',
             'numPosteSupImmediat.required' => 'Le numéro de poste du superviseur immédiat est requis',
             'dateSignatureSupImmediat.required' => 'La date de la signature du superviseur immédiat est requise',
-            'dateSignatureSupImmediat.equal' => 'La date de la signature du superviseur immédiat doit être égale à aujourd\'hui',
+            'dateSignatureSupImmediat.before_or_equal' => 'La date de la signature du superviseur immédiat doit être égale à aujourd\'hui',
             'signatureEmploye.required' => 'La signature de l\'employé est requise',
             'numPosteEmploye.required' => 'Le numéro de poste de l\'employé est requis',
             'dateSignatureEmploye.required' => 'La date de la signature de l\'employé est requise',
-            'dateSignatureEmploye.equal' => 'La date de la signature de l\'employé doit être égale à aujourd\'hui',
+            'dateSignatureEmploye.before_or_equal' => 'La date de la signature de l\'employé doit être égale à aujourd\'hui',
 
         ];
     }
