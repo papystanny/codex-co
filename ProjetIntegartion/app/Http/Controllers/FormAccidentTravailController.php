@@ -149,7 +149,8 @@ class FormAccidentTravailController extends Controller
 
               
                $Formaccidentstravail->save();
-               
+               $condition1= Session::get('nom');
+               $Usager = Usager::where('nom', $condition1)->first();
                $Usager->notify(new FormsRegisteredNotification());
               
              //  $condition1= Session::get('nom');
