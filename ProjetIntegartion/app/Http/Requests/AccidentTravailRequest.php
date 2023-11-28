@@ -24,7 +24,7 @@ class AccidentTravailRequest extends FormRequest
         return [
             //
             'fonctionMomentEvenement' => 'required',
-            'matriculeEmploye' => 'required',
+            'matriculeEmploye' => 'required|numeric',
             'dateAccident' => 'required|date|before_or_equal:today',
             'heureAccident' => 'required',
             'nomsTemoins' => 'required',

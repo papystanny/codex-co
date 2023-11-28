@@ -60,6 +60,11 @@ Route::get('/AccidentTravail',
 Route::post('/AccidentTravailStore',
 [FormAccidentTravailController::class, 'store'])->name('employe.formAccidentTravailStore');
 
+Route::get('/AuditSST',
+[FormAuditSSTsController::class, 'formAuditSST'])->name('superviseur.formAuditSST');
+Route::post('/AuditSSTStore',
+[FormAuditSSTsController::class, 'store'])->name('superviseur.formAuditSSTStore');
+
 
 Route::middleware(['auth', 'admin'])->group(function () {
     // Les routes qui nécessitent un compte admin seulement
