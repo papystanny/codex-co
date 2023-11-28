@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\Formaccidentstravail;
 use App\Events\FormulaireSoumis;
-
 use Session;
 use App\Models\Usager;
 class FormAccidentTravailController extends Controller
@@ -111,7 +110,9 @@ class FormAccidentTravailController extends Controller
                // $Formaccidentstravail->descriptionBlessure = $request->input('descriptionBlessure',[]);
 
                // $descriptionBlessureString=implode(',', $request->input('descriptionBlessure',[]));
+                
 
+                
 
                 $Formaccidentstravail->violence = $request->input('violence');
                 $Formaccidentstravail->descriptionDeroulementBlessure = $request->input('descriptionDeroulementBlessure');
@@ -149,9 +150,6 @@ class FormAccidentTravailController extends Controller
 
               
                $Formaccidentstravail->save();
-               $condition1= Session::get('nom');
-               $Usager = Usager::where('nom', $condition1)->first();
-               $Usager->notify(new FormsRegisteredNotification());
               
              //  $condition1= Session::get('nom');
                
@@ -159,9 +157,9 @@ class FormAccidentTravailController extends Controller
                 ->where('nom', $condition1);
                 $Usager = Usager::where('nom', $condition1)->first();
                 $Usager->notify(new FormsRegisteredNotification());*/
-             /*   event(new FormulaireSoumis($data));
-                Log::debug($data);
-             */
+                event(new FormulaireSoumis($data));
+                
+              
                
                return view('employe.formulaire');
                 }
