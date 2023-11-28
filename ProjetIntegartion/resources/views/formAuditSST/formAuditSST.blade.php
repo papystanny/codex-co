@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 
-@section('content')
+@section('contenu')
     <form class="marge" method="post" action="{{ route('superviseur.formAuditSSTStore') }}" enctype="multipart/form-data">
     @csrf
         <div class="text-center">

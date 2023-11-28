@@ -36,11 +36,11 @@
             </div>
 
             <div class="formulaire">
-                <h5> SIGNALEMENT ACTE DE VIOLENCE  </h5>
+                <h5><a href="/AuditSST"> SIGNALEMENT ACTE DE VIOLENCE </a> </h5>
             </div>
 @if( Session::get('typeCompte') == 'superieur')   
             <div class="formulaire">
-                <h5> AUDI SST  </h5>
+                <h5 > <a href="/AuditSST">AUDI SST </a> </h5>
             </div>    
 @endauth
 @if( Session::get('typeCompte') == 'superieur')   

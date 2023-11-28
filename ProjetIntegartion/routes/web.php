@@ -3,6 +3,7 @@
 use App\Http\Controllers\EmployesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormAccidentTravailController;
+use App\Http\Controllers\FormAuditSSTsController;
 use App\Http\Controllers\UsagersController;
 /*
 |--------------------------------------------------------------------------
