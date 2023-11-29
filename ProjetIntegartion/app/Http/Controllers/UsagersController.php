@@ -42,6 +42,7 @@ class UsagersController extends Controller
                 Session::put('prenom', $user->prenom);    
                 Session::put('typeCompte', $user->typeCompte);
                 Session::put('nomDepartement', $departement->nom);
+                Session::put('nomSuperviseur', $user->nomSuperviseur);
                 
                 Log::debug($proceduresTravail );
                // Log::debug($user );

@@ -8,6 +8,7 @@ use App\Http\Requests\FormateliermecaniqueRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
 use DB;
+use Illuminate\Support\Facades\Session;
 
 class FormulaireMecaniqueController extends Controller
 {
@@ -34,6 +35,7 @@ class FormulaireMecaniqueController extends Controller
     {
         try {
             $formMec = new Formateliermecanique();
+            $formMec->nomFormulaire ='Atelier Mécanique';
             $formMec->numUniteImplique =$request->input('numUniteImplique');
             $formMec->departement =$request->input('departement');
             $formMec->prenomNomEmploye =$request->input('prenomNomEmploye');

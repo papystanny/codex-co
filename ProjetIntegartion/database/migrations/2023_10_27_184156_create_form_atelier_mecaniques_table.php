@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('formAtelierMecaniques', function (Blueprint $table) {
             $table->id();
+            $table->string ('nomFormulaire',100);
             $table->integer('numUniteImplique');
-            $table->integer('departement');
+            $table->string('departement',100);
             $table->string('prenomNomEmploye',100);
             $table->string('prenomNomSupImmediat',100);
             $table->string('numPermisConduireEmploye',100);

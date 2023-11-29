@@ -28,15 +28,7 @@ class FormsitdangereuseRequest extends FormRequest
             'dateObservation'=>'required',
             'heureObservation'=>'required',
             'ameliorationsProposees'=>'required|min:3|max:200',
-            'supAvise'=>'required|min:3|max:200',
-            'nomSuperviseur'=>'required|min:3|max:200',
-            'dateSupeAvise'=>'required',
-            'signatureEmploye'=>'required|min:3|max:200',
-            'signatureSuperviseur'=>'required|min:3|max:200',
-            'dateSignatureEmploye'=>'required',
-            'dateSignatureSuperviseur'=>'required',
-            'numPosteSuperviseur'=>'required',
-         
+            
         ];
     }
 
@@ -69,24 +61,7 @@ class FormsitdangereuseRequest extends FormRequest
             'ameliorationsProposees.required'=>'Le ameliorationsProposees est obligatoire.',
             'ameliorationsProposees.min'=>'Le ameliorationsProposees doit avoir un minimum de  3 caractères.',
             'ameliorationsProposees.max'=>'Le ameliorationsProposees doit avoir un maximum de 200 caractères.',
-            'supAvise.required'=>'Le supAvise est obligatoire.',
-            'supAvise.min'=>'Le supAvise doit avoir un minimum de  3 caractères.',
-            'supAvise.max'=>'Le supAvise doit avoir un maximum de 200 caractères.',
-            'nomSuperviseur.required'=>'Le nomSuperviseur est obligatoire.',
-            'nomSuperviseur.min'=>'Le nomSuperviseur doit avoir un minimum de  3 caractères.',
-            'nomSuperviseur.max'=>'Le nomSuperviseur doit avoir un maximum de 200 caractères.',
-            'dateSupeAvise.required'=>'Le dateSupeAvise est obligatoire.',
-            'signatureEmploye.required'=>'Le signatureEmploye est obligatoire.',
-            'signatureEmploye.min'=>'Le signatureEmploye doit avoir un minimum de  3 caractères.',
-            'signatureEmploye.max'=>'Le signatureEmploye doit avoir un maximum de 200 caractères.',
-            'signatureSuperviseur.required'=>'Le signatureSuperviseur est obligatoire.',
-            'signatureSuperviseur.min'=>'Le signatureSuperviseur doit avoir un minimum de  3 caractères.',
-            'signatureSuperviseur.max'=>'Le signatureSuperviseur doit avoir un maximum de 200 caractères.',
-            'dateSignatureEmploye.required'=>'Le dateSignatureEmploye est obligatoire.',
-            'dateSignatureSuperviseur.required'=>'Le dateSignatureSuperviseur est obligatoire.',
-            'numPosteSuperviseur.required'=>'Le numPosteSuperviseur est obligatoire.',
-           
-            
+                      
         ];
     }
 }

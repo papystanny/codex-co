@@ -16,10 +16,9 @@ class ProceduresTravail extends Model
     protected $fillable = ['nom', 'lien'];
 
 
-
-
     public function departements()
     {
         return $this->belongsToMany(Departement::class, 'departement_procedurestravail', 'procedurestravails_id', 'departement_id');
+ 
     }
 }

@@ -164,78 +164,7 @@
                 </div>
           </div>
 
-          <div class="parent container-fluid">
-              <div class="row ">
-                <div class="col-lg-6">
-                        <input type="checkbox" id="supAvise" name="supAvise" value="J'ai aviser mon supérieur immédiate  le">
-                        @error('supAvise')
-                                <span class= "text-danger">{{$message}}</span>
-                            @enderror
-                        <label for="supAvise">J'ai aviser mon supérieur immédiate  le </label>
-                        <input type="date" id="dateSupeAvise" name="dateSupeAvise">
-                        @error('dateSupeAvise')
-                                <span class= "text-danger">{{$message}}</span>
-                            @enderror   
-                </div> 
-              </div>
-          </div>
-          <div class="parent container-fluid">
-              <div class="row ">
-                    <div class= " col-xl-12">
-                        <label for="fname">Nom en Caractères d'imprimerie:</label>
-                        <input type="text" id="nomSuperviseur" name="nomSuperviseur">
-                        @error('nomSuperviseur')
-                                <span class= "text-danger">{{$message}}</span>
-                            @enderror
-                   </div>
-              </div>
-          </div>
-  
-          <div class="parent container-fluid">
-                <div class="row">
-                        <div class= "enfant enfant1 col-lg-6 p-4">
-                        <label for="fname">Signature du travailleur ou de la travailleuse:</label>
-                        <input type="text" id="signatureEmploye" name="signatureEmploye">
-                        @error('signatureEmploye')
-                                <span class= "text-danger">{{$message}}</span>
-                            @enderror
-                        </div>
-                        <div class= "enfant enfant1 col-lg-6 p-4">
-                        <label for="Dateone">Date:</label><br>
-                            <input type="date" id="dateSignatureEmploye" name="dateSignatureEmploye">
-                            @error('dateSignatureEmploye')
-                                <span class= "text-danger">{{$message}}</span>
-                            @enderror
-                       </div>
-                </div>
-          </div>
 
-           <div class="parent container-fluid">
-                <div class="row">
-                        <div class= "enfant enfant1 col-lg-4 p-4">                              
-                            <label for="Date">Signature du supérieur Immédiate:</label>
-                            <input type="text" id="signatureSuperviseur" name="signatureSuperviseur">
-                            @error('signatureSuperviseur')
-                                <span class= "text-danger">{{$message}}</span>
-                            @enderror
-                        </div>
-                        <div class= "enfant enfant1 col-lg-4 p-4">
-                                <label for="heure">N0 de Poste:</label><br>
-                                <input type="text" id="numPosteSuperviseur" name="numPosteSuperviseur">
-                                @error('numPosteSuperviseur')
-                                <span class= "text-danger">{{$message}}</span>
-                            @enderror
-                        </div>
-                        <div class= "enfant enfant1 col-lg-4 p-4">
-                            <label for="datetrois">date:</label><br>
-                            <input type="date" id="dateSignatureSuperviseur" name="dateSignatureSuperviseur"> 
-                            @error('dateSignatureSuperviseur')
-                                <span class= "text-danger">{{$message}}</span>
-                            @enderror 
-                        </div>
-                
-                </div>
-            </div>
         <button type="submit" class="btn btn-primary col-4  align-items center ">Enregistrer</button>
 </form>
 </section>      

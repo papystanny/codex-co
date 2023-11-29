@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Session;
 class FormulaireSitDangereuseController extends Controller
 {
 
@@ -46,6 +47,7 @@ class FormulaireSitDangereuseController extends Controller
     {
         try {
             $form = new Formsitdangereuse();
+            $form->nomFormulaire ='Situation Dangereuses';
             $form->nomEmploye =$request->input('nomEmploye');
             $form->prenomEmploye =$request->input('prenomEmploye');
             $form->matriculeEmploye =$request->input('matriculeEmploye');
@@ -56,14 +58,10 @@ class FormulaireSitDangereuseController extends Controller
             $form->temoins =$request->input('temoins');
             $form->descriptionEvenement =$request->input('descriptionEvenement');
             $form->ameliorationsProposees =$request->input('ameliorationsProposees');
-            $form->supAvise =$request->input('supAvise');
-            $form->nomSuperviseur =$request->input('nomSuperviseur');
-            $form->signatureEmploye =$request->input('signatureEmploye');
-            $form->dateSupeAvise =$request->input('dateSupeAvise');
-            $form->dateSignatureEmploye =$request->input('dateSignatureEmploye');
-            $form->signatureSuperviseur =$request->input('signatureSuperviseur');
-            $form->dateSignatureSuperviseur =$request->input('dateSignatureSuperviseur');
-            $form->numPosteSuperviseur =$request->input('numPosteSuperviseur');
+            $form->signatureEmploye =Session::get('nom');
+            $form->dateSupeAvise =now();
+            $form->dateSignatureEmploye = now();
+            $form->nomSuperviseur = Session::get('nomSuperviseur');
             $form->notifSup = 'oui';
             $form->notifAdmin = 'oui';
             $form->save();

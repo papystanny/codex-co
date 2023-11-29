@@ -22,20 +22,84 @@
                         @foreach($formMec as $formMec)
                             <div class="formMec">
                                 <div class="formMecDetails">
-                                    <div class="id">{{$formMec->id}}</div>
-                                    <div class="numUniteImplique">{{$formMec->numUniteImplique}}</div>
-                                    <div class="departement">{{$formMec->departement}}</div>
-                                    <div class="prenomNomEmploye">{{$formMec->prenomNomEmploye}}</div>
-                                    <div class="prenomNomSupImmediat">{{$formMec->prenomNomSupImmediat}}</div>
-                                    <div class="numPermisConduireEmploye">{{$formMec->numPermisConduireEmploye}}</div>
-                                    <div class="vehiculeCityonImplique">{{$formMec->vehiculeCityonImplique}}</div>
-                                    <div class="notifSup">{{$formMec->notifSup}}</div>
-                                    <div class="notifAdmin">{{$formMec->notifAdmin}}</div>
-                                    <div class="created_at">{{$formMec->created_at}}</div> 
-                                    <div class="updated_at">{{$formMec->updated_at}}</div>          
-                                </div>
-                            </div>
-                        @endforeach
+                                
+    <form >
+            
+            <div class = " center">
+                <h3  class="titreForm col-8 p-4">
+                1.Numéro(s) d'unités(s) impliqué(s)
+                 </h3>         
+            </div>
+            <div class = " center">
+
+             <div class="numUniteImplique">{{$formMec->numUniteImplique}}</div>
+                      
+            </div>
+            <div class = " center">
+                <h3  class="titreForm col-6 p-4">
+                2.Département* 
+                 </h3>         
+            </div>
+            <div class = " center">
+            <div class="departement">{{$formMec->departement}}</div>  
+            </div>     
+            <div class = " center">
+                <h3  class="titreForm col-8 p-4">
+                3.Prenom et Nom de l'employé impliqué
+                 </h3>         
+            </div>
+            <div class = " center">
+            <div class="prenomNomEmploye">{{$formMec->prenomNomEmploye}}</div>
+            </div>    
+            <div class = " center">
+                <h3  class="titreForm col-8 p-4">
+                4.Prenom et Nom du supérieur immédiat 
+                 </h3>         
+            </div>
+            <div class = " center">
+            <div class="prenomNomSupImmediat">{{$formMec->prenomNomSupImmediat}}</div>
+            </div>      
+            <div class = " center">
+                <h3  class="titreForm col-9 p-4">
+                5.Numéro du permis de conduire de l'employé 
+                 </h3>         
+            </div>
+            <div class = " center">
+            <div class="numPermisConduireEmploye">{{$formMec->numPermisConduireEmploye}}</div>
+            </div> 
+            <div class = " center">
+                <h3  class="titreForm col-8 p-4">
+                6.Autres Véhicules impliqués(Citoyen) 
+                 </h3>         
+            </div>   
+            <div class = " center titreForm col-6 p-2">
+            <div class="vehiculeCityonImplique">{{$formMec->vehiculeCityonImplique}}</div>
+            </div>  
+            <div class = " center">
+                <h3  class="titreForm col-9 p-4">
+                7.Le superviseur a été aviser? 
+                 </h3>         
+            </div>
+            <div class = " center">
+            <div class="notifSup">{{$formMec->notifSup}}</div>
+            </div> 
+            <div class = " center">
+                <h3  class="titreForm col-9 p-4">
+                8.l'admin a été aviser? 
+                 </h3>         
+            </div>
+            <div class = " center">
+            <div class="notifAdmin">{{$formMec->notifAdmin}}</div>
+            </div> 
+                                 
+    </form>
+    
+    
+        
+    </div>                    
+                              
+</div>
+  @endforeach
                     </div>
 
                     <div class="div">
