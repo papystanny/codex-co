@@ -35,6 +35,7 @@ return new class extends Migration
             $table->string('signatureEmploye',100)->nullable();
             $table->string('signatureSuperviseur',100)->nullable();
             $table->date('dateSignatureEmploye')->nullable();
+            $table->date('dateSignatureSuperviseur')->nullable();
             $table->string('notifSup',100);
             $table->string('notifAdmin',100);
             $table->timestamps();
