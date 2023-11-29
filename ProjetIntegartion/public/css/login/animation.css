@@ -1,0 +1,67 @@
+.main-section {
+    overflow: relative;
+    overflow: hidden;
+}
+
+.main-section::before, .main-section::after,
+.main-section .additional-circle, .main-section .additional-arc {
+    position: absolute;
+    border-radius: 50%;
+    animation: rotateScaleFade 10s ease-in-out infinite;
+}
+
+.main-section::before {
+    top: -50px;
+    left: -50px;
+    width: 200px;
+    height: 200px;
+    background-color: red;
+}
+
+.main-section::after {
+    top: -100px;
+    left: -100px;
+    width: 300px;
+    height: 300px;
+    border: 10px solid blue;
+    clip-path: polygon(50% 50%, 100% 50%, 100% 0, 50% 0); /* Créer un arc */
+}
+
+.main-section .additional-circle {
+    bottom: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    background-color: green;
+}
+
+.main-section .additional-arc {
+    bottom: -100px;
+    right: -100px;
+    width: 250px;
+    height: 250px;
+    border: 8px solid orange;
+    clip-path: polygon(50% 50%, 100% 50%, 100% 0, 50% 0); /* Créer un arc */
+}
+
+.main-section .subtle-blue-circle {
+    position: absolute;
+    top: -15%;  /* Position en haut */
+    left: -10%; /* Position à gauche */
+    width: 120px;
+    height: 120px;
+    background-color: rgba(0, 0, 255, 0.5); /* Bleu avec opacité */
+    border-radius: 50%;
+    animation: rotateScaleFade 12s ease-in-out infinite;
+}
+
+@keyframes rotateScaleFade {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5) rotate(180deg);
+        opacity: 0.5;
+    }
+}

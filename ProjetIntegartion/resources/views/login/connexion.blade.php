@@ -8,6 +8,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="{{asset('css/login/login.css')}}">
+    <link rel="stylesheet" href="{{asset('css/login/animation.css')}}">
     <link rel="icon" href="https://tse1.mm.bing.net/th?id=OIP.BvE9Kz_K4pOY9ceOf4bLIQHaEK&pid=Api" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
@@ -49,6 +50,9 @@
                 <button type="submit" >Connexion</button>
                 </div>
             </form>
+            <div class="additional-circle"></div>
+            <div class="additional-arc"></div>
+            <div class="subtle-blue-circle"></div> 
         </div>
     </div>
  </div>
@@ -63,6 +67,8 @@
         </div> 
 
         <div class="main-section" >
+
+        
                 <div class="section-gauche">
                 </div>
 
@@ -104,24 +110,14 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 const images = [
-  'url("https://w0.peakpx.com/wallpaper/342/133/HD-wallpaper-lovely-bridge-in-trois-rivieres-in-quebec-canada-r-bridge-arc-river-r-trees-clouds.jpg")',
-  'url("https://i.pinimg.com/564x/4f/75/ca/4f75ca16d8551dde2bff5ca636b88c65.jpg")',
-  'url("https://i.pinimg.com/564x/f3/b6/f7/f3b6f760fe350757871d6bed8c8fa68c.jpg")',
-  'url("https://i.pinimg.com/564x/9f/5b/a2/9f5ba213bbfadc1745b368c0a5f09736.jpg")',
+  'url("https://i.pinimg.com/564x/34/4f/bd/344fbdc16a9d0cfc2566cc11e651d43f.jpg")',
+  'url("https://i.pinimg.com/564x/a0/17/35/a017355e83f8f60209094047a6dba5c7.jpg")',
+  'url("https://i.pinimg.com/564x/da/c7/32/dac732ac34789ab390c072195ac02f01.jpg")',
+  'url("https://i.pinimg.com/564x/af/75/da/af75dab13c9bf8d32255daf602f8ddc2.jpg")',
   'url("https://i.pinimg.com/564x/93/28/e6/9328e65301e611c6d15fb73b7318b255.jpg")',
-  'url("https://i.pinimg.com/564x/21/9b/5f/219b5fab300d704dc88c3abf23d81d99.jpg")',
-  'url("https://i.pinimg.com/564x/8f/ac/0a/8fac0a03fc04d7432ca55355ce22fb20.jpg")'
+  'url("https://i.pinimg.com/564x/9c/f1/6b/9cf16b92b4e62ea37f673cb7aeff0450.jpg")'
 ];
 
-const imagesPc = [
-  'url("https://w0.peakpx.com/wallpaper/342/133/HD-wallpaper-lovely-bridge-in-trois-rivieres-in-quebec-canada-r-bridge-arc-river-r-trees-clouds.jpg")',
-  'url("https://i.pinimg.com/564x/4f/75/ca/4f75ca16d8551dde2bff5ca636b88c65.jpg")',
-  'url("https://i.pinimg.com/564x/f3/b6/f7/f3b6f760fe350757871d6bed8c8fa68c.jpg")',
-  'url("https://i.pinimg.com/564x/9f/5b/a2/9f5ba213bbfadc1745b368c0a5f09736.jpg")',
-  'url("https://i.pinimg.com/564x/93/28/e6/9328e65301e611c6d15fb73b7318b255.jpg")',
-  'url("https://i.pinimg.com/564x/21/9b/5f/219b5fab300d704dc88c3abf23d81d99.jpg")',
-  'url("https://i.pinimg.com/564x/8f/ac/0a/8fac0a03fc04d7432ca55355ce22fb20.jpg")'
-];
 
 let currentIndex = 0;
 
@@ -130,13 +126,9 @@ function changeBackground() {
   currentIndex = (currentIndex + 1) % images.length;
 }
 
-function changeBackgroundPc() {
-  document.querySelector('.section-gauche').style.backgroundImage = images[currentIndex];
-  currentIndex = (currentIndex + 1) % imagesPC.length;
-}
 
 setInterval(changeBackground, 5000); 
-setInterval(changeBackgroundPC, 5000); 
+
 
 
 
@@ -154,7 +146,7 @@ document.querySelectorAll('.form-groupUnite input').forEach(input => {
 
 </script>
 
-
+<script src="js/loginAnimationMobile.js" defer></script>
 </script>  
 </body>
 </html>
