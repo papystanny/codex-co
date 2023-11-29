@@ -123,10 +123,11 @@
        <form id="formulaireFiltrAccidentTravail" action="/filtrer-formulaires" method="POST" onsubmit="filtrerFormulaireAccidentTravail(event)">
              @csrf
             <label for="date_debut">Date de début :</label>
-            <input type="date" id="date_debut" name="date_debut" required>
+            <input type="date" id="date_debut" name="date_debut"  required onchange="validateDates()">
 
             <label for="date_fin">Date de fin :</label>
-            <input type="date" id="date_fin" name="date_fin" required>
+            <input type="date" id="date_fin" name="date_fin"  required onchange="validateDates()">
+            <div id="dateError" style="color: red; margin-bottom:10px;"></div>
 
             <label for="type">Type de formulaire :</label>
             <select id="type" name="typeFormulaire" required>
@@ -134,8 +135,8 @@
                 <option value="formaccidentstravails" data-formulaire="formaccidentstravails">Déclaration et accident de travail </option>
                 <option value="formsitdangereuses" data-formulaire="usager_formsitdangereuse">Signalement d'acte de violence </option>
 @if( Session::get('typeCompte') == 'superieur')   
-              <option value="type1">Audi SST</option>
-              <option value="type2">Rapport-Mécanique d'incident</option> 
+              <option value="formulairesauditssts">Audi SST</option>
+              <option value="formateliermecaniques">Rapport-Mécanique d'incident</option> 
 @endauth
                 <!-- Ajoutez d'autres options de type de formulaire au besoin -->
             </select>

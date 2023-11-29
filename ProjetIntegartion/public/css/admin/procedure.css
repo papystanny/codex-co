@@ -46,7 +46,7 @@ background-color: aqua;
 }
 
 .menuProcedures li{
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     background-color: bisque;
     padding: 15px;
     border-radius: 15px; 
@@ -59,10 +59,26 @@ background-color: aqua;
     align-items: center;
 }
 
+.uniteProcedureAdmin{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
 .uniteProcedure > div:not(:last-child) {
     flex-basis: 35%; /* Ajustez ce pourcentage selon vos besoins */
     /* Ou vous pouvez utiliser width: calc(33.33% - 10px); */
 }
+
+.uniteProcedureAdmin > div:not(:last-child) {
+    flex-basis: 50%; /* Ajustez ce pourcentage selon vos besoins */
+    /* Ou vous pouvez utiliser width: calc(33.33% - 10px); */
+}
+
+
 
 .uniteProcedure > div:last-child {
     flex-grow: 1; /* Prend tout l'espace restant */

@@ -20,6 +20,13 @@
     @extends('layouts.app')
 
     @section('contenu')
+
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
+
     <div class="procedureAdminMain"> 
         <div class="procedureEnCours">
 
@@ -37,29 +44,38 @@
         </div>
 
             <ul class="menuProcedures">
-                
-            @forelse($proceduresTravail ?? [] as $procedure)
-                <li> 
-                    <div class="uniteProcedure"> 
-                        <i class="far fa-clock fa-3x"></i>
-                        <div> <span class="contentMenuElement"> {{ mb_strtoupper($procedure->nom, 'UTF-8') }} </span>      </div> 
-                        <div>  <span class="contentMenuElement"> Soins </span> </div>
-                       <i class="fas fa-trash fa-2x"  title="Supprimer la procédure"></i>
-                    </div>
-                </li>
-            @empty
-                <li> 
-                    <div class="uniteProcedure">  
-                              <i class="fa-solid fa-folder "></i>
-                              <span class="contentMenuElement"> AUCUNE PROCEDURE N'EST EN COURS</span> 
-                             <i class="fa-solid fa-xmark  "></i>
-                    </div>
-                </li>
-            @endforelse
+                 
+                    @foreach($departements as $departement)
 
-
-
-
+                            <span class="titre" style="color:blue;"> {{ ucwords($departement->nom) }} </span> 
+                            @forelse($departement->proceduresTravails ?? [] as $procedure)
+                                <li> 
+                                    <div class="uniteProcedureAdmin" >
+                                        {{-- Détails de la procédure --}}
+                                        <i class="far fa-clock fa-3x"></i>
+                                        <div><span class="contentMenuElement">{{ mb_strtoupper($procedure->nom, 'UTF-8') }}</span></div>
+                                        <form action="{{ route('procedure.delete', ['departement' => $departement->id, 'procedure' => $procedure->id]) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="delete-button" title="Supprimer la procédure">
+                                                <i class="fas fa-trash fa-2x"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </li>
+                    
+                            @empty
+                            <li> 
+                                <div class="uniteProcedure">  
+                                        <i class="fa-solid fa-folder "></i>
+                                    
+                                        <i class="fa-solid fa-xmark  " style="color:red;"></i>
+                                </div>
+                            </li>
+                            @endforelse
+                        
+                    @endforeach
+        
             </ul>
         </div>
     </div> 
@@ -68,6 +84,20 @@
     <script src="js/employe/accueil.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="js/employe/accessoire/modal.js" defer></script>
+    <script src="js/admin/procedure/ajoutProcedure.js" defer></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.delete-button').forEach(function (button) {
+        button.addEventListener('click', function (event) {
+            if (!confirm('Êtes-vous sûr de vouloir supprimer cette procédure ?')) {
+                event.preventDefault();
+            }
+        });
+    });
+});
+</script>
+
 </body>
 </html>
 
@@ -85,33 +115,36 @@
 
             <ul class="modalMenu">
                 <li>
-                    <form id="formulaireFiltre">
-
+                <form id="formulaireFiltre" action="{{ route('procedures.store') }}" method="POST">
+                 @csrf
                         <div  class="sectionModal">
                             <label for="date_fin">Nom de la procédure :</label>
                             <input type="text" id="textNom" name="textNom" required>
+                            <span class="text-danger" id="textNomError"></span>
                         </div>
 
                         <div  class="sectionModal">
                             <label for="date_debut">Lien de la procédure :</label>
                             <input type="text" id="textLien" name="textLien" required>
+                            <span class="text-danger" id="textLienError"></span>
                         </div>
 
-                        <div  class="sectionModal">
+                        <div class="sectionModal">
                             <label for="type">Type de départements :</label>
                             <select id="type" name="typeDepartement" required>
-                                <option value="type2">Tous les départements </option>
-                                <option value="type1">Soins</option>
-                                <option value="type3">Sécurité  </option>
-                                <option value="type4"> Paie </option>
-                                       <!-- Ajoutez d'autres options de type de formulaire au besoin -->
-                             </select>
+                                    <option value="type2">Tous les départements</option>
+                                @forelse($departements as $departement)
+                                    <option value="{{ $departement->id }}">{{ ucwords($departement->nom) }}</option>
+                                @empty
+                                    <option value="">Aucun département disponible</option>
+                                @endforelse
+                                <!-- Ajoutez d'autres options de type de formulaire au besoin -->
+                            </select>
+                            <span class="text-danger" id="typeDepartementError"></span>
                         </div>
-
                         <div  class="submitModal">
-                             <button type="submit">Rechercher</button>
+                             <button type="submit">Ajouter</button>
                         </div>
-                     
                     </form>
                 </li>
             </ul>
@@ -137,11 +170,12 @@
                         <div  class="sectionModal">
                             <label for="type">Départements concernés :</label>
                             <select id="type" name="nomDepartement" required>
-                            <option value="type2">Tous les départements </option>
-                                <option value="type1">Soins</option>
-                                <option value="type3">Sécurité  </option>
-                                <option value="type4"> Paie </option>
-                                       <!-- Ajoutez d'autres options de type de formulaire au besoin -->
+                            <option value="type2">Tous les départements</option>
+                            @forelse($departements as $departement)
+                                    <option value="{{ $departement->id }}">{{ ucwords($departement->nom) }}</option>
+                            @empty
+                                <option value="">Aucun département disponible</option>
+                            @endforelse
                              </select>
                         </div>
 

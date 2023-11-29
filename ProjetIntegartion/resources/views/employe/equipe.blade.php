@@ -52,7 +52,7 @@
 @endif
                         </div>       
                         <h5> {{ mb_strtoupper($formulaire->nomFormulaire, 'UTF-8') }}   </h5>
-                        <h5> {{$formulaire->nomEmploye}} </h5>
+                        <h5> {{ ucfirst($formulaire->nomEmploye) }} </h5>
                     </div>
             @empty
 
@@ -132,29 +132,31 @@
         <form id="formulaireFiltrAccidentTravailEquipe" action="/filtrer-formulairesEquipes" method="POST" onsubmit="filtrerFormulaireAccidentTravailEquipe(event)">
              @csrf
              <label for="date_debut">Date de début :</label>
-            <input type="date" id="date_debut" name="date_debut" required>
+            <input type="date" id="date_debut" name="date_debut" required onchange="validateDates()">
 
             <label for="date_fin">Date de fin :</label>
-            <input type="date" id="date_fin" name="date_fin" required>
+            <input type="date" id="date_fin" name="date_fin" required onchange="validateDates()">
+
+            <div id="dateError" style="color: red; margin-bottom:10px;"></div>
 
             <label for="type">Type de formulaire :</label>
             <select id="type" name="typeFormulaire" required>
-                <option value="type2">Tous les formulaires </option>
+                <option value="type1">Tous les formulaires </option>
                 <option value="formaccidentstravails" data-formulaire="formaccidentstravails">Déclaration et accident de travail </option>
                 <option value="formsitdangereuses" data-formulaire="usager_formsitdangereuse">Signalement d'acte de violence </option>
 @if( Session::get('typeCompte') == 'superieur')   
-                <option value="xxx">Audi SST</option>
-                <option value="xx">Rapport-Mécanique d'incident</option> 
+                <option value="formulairesauditssts">Audi SST</option>
+                <option value="formateliermecaniques">Rapport-Mécanique d'incident</option> 
 @endauth
                 <!-- Ajoutez d'autres options de type de formulaire au besoin -->
             </select>
 
             <label for="type">Nom de l'employe :</label>
             <select id="nomEmploye" name="nomEmploye" required>
-            @forelse($usagers ?? [] as $usager)             
-                <option value="{{$usager->matricule}}">{{$usager->nom}} {{$usager->prenom}} </option>
-            @empty
-            @endforelse
+                @forelse($usagers ?? [] as $usager)             
+                    <option value="{{$usager->matricule}}">{{$usager->nom}} {{$usager->prenom}} </option>
+                @empty
+                @endforelse
             </select>
            
             <button type="submit">Rechercher</button> 

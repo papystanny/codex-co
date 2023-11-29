@@ -58,13 +58,26 @@
 
 
         <div class="accueil-formulaire">
-            @forelse($proceduresTravail ?? [] as $procedure)
+            <h3>Tous les départements</h3>
+       
+            @forelse($proceduresCommunes ?? [] as $procedure)
                 <div class="formulaire">
                     <a href="{{ $procedure->lien }}"><h5>{{ mb_strtoupper($procedure->nom, 'UTF-8') }}</h5> </a>
                 </div>
             @empty
                 <div class="formulaire">
-                    <h1>Aucune procédure de travail disponible</h1>
+                    <h1>Aucune procédure  disponible</h1>
+                </div>
+            @endforelse
+
+            <h3> {{ Session::get('nomDepartement') }}</h3>
+            @forelse($proceduresDepartement ?? [] as $procedure)
+                <div class="formulaire">
+                    <a href="{{ $procedure->lien }}"><h5>{{ mb_strtoupper($procedure->nom, 'UTF-8') }}</h5> </a>
+                </div>
+            @empty
+                <div class="formulaire">
+                    <h1>Aucune procédure disponible </h1>
                 </div>
             @endforelse
         </div>

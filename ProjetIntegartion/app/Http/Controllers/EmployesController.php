@@ -21,10 +21,25 @@ class EmployesController extends Controller
     public function index()
     { 
         $user = Usager::where('matricule', Session::get('matricule'))->first();
-        $departement = $user->departements;
-        $proceduresTravail = $user->departements->proceduresTravails;
+        $departementUser = $user->departements;
+        
+        $totalDepartements = Departement::count();
 
-        return view('employe.accueil', compact('proceduresTravail'));
+        $proceduresCommunesIds = ProceduresTravail::select('procedurestravails.id')
+        ->join('departement_procedurestravail', 'procedurestravails.id', '=', 'departement_procedurestravail.procedurestravails_id')
+        ->groupBy('procedurestravails.id')
+        ->havingRaw('COUNT(departement_procedurestravail.departement_id) = ?', [$totalDepartements])
+        ->pluck('procedurestravails.id');
+
+        $proceduresCommunes = ProceduresTravail::select('procedurestravails.*')
+            ->join('departement_procedurestravail', 'procedurestravails.id', '=', 'departement_procedurestravail.procedurestravails_id')
+            ->groupBy('procedurestravails.id')
+            ->havingRaw('COUNT(departement_procedurestravail.departement_id) = ?', [$totalDepartements])
+            ->get();
+   
+        $proceduresDepartement = $departementUser->proceduresTravails()->whereNotIn('procedurestravails.id', $proceduresCommunesIds)->get();
+
+        return view('employe.accueil', compact('proceduresCommunes', 'proceduresDepartement'));
     }
 
     public function formulaire()
@@ -51,13 +66,43 @@ class EmployesController extends Controller
         return view('employe.formulaire', compact('formulairesTous'));
     }
 
-    public function procedure()
+   /* public function procedure()
     { 
         $user = Usager::where('matricule', Session::get('matricule'))->first();
         $departement = $user->departements;
         $proceduresTravail = $user->departements->proceduresTravails;
         return view('employe.procedure', compact('proceduresTravail'));
+    }*/
+
+    public function procedure()
+    { 
+      
+        $user = Usager::where('matricule', Session::get('matricule'))->first();
+        $departementUser = $user->departements;
+        
+        $totalDepartements = Departement::count();
+
+        $proceduresCommunesIds = ProceduresTravail::select('procedurestravails.id')
+        ->join('departement_procedurestravail', 'procedurestravails.id', '=', 'departement_procedurestravail.procedurestravails_id')
+        ->groupBy('procedurestravails.id')
+        ->havingRaw('COUNT(departement_procedurestravail.departement_id) = ?', [$totalDepartements])
+        ->pluck('procedurestravails.id');
+
+        $proceduresCommunes = ProceduresTravail::select('procedurestravails.*')
+            ->join('departement_procedurestravail', 'procedurestravails.id', '=', 'departement_procedurestravail.procedurestravails_id')
+            ->groupBy('procedurestravails.id')
+            ->havingRaw('COUNT(departement_procedurestravail.departement_id) = ?', [$totalDepartements])
+            ->get();
+   
+        $proceduresDepartement = $departementUser->proceduresTravails()->whereNotIn('procedurestravails.id', $proceduresCommunesIds)->get();
+
+        return view('employe.procedure', compact('proceduresCommunes', 'proceduresDepartement'));
     }
+    
+
+    
+    
+
 
     public function equipe()
     { 
@@ -80,6 +125,9 @@ class EmployesController extends Controller
         return view('employe.equipe', compact('formulairesTous', 'usagers'));
     }
     
+
+
+// ********************************************************** ADMIN ************************************************************************************
 
     public function adminAccueil()
     { 
@@ -107,16 +155,58 @@ class EmployesController extends Controller
     }
  */
     public function adminProcedure()
-    { 
-        // Récupère toutes les procédures de travail de tous les départements
-        $proceduresTravail = ProceduresTravail::with('departements')
-                                            ->get()
-                                            ->unique('id');
-        Log::debug($proceduresTravail);
-        return view('admin.procedure', compact('proceduresTravail'));
+    {
+        $departements = Departement::with('proceduresTravails')->get();
+        //dd($departements->first()->proceduresTravails);
+        //dd($departements); // Affiche les données de $departements et arrête l'exécution
+
+        return view('admin.procedure', compact('departements'));
     }
 
-    
+    public function deleteProcedure(Departement $departement, ProceduresTravail $procedure)
+    {
+        // Désassocier la procédure du département
+        $departement->proceduresTravails()->detach($procedure->id);
+
+        // Optionnel : supprimer la procédure si nécessaire
+        // $procedure->delete();
+
+        return redirect()->back()->with('error', 'Procédure supprimée avec succès.');
+    }
+
+    public function storeProcedure(Request $request)
+    {
+        $request->validate([
+            'textNom' => 'required|string|max:255', // Par exemple, ajoutez une règle pour la longueur maximale
+            'textLien' => 'required|string|url', // Par exemple, ajoutez une règle pour vérifier qu'il s'agit d'une URL valide
+        ], [
+            'textNom.required' => 'Le champ Nom de la procédure est requis.',
+            'textNom.string' => 'Le champ Nom de la procédure doit être une chaîne de caractères.',
+            'textNom.max' => 'Le champ Nom de la procédure ne peut pas dépasser :max caractères.',
+        
+            'textLien.required' => 'Le champ Lien de la procédure est requis.',
+            'textLien.string' => 'Le champ Lien de la procédure doit être une chaîne de caractères.',
+            'textLien.url' => 'Le champ Lien de la procédure doit être une URL valide.',
+        
+            'typeDepartement.required' => 'Le champ Type de départements est requis.',
+             ]);
+
+        $procedure = new ProceduresTravail();
+        $procedure->nom = $request->textNom;
+        $procedure->lien = $request->textLien;
+        $procedure->save();
+
+        if ($request->typeDepartement == 'type2') {
+            $departements = Departement::all();
+            $procedure->departements()->attach($departements);
+        } else {
+            $procedure->departements()->attach($request->typeDepartement);
+        }
+
+        return redirect()->back()->with('success', 'Procédure ajoutée avec succès.');
+    }
+
+
 
 
     public function adminFormulaire()
@@ -172,36 +262,78 @@ class EmployesController extends Controller
         $dateDebut = $request->input('date_debut');
         $dateFin = $request->input('date_fin');
         $typeFormulaire = $request->input('typeFormulaire');
-        $nomEmploye = $request->input('nom_employe');
+        $matriculeEmploye = $request->input('nom_employe'); // Assurez-vous que c'est le nom correct du champ
+     
         
-        $usagers = Usager::where('matricule', $nomEmploye)->get();
-        Log::debug('Étape crucial tant attendue');
-        Log::debug($usagers);
-    
-        $formulairesFiltres = collect(); // Collection vide pour stocker les résultats
-    
-        foreach ($usagers as $usager) {
-            $resultats = $this->getFormulairesByType($usager, $typeFormulaire, $dateDebut, $dateFin);
-            $formulairesFiltres = $formulairesFiltres->merge($resultats); // Fusionner les résultats
+        $usager = Usager::where('matricule', $matriculeEmploye)->first();
+
+        if ($usager) {
+            $formulairesFiltres = $this->getFormulairesByType($usager, $typeFormulaire, $dateDebut, $dateFin);
+        } else {
+            $formulairesFiltres = collect(); // Retourne une collection vide si aucun usager n'est trouvé
+            Log::debug('LERREUR EST QUE USAGER NE RETOURNE RIEN');
         }
-    
+        
+        $logOutput = $formulairesFiltres->map(function ($formulaire) {
+            return json_encode($formulaire); // Convertit chaque élément en JSON pour un affichage clair
+        })->implode("\n"); // Joindre chaque élément avec un saut de ligne
+        
+        Log::debug($logOutput);
+        
         return response()->json($formulairesFiltres);
     }
+
 
     // Fonction pour récupérer les formulaires en fonction du type
     private function getFormulairesByType($user, $typeFormulaire, $dateDebut, $dateFin)
     {
         switch ($typeFormulaire) {
-         /*   case 'type1':
-                return $user->formulairesType1()
-                    ->where('dateAccident', '>=', $dateDebut)
-                    ->where('dateAccident', '<=', $dateFin)
-                    ->get();*/
+            case 'type1': // Cas pour tous les formulaires
+                // Ici, vous devez combiner les résultats de toutes les requêtes
+                $formulaires = collect();
+    
+                // Ajoutez tous les types de formulaires à la collection
+                $formulaires = $formulaires->merge($user->formulairesateliermecanique()
+                    ->where('formateliermecaniques.created_at', '>=', $dateDebut)
+                    ->where('formateliermecaniques.created_at', '<=', $dateFin)
+                    ->get());
+    
+                $formulaires = $formulaires->merge($user->formAccidentTravail()
+                    ->where('formaccidentstravails.created_at', '>=', $dateDebut)
+                    ->where('formaccidentstravails.created_at', '<=', $dateFin)
+                    ->get());
+    
+                $formulaires = $formulaires->merge($user->formulairesauditssts()
+                    ->where('formulairesauditssts.created_at', '>=', $dateDebut)
+                    ->where('formulairesauditssts.created_at', '<=', $dateFin)
+                    ->get());
+    
+                $formulaires = $formulaires->merge($user->formulairessitdangeureuse()
+                    ->where('formsitdangereuses.created_at', '>=', $dateDebut)
+                    ->where('formsitdangereuses.created_at', '<=', $dateFin)
+                    ->get());
+    
+                return $formulaires;
+            case 'formateliermecaniques':
+                return $user->formulairesateliermecanique()
+                ->where('formateliermecaniques.created_at', '>=', $dateDebut)
+                ->where('formateliermecaniques.created_at', '<=', $dateFin)
+                ->get();
             case 'formaccidentstravails':
                 return $user->formAccidentTravail()
-                    ->where('dateAccident', '>=', $dateDebut)
-                    ->where('dateAccident', '<=', $dateFin)
-                    ->get();
+                ->where('formaccidentstravails.created_at', '>=', $dateDebut)
+                ->where('formaccidentstravails.created_at', '<=', $dateFin)
+                ->get();
+            case 'ormulairesauditssts':
+                return $user->formulairesauditssts()
+                ->where('formulairesauditssts.created_at', '>=', $dateDebut)
+                ->where('ormulairesauditssts.created_at', '<=', $dateFin)
+                ->get();
+            case 'formsitdangereuses':
+                return $user->formulairessitdangeureuse()
+                ->where('formsitdangereuses.created_at', '>=', $dateDebut)
+                ->where('formsitdangereuses.created_at', '<=', $dateFin)
+                ->get();
           /*  case 'type3':
                 return $user->formulairesType3()
                     ->where('dateAccident', '>=', $dateDebut)
@@ -212,5 +344,6 @@ class EmployesController extends Controller
                 // Traite le cas par défaut
                 return null;
         }
+     
     }
 }

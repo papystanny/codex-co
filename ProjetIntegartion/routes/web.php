@@ -84,6 +84,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/adminVoirFormulaireRempli', 
     [EmployesController::class, 'adminVoirFormulaireRempli'])->name('admin.voirFormulaireRempli');
 
+    Route::delete('/procedure/{departement}/{procedure}', [EmployesController::class, 'deleteProcedure'])->name('procedure.delete');
+    
+    Route::post('/procedures/add', [EmployesController::class, 'storeProcedure'])->name('procedures.store');
+
+
 
 });
 

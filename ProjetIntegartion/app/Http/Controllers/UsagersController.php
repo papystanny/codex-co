@@ -47,7 +47,7 @@ class UsagersController extends Controller
                // Log::debug($user );
                
                 
-               return view('employe.accueil', compact('proceduresTravail'))->with('error', 'Connexion échouée !');
+               return redirect()->route('employe.accueil')->with('error', 'Connexion échouée !');
 
             }
             else if(Auth::user()->typeCompte == 'superieur')
@@ -64,7 +64,7 @@ class UsagersController extends Controller
                 Session::put('typeCompte', $user->typeCompte);
                 Session::put('nomDepartement', $departement->nom);
 
-                return view('employe.accueil', compact('proceduresTravail'))->with('error', 'Connexion échouée !');
+                return redirect()->route('employe.accueil')->with('error', 'Connexion échouée !');
             }
             else if(Auth::user()->typeCompte == 'admin')
             {

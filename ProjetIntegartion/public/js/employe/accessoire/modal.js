@@ -21,7 +21,12 @@ document.getElementById("ouvrirModalBtn").addEventListener("click", ouvrirModal)
 document.getElementById("ouvrirModalFiltreBtn").addEventListener("click", ouvrirModalFiltre);
 
 // Écouteur d'événement pour le bouton de fermeture du modal
-document.getElementById("fermerModal").addEventListener("click", fermerModal);
+var fermerModalButton = document.getElementById('fermerModal');
+if (fermerModalButton) {
+    fermerModalButton.addEventListener('click', fermerModal);
+} else {
+    console.log("L'élément 'fermerModal' n'a pas été trouvé dans le DOM");
+}
 document.getElementById("fermerModal1").addEventListener("click", fermerModal1);
 
 // Écouteur d'événement pour fermer le modal en cliquant à l'extérieur de celui-ci
@@ -35,7 +40,20 @@ window.addEventListener("click", function(event) {
 
 });
 
+//********************************************************************VÉRIFIER SI LA DATE DE FIN EST SUPÉRIEUR À LA DATE DE DÉBUT*************************** */
+function validateDates() {
+    var dateDebut = document.getElementById('date_debut').value;
+    var dateFin = document.getElementById('date_fin').value;
+    var errorMessageDiv = document.getElementById('dateError');
 
+    if (dateDebut && dateFin && dateFin < dateDebut) {
+        errorMessageDiv.textContent = 'La date de fin ne peut pas être antérieure à la date de début.';
+    } else {
+        errorMessageDiv.textContent = ''; // Efface le message d'erreur si les dates sont valides
+    }
+}
+
+//*******************************************************************FILTRER LES HISTORQIUES DE FORMULAIRES EMPLOYE*********************************************** */
 
 // Fonction pour soumettre le formulaire et filtrer les formulaires
 function filtrerFormulaireAccidentTravail(event) {
@@ -57,6 +75,8 @@ function filtrerFormulaireAccidentTravail(event) {
         date_fin: dateFin,
         typeFormulaire: typeFormulaire,
     };
+
+    console.warn('je me rend ici') ;
 
     // Effectue la requête Fetch pour filtrer les formulaires
     fetch('/filtrer-formulaires', {
@@ -86,11 +106,14 @@ function filtrerFormulaireAccidentTravail(event) {
                   // Met à jour la vue avec les nouveaux formulaires
           
                 var existingFormulaireDiv = document.createElement('div');
+                var date = new Date(formulaire.created_at);
+                var formattedDate = date.toLocaleDateString('fr-FR') + '  ' + date.toLocaleTimeString('fr-FR');
+
                 existingFormulaireDiv.className = 'historique-unite';
                 existingFormulaireDiv.innerHTML = '<i class="fa-solid fa-folder left-fontAwesome"></i>' +
-                    '<h5>' + formulaire.fonctionMomentEvenement + '</h5>' +
-                    '<i class="fa-solid fa-check right-fontAwesome"></i>' +
-                    '<span>' + formulaire.dateAcccident + '</span>';
+                    '<h5>' + formulaire.nomFormulaire.toUpperCase() + '</h5>' +
+                    '<i class="fa-solid fa-check "style="color:green;"></i>' +
+                    '<span>' + formattedDate + '</span>';
     
                 // Ajoute l'élément créé au fragment
                 fragment.appendChild(existingFormulaireDiv);
@@ -121,6 +144,7 @@ function filtrerFormulaireAccidentTravail(event) {
     console.log('Après la requête Fetch');
 }
 
+/********************************************************************************FILTRER LES FORMULAIRES DANS LA PAGE ÉQUIPE************************* */
    
 
 
@@ -146,7 +170,7 @@ function filtrerFormulaireAccidentTravailEquipe(event) {
         nom_employe: nomEmploye,
         typeFormulaire: typeFormulaire,
     };
-
+  
     // Effectue la requête Fetch pour filtrer les formulaires
     fetch('/filtrer-formulairesEquipes', {
         method: 'POST',
@@ -165,40 +189,46 @@ function filtrerFormulaireAccidentTravailEquipe(event) {
         return response.json();
     })
     .then(data => {
-
-      
-        var historiqueSection = document.getElementById('historique-section2');
-        
-        historiqueSection.innerHTML = ""; // Vide la section avant d'ajouter de nouveaux éléments
-
-        console.log('Erreur:');
-        // Utilise un fragment de document pour stocker temporairement les éléments créés
-        var fragment = document.createDocumentFragment();
+        var historiqueSection = document.querySelector('.historique-section2');
+        historiqueSection.innerHTML = ""; // Vide la section
+    
         if (data.length > 0) {
             data.forEach(function (formulaire) {
-                  // Met à jour la vue avec les nouveaux formulaires
-          
-                var existingFormulaireDiv = document.createElement('div');
-                existingFormulaireDiv.className = 'historique-unite2';
-                existingFormulaireDiv.innerHTML = `
-                <div class="unite1">
-                    <i class="fa-solid fa-folder left-fontAwesome"></i>
-                    <h5>${formulaire.dateAcccident}</h5>
-                    <i class="fa-solid fa-xmark right-fontAwesome2"></i>
-                </div>
-                <h5>${formulaire.fonctionMomentEvenement.toUpperCase()}</h5>
-                <h5>${formulaire.nomEmploye}</h5>
-            `;
+                var formulaireDiv = document.createElement('div');
+                formulaireDiv.className = 'historique-unite2';
     
-                // Ajoute l'élément créé au fragment
-                fragment.appendChild(existingFormulaireDiv);
+                var formattedDate = new Date(formulaire.created_at).toLocaleDateString('fr-FR') + ' ' + new Date(formulaire.created_at).toLocaleTimeString('fr-FR');
+                var nomFormulaire = formulaire.nomFormulaire.toUpperCase();
+                var nomEmploye = formulaire.nomEmploye.charAt(0).toUpperCase() + formulaire.nomEmploye.slice(1);
+    
+                formulaireDiv.innerHTML = `
+                    <div class="unite1">
+                        <i class="fa-solid fa-folder left-fontAwesome"></i>
+                        <h5>${formattedDate}</h5>
+                        ${formulaire.notifSup === 0 
+                            ? '<i class="fa-solid fa-xmark" style="color:red;"></i>'
+                            : '<i class="fa-solid fa-check" style="color:green;"></i>'
+                        }
+                    </div>
+                    <h5>${nomFormulaire}</h5>
+                    <h5>${nomEmploye}</h5>
+                `;
+    
+                historiqueSection.appendChild(formulaireDiv);
             });
-    
-            // Ajoute tous les éléments du fragment à historiqueSection
-            historiqueSection.appendChild(fragment);
         } else {
             // Si aucun formulaire n'est retourné, affiche un message
-          
+            var messageDiv = document.createElement('div');
+            messageDiv.className = 'historique-unite2';
+            messageDiv.innerHTML = `
+                <div class="historique-unite x2">
+                    <i class="fa-solid fa-user-tie left-fontAwesome"></i>
+                    <h5>AUCUN FORMULAIRE</h5>
+                    <i class="fa-solid fa-xmark right-fontAwesome2"></i>
+                    <span>Personne n'a rempli de formulaire</span>
+                </div>
+            `;
+            historiqueSection.appendChild(messageDiv);
         }
     })
     .catch(error => {
