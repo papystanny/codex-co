@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('formAccidentsTravails', function (Blueprint $table) {
             $table->id();
+            $table->string ('nomFormulaire',100);
             $table->string('nomEmploye',100);
             $table->string('fonctionMomentEvenement',100);
             $table->integer('matriculeEmploye');
@@ -28,16 +29,11 @@ return new class extends Migration
             $table->string('premiersSoins',100);
             $table->string('nomSecouriste',100);
             $table->string('necessiteAccident',255);
-            $table->string('supAvise',100);
-            $table->string('nomSuperviseurAvise',100);
-            $table->string('prenomSuperviseurAvise',100);
-            $table->date('dateSuperviseurAvise');
-            $table->string('signatureSupImmediat',100);
-            $table->integer('numPosteSupImmediat');
-            $table->date('dateSignatureSupImmediat');
-            $table->string('signatureEmploye',100);
-            $table->integer('numPosteEmploye');
-            $table->date('dateSignatureEmploye');
+            $table->string('nomSuperviseurAvise',100)->nullable();
+            $table->string('prenomSuperviseurAvise',100)->nullable();
+            $table->date('dateSuperviseurAvise')->nullable();
+            $table->string('signatureEmploye',100)->nullable();
+            $table->date('dateSignatureEmploye')->nullable();
             $table->string('notifSup',100);
             $table->string('notifAdmin',100);
             $table->timestamps();

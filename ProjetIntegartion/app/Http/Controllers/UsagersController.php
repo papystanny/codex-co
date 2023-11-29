@@ -55,7 +55,7 @@ class UsagersController extends Controller
                 $user = Usager::where('matricule', $request->matricule)->first();
                 $departement = $user->departements;
                 $nom = ucfirst($user->nom); // Utilisation de ucfirst pour capitaliser la première lettre
-
+               
                 Session::put('nom', $user->nom);       
                 Session::put('prenom', $user->prenom);   
                 Session::put('typeCompte', $user->typeCompte);

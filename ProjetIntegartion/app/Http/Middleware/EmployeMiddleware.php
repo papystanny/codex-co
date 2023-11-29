@@ -8,7 +8,7 @@ class EmployeMiddleware
 {
     public function handle($request, Closure $next)
     {
-        if (session('typeCompte') == 'employe' || session('typeCompte') == 'superviseur' ) {
+        if (session('typeCompte') == 'employe' || session('typeCompte') == 'superieur' ) {
             return $next($request);
         }
 

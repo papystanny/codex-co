@@ -371,82 +371,8 @@
                     @enderror 
                 </div>
                 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="J'ai avisé mon supérieur immédiat de mon absence" id="flexCheckChecked" name="supAvise" value="{{old('supAvise')}}" >
-                    <label class="form-check-label" for="flexCheckChecked">
-                  J'ai avisé mon supérieur immédiat de mon absence 
-                    </label>
-                   
-                    
-                </div>
-                    @error('supAvise')
-                            <span class="text-danger error-text">{{ $message }}</span>
-                    @enderror
-                <div class="form-check"> 
-                    <label for="formGroupExampleInput">nom en lettres moulées du supérieur</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder=""name="nomSuperviseurAvise" value="{{old('nomSuperviseurAvise')}}" >
-                   
-                </div>
-                     @error('nomSuperviseurAvise')
-                            <span class="text-danger error-text">{{ $message }}</span>
-                    @enderror
-                    <div class="form-check"> 
-                    <label for="formGroupExampleInput">prenom en lettres moulées du supérieur</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder=""name="prenomSuperviseurAvise" value="{{old('prenomSuperviseurAvise')}}" >
-                   
-                </div>
-                     @error('prenomSuperviseurAvise')
-                            <span class="text-danger error-text">{{ $message }}</span>
-                    @enderror
-                <div class="form-check">
-                    <label for="inputPassword4">Date </label>
-                    <input type="date" class="form-control " id="inputPassword4" placeholder="" name="dateSuperviseurAvise" value="{{old('dateSuperviseurAvise')}}" >
-                    @error('dateSuperviseurAvise')
-                            <span class="text-danger error-text">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="form-check">
-                    <label for="formGroupExampleInput">signature du supérieur immédiat</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" name="signatureSupImmediat" value="{{old('signatureSupImmediat')}}" >
-                    @error('signatureSupImmediat')
-                            <span class="text-danger error-text">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="form-check">
-                    <label for="formGroupExampleInput">no de poste</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" name="numPosteSupImmediat" value="{{old('numPosteSupImmediat')}}" >
-                    @error('numPosteSupImmediat')
-                            <span class="text-danger error-text">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="form-check">
-                    <label for="inputPassword4">Date </label>
-                    <input type="date" class="form-control " id="inputPassword4" placeholder="" name="dateSignatureSupImmediat" value="{{old('dateSignatureSupImmediat')}}" >
-                    @error('dateSignatureSupImmediat')
-                            <span class="text-danger error-text">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="form-check">
-                <label for="formGroupExampleInput">signature du travailleur ou de la travailleuse</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" name="signatureEmploye" value="{{old('signatureEmploye')}}" >
-                    @error('signatureEmploye')
-                            <span class="text-danger error-text">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="form-check">
-                    <label for="formGroupExampleInput">no de poste</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" name="numPosteEmploye" value="{{old('numPosteEmploye')}}" >
-                    @error('numPosteEmploye')
-                            <span class="text-danger error-text">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="form-check">
-                    <label for="inputPassword4">Date </label>
-                    <input type="date" class="form-control " id="inputPassword4" placeholder="" name="dateSignatureEmploye" value="{{old('dateSignatureEmploye')}}" >
-                    @error('dateSignatureEmploye')
-                            <span class="text-danger error-text">{{ $message }}</span>
-                    @enderror
-                </div>
+             
+
 </div>
     </div>
 

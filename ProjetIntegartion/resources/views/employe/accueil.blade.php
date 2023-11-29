@@ -57,17 +57,6 @@
        
 
 
-        <div class="accueil-formulaire">
-            @forelse($proceduresTravail ?? [] as $procedure)
-                <div class="formulaire">
-                    <h5>{{ mb_strtoupper($procedure->nom, 'UTF-8') }}</h5>
-                </div>
-            @empty
-                <div class="formulaire">
-                    <h1>Aucune procédure de travail disponible</h1>
-                </div>
-            @endforelse
-        </div>
 
     </div>
 

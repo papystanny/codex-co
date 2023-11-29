@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('formSitDangereuses', function (Blueprint $table) {
             $table->id();
+            $table->string ('nomFormulaire',100);
             $table-> string('nomEmploye',100);
             $table-> string('prenomEmploye',100);
             $table->integer('matriculeEmploye');
@@ -23,14 +24,12 @@ return new class extends Migration
             $table->string('temoins',255);
             $table->string('descriptionEvenement',255);
             $table->string('ameliorationsProposees',255);
-            $table->string('supAvise',100);
-            $table->string('nomSuperviseur',100);
-            $table->date('dateSupeAvise');
-            $table->string('signatureEmploye',100);
-            $table->date('dateSignatureEmploye');
-            $table->string('signatureSuperviseur',100);
-            $table->date('dateSignatureSuperviseur');
-            $table->integer('numPosteSuperviseur');
+            $table->string('nomSuperviseur',100)->nullable();
+            $table->date('dateSupeAvise')->nullable();
+            $table->string('signatureEmploye',100)->nullable();
+            $table->date('dateSignatureEmploye')->nullable();
+            $table->string('signatureSuperviseur',100)->nullable();
+            $table->date('dateSignatureSuperviseur')->nullable();
             $table->string('notifSup',100);
             $table->string('notifAdmin',100);
             $table->timestamps();

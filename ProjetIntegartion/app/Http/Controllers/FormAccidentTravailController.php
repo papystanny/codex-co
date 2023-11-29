@@ -35,6 +35,7 @@ class FormAccidentTravailController extends Controller
     
     
                $Formaccidentstravail = new Formaccidentstravail();
+               $Formaccidentstravail->nomFormulaire = "Accident de travail";
                $Formaccidentstravail->nomEmploye = Session::get('nom');;
                 $Formaccidentstravail->fonctionMomentEvenement = $request->input('fonctionMomentEvenement');
                 $Formaccidentstravail->matriculeEmploye = $request->input('matriculeEmploye');
@@ -119,16 +120,12 @@ class FormAccidentTravailController extends Controller
                 $Formaccidentstravail->premiersSoins = $request->input('premiersSoins');
                 $Formaccidentstravail->nomSecouriste = $request->input('nomSecouriste');
                 $Formaccidentstravail->necessiteAccident = $request->input('necessiteAccident');
-                $Formaccidentstravail->supAvise = $request->input('supAvise');
-                $Formaccidentstravail->nomSuperviseurAvise = $request->input('nomSuperviseurAvise');
-                $Formaccidentstravail->prenomSuperviseurAvise = $request->input('prenomSuperviseurAvise');
-                $Formaccidentstravail->dateSuperviseurAvise = $request->input('dateSuperviseurAvise');
-                $Formaccidentstravail->signatureSupImmediat = $request->input('signatureSupImmediat');
-                $Formaccidentstravail->numPosteSupImmediat = $request->input('numPosteSupImmediat');
-                $Formaccidentstravail->dateSignatureSupImmediat = $request->input('dateSignatureSupImmediat');
-                $Formaccidentstravail->signatureEmploye = $request->input('signatureEmploye');
-                $Formaccidentstravail->numPosteEmploye = $request->input('numPosteEmploye');
-                $Formaccidentstravail->dateSignatureEmploye = $request->input('dateSignatureEmploye');
+            //    $Formaccidentstravail->nomSuperviseurAvise = $request->input('nomSuperviseurAvise');
+            //    $Formaccidentstravail->prenomSuperviseurAvise = $request->input('prenomSuperviseurAvise');
+            //    $Formaccidentstravail->dateSuperviseurAvise = $request->input('dateSuperviseurAvise');
+          //      $Formaccidentstravail->signatureEmploye = $request->input('signatureEmploye');
+            
+           //     $Formaccidentstravail->dateSignatureEmploye = $request->input('dateSignatureEmploye');
                 $Formaccidentstravail->notifSup = 'oui';
                 $Formaccidentstravail->notifAdmin = 'oui';
 

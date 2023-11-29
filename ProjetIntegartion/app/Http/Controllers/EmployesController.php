@@ -17,10 +17,9 @@ class EmployesController extends Controller
     public function index()
     { 
         $user = Usager::where('matricule', Session::get('matricule'))->first();
-        $departement = $user->departements;
-        $proceduresTravail = $user->departements->proceduresTravails;
+   
 
-        return view('employe.accueil', compact('proceduresTravail'));
+        return view('employe.accueil');
     }
 
     public function formulaire()

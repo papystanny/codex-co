@@ -37,16 +37,7 @@ class AccidentTravailRequest extends FormRequest
             'premiersSoins' => 'required',
             'nomSecouriste' => 'required',
             'necessiteAccident'=> 'required',
-            'supAvise'=> 'required',
-            'nomSuperviseurAvise'=> 'required',
-            'prenomSuperviseurAvise'=> 'required',
-            'dateSuperviseurAvise'=> 'required|date|before_or_equal:today',
-            'signatureSupImmediat'=> 'required',
-            'numPosteSupImmediat'=> 'required',
-            'dateSignatureSupImmediat'=> 'required|date|before_or_equal:today',
-            'signatureEmploye'=> 'required',
-            'numPosteEmploye'=> 'required',
-            'dateSignatureEmploye'=> 'required|date|before_or_equal:today',
+           
 
           
 
@@ -72,19 +63,7 @@ class AccidentTravailRequest extends FormRequest
             'premiersSoins.required' => 'veillez renseigner ce champ',
             'nomSecouriste.required' => 'Le nom du secouriste est requis',
             'necessiteAccident.required' => 'cochez un élément',
-            'supAvise.required' => 'veillez indiquer si le superviseur a été avisé',
-            'nomSuperviseurAvise.required' => 'Le nom du superviseur avisé est requis',
-            'prenomSuperviseurAvise.required' => 'Le prénom du superviseur avisé est requis',
-            'dateSuperviseurAvise.required' => 'La date à laquelle le superviseur a été avisé est requise',
-            'dateSuperviseurAvise.before_or_equal' => 'La date à laquelle le superviseur a été avisé doit être avant ou égale à aujourd\'hui',
-            'signatureSupImmediat.required' => 'La signature du superviseur immédiat est requise',
-            'numPosteSupImmediat.required' => 'Le numéro de poste du superviseur immédiat est requis',
-            'dateSignatureSupImmediat.required' => 'La date de la signature du superviseur immédiat est requise',
-            'dateSignatureSupImmediat.before_or_equal' => 'La date de la signature du superviseur immédiat doit être égale à aujourd\'hui',
-            'signatureEmploye.required' => 'La signature de l\'employé est requise',
-            'numPosteEmploye.required' => 'Le numéro de poste de l\'employé est requis',
-            'dateSignatureEmploye.required' => 'La date de la signature de l\'employé est requise',
-            'dateSignatureEmploye.before_or_equal' => 'La date de la signature de l\'employé doit être égale à aujourd\'hui',
+
 
         ];
     }
