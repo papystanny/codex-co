@@ -60,9 +60,22 @@ top: 15px;
 display: block;
 position: absolute;
 width: 100%;
-height: 3px;
-background-color: #000000;
-transition-duration: .25s;
+height: 3px;transition-duration: .25s;
+animation: movingBackground 10s linear infinite;
+background: linear-gradient(50deg, rgb(120, 198, 224), green ,#0B2341);
+background-size: 200% 200%;
+}
+
+@keyframes movingBackground {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
 }
 
 .menu__btn > span::before {
@@ -76,35 +89,45 @@ top: 8px;
 }
 
 .menu__box {
-display: block;
-position: fixed;
-top: 0;
-left: -100%;
-width: 300px;
-height: 100%;
-font-family: 'Alumni Sans Medium', sans-serif;
-margin: 0;
-padding: 80px 0;
-list-style: none;
-background-color:  rgb(11, 35, 65);
-box-shadow: 4px 4px 6px rgb(231, 213, 224);
-transition-duration: .7s;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 300px;
+  height: 100%;
+  font-family: 'Alumni Sans Medium', sans-serif;
+  margin: 0;
+  padding: 80px 0;
+  list-style: none;
+  background-color: rgba(0, 0, 0, 0.5); /* Noir semi-transparent */
+  backdrop-filter: blur(5px);
+  box-shadow: 4px 4px 6px rgba(255, 255, 255, 0.712);
+  transition-duration: .7s;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
 }
 
 .menu__item {
 display: block;
 padding: 5px 15px;
-color: rgb(120, 198, 224);
+color: #ffffff; /* Couleur de texte pour un bon contraste */
 font-size: 20px;
 text-decoration: none;
 transition-duration: .25s;
 }
 
+
+  
+
 .menu__item i {
     margin-right: 30px; /* Ajouter une marge à droite à l'icône pour l'espace */
+    color: #0B2341;
 }
 
 .menu__item:hover {
-background-color: #dd1919;
+background-color: #0B2341;
 }
 

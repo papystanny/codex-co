@@ -66,24 +66,29 @@
                 </label>
 
                 <ul class="menu__box">
-                <li><a class="menu__item" href="{{ route('employe.accueil') }}"><i class="fas fa-home"></i> ACCUEIL </a></li>
-                <hr style="color: black;" />
-                <li><a class="menu__item" href="{{ route('employe.formulaire') }}"><i class="fas fa-file-alt fa-1x"></i> FORMULAIRES </a></li>
-                <hr style="color: black;" />
-                <li><a class="menu__item" href="{{ route('employe.procedure') }}"><i class="far fa-clock"></i> PROCÉDURES  </a></li>
-    @if( Session::get('typeCompte') == 'superieur')          
-                <hr style="color: black;" />
-                <li><a class="menu__item" href="{{ route('employe.equipe') }}"><i class="fas fa-folder"></i> MES EMPLOYES </a></li> 
-    @endif
-                <hr style="color: black;" />
-                <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <a onclick="this.closest('form').submit(); return false;" class="logout" > 
-                        <li><span class="menu__item" ><i class="fas fa-sign-out-alt"></i> SE DÉCONNECTER </span></li>
-                        </a>
-                </form> 
+                    <li><a class="menu__item" href="{{ route('employe.accueil') }}"><i class="fas fa-home" style="""></i> ACCUEIL </a></li>
+                       <hr style="color: white;" />
+                    <li><a class="menu__item" href="{{ route('employe.formulaire') }}"><i class="fas fa-file-alt fa-1x"></i> FORMULAIRES </a></li>
+                      <hr style="color: white;" />
+                    <li><a class="menu__item" href="{{ route('employe.procedure') }}"><i class="far fa-clock"></i> PROCÉDURES  </a></li>
+        @if( Session::get('typeCompte') == 'superieur')          
+                        <hr style="color: white;" />
+                    <li><a class="menu__item" href="{{ route('employe.equipe') }}"><i class="fas fa-folder"></i> MES EMPLOYES </a></li> 
+        @endif
+                       <hr style="color: white;" />
+                    <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <a onclick="this.closest('form').submit(); return false;" class="logout" > 
+                            <li><span class="menu__item" ><i class="fas fa-sign-out-alt"></i> SE DÉCONNECTER </span></li>
+                            </a>
+                    </form> 
 
-                                    
+                    <div class="logo, positionImageHamburger">
+                        <a href="{{ route('employe.accueil') }}">
+                            <img src="img/examen.png"  class="img-fluid logo-marge-10 " width="100px" height="100px">
+                        </a>
+                    </div>
+                
                 </ul>
             </div>
     @endauth
