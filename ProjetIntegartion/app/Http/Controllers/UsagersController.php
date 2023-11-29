@@ -38,7 +38,9 @@ class UsagersController extends Controller
                 $nom = ucfirst($user->nom); // Utilisation de ucfirst pour capitaliser la première lettre
 
                 Session::put('nom', $user->nom);  
-                Session::put('matricule', $user->matricule);      
+                Session::put('matricule', $user->matricule); 
+                Session::put('nomSuperviseur', $user->nomSuperviseur);
+                Session::put('prenomSuperviseur', $user->prenomSuperviseur);    
                 Session::put('prenom', $user->prenom);    
                 Session::put('typeCompte', $user->typeCompte);
                 Session::put('nomDepartement', $departement->nom);

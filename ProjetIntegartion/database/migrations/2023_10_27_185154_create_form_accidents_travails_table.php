@@ -33,6 +33,7 @@ return new class extends Migration
             $table->string('prenomSuperviseurAvise',100)->nullable();
             $table->date('dateSuperviseurAvise')->nullable();
             $table->string('signatureEmploye',100)->nullable();
+            $table->string('signatureSuperviseur',100)->nullable();
             $table->date('dateSignatureEmploye')->nullable();
             $table->string('notifSup',100);
             $table->string('notifAdmin',100);

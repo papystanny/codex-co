@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Formaccidentstravail;
 use App\Events\FormulaireSoumis;
 use Session;
+use Illuminate\Support\Carbon;
 use App\Models\Usager;
 class FormAccidentTravailController extends Controller
 {
@@ -36,7 +37,7 @@ class FormAccidentTravailController extends Controller
     
                $Formaccidentstravail = new Formaccidentstravail();
                $Formaccidentstravail->nomFormulaire = "Accident de travail";
-               $Formaccidentstravail->nomEmploye = Session::get('nom');;
+               $Formaccidentstravail->nomEmploye = Session::get('nom');
                 $Formaccidentstravail->fonctionMomentEvenement = $request->input('fonctionMomentEvenement');
                 $Formaccidentstravail->matriculeEmploye = $request->input('matriculeEmploye');
                 $Formaccidentstravail->dateAccident = $request->input('dateAccident');
@@ -120,12 +121,12 @@ class FormAccidentTravailController extends Controller
                 $Formaccidentstravail->premiersSoins = $request->input('premiersSoins');
                 $Formaccidentstravail->nomSecouriste = $request->input('nomSecouriste');
                 $Formaccidentstravail->necessiteAccident = $request->input('necessiteAccident');
-            //    $Formaccidentstravail->nomSuperviseurAvise = $request->input('nomSuperviseurAvise');
-            //    $Formaccidentstravail->prenomSuperviseurAvise = $request->input('prenomSuperviseurAvise');
-            //    $Formaccidentstravail->dateSuperviseurAvise = $request->input('dateSuperviseurAvise');
-          //      $Formaccidentstravail->signatureEmploye = $request->input('signatureEmploye');
-            
-           //     $Formaccidentstravail->dateSignatureEmploye = $request->input('dateSignatureEmploye');
+                $Formaccidentstravail->nomSuperviseurAvise = Session::get('nomSuperviseur');
+                $Formaccidentstravail->prenomSuperviseurAvise = Session::get('prenomSuperviseur');
+                $Formaccidentstravail->dateSuperviseurAvise = Carbon::now()->toDateString();
+                Log::debug($Formaccidentstravail->dateSuperviseurAvise);
+                 $Formaccidentstravail->signatureEmploye =Session::get('nom');
+                $Formaccidentstravail->dateSignatureEmploye =  Carbon::now()->toDateString();
                 $Formaccidentstravail->notifSup = 'oui';
                 $Formaccidentstravail->notifAdmin = 'oui';
 
