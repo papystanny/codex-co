@@ -37,8 +37,8 @@ class FormsRegisteredNotification extends Notification
         return (new MailMessage)
                     ->line('Bonjour, un nouveau formulaire a été soumis')
                     ->line('vous pouvez en prendre connaissance en vous connectant à votre compte')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->action('se connecter', url('/'))
+                    ->line('Merci d\'utiliser notre application');
     }
 
     /**
