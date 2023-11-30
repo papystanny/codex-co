@@ -58,7 +58,7 @@
 
 
         <div class="accueil-formulaire">
-            <h3>Tous les départements</h3>
+            <i class="fas fa-users fa-2x"></i>
        
             @forelse($proceduresCommunes ?? [] as $procedure)
                 <div class="formulaire">
@@ -70,7 +70,7 @@
                 </div>
             @endforelse
 
-            <h3> {{ Session::get('nomDepartement') }}</h3>
+            <i class="fas fa-user fa-2x"></i>
             @forelse($proceduresDepartement ?? [] as $procedure)
                 <div class="formulaire">
                     <a href="{{ $procedure->lien }}"><h5>{{ mb_strtoupper($procedure->nom, 'UTF-8') }}</h5> </a>

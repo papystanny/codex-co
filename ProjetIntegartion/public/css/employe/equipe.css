@@ -100,7 +100,61 @@
     max-width: inherit;
     border-bottom: 2px solid #000; /* Largeur de la bordure de 4 pixels (vous pouvez ajuster cette valeur) */
     border-left: 2px solid #000; /* Largeur de la bordure de 4 pixels (vous pouvez ajuster cette valeur) */
-    border-color:  rgb(212, 74, 74);
+    border-color:  #63BC55;
+    text-align: center;
+}
+
+.statut-container{
+    color: grey;
+}
+
+.statut-container, .formulaire-info, .date-container {
+    text-align: center;
+    margin-bottom: 5px; /* Réduisez l'espace sous le statut */
+}
+
+.formulaire-info {
+    display: flex; /* Utilise Flexbox */
+    justify-content: space-between; /* Répartit l'espace entre les éléments */
+    align-items: center; /* Alignement vertical au centre */
+    width: 100%; /* Assure que le conteneur occupe toute la largeur disponible */
+    padding: 0 10px; /* Ajoute un peu d'espace sur les côtés */
+    margin-top: 5px; /* Réduisez l'espace au-dessus des informations du formulaire */
+}
+
+.formulaire-info h5 {
+    margin: 0; /* Enlève la marge par défaut du h5 */
+   
+    text-align: left; /* Alignement du texte à gauche */
+    padding: 0 10px; /* Ajoute de l'espace autour du texte pour éviter qu'il ne touche les icônes */
+}
+
+
+
+.historique-uniteVide{
+    border-radius: inherit;
+    background-color: inherit;
+    padding: inherit;
+    margin: inherit;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    text-align: inherit;
+    max-width: inherit;
+    border-bottom: 2px solid #000; /* Largeur de la bordure de 4 pixels (vous pouvez ajuster cette valeur) */
+    border-left: 2px solid #000; /* Largeur de la bordure de 4 pixels (vous pouvez ajuster cette valeur) */
+    border-color:  #ffffff;
+    animation: borderAnimation 2s linear infinite; /* Animation de 2 secondes en boucle */
+}
+
+@keyframes borderAnimation {
+    20% {
+        border-color: rgb(255, 255, 255);
+    }
+    20% {
+        border-color: #E5004D;
+    }
+  
 }
 
 .unite1 {

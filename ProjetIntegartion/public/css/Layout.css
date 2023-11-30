@@ -46,6 +46,7 @@ body {
 
   .logo-marge-10{
     margin: 5px;
+    box-shadow: 5px 4px 8px 2px #0B2341; /* X-offset, Y-offset, Blur, Couleur */
   }
 
 .prenav-in{
@@ -222,6 +223,11 @@ body {
 .user-notifications {
   
 }
+
+.logo-marge-10{
+  box-shadow: 2px 10px 15px 5px rgb(99, 188, 85); /* X-offset, Y-offset, Blur, Couleur */
+}
+
 
 .right-section {
     flex: 2; /* Prend 2/12 de la largeur totale (hamburger) */

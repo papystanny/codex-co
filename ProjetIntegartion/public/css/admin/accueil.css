@@ -1,15 +1,15 @@
 .sidebar {
     width: 180px; /* Largeur initiale réduite */
     height: 100%;
-    background-color: #333;
+    background: linear-gradient(to bottom, #C0C7C4, #FFFFFF);
     position: fixed;
     transition: width 0.5s;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center; /* Centrage horizontal des icônes et du texte */
-    background-image: url('https://t4.ftcdn.net/jpg/04/90/42/41/360_F_490424126_7VGv6ef8SyFhkF0usoV5751U3UIgJQ9J.jpg');
-    background-size: cover;
+    border-right: 2px solid rgb(99, 188, 85);
+   
 }
 
 .sidebar img
@@ -53,17 +53,20 @@
 .menu li:hover {
    
     font-weight: bold; /* Gras en survol */
-    margin-left: 50px;
+    margin-left: 50px; 
 }
-
-
 
 .menu a {
     text-decoration: none;
-    color: white;
+    color: rgb(0, 0, 0);
      display: flex;
     align-items: center; /* Centrage vertical des icônes et du texte */
     position: relative;
+}
+
+
+.menu a:hover{
+    color:#63BC55 ;
 }
 
 .logout {

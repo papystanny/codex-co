@@ -2,8 +2,8 @@
 
 .procedureEnCours{
     margin : 20px;
-    background-color: rgb(208, 216, 223);
-    border-radius: 10px;
+    background: linear-gradient(to bottom,#e3e3e3, #ffffff );
+    border: 1px solid #000000;
 }
 
 .procedureEnCours span:first-child {
@@ -31,10 +31,24 @@ background-color: aqua;
     flex-direction: column;
 }
 
+.menuProceduresVide {
+    margin-top: 40px;
+    margin-right: 40px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
 .menuProcedures a{
     text-decoration: none;
     color: inherit;
 }
+
+.menuProceduresVide a{
+    text-decoration: none;
+    color: inherit;
+}
+
 
 .menuProcedures a:hover{
     text-decoration: none;
@@ -44,12 +58,42 @@ background-color: aqua;
 .menuProcedures i{
         font-size: 30px;
 }
+.menuProceduresvide i{
+    font-size: 30px;
+}
+
 
 .menuProcedures li{
     margin-bottom: 40px;
+    background-color: rgb(255, 255, 255);
+    padding: 15px;
+    border: 1px solid #63BC55;
+}
+
+.menuProceduresVide li{
+    margin-bottom: 40px;
     background-color: bisque;
     padding: 15px;
-    border-radius: 15px; 
+    border: 1px solid #63BC55;
+}
+
+
+@keyframes borderAnimation {
+    20% {
+        border-color: rgb(0, 0, 0);
+    }
+    20% {
+        border-color: #E5004D;
+    }
+  
+}
+
+.menuProcedures li:not(.exclude-hover):hover {
+    animation: borderAnimation 2s linear infinite; /* Animation de 2 secondes en boucle */
+    box-shadow: 0 0 5px  #63BC55; /* Ajout d'une ombre au survol */
+    transform: scale(1.02); /* Agrandissement au survol */
+    background-color: #63BC55;
+    color: white;
 }
 
 .uniteProcedure{

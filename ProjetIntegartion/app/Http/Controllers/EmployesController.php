@@ -106,7 +106,10 @@ class EmployesController extends Controller
 
     public function equipe()
     { 
-        $usagers = Usager::where('nomSuperviseur', Session::get('nom'))->get();
+        $usagers = Usager::where('nomSuperviseur', Session::get('nom'))
+                                                    ->orderBy('nom')
+                                                    ->get();
+
         $formulairesTous = collect();
     
         foreach ($usagers as $usager) {

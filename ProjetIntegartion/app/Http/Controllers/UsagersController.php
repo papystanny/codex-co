@@ -34,6 +34,20 @@ class UsagersController extends Controller
                 
                 $user = Usager::where('matricule', $request->matricule)->first();
                 $departement = $user->departements;
+                  // Sépare le nom du département en mots
+                $words = explode(' ', $departement->nom);
+
+                // Applique la logique des initiales seulement s'il y a plus de 2 mots
+                if (count($words) > 1) {
+                    $initials = array_map(function ($word) {
+                        return strtoupper($word[0]);
+                    }, $words);
+
+                    // Joint les initiales pour former une chaîne
+                    $initialsString = implode('', $initials);
+                } else {
+                    $initialsString = strtoupper($departement->nom);
+    }
                 $proceduresTravail = $user->departements->proceduresTravails;
                 $nom = ucfirst($user->nom); // Utilisation de ucfirst pour capitaliser la première lettre
 
@@ -41,7 +55,9 @@ class UsagersController extends Controller
                 Session::put('matricule', $user->matricule);      
                 Session::put('prenom', $user->prenom);    
                 Session::put('typeCompte', $user->typeCompte);
-                Session::put('nomDepartement', $departement->nom);
+                Session::put('nomDepartement', $initialsString);
+                Session::put('nomSuperviseur', $user->nomSuperviseur);
+                Session::put('prenomSupervisuer', $user->prenomSuperviseur);
                 
                 Log::debug($proceduresTravail );
                // Log::debug($user );
@@ -55,6 +71,21 @@ class UsagersController extends Controller
                 $user = Usager::where('matricule', $request->matricule)->first();
                 
                 $departement = $user->departements;
+                    // Sépare le nom du département en mots
+                $words = explode(' ', $departement->nom);
+
+                // Applique la logique des initiales seulement s'il y a plus de 2 mots
+                if (count($words) > 1) {
+                    $initials = array_map(function ($word) {
+                        return strtoupper($word[0]);
+                    }, $words);
+
+                    // Joint les initiales pour former une chaîne
+                    $initialsString = implode('', $initials);
+                } else {
+                    $initialsString = strtoupper($departement->nom);
+                }
+
                 $proceduresTravail = $user->departements->proceduresTravails;
                 $nom = ucfirst($user->nom); 
 
@@ -62,7 +93,9 @@ class UsagersController extends Controller
                 Session::put('matricule', $user->matricule); 
                 Session::put('prenom', $user->prenom);   
                 Session::put('typeCompte', $user->typeCompte);
-                Session::put('nomDepartement', $departement->nom);
+                Session::put('nomDepartement', $initialsString);
+                Session::put('nomSuperviseur', $user->nomSuperviseur);
+                Session::put('prenomSupervisuer', $user->prenomSuperviseur);
 
                 return redirect()->route('employe.accueil')->with('error', 'Connexion échouée !');
             }

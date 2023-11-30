@@ -33,11 +33,11 @@
         <div class="titreProcedures">
             <span class="titre"> PROCEDURES EN COURS  </span> 
             <div>
-                <button id="ouvrirModalBtn" class="btn-filtre" style="margin-right:10px" >
-                            <i class="fas fa-plus fa-2x"title="Ajouter de nouvelles procédures"></i>
+                <button id="ouvrirModalBtn" class="btn-filtre"  style="border: none; background-color: transparent; cursor: pointer;margin-right:10px">
+                            <i class="fas fa-plus fa-2x" style="color: rgb(99, 188, 85);" title="Ajouter de nouvelles procédures"></i>
                 </button>
-                <button id="ouvrirModalFiltreBtn" class="btn-filtre">
-                        <i class="fas fa-sort fa-2x" title="Filtrer les formulaires"></i> 
+                <button id="ouvrirModalFiltreBtn" class="btn-filtre" style="border: none; background-color: transparent; cursor: pointer;">
+                        <i class="fas fa-sort fa-2x" style="color: rgb(99, 188, 85);" title="Filtrer les formulaires"></i> 
                 </button>
                
             </div>
@@ -52,12 +52,17 @@
                                 <li> 
                                     <div class="uniteProcedureAdmin" >
                                         {{-- Détails de la procédure --}}
-                                        <i class="far fa-clock fa-3x"></i>
+                                        
+                                        <i class="fa-solid fa-folder "></i>
                                         <div><span class="contentMenuElement">{{ mb_strtoupper($procedure->nom, 'UTF-8') }}</span></div>
+
+                                        <i class="far fa-clock fa-2x"></i>
+                                        <div><span class="contentMenuElement"> {{$procedure->created_at }} </span></div>
+                                        
                                         <form action="{{ route('procedure.delete', ['departement' => $departement->id, 'procedure' => $procedure->id]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="delete-button" title="Supprimer la procédure">
+                                            <button type="submit" class="delete-button" style="border: none; background-color: transparent; cursor: pointer;" title="Supprimer la procédure">
                                                 <i class="fas fa-trash fa-2x"></i>
                                             </button>
                                         </form>
@@ -65,13 +70,16 @@
                                 </li>
                     
                             @empty
-                            <li> 
+                            <li class="exclude-hover" style="border:1px solid red">
                                 <div class="uniteProcedure">  
-                                        <i class="fa-solid fa-folder "></i>
+                                        <i class=" far fa-folder fa-2x"></i>
                                     
                                         <i class="fa-solid fa-xmark  " style="color:red;"></i>
                                 </div>
                             </li>
+                           {{-- <div style="margin-bottom:40px">
+
+                            </div>--}} 
                             @endforelse
                         
                     @endforeach

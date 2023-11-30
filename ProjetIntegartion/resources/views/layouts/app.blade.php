@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{asset('css/layout.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin/accueil.css')}}">
     <link rel="stylesheet" href="{{asset('css/hamburger.css')}}">
+    <link rel="stylesheet" href="{{asset('css/normalizer.css')}}">
     <link rel="stylesheet" media="(max-width: 768px)" href="css/layout.css">
 
   
@@ -66,14 +67,14 @@
                 </label>
 
                 <ul class="menu__box">
-                    <li><a class="menu__item" href="{{ route('employe.accueil') }}"><i class="fas fa-home" style="""></i> ACCUEIL </a></li>
+                    <li><a class="menu__item" href="{{ route('employe.accueil') }}"><i class="fas fa-home" style=""></i> ACCUEIL </a></li>
                        <hr style="color: white;" />
                     <li><a class="menu__item" href="{{ route('employe.formulaire') }}"><i class="fas fa-file-alt fa-1x"></i> FORMULAIRES </a></li>
                       <hr style="color: white;" />
                     <li><a class="menu__item" href="{{ route('employe.procedure') }}"><i class="far fa-clock"></i> PROCÉDURES  </a></li>
         @if( Session::get('typeCompte') == 'superieur')          
                         <hr style="color: white;" />
-                    <li><a class="menu__item" href="{{ route('employe.equipe') }}"><i class="fas fa-folder"></i> MES EMPLOYES </a></li> 
+                    <li><a class="menu__item" href="{{ route('employe.equipe') }}"><i class="fas fa-users "></i> MES EMPLOYES </a></li> 
         @endif
                        <hr style="color: white;" />
                     <form action="{{ route('logout') }}" method="POST">

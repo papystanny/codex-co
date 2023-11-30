@@ -101,7 +101,7 @@ top: 8px;
   list-style: none;
   background-color: rgba(0, 0, 0, 0.5); /* Noir semi-transparent */
   backdrop-filter: blur(5px);
-  box-shadow: 4px 4px 6px rgba(255, 255, 255, 0.712);
+  box-shadow: 4px 4px 6px #0B2341;
   transition-duration: .7s;
   flex-wrap: nowrap;
   flex-direction: column;
@@ -113,7 +113,7 @@ top: 8px;
 .menu__item {
 display: block;
 padding: 5px 15px;
-color: #ffffff; /* Couleur de texte pour un bon contraste */
+color: #78C6E0; /* Couleur de texte pour un bon contraste */
 font-size: 20px;
 text-decoration: none;
 transition-duration: .25s;

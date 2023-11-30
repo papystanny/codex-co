@@ -32,39 +32,48 @@
 
         <div class="accueil-titre">
             <h2> <b> FORMULAIRE D'ÉQUIPE </b>  </h2>
-            <button id="ouvrirModalBtn" class="btn-filtre">
-                <i class="fas fa-filter"></i> 
+            <button id="ouvrirModalBtn" class="btn-filtre"  style="border: none; background-color: transparent; cursor: pointer;">
+                <i class="fas fa-filter "  ></i> 
            </button>
         </div>
 
     <div class="historique-section2">
-       @forelse($formulairesTous ?? [] as $formulaire)
-           
-                    <div class="historique-unite2" id="historique-section2">
-                        <div class="unite1">
-                            <i class="fa-solid fa-folder left-fontAwesome " ></i> 
-                            <h5 >  {{$formulaire->created_at}}</h5>  
-@if($formulaire->notifSup == 0 )
-                             <i class="fa-solid fa-xmark  "style="color:red;"></i>
-                   
-@elseif($formulaire->notifSup == 1 || $formulaire->notifSup == "oui")        
-                            <i class="fa-solid fa-check   "style="color:green;"></i>              
-@endif
-                        </div>       
-                        <h5> {{ mb_strtoupper($formulaire->nomFormulaire, 'UTF-8') }}   </h5>
-                        <h5> {{ ucfirst($formulaire->nomEmploye) }} </h5>
-                    </div>
-            @empty
+        @forelse($formulairesTous ?? [] as $formulaire)
+        @if($formulaire->notifSup == 1 || $formulaire->notifSup == "oui") 
+                <div class="historique-unite2" id="historique-section2">
+                <div class="statut-container">
+                        <span class="statut"> Traité</span>
+                </div>
+        @else
+                <div class="historique-uniteVide" id="historique-section2">
+                <div class="statut-container">
+                        <span class="statut">  En Cours</span>
+                </div>
+        @endif
 
-            <div class="historique-section" class="x1" id="x1">
-                    <div class="historique-unite" class="x2">
-                            <i class="fa-solid fa-user-tie  left-fontAwesome " ></i>
-                            <h5> AUCUN FORMULAIRE   </h5>
-                        <i class="fa-solid fa-xmark right-fontAwesome2 "></i>
-                        <span >Personne n'a rempli de formulaire </span> 
-                   </div>
+                    <div class="formulaire-info">
+                                    <i class="fas fa-file-alt " style="font-size:25px"></i>
+                                    <h5>{{ $formulaire->created_at}}</h5>
+                @if($formulaire->notifSup == 0 || $formulaire->notifSup == "non")
+                                    <i class="fa-solid fa-xmark  "style="color:red;"></i>             
+                @elseif($formulaire->notifSup == 1 || $formulaire->notifSup == "oui")
+                                        <i class="fa-solid fa-check   "style="color:green;"></i>
+                @endif 
+                    </div>
+   
+            <h5>{{ mb_strtoupper($formulaire->nomFormulaire, 'UTF-8') }}</h5>
+            <h5>{{ ucfirst($formulaire->nomEmploye) }}</h5>
+        </div>
+    @empty
+        <div class="historique-section x1" id="x1">
+            <div class="historique-unite x2">
+                <i class="fa-solid fa-user-tie left-fontAwesome"></i>
+                <h5>AUCUN FORMULAIRE</h5>
+                <i class="fa-solid fa-xmark right-fontAwesome2"></i>
+                <span>Personne n'a rempli de formulaire</span> 
             </div>
-            @endforelse
+        </div>
+    @endforelse
     </div>
      
 

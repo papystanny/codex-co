@@ -23,15 +23,74 @@ Body{
 
 .accueil-formulaire{
 }
-
+/*
 .formulaire {
     margin : 30px 20px;
-    border: 2px   solid #1E492D; /* Bordure en bas de l'élément */
-    padding: 8px 5px;
-    border-radius: 10px ;
+    border: 2px   solid #1E492D; 
     background-color:#e0e0e0;
     color :black;
+}*/
+
+.formulaire {
+    margin: 30px 20px;
+    border: 2px solid transparent; /* Bordure transparente */
+    padding: 8px 5px;
+    background-color: #e0e0e0;
+    color: black;
+    /*position: relative;*/
+    overflow: hidden;
+    border-color: #53AE45;
 }
+
+@keyframes borderAnimation {
+    10% {
+        border-color: #53AE45;
+    }
+    25% {
+        border-color: #78C6E0;
+    }
+}
+
+.formulaire:hover {
+    animation: borderAnimation 2s linear infinite; /* Animation de 2 secondes en boucle */
+}
+
+.formulaire::before {
+    animation: borderAnimation 2s linear infinite; /* Animation de 2 secondes en boucle */
+    content: ''; /* Contenu vide */
+    width: 10px; /* Largeur du point blanc */
+    height: 10px; /* Hauteur du point blanc */
+    background-color: white; /* Couleur du point blanc */
+    /*position: absolute;*/
+    border-radius: 50%; /* Pour obtenir un point rond */
+    animation: movePoint 4s linear infinite; /* Animation de 4 secondes en boucle */
+    transform: translate(-50%, -50%); /* Ajuster la position au centre du point */
+}
+
+
+@keyframes movePoint {
+    0% {
+        top: 0; /* Départ en haut */
+        left: 0; /* Départ à gauche */
+    }
+    25% {
+        top: 0; /* Reste en haut */
+        left: 100%; /* Se déplace vers la droite */
+    }
+    50% {
+        top: 100%; /* Descend jusqu'en bas */
+        left: 100%; /* Reste à droite */
+    }
+    75% {
+        top: 100%; /* Reste en bas */
+        left: 0; /* Se déplace vers la gauche */
+    }
+    100% {
+        top: 0; /* Remonte en haut */
+        left: 0; /* Reste à gauche */
+    }
+}
+
 
 
 

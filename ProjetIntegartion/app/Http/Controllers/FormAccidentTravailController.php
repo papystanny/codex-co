@@ -7,6 +7,12 @@ use App\Http\Requests\FormAccidentTravailRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\Formaccidentstravail;
+use App\Events\FormulaireSoumis;
+use App\Notifications\FormsRegisteredNotification;
+use App\Http\Requests\AccidentTravailRequest;
+use Session;
+use Illuminate\Support\Carbon;
+use App\Models\Usager;
 class FormAccidentTravailController extends Controller
 {
  /*  
@@ -19,15 +25,18 @@ class FormAccidentTravailController extends Controller
         return view('formAccidentTravail.formAccidentTravail');
         //
     }
-     public function store(FormAccidentTravailRequest $request)
-    {
-        //
-        {
-            try {
     
+   
+
+
+    public function store(AccidentTravailRequest $request)
+    {
+            try {
+   
     
                $Formaccidentstravail = new Formaccidentstravail();
-               $Formaccidentstravail->nomEmploye = $request->input('nomEmploye');
+               $Formaccidentstravail->nomFormulaire = "Accident de travail";
+               $Formaccidentstravail->nomEmploye = Session::get('nom');
                 $Formaccidentstravail->fonctionMomentEvenement = $request->input('fonctionMomentEvenement');
                 $Formaccidentstravail->matriculeEmploye = $request->input('matriculeEmploye');
                 $Formaccidentstravail->dateAccident = $request->input('dateAccident');
@@ -111,15 +120,12 @@ class FormAccidentTravailController extends Controller
                 $Formaccidentstravail->premiersSoins = $request->input('premiersSoins');
                 $Formaccidentstravail->nomSecouriste = $request->input('nomSecouriste');
                 $Formaccidentstravail->necessiteAccident = $request->input('necessiteAccident');
-                $Formaccidentstravail->supAvise = $request->input('supAvise');
-                $Formaccidentstravail->nomSuperviseurAvise = $request->input('nomSuperviseurAvise');
-                $Formaccidentstravail->dateSuperviseurAvise = $request->input('dateSuperviseurAvise');
-                $Formaccidentstravail->signatureSupImmediat = $request->input('signatureSupImmediat');
-                $Formaccidentstravail->numPosteSupImmediat = $request->input('numPosteSupImmediat');
-                $Formaccidentstravail->dateSignatureSupImmediat = $request->input('dateSignatureSupImmediat');
-                $Formaccidentstravail->signatureEmploye = $request->input('signatureEmploye');
-                $Formaccidentstravail->numPosteEmploye = $request->input('numPosteEmploye');
-                $Formaccidentstravail->dateSignatureEmploye = $request->input('dateSignatureEmploye');
+                $Formaccidentstravail->nomSuperviseurAvise = Session::get('nomSuperviseur');
+                $Formaccidentstravail->prenomSuperviseurAvise = Session::get('prenomSuperviseur');
+                $Formaccidentstravail->dateSuperviseurAvise = Carbon::now()->toDateString();
+                Log::debug($Formaccidentstravail->dateSuperviseurAvise);
+                 $Formaccidentstravail->signatureEmploye =Session::get('nom');
+                $Formaccidentstravail->dateSignatureEmploye =  Carbon::now()->toDateString();
                 $Formaccidentstravail->notifSup = 'oui';
                 $Formaccidentstravail->notifAdmin = 'oui';
 
@@ -131,26 +137,67 @@ class FormAccidentTravailController extends Controller
                $Formaccidentstravail-> finSondage = $request->input('finSondage');
                $Formaccidentstravail-> statut = "en cours";
                $Formaccidentstravail -> usager_id =3; //<!-- Session::get('id');-->   */
-               $Formaccidentstravail->save();
+
+                  /*  $condition1= Session::get('nom');
                
-               return view('employes.index');
+              $Usager = Usager::select('emailsuperviseur')
+               ->where('nom', $condition1);
+               $Usager->notify(new FormsRegisteredNotification());
+              */ 
+
+              
+               $Formaccidentstravail->save();
+              
+             //  $condition1= Session::get('nom');
+               
+              /* $Usager = Usager::select('emailsuperviseur')
+                ->where('nom', $condition1);
+                $Usager = Usager::where('nom', $condition1)->first();
+                $Usager->notify(new FormsRegisteredNotification());*/
+                event(new FormulaireSoumis($data));
+                
+              
+               
+                return redirect()->back()->with('error', 'Formulaire ajouté avec succès');
                 }
                 
                catch (\Throwable $e) {
-             
-                Log::debug($e);
-             //   return redirect()->route('campagne')->withErrors(['L\'ajout de campagne n\'a pas fonctionné']);
-             return view('formAccidentTravail.formAccidentTravail');
+                    
+                        Log::debug($e);
+                    //   return redirect()->route('campagne')->withErrors(['L\'ajout de campagne n\'a pas fonctionné']);
+                    return redirect()->back()->with('error', 'L ajout du formualire a échouée');
                }
                
                 
     
             //
-        }
+        
     }
-    /**
-     * Show the form for creating a new resource.
-     */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function create()
     {
         //

@@ -25,69 +25,16 @@
         <div class="procedureEnCours">
 
             <div class="titreProcedures">
-                <span class="titre"> FORMULAIRES EN COURS  </span> 
-                
-                <i class="fas fa-plus fa-2x"></i>              
-             
-            </div>
-
-            <ul class="menuProcedures">
-
-                <li> 
-                    <a href="{{ route('admin.voirFormulaireRempli') }}">
-                        <div class="uniteProcedure"> 
-                            <div> <i class="fa-solid fa-folder  fa-3x"></i></div> 
-                            <div> <span class="contentMenuElement"> ACCIDENT DE TRAVAIL </span> </div> 
-                            <div> <span class="contentMenuElement">EMPLOYE </span> </div> 
-                            <div> <i class="fas fa-trash fa-2x"></i>
-                        </div></div>
-                    </a>
-                </li>
-                <li> 
-                    <a href="{{ route('admin.voirFormulaireRempli') }}">
-                        <div class="uniteProcedure"> 
-                            <div> <i class="fa-solid fa-folder  fa-3x"></i></div> 
-                            <div> <span class="contentMenuElement"> ACTE DE VIOLENCE</span> </div> 
-                            <div><span class="contentMenuElement">EMPLOYE </span> </div> 
-                            <div>  <i class="fas fa-trash fa-2x"></i></div> 
-                        </div>
-                    </a>
-                </li>
-                <li> 
-                    <a href="{{ route('admin.voirFormulaireRempli') }}">
-                        <div class="uniteProcedure"> 
-                            <div>  <i class="fa-solid fa-folder  fa-3x"></i></div> 
-                            <div> <span class="contentMenuElement"> AUDIT SST </span> </div> 
-                            <div> <span class="contentMenuElement">SUPERIEUR </span> </div> 
-                            <div>   <i class="fas fa-trash fa-2x"></i></div> 
-                        </div>
-                    </a>
-                </li>
-                <li> 
-                    <a href="{{ route('formulaires.atelierMec') }}">
-                        <div class="uniteProcedure"> 
-                            <div>    <i class="fa-solid fa-folder  fa-3x"></i></div>
-                            <div>   <span class="contentMenuElement"> RAPPORT D'ACCIDENT </span> </div>
-                            <div>  <span class="contentMenuElement">SUPERIEUR </span> </div>
-                            <div>  <i class="fas fa-trash fa-2x"></i></div>
-                        </div>
-                    </a>
-                </li>
-
-            </ul>
-        </div>
-
-        <div class="procedureEnCours">
-
-            <div class="titreProcedures">
                 <span class="titre"> FORMULAIRES REMPLIS  </span> 
                 <div>                 
-                       <i class="far fa-clock fa-2x" style="margin-right:10px" title="Ranger du plus récent au plus ancien"></i> 
-                     <button id="ouvrirModalBtn" class="btn-filtre">
-                        <i class="fas fa-filter fa-2x" title="Filtrer les formulaires"></i> 
+@if($formulairesTous->isEmpty())           
+@else
+                    <i class="far fa-clock fa-2x" style="color: rgb(99, 188, 85);margin-right:15px" title="Ranger du plus récent au plus ancien"></i>
+                    <button id="ouvrirModalBtn" class="btn-filtre" style="border: none; background-color: transparent; cursor: pointer;">
+                        <i class="fas fa-filter fa-2x " style="color: rgb(99, 188, 85);" title="Filtrer les formulaires"></i>
                     </button>
-
-                </div>
+@endif
+                 </div>
                
             </div>
 
@@ -96,7 +43,7 @@
             <li> 
                     <div class="uniteProcedure"> 
                         <div class="">
-                             <i class="fa-solid fa-clock "></i>
+                             <i class="fas fa-file-alt fa-2x"></i> 
                             <span class="contentMenuElement">{{ $formulaire->created_at->format('d/m/Y') }}</span> 
                         </div>
                         <div class="">
@@ -107,7 +54,7 @@
                                     <i class="fa-solid fa-user-tie "></i>
                                     <span class="contentMenuElement">{{$formulaire->nomEmploye}} </span> 
                         </div>
-@if($formulaire->notifSup == 0 )
+@if($formulaire->notifSup == 0 || $formulaire->notifSup == "non" )
                         <div class="" style="color:red;">
                             <i class="fa-solid fa-xmark  "></i>
                         </div>
@@ -117,15 +64,26 @@
                             <i class="fa-solid fa-check   "></i>
                         </div>
 @endif
+
+@if($formulaire->notifAdmin == 0 || $formulaire->notifAdmin == "non" )
+                        <div class="" style="color:red;">
+                            <i class="fa-solid fa-xmark  "></i>
+                        </div>
+@elseif($formulaire->notifAdmin == 1 || $formulaire->notifAdmin == "oui")
+                         
+                        <div class="" style="color:green;" title="Formualire ">
+                            <i class="fa-solid fa-check   "></i>
+                        </div>
+@endif
                         
                     </div>
             </li>
             @empty
-                <li> 
-                    <div class="uniteProcedure">  
-                              <i class="fa-solid fa-folder "></i>
+                <li class="exclude-hover" style="border:1px solid red">
+                    <div class="uniteProcedure" >  
+                              <i class=" far fa-folder fa-2x"></i>
                               <span class="contentMenuElement"> AUCUN FORMULAIRE REMPLI POUR LE MOMENT </span> 
-                             <i class="fa-solid fa-xmark  "></i>
+                             <i class="fa-solid fa-xmark  " style="color:red"></i>
                     </div>
                 </li>
             @endforelse
@@ -137,9 +95,79 @@
             </ul>
         </div>
 
+        <div class="procedureEnCours">
+
+            <div class="titreProcedures">
+                <span class="titre"> FORMULAIRES EN COURS  </span> 
+                
+                <i class="fas fa-plus fa-2x" style="color: rgb(99, 188, 85);"></i>              
+             
+            </div>
+
+            <ul class="menuProcedures">
+
+                <li> 
+                    <a href="{{ route('admin.voirFormulaireRempli') }}">
+                        <div class="uniteProcedure"> 
+                            <div> <i class="fas fa-file-alt fa-2x"></i></div> 
+                            <div> <span class="contentMenuElement"> ACCIDENT DE TRAVAIL </span> </div> 
+                            <div> <span class="contentMenuElement">EMPLOYE </span> </div> 
+                            <div> <i class="fas fa-trash fa-2x"></i>
+                        </div></div>
+                    </a>
+                </li>
+                <li> 
+                    <a href="{{ route('admin.voirFormulaireRempli') }}">
+                        <div class="uniteProcedure"> 
+                            <div> <i class="fas fa-file-alt fa-2x"></i> </i></div> 
+                            <div> <span class="contentMenuElement"> ACTE DE VIOLENCE</span> </div> 
+                            <div><span class="contentMenuElement">EMPLOYE </span> </div> 
+                            <div>  <i class="fas fa-trash fa-2x"></i></div> 
+                        </div>
+                    </a>
+                </li>
+                <li> 
+                    <a href="{{ route('admin.voirFormulaireRempli') }}">
+                        <div class="uniteProcedure"> 
+                            <div> <i class="fas fa-file-alt fa-2x"></i></div> 
+                            <div> <span class="contentMenuElement"> AUDIT SST </span> </div> 
+                            <div> <span class="contentMenuElement">SUPERIEUR </span> </div> 
+                            <div>   <i class="fas fa-trash fa-2x"></i></div> 
+                        </div>
+                    </a>
+                </li>
+                <li> 
+                    <a href="{{ route('formulaires.atelierMec') }}">
+                        <div class="uniteProcedure"> 
+                            <div>    <i class="fas fa-file-alt fa-2x"></i></div>
+                            <div>   <span class="contentMenuElement"> RAPPORT D'ACCIDENT </span> </div>
+                            <div>  <span class="contentMenuElement">SUPERIEUR </span> </div>
+                            <div>  <i class="fas fa-trash fa-2x"></i></div>
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
     </div> 
   
     @endsection
+    <script>
+        // Sélectionnez les icônes de filtre par leur ID
+        const iconeFiltre1 = document.getElementById('iconeFiltre1');
+        const iconeFiltre2 = document.getElementById('iconeFiltre2');
+
+        // Sélectionnez la liste des formulaires (ou l'élément qui les contient)
+        const menuProcedures = document.querySelector('.menuProcedures');
+
+        // Vérifiez si la liste des formulaires est vide
+        if (menuProcedures.children.length === 0) {
+            // Cachez les icônes de filtre en définissant leur style sur "display: none"
+            iconeFiltre1.style.display = 'none';
+            iconeFiltre2.style.display = 'none';
+        }
+    </script>
     <script src="js/employe/accueil.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="js/employe/accessoire/modal.js" defer></script>
