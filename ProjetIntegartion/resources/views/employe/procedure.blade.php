@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{asset('css/employe/accueil.css')}}">
     <link rel="icon" href="https://tse1.mm.bing.net/th?id=OIP.BvE9Kz_K4pOY9ceOf4bLIQHaEK&pid=Api" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
-    <title> Accueil</title>
+    <title> Procédures de Travail</title>
 </head>
 <body>
     @extends('layouts.app')
