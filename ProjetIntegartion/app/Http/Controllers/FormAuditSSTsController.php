@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Formulairesauditsst;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Session;
 
 class FormAuditSSTsController extends Controller
 {
@@ -41,7 +42,7 @@ class FormAuditSSTsController extends Controller
     
     
                $Formulairesauditsst = new Formulairesauditsst();
-               $Formulairesauditsst->prenomNomEmploye = $request->input('prenomNomEmploye');
+               $Formulairesauditsst->prenomNomEmploye = Session::get('prenom,nom');
                $Formulairesauditsst->lieuTravail = $request->input('lieuTravail');
                $Formulairesauditsst->date = $request->input('date');
                 $Formulairesauditsst->heure = $request->input('heure');

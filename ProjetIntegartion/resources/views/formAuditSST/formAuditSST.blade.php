@@ -14,10 +14,8 @@
                 <div class="col-xl-1">
 
                 </div>
-                <div class="col-xl-4">
-                    <label for="formGroupExampleInput">nom complet de l'employé</label>
-                    <input type="text" class="form-control prenomNomEmploye @error('prenomNomEmploye') is-invalid @enderror " id="formGroupExampleInput" placeholder="entrez le nom complet de l'employé" name="prenomNomEmploye" value="{{old('prenomNomEmploye')}}">
-                </div>
+                
+
             </div>
             <div class="row">
                 <div class="col-xl-1">
@@ -26,6 +24,9 @@
                 <div class="col-xl-4">
                     <label for="formGroupExampleInput">Lieu(x) des traveaux:</label>
                     <input type="text" class="form-control lieuTravail @error('lieuTravail') is-invalid @enderror " id="formGroupExampleInput"  name="lieuTravail" value="{{old('lieuTravail')}}">
+                    @error('lieuTravail')
+                      <span class="text-danger error-text">{{ $message }}</span>
+                    @enderror
                 </div>
             </div>
             <div class="row">
@@ -34,7 +35,7 @@
                 <div class="col-xl-4">
                     <label for="inputPassword4">Date</label>
                     <input type="date" class="form-control date @error('date') is-invalid @enderror " id="inputPassword4" placeholder="" name="date" value="{{old('date')}}" >
-                    @error('dateAccident')
+                    @error('date')
                     <span class="text-danger error-text">{{ $message }}</span>
                     @enderror
                 </div>
@@ -61,133 +62,154 @@
                     <tr>
                         <th scope="row"></th>
                         <td>Epi</td>
+                        @error('Epi')
+                            <span class="text-danger error-text">{{ $message }}</span>
+                        @enderror 
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="conforme" name="Epi" value="{{old('Epi')}}" >
+                                <input class="form-check-input Epi @error('Epi') is-invalid @enderror" type="radio" value="conforme" name="Epi" value="{{old('Epi')}}" >
                             </div>
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value=" non conforme" name="Epi" value="{{old('Epi')}}" >
+                                <input class="form-check-input Epi @error('Epi') is-invalid @enderror" type="radio" value=" non conforme" name="Epi" value="{{old('Epi')}}" >
                             </div>
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="N/A" name="Epi" value="{{old('Epi')}}" >
+                                <input class="form-check-input Epi @error('Epi') is-invalid @enderror" type="radio" value="N/A" name="Epi" value="{{old('Epi')}}" >
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row"></th>
                         <td>tenue des lieux</td>
+                        @error('tenueLieux')
+                            <span class="text-danger error-text">{{ $message }}</span>
+                        @enderror 
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="conforme" name="tenueLieux" value="{{old('tenueLieux')}}" >
+                                <input class="form-check-input tenueLieux @error('tenueLieux') is-invalid @enderror" type="radio" value="conforme" name="tenueLieux" value="{{old('tenueLieux')}}" >
                             </div>
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value=" non conforme" name="tenueLieux" value="{{old('tenueLieux')}}" >
+                                <input class="form-check-input tenueLieux @error('tenueLieux') is-invalid @enderror" type="radio" value=" non conforme" name="tenueLieux" value="{{old('tenueLieux')}}" >
                             </div>
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="N/A" name="tenueLieux" value="{{old('tenueLieux')}}" >
+                                <input class="form-check-input tenueLieux @error('tenueLieux') is-invalid @enderror" type="radio" value="N/A" name="tenueLieux" value="{{old('tenueLieux')}}" >
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row"></th>
                         <td>Comportement sécuritaire</td>
+                        @error('comportementSecuritaire')
+                            <span class="text-danger error-text">{{ $message }}</span>
+                        @enderror 
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="conforme" name="comportementSecuritaire" value="{{old('comportementSecuritaire')}}" >
+                                <input class="form-check-input comportementSecuritaire @error('comportementSecuritaire') is-invalid @enderror" type="radio" value="conforme" name="comportementSecuritaire" value="{{old('comportementSecuritaire')}}" >
                             </div>
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value=" non conforme" name="comportementSecuritaire" value="{{old('comportementSecuritaire')}}" >
+                                <input class="form-check-input comportementSecuritaire @error('comportementSecuritaire') is-invalid @enderror" type="radio" value=" non conforme" name="comportementSecuritaire" value="{{old('comportementSecuritaire')}}" >
                             </div>
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="N/A" name="comportementSecuritaire" value="{{old('comportementSecuritaire')}}" >
+                                <input class="form-check-input comportementSecuritaire @error('comportementSecuritaire') is-invalid @enderror" type="radio" value="N/A" name="comportementSecuritaire" value="{{old('comportementSecuritaire')}}" >
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row"></th>
                         <td>Signalisation</td>
+                        @error('signalisation')
+                            <span class="text-danger error-text">{{ $message }}</span>
+                        @enderror 
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="conforme" name="signalisation" value="{{old('signalisation')}}" >
+                                <input class="form-check-input signalisation @error ('signalisation') is-invalid @enderror" type="radio" value="conforme" name="signalisation" value="{{old('signalisation')}}" >
                             </div>
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value=" non conforme" name="signalisation" value="{{old('natureSiteBlessure[]')}}" >
+                                <input class="form-check-input signalisation @error ('signalisation') is-invalid @enderror" type="radio" value=" non conforme" name="signalisation" value="{{old('natureSiteBlessure[]')}}" >
                             </div>
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="N/A" name="signalisation" value="{{old('signalisation')}}" >
+                                <input class="form-check-input signalisation @error ('signalisation') is-invalid @enderror" type="radio" value="N/A" name="signalisation" value="{{old('signalisation')}}" >
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row"></th>
                         <td>Fiches Signalétiques</td>
+                        @error('fichesSignaletiques')
+                            <span class="text-danger error-text">{{ $message }}</span>
+                        @enderror 
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="conforme" name="fichesSignaletiques" value="{{old('fichesSignaletiques')}}" >
+                                <input class="form-check-input fichesSignaletiques @error ('fichesSignaletiques') is-invalid @enderror" type="radio" value="conforme" name="fichesSignaletiques" value="{{old('fichesSignaletiques')}}" >
                             </div>
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="non conforme" name="fichesSignaletiques" value="{{old('fichesSignaletiques')}}" >
+                                <input class="form-check-input fichesSignaletiques @error ('fichesSignaletiques') is-invalid @enderror" type="radio" value="non conforme" name="fichesSignaletiques" value="{{old('fichesSignaletiques')}}" >
                             </div>
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="N/A" name="fichesSignaletiques" value="{{old('fichesSignaletiques')}}" >
+                                <input class="form-check-input fichesSignaletiques @error ('fichesSignaletiques') is-invalid @enderror" type="radio" value="N/A" name="fichesSignaletiques" value="{{old('fichesSignaletiques')}}" >
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row"></th>
                         <td>Travaux-Excavation</td>
+                        @error('travauxEscavation')
+                            <span class="text-danger error-text">{{ $message }}</span>
+                        @enderror 
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="conforme" name="travauxEscavation" value="{{old('travauxEscavation')}}" >
+                                <input class="form-check-input travauxEscavation @error ('travauxEscavation') is-invalid @enderror" type="radio" value="conforme" name="travauxEscavation" value="{{old('travauxEscavation')}}" >
                             </div>
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="non conforme" name="travauxEscavation" value="{{old('travauxEscavation')}}" >
+                                <input class="form-check-input travauxEscavation @error ('travauxEscavation') is-invalid @enderror " type="radio" value="non conforme" name="travauxEscavation" value="{{old('travauxEscavation')}}" >
                             </div>
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="N/A" name="travauxEscavation" value="{{old('travauxEscavation')}}" >
+                                <input class="form-check-input travauxEscavation @error ('travauxEscavation') is-invalid @enderror " type="radio" value="N/A" name="travauxEscavation" value="{{old('travauxEscavation')}}" >
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row"></th>
                         <td>Espace clos</td>
+                        @error('espaceClos')
+                            <span class="text-danger error-text">{{ $message }}</span>
+                        @enderror 
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="Conforme" name="espaceClos" value="{{old('espaceClos')}}" >
+                                <input class="form-check-input espaceClos @error ('espaceClos') is-invalid @enderror" type="radio" value="Conforme" name="espaceClos" value="{{old('espaceClos')}}" >
                             </div>
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="non conforme" name="espaceClos" value="{{old('espaceClos')}}" >
+                                <input class="form-check-input espaceClos @error ('espaceClos') is-invalid @enderror" type="radio" value="non conforme" name="espaceClos" value="{{old('espaceClos')}}" >
                             </div>
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="N/A" name="espaceClos" value="{{old('espaceClos')}}" >
+                                <input class="form-check-input espaceClos @error ('espaceClos') is-invalid @enderror" type="radio" value="N/A" name="espaceClos" value="{{old('espaceClos')}}" >
                             </div>
                         </td>
                     </tr>
