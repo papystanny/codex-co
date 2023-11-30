@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Formulairesauditsst;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use App\Http\Requests\FormAuditSsTRequest;
 use Session;
 
 class FormAuditSSTsController extends Controller
@@ -34,7 +35,7 @@ class FormAuditSSTsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(FormAuditSsTRequest $request)
     {
         //
         {
@@ -58,6 +59,7 @@ class FormAuditSSTsController extends Controller
                 $Formulairesauditsst->respectDistanciation= $request->input('respectDistanciation');
                 $Formulairesauditsst->portEpi= $request->input('portEpi');
                 $Formulairesauditsst->respectProcedures= $request->input('respectProcedures');
+                $Formulairesauditsst->descriptionTravailHauteur= $request->input('descriptionTravailHauteur');
                 $Formulairesauditsst->notifSup = 'oui';
                 $Formulairesauditsst->notifAdmin = 'oui';
 

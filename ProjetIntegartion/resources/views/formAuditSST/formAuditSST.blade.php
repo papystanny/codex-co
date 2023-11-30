@@ -216,19 +216,22 @@
                     <tr>
                         <th scope="row"></th>
                         <td>Methode de travail</td>
+                        @error('methodeTravail')
+                            <span class="text-danger error-text">{{ $message }}</span>
+                        @enderror 
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="conforme" name="methodeTravail" value="{{old('methodeTravail')}}" >
+                                <input class="form-check-input methodeTravail @error ('methodeTravail') is-invalid @enderror" type="radio" value="conforme" name="methodeTravail" value="{{old('methodeTravail')}}" >
                             </div>
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="non conforme" name="methodeTravail" value="{{old('methodeTravail')}}" >
+                                <input class="form-check-input methodeTravail @error ('methodeTravail') is-invalid @enderror" type="radio" value="non conforme" name="methodeTravail" value="{{old('methodeTravail')}}" >
                             </div>
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="N/A" name="methodeTravail" value="{{old('methodeTravail')}}" >
+                                <input class="form-check-input methodeTravail @error ('methodeTravail') is-invalid @enderror" type="radio" value="N/A" name="methodeTravail" value="{{old('methodeTravail')}}" >
                             </div>
                         </td>
                     </tr>
@@ -237,19 +240,23 @@
                         <td>Autre(s): Travaux en hauteur
                         <input type="text" class="form-control" id="formGroupExampleInput"  name="autre" value="{{old('autre')}}">
                         </td>
+                        @error('autre')
+                            <span class="text-danger error-text">{{ $message }}</span>
+                        @enderror 
+
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="conforme" name="autre" value="{{old('autre')}}" >
+                                <input class="form-check-input autre @error ('autre') is-invalid @enderror" type="radio" value="conforme" name="autre" value="{{old('autre')}}" >
                             </div>
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="non conforme" name="autre" value="{{old('autre')}}" >
+                                <input class="form-check-input autre @error ('autre') is-invalid @enderror" type="radio" value="non conforme" name="autre" value="{{old('autre')}}" >
                             </div>
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="N/A" name="autre" value="{{old('autre')}}" >
+                                <input class="form-check-input autre @error ('autre') is-invalid @enderror" type="radio" value="N/A" name="autre" value="{{old('autre')}}" >
                             </div>
                         </td>
                     </tr>
@@ -263,60 +270,69 @@
                     <tr>
                         <th scope="row"></th>
                         <td>Respect de la distanciation </td>
+                        @error('respectDistanciation')
+                            <span class="text-danger error-text">{{ $message }}</span>
+                        @enderror 
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="conforme" name="respectDistanciation" value="{{old('respectDistanciation')}}" >
+                                <input class="form-check-input respectDistanciation @error ('respectDistanciation') is-invalid @enderror" type="radio" value="conforme" name="respectDistanciation" value="{{old('respectDistanciation')}}" >
                             </div>
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="non conforme" name="respectDistanciation" value="{{old('respectDistanciation')}}" >
+                                <input class="form-check-input respectDistanciation @error ('respectDistanciation') is-invalid @enderror" type="radio" value="non conforme" name="respectDistanciation" value="{{old('respectDistanciation')}}" >
                             </div>
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="N/A" name="respectDistanciation" value="{{old('respectDistanciation')}}" >
+                                <input class="form-check-input respectDistanciation @error ('respectDistanciation') is-invalid @enderror" type="radio" value="N/A" name="respectDistanciation" value="{{old('respectDistanciation')}}" >
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row"></th>
                         <td>Port des EPI(Masque/visiere)</td>
+                        @error('portEpi')
+                            <span class="text-danger error-text">{{ $message }}</span>
+                        @enderror 
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="conforme" name="portEpi" value="{{old('portEpi')}}" >
+                                <input class="form-check-input portEpi @error ('portEpi') is-invalid @enderror" type="radio" value="conforme" name="portEpi" value="{{old('portEpi')}}" >
                             </div>
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="non conforme" name="portEpi" value="{{old('portEpi')}}" >
+                                <input class="form-check-input portEpi @error ('portEpi') is-invalid @enderror" type="radio" value="non conforme" name="portEpi" value="{{old('portEpi')}}" >
                             </div>
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="N/A" name="portEpi" value="{{old('portEpi')}}" >
+                                <input class="form-check-input portEpi @error ('portEpi') is-invalid @enderror" type="radio" value="N/A" name="portEpi" value="{{old('portEpi')}}" >
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row"></th>
                         <td>Respect des procédures établies</td>
+                        @error('respectProcedures')
+                            <span class="text-danger error-text">{{ $message }}</span>
+                        @enderror 
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="conforme" name="respectProcedures" value="{{old('respectProcedures')}}" >
+                                <input class="form-check-input respectProcedures @error ('respectProcedures') is-invalid @enderror" type="radio" value="conforme" name="respectProcedures" value="{{old('respectProcedures')}}" >
                             </div>
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="non conforme" name="respectProcedures" value="{{old('respectProcedures')}}" >
+                                <input class="form-check-input respectProcedures @error ('respectProcedures') is-invalid @enderror " type="radio" value="non conforme" name="respectProcedures" value="{{old('respectProcedures')}}" >
                             </div>
                         </td>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="N/A" name="respectProcedures" value="{{old('respectProcedures')}}" >
+                                <input class="form-check-input respectProcedures @error ('respectProcedures') is-invalid @enderror" type="radio" value="N/A" name="respectProcedures" value="{{old('respectProcedures')}}" >
                             </div>
                         </td>
                     </tr>
@@ -325,7 +341,10 @@
 
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Description du travail en hauteur</label>
-                    <textarea class="form-control" name="descriptionTravailHauteur" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea class="form-control descriptionTravailHauteur @error ('descriptionTravailHauteur') is-invalid @enderror" name="descriptionTravailHauteur" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    @error('descriptionTravailHauteur')
+                            <span class="text-danger error-text">{{ $message }}</span>
+                    @enderror 
                 </div>
                         
                 <button type="submit" class="btn btn-primary">Submit</button>
