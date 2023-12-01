@@ -37,7 +37,7 @@ class  Usager extends Authenticatable
  
    public function formulairesateliermecanique()
    {
-       return $this->belongsToMany(Formateliermecanique::class, 'usager_formateliermecanique', 'usager_id', 'formAtelierMecanique_id');
+       return $this->belongsToMany(Formateliermecanique::class, 'usager_Formateliermecanique', 'usager_id', 'FormAtelierMecanique_id');
    }
  
  
@@ -45,5 +45,6 @@ class  Usager extends Authenticatable
    {
         return $this->belongsTo(Departement::class, 'departement_id');
    }
+
 
 }

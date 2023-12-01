@@ -93,7 +93,9 @@
 
             <ul class="menuProcedures">
             @forelse($formulairesTous ?? [] as $formulaire)
+
             <li> 
+            <a href="{{ route('Formulaires.index',[$formulaire->id])}}">
                     <div class="uniteProcedure"> 
                         <div class="">
                              <i class="fa-solid fa-clock "></i>
@@ -111,6 +113,8 @@
                              <i class="fa-solid fa-xmark  "></i>
                         </div>
                     </div>
+              </a>
+         
                 </li>
             @empty
                 <li> 

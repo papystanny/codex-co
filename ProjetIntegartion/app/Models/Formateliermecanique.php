@@ -12,9 +12,9 @@ class Formateliermecanique extends Model
     use HasFactory;
     protected $fillable = ['numUniteImplique','departement','prenomNomEmploye','prenomNomSupImmediat','numPermisConduireEmploye','vehiculeCityonImplique'];
 
-    public function usagers()
+     public function usagers()
     {
     // return $this->belongsToMany('App\Models\Campagne');
-    return $this->belongsToMany(Usager::class);
+    return $this->belongsToMany('App\Models\Usager');
     }
 }

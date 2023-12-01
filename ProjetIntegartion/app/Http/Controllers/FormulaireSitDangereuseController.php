@@ -22,13 +22,26 @@ class FormulaireSitDangereuseController extends Controller
     //     return view ('Formulaires.atelierMec');
     // }
 
-    public function visualisezForm()
+    public function visualisezForm( Formsitdangereuse $formsit )
     {
-        $formMec = Formateliermecanique::all();
-        $formsit = Formsitdangereuse::all();
+        //$formMec = Formateliermecanique::all();
+       // $formsit = Formsitdangereuse::all();
 
-        return View('Formulaires.index' , compact('formMec' , 'formsit'));
+        return View('Formulaires.index' , compact('formsit'));
     }
+    
+    public function visualisezForm1( Formatelier $formsit )
+    {
+        //$formMec = Formateliermecanique::all();
+       // $formsit = Formsitdangereuse::all();
+
+        return View('Formulaires.index' , compact('formsit'));
+    }
+    
+ 
+
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -64,11 +77,11 @@ class FormulaireSitDangereuseController extends Controller
             $form->nomSuperviseur = Session::get('nomSuperviseur');
             $form->notifSup = 'oui';
             $form->notifAdmin = 'oui';
+           //$form->usager_id = auth()->user()->id;
             $form->save();
-            return redirect()->route('formulaires.atelierMec')->with('message', 'L\'ajout a été effectué');
-            
+            return redirect()->route('formulaires.atelierMec')->with('message', 'L\'ajout a été effectué');        
        
-    }
+       }
     catch (\Throwable $e) {
         Log::debug($e);
         return redirect()->route('Formulaires.formsitdang')->withErrors(['L\'ajout n\'a pas fonctionné.']);
