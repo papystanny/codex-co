@@ -146,6 +146,11 @@ class FormAccidentTravailController extends Controller
                $Usager->notify(new FormsRegisteredNotification());
               */ 
 
+              $usagers=Usager::where ('id', Session::get('id'))->get();
+                Log::debug($usagers);
+               // Log::debug($usagers->id);
+         //   $Formaccidentstravail->usagers()->attach($usagers);
+             $usagers->formAccidentTravail()->attach($Formaccidentstravail);
               
                $Formaccidentstravail->save();
               

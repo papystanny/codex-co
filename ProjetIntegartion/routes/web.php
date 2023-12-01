@@ -49,10 +49,7 @@ Route::middleware(['auth','employe'])->group(function () {
     Route::get('/adminAccueil', 
     [EmployesController::class, 'adminAccueil'])->name('admin.accueil');
 
-     
-
-
-   
+  
 
 
 });

@@ -19,7 +19,8 @@ class  Usager extends Authenticatable
 
    public function formAccidentTravail()
    {
-       return $this->belongsToMany(Formaccidentstravail::class, 'usager_formaccidentstravail', 'usager_id', 'formAccidentsTravail_id');
+    return $this->belongsToMany('App\Models\Formaccidentstravail');
+      // return $this->belongsToMany(Formaccidentstravail::class, 'usager_formaccidentstravail', 'usager_id', 'formAccidentsTravail_id');
    }
 
    public function departements()
