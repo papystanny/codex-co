@@ -218,10 +218,10 @@ class EmployesController extends Controller
         $formulairesTous = collect();
     
         foreach ($usagers as $usager) {
-            $formulairesUsagerAcc = $usager->formAccidentTravail()->orderBy('created_at', 'desc')->get();
-            $formulairesUsagerAud = $usager->formulairesauditssts()->orderBy('created_at', 'desc')->get();
-            $formulairesUsagerSit = $usager->formulairessitdangeureuse()->orderBy('created_at', 'desc')->get();
-            $formulairesUsagerMec = $usager->formulairesateliermecanique()->orderBy('created_at', 'desc')->get();
+            $formulairesUsagerAcc = $usager->formAccidentTravail()->with('usagers')->orderBy('created_at', 'desc')->get();
+            $formulairesUsagerAud = $usager->formulairesauditssts()->with('usagers')->orderBy('created_at', 'desc')->get();
+            $formulairesUsagerSit = $usager->formulairessitdangeureuse()->with('usagers')->orderBy('created_at', 'desc')->get();
+            $formulairesUsagerMec = $usager->formulairesateliermecanique()->with('usagers')->orderBy('created_at', 'desc')->get();
             $formulairesTous = $formulairesTous->merge($formulairesUsagerAcc)
                                                 ->merge($formulairesUsagerSit)
                                                 ->merge($formulairesUsagerMec)

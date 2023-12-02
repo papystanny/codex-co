@@ -113,7 +113,7 @@ top: 8px;
 .menu__item {
 display: block;
 padding: 5px 15px;
-color: #78C6E0; /* Couleur de texte pour un bon contraste */
+color:#53AE45; 
 font-size: 20px;
 text-decoration: none;
 transition-duration: .25s;

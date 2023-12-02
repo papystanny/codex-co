@@ -6,7 +6,7 @@
     border: 1px solid #000000;
 }
 
-.procedureEnCours span:first-child {
+.procedureEnCours span {
     margin: 15px 15px 15px 15px;
 }
 
@@ -24,9 +24,6 @@ background-color: aqua;
 }
 
 .menuProcedures {
-    margin-top: 40px;
-    margin-right: 40px;
-    list-style: none;
     display: flex;
     flex-direction: column;
 }
@@ -79,16 +76,30 @@ background-color: aqua;
 
 
 @keyframes borderAnimation {
-    20% {
-        border-color: rgb(0, 0, 0);
+    40% {
+        border-color: blue;
     }
     20% {
-        border-color: #E5004D;
+        border-color: green;
     }
   
 }
 
-.menuProcedures li:not(.exclude-hover):hover {
+@keyframes borderAnimation2 {
+    40% {
+        border-color: red;
+    }
+    20% {
+        border-color: white;
+    }
+  
+}
+
+.formulaireNonPrisEnCharge{
+    box-shadow: 0 0 5px red; /* Ajout d'une ombre au survol */
+}
+
+.uniteProcedure:not(.exclude-hover):hover {
     animation: borderAnimation 2s linear infinite; /* Animation de 2 secondes en boucle */
     box-shadow: 0 0 5px  #63BC55; /* Ajout d'une ombre au survol */
     transform: scale(1.02); /* Agrandissement au survol */
@@ -96,39 +107,58 @@ background-color: aqua;
     color: white;
 }
 
-.uniteProcedure{
+.uniteProcedureHeader{
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    padding: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+    border-bottom: 1px solid rgb(0, 0, 0);
 }
 
-.uniteProcedureAdmin{
+
+.uniteProcedure {
+    border: 1px solid green;
+    margin-bottom: 10px;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
+    padding: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+    }
+
+
+    
+
+.uniteProcedureHeader span, .uniteProcedure span {
+    flex: 1;
+}
+
+
+
+
+.ligneFiltre {
+    display: none;
+    text-align: center;
+}
+
+.formFiltre {
+    display: flex;
+    justify-content: center;
     align-items: center;
+    gap: 10px; /* Espace entre les éléments */
 }
 
+/* Styles pour les inputs et select... */
 
-
-.uniteProcedure > div:not(:last-child) {
-    flex-basis: 35%; /* Ajustez ce pourcentage selon vos besoins */
-    /* Ou vous pouvez utiliser width: calc(33.33% - 10px); */
+/* Animation fadeIn */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.uniteProcedureAdmin > div:not(:last-child) {
-    flex-basis: 50%; /* Ajustez ce pourcentage selon vos besoins */
-    /* Ou vous pouvez utiliser width: calc(33.33% - 10px); */
-}
-
-
-
-.uniteProcedure > div:last-child {
-    flex-grow: 1; /* Prend tout l'espace restant */
-}
-
-.uniteProcedure > div:nth-last-child(2) {
-    /* Appliquez votre style spécifique ici */
-    padding-left: 10%;
+/* Animation fadeOut */
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-20px); }
 }

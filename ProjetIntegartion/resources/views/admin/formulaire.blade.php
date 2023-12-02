@@ -26,74 +26,82 @@
 
             <div class="titreProcedures">
                 <span class="titre"> FORMULAIRES REMPLIS  </span> 
-                <div>                 
 @if($formulairesTous->isEmpty())           
 @else
-                    <i class="far fa-clock fa-2x" style="color: rgb(99, 188, 85);margin-right:15px" title="Ranger du plus récent au plus ancien"></i>
-                    <button id="ouvrirModalBtn" class="btn-filtre" style="border: none; background-color: transparent; cursor: pointer;">
-                        <i class="fas fa-filter fa-2x " style="color: rgb(99, 188, 85);" title="Filtrer les formulaires"></i>
-                    </button>
+                    <div>
+                        <i id="iconeFiltre" class="fas fa-filter fa-2x" style="color: rgb(99, 188, 85); cursor: pointer;" title="Filtrer les formulaires"  onclick="console.log('Clicked')" ></i>
+                    </div>
 @endif
-                 </div>
-               
             </div>
 
-            <ul class="menuProcedures">
-            @forelse($formulairesTous ?? [] as $formulaire)
-            <li> 
-                    <div class="uniteProcedure"> 
-                        <div class="">
-                             <i class="fas fa-file-alt fa-2x"></i> 
-                            <span class="contentMenuElement">{{ $formulaire->created_at->format('d/m/Y') }}</span> 
-                        </div>
-                        <div class="">
-                              <i class="fa-solid fa-folder "></i>
-                              <span class="contentMenuElement">{{ mb_strtoupper($formulaire->nomFormulaire, 'UTF-8') }}  </span> 
-                        </div>
-                        <div class="">
-                                    <i class="fa-solid fa-user-tie "></i>
-                                    <span class="contentMenuElement">{{$formulaire->nomEmploye}} </span> 
-                        </div>
-@if($formulaire->notifSup == 0 || $formulaire->notifSup == "non" )
-                        <div class="" style="color:red;">
-                            <i class="fa-solid fa-xmark  "></i>
-                        </div>
-@elseif($formulaire->notifSup == 1 || $formulaire->notifSup == "oui")
-                         
-                        <div class="" style="color:green;" title="Formualire ">
-                            <i class="fa-solid fa-check   "></i>
-                        </div>
-@endif
-
-@if($formulaire->notifAdmin == 0 || $formulaire->notifAdmin == "non" )
-                        <div class="" style="color:red;">
-                            <i class="fa-solid fa-xmark  "></i>
-                        </div>
-@elseif($formulaire->notifAdmin == 1 || $formulaire->notifAdmin == "oui")
-                         
-                        <div class="" style="color:green;" title="Formualire ">
-                            <i class="fa-solid fa-check   "></i>
-                        </div>
-@endif
-                        
-                    </div>
-            </li>
-            @empty
-                <li class="exclude-hover" style="border:1px solid red">
-                    <div class="uniteProcedure" >  
-                              <i class=" far fa-folder fa-2x"></i>
-                              <span class="contentMenuElement"> AUCUN FORMULAIRE REMPLI POUR LE MOMENT </span> 
-                             <i class="fa-solid fa-xmark  " style="color:red"></i>
-                    </div>
-                </li>
-            @endforelse
-
             
+            <!-- Ligne de filtre -->
+            <div id="ligneFiltre" class="ligneFiltre">
+                <form id="formulaireFiltre" class="formFiltre">
+                    <input type="date" id="date_debut" name="date_debut" required>
+                    <input type="date" id="date_fin" name="date_fin" required>
+                    <select id="nomEmploye" name="nomEmploye" required>
+                        <!-- Options d'employés ici -->
+                    </select>
+                    <select id="typeFormulaire" name="typeFormulaire" required>
+                        <!-- Options de types de formulaire ici -->
+                    </select>
+                    <button type="submit">Rechercher</button>
+                </form>
+            </div>
 
+            <div class="menuProcedures">
+        <!-- En-têtes des colonnes -->
+          
+
+        @forelse($formulairesTous ?? [] as $formulaire)
+
+                 <div class="uniteProcedureHeader">
+                    <span><i class="far fa-clock fa-2x"></i></span>
+                    <span> <i class="far fa-file-alt fa-2x"></i> </i></span>
+                    <span><i class="far fa-user fa-2x"></i></span>
+                    <span><i class="far fa-bell fa-2x"></i></span>
+                    <span><i class="fas fa-bell fa-2x"></i></span>
+                    <span><i class="fas fa-bell fa-2x"></i></span>
+                </div> 
             
+                @if($formulaire->notifAdmin == 1 || $formulaire->notifAdmin == 'oui')
+                    <div class="uniteProcedure">
+                @else
+                    <div class="uniteProcedure formulaireNonPrisEnCharge exclude-hover ">
+                @endif
+                <span>{{ $formulaire->created_at->format('d/m/Y') }}</span>
+                <span>{{ mb_strtoupper($formulaire->nomFormulaire, 'UTF-8') }}</span>
+                <span>{{$formulaire->nomEmploye}}</span>
+                @foreach($formulaire->usagers as $usager)
+                    <span>{{ $usager->typeCompte }}</span>
+                @endforeach
+                  <!-- Icône pour notifSup -->
+                <span style="color: {{$formulaire->notifSup == 1 || $formulaire->notifSup == 'oui' ? 'green' : 'red'}};">
+                    @if($formulaire->notifSup == 1 || $formulaire->notifSup == 'oui')
+                        <i class="fa-solid fa-check"></i>
+                    @else
+                        <i class="fas fa-spinner fa-spin fa-2x"></i>
+                    @endif
+                </span>
 
-            </ul>
+                <!-- Icône pour notifAdmin -->
+                <span style="color: {{$formulaire->notifAdmin == 1 || $formulaire->notifAdmin == 'oui' ? 'green' : 'red'}};">
+                    @if($formulaire->notifAdmin == 1 || $formulaire->notifAdmin == 'oui')
+                        <i class="fa-solid fa-check"></i>
+                    @else
+                        <i class="fas fa-spinner fa-spin fa-2x"></i>
+                    @endif
+                </span>
+            </div>
+        @empty
+        <div class="uniteProcedure formulaireNonPrisEnCharge exclude-hover">
+            <span>AUCUN FORMULAIRE REMPLI POUR LE MOMENT</span>
         </div>
+            <!-- Affichage lorsqu'aucun formulaire n'est disponible -->
+        @endforelse
+    </div>
+</div>
 
         <div class="procedureEnCours">
 
@@ -104,73 +112,63 @@
              
             </div>
 
-            <ul class="menuProcedures">
+            <div class="menuProcedures">
 
-                <li> 
-                    <a href="{{ route('admin.voirFormulaireRempli') }}">
-                        <div class="uniteProcedure"> 
-                            <div> <i class="fas fa-file-alt fa-2x"></i></div> 
-                            <div> <span class="contentMenuElement"> ACCIDENT DE TRAVAIL </span> </div> 
-                            <div> <span class="contentMenuElement">EMPLOYE </span> </div> 
-                            <div> <i class="fas fa-trash fa-2x"></i>
-                        </div></div>
-                    </a>
-                </li>
-                <li> 
-                    <a href="{{ route('admin.voirFormulaireRempli') }}">
-                        <div class="uniteProcedure"> 
-                            <div> <i class="fas fa-file-alt fa-2x"></i> </i></div> 
-                            <div> <span class="contentMenuElement"> ACTE DE VIOLENCE</span> </div> 
-                            <div><span class="contentMenuElement">EMPLOYE </span> </div> 
-                            <div>  <i class="fas fa-trash fa-2x"></i></div> 
-                        </div>
-                    </a>
-                </li>
-                <li> 
-                    <a href="{{ route('admin.voirFormulaireRempli') }}">
-                        <div class="uniteProcedure"> 
-                            <div> <i class="fas fa-file-alt fa-2x"></i></div> 
-                            <div> <span class="contentMenuElement"> AUDIT SST </span> </div> 
-                            <div> <span class="contentMenuElement">SUPERIEUR </span> </div> 
-                            <div>   <i class="fas fa-trash fa-2x"></i></div> 
-                        </div>
-                    </a>
-                </li>
-                <li> 
-                    <a href="{{ route('formulaires.atelierMec') }}">
-                        <div class="uniteProcedure"> 
-                            <div>    <i class="fas fa-file-alt fa-2x"></i></div>
-                            <div>   <span class="contentMenuElement"> RAPPORT D'ACCIDENT </span> </div>
-                            <div>  <span class="contentMenuElement">SUPERIEUR </span> </div>
-                            <div>  <i class="fas fa-trash fa-2x"></i></div>
-                        </div>
-                    </a>
-                </li>
+                <!-- En-têtes des colonnes -->
+                    <div class="uniteProcedureHeader">
+                        <span> <i class="far fa-file-alt fa-2x"></i> </i></span>
+                        <span><i class="far fa-user fa-2x"></i></span>
+                    </div> 
 
-            </ul>
+                    <div class="uniteProcedure exclude-hover"> 
+                                <span > ACCIDENT DE TRAVAIL </span> 
+                                <span >EMPLOYE </span>  
+                    </div>
+
+                    <div class="uniteProcedure exclude-hover"> 
+                                <span > ACTE DE VIOLENCE </span> 
+                                <span >EMPLOYE </span>  
+                    </div>
+                    
+                    <div class="uniteProcedure exclude-hover"> 
+                                <span > AUDIT SST</span> 
+                                <span >SUPÉRIEUR </span>  
+                    </div>
+
+                    <div class="uniteProcedure exclude-hover"> 
+                                <span > RAPPORT D'ACCIDENT </span> 
+                                <span >SUPÉRIEUR </span>  
+                    </div>
+
+            </div>
         </div>
 
     </div> 
   
     @endsection
     <script>
-        // Sélectionnez les icônes de filtre par leur ID
-        const iconeFiltre1 = document.getElementById('iconeFiltre1');
-        const iconeFiltre2 = document.getElementById('iconeFiltre2');
 
-        // Sélectionnez la liste des formulaires (ou l'élément qui les contient)
-        const menuProcedures = document.querySelector('.menuProcedures');
+        document.addEventListener('DOMContentLoaded', function() {
+        const iconeFiltre = document.getElementById('iconeFiltre');
+        const ligneFiltre = document.getElementById('ligneFiltre');
 
-        // Vérifiez si la liste des formulaires est vide
-        if (menuProcedures.children.length === 0) {
-            // Cachez les icônes de filtre en définissant leur style sur "display: none"
-            iconeFiltre1.style.display = 'none';
-            iconeFiltre2.style.display = 'none';
-        }
+        console.log(document.getElementById('iconeFiltre'));
+
+
+        iconeFiltre.addEventListener('click', function() {
+    console.log("Click détecté");
+    if (ligneFiltre.style.display === "none") {
+        ligneFiltre.style.display = "flex";
+    } else {
+        ligneFiltre.style.display = "none";
+    }
+});
+
     </script>
+
     <script src="js/employe/accueil.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="js/employe/accessoire/modal.js" defer></script>
+    
 </body>
 </html>
 
