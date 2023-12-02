@@ -8,7 +8,7 @@ use App\Notifications\FormsRegisteredNotification;
 use App\Http\Requests\AccidentTravailRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use App\Models\Formaccidentstravail;
+use App\Models\FormAccidentsTravail;
 use App\Events\FormulaireSoumis;
 use Session;
 use Illuminate\Support\Carbon;
@@ -35,7 +35,7 @@ class FormAccidentTravailController extends Controller
             try {
     
     
-               $Formaccidentstravail = new Formaccidentstravail();
+               $Formaccidentstravail = new FormAccidentsTravail();
                $Formaccidentstravail->nomFormulaire = "Accident de travail";
                $Formaccidentstravail->nomEmploye = Session::get('nom');
                 $Formaccidentstravail->fonctionMomentEvenement = $request->input('fonctionMomentEvenement');
@@ -150,10 +150,15 @@ class FormAccidentTravailController extends Controller
                 Log::debug($usagers);
                // Log::debug($usagers->id);
          //   $Formaccidentstravail->usagers()->attach($usagers);
-             $usagers->formAccidentTravail()->attach($Formaccidentstravail);
+
+
+         
+            
               
                $Formaccidentstravail->save();
-              
+                $Formaccidentstravail->usagers()->attach($usagers);
+
+       //      $usagers->formAccidentsTravail()->attach($Formaccidentstravail);  
              //  $condition1= Session::get('nom');
                
               /* $Usager = Usager::select('emailsuperviseur')

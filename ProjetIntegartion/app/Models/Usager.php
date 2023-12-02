@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Formaccidentstravail;
+use App\Models\FormAccidentsTravail;
 use App\Models\Departement;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -17,10 +17,10 @@ class  Usager extends Authenticatable
 
    
 
-   public function formAccidentTravail()
+   public function formAccidentsTravail()
    {
-    return $this->belongsToMany('App\Models\Formaccidentstravail');
-      // return $this->belongsToMany(Formaccidentstravail::class, 'usager_formaccidentstravail', 'usager_id', 'formAccidentsTravail_id');
+  //  return $this->belongsToMany('App\Models\Formaccidentstravail');
+       return $this->belongsToMany(FormAccidentsTravail::class);
    }
 
    public function departements()
