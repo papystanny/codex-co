@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Formulairesauditsst;
 use Illuminate\Support\Facades\DB;
+use App\Notifications\FormsRegisteredNotification;
 use Illuminate\Support\Facades\Log;
 use App\Http\Requests\FormAuditSsTRequest;
+use App\Events\FormulaireAudit;
 use Session;
+use App\Models\Usager;
+use Illuminate\Support\Carbon;
 
 class FormAuditSSTsController extends Controller
 {
@@ -43,7 +47,8 @@ class FormAuditSSTsController extends Controller
     
     
                $Formulairesauditsst = new Formulairesauditsst();
-               $Formulairesauditsst->prenomNomEmploye = Session::get('prenom,nom');
+                $Formulairesauditsst->nomFormulaire = "Audit SST";
+               $Formulairesauditsst->prenomNomEmploye = Session::get('prenom').' '.Session::get('nom');
                $Formulairesauditsst->lieuTravail = $request->input('lieuTravail');
                $Formulairesauditsst->date = $request->input('date');
                 $Formulairesauditsst->heure = $request->input('heure');
@@ -64,8 +69,11 @@ class FormAuditSSTsController extends Controller
                 $Formulairesauditsst->notifAdmin = 'oui';
 
                 $Formulairesauditsst->save();
-               
-               return view('superviseurs.index');
+                $usagers=Usager::where ('nom', Session::get('nom'))->get();
+               $Formulairesauditsst->usagers()->attach($usagers);
+               $data=Carbon::now()->toDateString();
+               event(new FormulaireAudit($data));
+               return view('employe.accueil');
                 }
                 
                catch (\Throwable $e) {

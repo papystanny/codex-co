@@ -21,7 +21,9 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\EnvoiNotification',
         ],
         
-       
+       'App\Events\FormulaireAudit' => [
+            'App\Listeners\EnvoiNotificationAdmin',
+        ],
         
     ];
 
