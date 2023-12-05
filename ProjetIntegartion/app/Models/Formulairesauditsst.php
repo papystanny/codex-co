@@ -8,7 +8,7 @@ use App\Models\Usager;
 class Formulairesauditsst extends Model
 {
     use HasFactory;
-    protected $fillable = ['prenomNomEmploye','lieuTravail','date' , 'heure', 'Epi', 'tenueLieux', 'comportementSecuritaire', 'signalisation','fichesSignaletiques','traveauxEscavation','espaceClos','methodeTravail','autre','respectDistanciation','portEpi','respectProcedures','descriptionTravailHauteur','notifSup','notifAdmin' ];
+    protected $fillable = ['nomEmploye','lieuTravail','date' , 'heure', 'Epi', 'tenueLieux', 'comportementSecuritaire', 'signalisation','fichesSignaletiques','traveauxEscavation','espaceClos','methodeTravail','autre','respectDistanciation','portEpi','respectProcedures','descriptionTravailHauteur','notifSup','notifAdmin' ];
     public function usagers()
     {
     // return $this->belongsToMany('App\Models\Campagne');
