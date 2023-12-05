@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,7 +20,7 @@
             <iframe src="{{$film->preview}}" width="920" height="415"></iframe>
         </div> -->
 
-        <div class="detail-container-center">
+        <!-- <div class="detail-container-center">
             <div class="detail-container-wrapper">
                 <div class="detail-container">
                     <div class="detail-container-left">
@@ -59,4 +59,4 @@
 
     @endsection
 </body>
-</html>
+</html> -->

@@ -100,5 +100,5 @@ Route::get('/visualiser', [FormulaireSitDangereuseController::class, 'visualisez
 
 //Route::get('/visualisere', [FormulaireMecaniqueController::class, 'visualisere'])->name('Formulaires.index');
 
-Route::get('/Formulaires/{formulaire}/', [FormulaireMecaniqueController::class, 'show'])->name('formMec.show');
+//Route::get('/Formulaires/{formulaire}/', [FormulaireMecaniqueController::class, 'show'])->name('formMec.show');
 
