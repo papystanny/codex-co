@@ -15,7 +15,9 @@ textLien.addEventListener('blur', () => {
 
 
 
+// eslint-disable-next-line no-undef
 typeDepartement.addEventListener('change', () => {
+    // eslint-disable-next-line no-undef
     validateTypeDepartement();
 });
 

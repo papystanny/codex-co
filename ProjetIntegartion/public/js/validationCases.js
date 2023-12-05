@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 function checkCheckbox(checkbox) {
     var checkbox1 = document.getElementById('checkbox1');
     var checkbox2 = document.getElementById('checkbox2');
@@ -37,7 +38,7 @@ function checkCheckbox(checkbox) {
         checkbox2.checked = false;
         checkbox3.checked = false;
     }
-
+ 
 
 
     if (checkbox === checkbox5 && !checkbox4.checked) {

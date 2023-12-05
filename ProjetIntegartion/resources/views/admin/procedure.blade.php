@@ -48,38 +48,34 @@
                     @foreach($departements as $departement)
 
                             <span class="titre" style="color:blue;"> {{ ucwords($departement->nom) }} </span> 
+                            @if($departements->isEmpty())       
+                                <div class="uniteProcedureHeader">
+                                    <span><i class="fas fa-folder fa-2x"></i></span>
+                                    <span> <i class="far fa-clock  fa-2x"></i></span>
+                                </div>    
+                            @else 
+                               
+                            @endif
+                        
                             @forelse($departement->proceduresTravails ?? [] as $procedure)
-                                <li> 
-                                    <div class="uniteProcedureAdmin" >
-                                        {{-- Détails de la procédure --}}
-                                        
-                                        <i class="fa-solid fa-folder "></i>
-                                        <div><span class="contentMenuElement">{{ mb_strtoupper($procedure->nom, 'UTF-8') }}</span></div>
+                       
 
-                                        <i class="far fa-clock fa-2x"></i>
-                                        <div><span class="contentMenuElement"> {{$procedure->created_at }} </span></div>
-                                        
-                                        <form action="{{ route('procedure.delete', ['departement' => $departement->id, 'procedure' => $procedure->id]) }}" method="POST">
+                        <div class="uniteProcedure">
+                            <span>{{ mb_strtoupper($procedure->nom, 'UTF-8') }}</span>
+                            <span>{{$procedure->created_at }}</span>
+                            <form action="{{ route('procedure.delete', ['departement' => $departement->id, 'procedure' => $procedure->id]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="delete-button" style="border: none; background-color: transparent; cursor: pointer;" title="Supprimer la procédure">
                                                 <i class="fas fa-trash fa-2x"></i>
                                             </button>
-                                        </form>
-                                    </div>
-                                </li>
+                            </form>
+                        </div>
                     
                             @empty
-                            <li class="exclude-hover" style="border:1px solid red">
-                                <div class="uniteProcedure">  
-                                        <i class=" far fa-folder fa-2x"></i>
-                                    
-                                        <i class="fa-solid fa-xmark  " style="color:red;"></i>
-                                </div>
-                            </li>
-                           {{-- <div style="margin-bottom:40px">
-
-                            </div>--}} 
+                            <div class="uniteProcedure formulaireNonPrisEnCharge exclude-hover">
+                                <span>AUCUNE PROCEDURE EN COURS POUR CE DEPARTEMENT</span>
+                            </div>
                             @endforelse
                         
                     @endforeach

@@ -12,7 +12,7 @@ class Formulairesauditsst extends Model
    
     public function usagers()
     {
-        return $this->belongsToMany(Usager::class, 'usager_formulairesauditsst', 'formulairesauditsst_id', 'usager_id');
+        return $this->belongsToMany(Usager::class, 'formulairesauditsst_usager', 'formulairesauditsst_id', 'usager_id');
     }
     
 }

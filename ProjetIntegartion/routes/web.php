@@ -57,6 +57,11 @@ Route::middleware(['auth','employe'])->group(function () {
     Route::post('/AccidentTravailStore',
     [FormAccidentTravailController::class, 'store'])->name('employe.formAccidentTravailStore');
 
+        Route::get('/AuditSST',
+    [FormAuditSSTsController::class, 'formAuditSST'])->name('superviseur.formAuditSST');
+    Route::post('/AuditSSTStore',
+    [FormAuditSSTsController::class, 'store'])->name('superviseur.formAuditSSTStore');
+
     
     Route::get('/adminFormAtelier',
     [FormulaireMecaniqueController::class, 'index'])->name('formulaires.atelierMec');

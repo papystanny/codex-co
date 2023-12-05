@@ -22,17 +22,17 @@ class  Usager extends Authenticatable
 
    public function formAccidentTravail()
    {
-       return $this->belongsToMany(FormaccidentsTravail::class, 'usager_formaccidentstravail', 'usager_id', 'formAccidentsTravail_id');
+       return $this->belongsToMany(FormaccidentsTravail::class, 'formaccidentstravail_usager', 'usager_id', 'formAccidentsTravail_id');
    }
 
    public function formulairesauditssts()
    {
-       return $this->belongsToMany(Formulairesauditsst::class, 'usager_formulairesauditsst', 'usager_id', 'formulairesauditsst_id');
+       return $this->belongsToMany(Formulairesauditsst::class, 'formulairesauditsst_usager', 'usager_id', 'formulairesauditsst_id');
    }
 
    public function formulairessitdangeureuse()
    {
-       return $this->belongsToMany(Formsitdangereuse::class, 'usager_formulairesauditsst', 'usager_id', 'formulairesauditsst_id');
+       return $this->belongsToMany(Formsitdangereuse::class, 'usager_formsitdangereuse', 'usager_id', 'formSitDangereuse_id');
    }
 
    public function formulairesateliermecanique()

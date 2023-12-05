@@ -40,7 +40,7 @@
             </div>
 @if( Session::get('typeCompte') == 'superieur')   
             <div class="formulaire">
-                <h5> AUDI SST  </h5>
+            <a href="/AuditSST"> <h5> AUDI SST  </h5> </a>
             </div>    
 @endauth
 @if( Session::get('typeCompte') == 'superieur')   

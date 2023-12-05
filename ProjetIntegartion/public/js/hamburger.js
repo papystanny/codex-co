@@ -7,10 +7,11 @@ if (largeurEcran < 768) {
            // var messageLogout = document.getElementById("messageLogout");
             var messageWelcome = document.getElementById("messageWelcome");
             var messageNom= document.getElementById("messageNom");
+            // eslint-disable-next-line no-unused-vars
             var navbar= document.getElementById("navbar");
 
             // Affichez le message
-            //messageLogout.style.display = "none";
+            //messageLogout.style.display = "none";.
             messageWelcome.style.display = "block";
             messageNom.style.display = "none";
 
@@ -19,8 +20,7 @@ if (largeurEcran < 768) {
                 messageWelcome.style.display = "none";
                 //messageLogout.style.display = "none";
                 messageNom.style.display = "block";
-                if (window.innerWidth <= 768) {
-                } 
+                if (window.innerWidth <= 768) { /* empty */ } 
             }, 5000); 
         });
 

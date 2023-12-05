@@ -52,18 +52,21 @@
 
             <div class="menuProcedures">
         <!-- En-têtes des colonnes -->
-          
-
-        @forelse($formulairesTous ?? [] as $formulaire)
-
-                 <div class="uniteProcedureHeader">
+@if($formulairesTous->isEmpty())                     
+@else
+                <div class="uniteProcedureHeader">
                     <span><i class="far fa-clock fa-2x"></i></span>
                     <span> <i class="far fa-file-alt fa-2x"></i> </i></span>
                     <span><i class="far fa-user fa-2x"></i></span>
                     <span><i class="far fa-bell fa-2x"></i></span>
                     <span><i class="fas fa-bell fa-2x"></i></span>
                     <span><i class="fas fa-bell fa-2x"></i></span>
-                </div> 
+                </div>   
+@endif        
+
+        @forelse($formulairesTous ?? [] as $formulaire)
+
+                 
             
                 @if($formulaire->notifAdmin == 1 || $formulaire->notifAdmin == 'oui')
                     <div class="uniteProcedure">
@@ -148,7 +151,7 @@
     @endsection
     <script>
 
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function() ){
         const iconeFiltre = document.getElementById('iconeFiltre');
         const ligneFiltre = document.getElementById('ligneFiltre');
 

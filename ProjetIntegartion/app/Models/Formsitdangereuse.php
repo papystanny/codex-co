@@ -18,7 +18,7 @@ class Formsitdangereuse extends Model
 
     public function usagers()
     {
-        return $this->belongsToMany(Usager::class, 'formSitDangereuse_id', 'formAtelierMecanique_id', 'usager_id');
+        return $this->belongsToMany(Usager::class, 'usager_formsitdangereuse','formSitDangereuse_id',  'usager_id');
     }
 
 }

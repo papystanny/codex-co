@@ -159,9 +159,9 @@ class EmployesController extends Controller
  */
     public function adminProcedure()
     {
-        $departements = Departement::with('proceduresTravails')->get();
-        //dd($departements->first()->proceduresTravails);
-        //dd($departements); // Affiche les données de $departements et arrête l'exécution
+        $departements = Departement::with(['proceduresTravails' => function ($query) {
+            $query->orderBy('nom'); // Remplacez 'nom' par le champ de nom de votre procédure
+        }])->get();
 
         return view('admin.procedure', compact('departements'));
     }

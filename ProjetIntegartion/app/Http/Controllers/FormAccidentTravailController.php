@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\FormAccidentTravailRequest;
+use App\Notifications\FormsRegisteredNotification;
+use App\Http\Requests\AccidentTravailRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\Formaccidentstravail;
 use App\Events\FormulaireSoumis;
-use App\Notifications\FormsRegisteredNotification;
-use App\Http\Requests\AccidentTravailRequest;
 use Session;
 use Illuminate\Support\Carbon;
 use App\Models\Usager;
@@ -22,21 +22,22 @@ class FormAccidentTravailController extends Controller
     }*/
     public function accidentTravail()
     {
-        return view('formAccidentTravail.formAccidentTravail');
+        $usagers=Usager::where ('nom', Session::get('nom'))->get(); //Session::get('id'));
+       $user1= Session::get('nom');
+       Log::debug($user1);
+       Log::debug($usagers);
+        return view('formAccidentTravail.formAccidentTravail',compact('usagers'));
         //
     }
-    
-   
-
 
     public function store(AccidentTravailRequest $request)
     {
             try {
-   
+    
     
                $Formaccidentstravail = new Formaccidentstravail();
                $Formaccidentstravail->nomFormulaire = "Accident de travail";
-               $Formaccidentstravail->nomEmploye = Session::get('nom');
+               $Formaccidentstravail->nomEmploye =  Session::get('prenom').' '.Session::get('nom');
                 $Formaccidentstravail->fonctionMomentEvenement = $request->input('fonctionMomentEvenement');
                 $Formaccidentstravail->matriculeEmploye = $request->input('matriculeEmploye');
                 $Formaccidentstravail->dateAccident = $request->input('dateAccident');
@@ -126,8 +127,8 @@ class FormAccidentTravailController extends Controller
                 Log::debug($Formaccidentstravail->dateSuperviseurAvise);
                  $Formaccidentstravail->signatureEmploye =Session::get('nom');
                 $Formaccidentstravail->dateSignatureEmploye =  Carbon::now()->toDateString();
-                $Formaccidentstravail->notifSup = 'oui';
-                $Formaccidentstravail->notifAdmin = 'oui';
+                $Formaccidentstravail->notifSup = 'non';
+                $Formaccidentstravail->notifAdmin = 'non';
 
 
 
@@ -145,9 +146,19 @@ class FormAccidentTravailController extends Controller
                $Usager->notify(new FormsRegisteredNotification());
               */ 
 
+              $usagers=Usager::where ('id', Session::get('id'))->get();
+                Log::debug($usagers);
+               // Log::debug($usagers->id);
+         //   $Formaccidentstravail->usagers()->attach($usagers);
+
+
+         
+            
               
                $Formaccidentstravail->save();
-              
+                $Formaccidentstravail->usagers()->attach($usagers);
+
+       //      $usagers->formAccidentsTravail()->attach($Formaccidentstravail);  
              //  $condition1= Session::get('nom');
                
               /* $Usager = Usager::select('emailsuperviseur')
@@ -158,14 +169,14 @@ class FormAccidentTravailController extends Controller
                 
               
                
-                return redirect()->back()->with('error', 'Formulaire ajouté avec succès');
+               return view('employe.formulaire');
                 }
                 
                catch (\Throwable $e) {
                     
                         Log::debug($e);
                     //   return redirect()->route('campagne')->withErrors(['L\'ajout de campagne n\'a pas fonctionné']);
-                    return redirect()->back()->with('error', 'L ajout du formualire a échouée');
+                        return view('employe.accueil');
                }
                
                 
@@ -173,31 +184,9 @@ class FormAccidentTravailController extends Controller
             //
         
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
         //
@@ -206,7 +195,7 @@ class FormAccidentTravailController extends Controller
     public function showFormulaires()
     {
         
-        $Formaccidentstravail = FormaccidentsTravail::all();
+        $Formaccidentstravail = Formaccidentstravail::all();
         return view('superviseurs.index',compact('Formaccidentstravail'));
     }
     /**
