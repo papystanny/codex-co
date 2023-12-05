@@ -216,6 +216,13 @@ class EmployesController extends Controller
     { 
         $usagers = Usager::all();
         $formulairesTous = collect();
+
+        $usagersAvecFormulaires = Usager::whereHas('formAccidentTravail')
+                                ->orWhereHas('formulairesauditssts')
+                                ->orWhereHas('formulairessitdangeureuse')
+                                ->orWhereHas('formulairesateliermecanique')
+                                ->get();
+
     
         foreach ($usagers as $usager) {
             $formulairesUsagerAcc = $usager->formAccidentTravail()->with('usagers')->orderBy('created_at', 'desc')->get();
@@ -235,7 +242,7 @@ class EmployesController extends Controller
             Log::debug("$key => $value");
         }
     
-        return view('admin.formulaire', compact('usagers', 'formulairesTous'));
+        return view('admin.formulaire', compact('usagersAvecFormulaires','usagers', 'formulairesTous'));
     }
     
     
@@ -262,20 +269,25 @@ class EmployesController extends Controller
 
     public function filtrerFormulairesEquipes(Request $request)
     {
+        Log::debug("j'entre dans le controller");
         $dateDebut = $request->input('date_debut');
         $dateFin = $request->input('date_fin');
         $typeFormulaire = $request->input('typeFormulaire');
+        log::debug($typeFormulaire);
         $matriculeEmploye = $request->input('nom_employe'); // Assurez-vous que c'est le nom correct du champ
      
         
         $usager = Usager::where('matricule', $matriculeEmploye)->first();
+        Log::debug($usager);
 
         if ($usager) {
             $formulairesFiltres = $this->getFormulairesByType($usager, $typeFormulaire, $dateDebut, $dateFin);
+            Log::debug('LERREUR EST QUE USAGER  RETOURNE une valleur');
         } else {
             $formulairesFiltres = collect(); // Retourne une collection vide si aucun usager n'est trouvé
             Log::debug('LERREUR EST QUE USAGER NE RETOURNE RIEN');
         }
+        log::debug($formulairesFiltres);
         
         $logOutput = $formulairesFiltres->map(function ($formulaire) {
             return json_encode($formulaire); // Convertit chaque élément en JSON pour un affichage clair
@@ -293,6 +305,7 @@ class EmployesController extends Controller
         switch ($typeFormulaire) {
             case 'type1': // Cas pour tous les formulaires
                 // Ici, vous devez combiner les résultats de toutes les requêtes
+                log::debug("je suis bien dans la méthode de trie");
                 $formulaires = collect();
     
                 // Ajoutez tous les types de formulaires à la collection
@@ -327,10 +340,10 @@ class EmployesController extends Controller
                 ->where('formaccidentstravails.created_at', '>=', $dateDebut)
                 ->where('formaccidentstravails.created_at', '<=', $dateFin)
                 ->get();
-            case 'ormulairesauditssts':
+            case 'formulairesauditssts':
                 return $user->formulairesauditssts()
                 ->where('formulairesauditssts.created_at', '>=', $dateDebut)
-                ->where('ormulairesauditssts.created_at', '<=', $dateFin)
+                ->where('formulairesauditssts.created_at', '<=', $dateFin)
                 ->get();
             case 'formsitdangereuses':
                 return $user->formulairessitdangeureuse()

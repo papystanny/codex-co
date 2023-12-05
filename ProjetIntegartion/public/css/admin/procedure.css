@@ -134,31 +134,85 @@ background-color: aqua;
     flex: 1;
 }
 
-
-
-
 .ligneFiltre {
-    display: none;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px; /* Espacement entre les lignes */
+    margin: 20px;
+    padding: 10px 30px;
+    border: 2px solid #63BC55;
+    border-radius: 10px;
+    max-height: 0; /* Empêche la ligne de filtre de prendre de l'espace au début */
+    overflow: hidden; /* Cache le contenu débordant */
+    visibility: hidden; /* Rend la ligne invisible */
+    transform: translateX(-100%); /* Déplace la ligne hors de l'écran */
+    transition: transform 0.5s ease, max-height 0.5s ease, visibility 0.5s ease; /* Transitions pour les animations */
 }
 
 .formFiltre {
     display: flex;
-    justify-content: center;
+    width: 100%;
     align-items: center;
-    gap: 10px; /* Espace entre les éléments */
+    justify-content: space-around;
 }
 
-/* Styles pour les inputs et select... */
-
-/* Animation fadeIn */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+.formFiltre div, .formFiltreButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 18%; /* Largeur uniforme */
 }
 
-/* Animation fadeOut */
-@keyframes fadeOut {
-    from { opacity: 1; transform: translateY(0); }
-    to { opacity: 0; transform: translateY(-20px); }
+.formFiltre div label, .formFiltreButton label {
+    color: grey;
+    font-size: 0.8em;
+    margin-bottom: 5px;
+}
+
+.formFiltre input, .formFiltre select {
+    padding: 5px;
+    border: 2px solid green;
+    border-radius: 5px;
+    width: 100%; /* Largeur relative au div parent */
+    transition: transform 0.3s ease;
+    transform: scale(0.98);
+}
+
+.formFiltre input:focus, .formFiltre select:focus {
+    transform: scale(1.03);
+    outline: none;
+    border: 2px solid transparent;
+    background-image: linear-gradient(white, white), linear-gradient(to right, red, white);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+.formFiltre button {
+    padding: 10px 15px; /* Ajuster le padding pour la taille */
+    background-color: #63BC55; /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    border: none; /* Supprimer la bordure par défaut */
+    border-radius: 5px; /* Bordures arrondies */
+    font-size: 1em; /* Taille du texte */
+    cursor: pointer; /* Curseur de pointeur pour indiquer qu'il est cliquable */
+    transition: background-color 0.3s ease; /* Transition pour l'effet de survol */
+}
+
+.formFiltre button:hover {
+    background-color: #4a944a; /* Assombrir la couleur de fond au survol */
+}
+
+
+
+.ligneFiltre-hidden {
+    transform: translateX(-100%); /* Déplacer la ligne de filtre à gauche */
+    opacity: 0; /* Rendre la ligne de filtre transparente */
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Transition pour le glissement et l'opacité */
+}
+
+.ligneFiltre-visible {
+    max-height: 200px; /* Hauteur maximale nécessaire pour afficher le contenu */
+    visibility: visible; /* Rend la ligne visible */
+    transform: translateX(0); /* Ramène la ligne à sa position originale */
 }

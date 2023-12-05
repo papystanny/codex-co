@@ -38,9 +38,10 @@ window.addEventListener("click", function(event) {
         fermerModal1();
     }
 
-});
+});   
 
 //********************************************************************VÉRIFIER SI LA DATE DE FIN EST SUPÉRIEUR À LA DATE DE DÉBUT*************************** */
+// eslint-disable-next-line no-unused-vars
 function validateDates() {
     var dateDebut = document.getElementById('date_debut').value;
     var dateFin = document.getElementById('date_fin').value;
@@ -152,7 +153,7 @@ function filtrerFormulaireAccidentTravail(event) {
 function filtrerFormulaireAccidentTravailEquipe(event) {
     event.preventDefault(); // Empêche la soumission standard du formulaire
 
-
+    console.log('Avant lahxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx requête Fetc');
     // Récupère les valeurs du formulaire de filtrage
     var dateDebut = document.getElementById('date_debut').value;
     var dateFin = document.getElementById('date_fin').value;
@@ -170,6 +171,7 @@ function filtrerFormulaireAccidentTravailEquipe(event) {
         nom_employe: nomEmploye,
         typeFormulaire: typeFormulaire,
     };
+    console.log('toutes les données sont récupéres ');
   
     // Effectue la requête Fetch pour filtrer les formulaires
     fetch('/filtrer-formulairesEquipes', {
@@ -177,9 +179,9 @@ function filtrerFormulaireAccidentTravailEquipe(event) {
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
+           
         },
         body: JSON.stringify(data)
-        
     })
     .then(response => {
        
@@ -189,10 +191,12 @@ function filtrerFormulaireAccidentTravailEquipe(event) {
         return response.json();
     })
     .then(data => {
+        console.log('Ca marche data');
         var historiqueSection = document.querySelector('.historique-section2');
         historiqueSection.innerHTML = ""; // Vide la section
     
         if (data.length > 0) {
+            console.log('Ca marche');
             data.forEach(function (formulaire) {
                 var formulaireDiv = document.createElement('div');
                 formulaireDiv.className = 'historique-unite2';
@@ -217,6 +221,7 @@ function filtrerFormulaireAccidentTravailEquipe(event) {
                 historiqueSection.appendChild(formulaireDiv);
             });
         } else {
+            console.log('Ca marche');
             // Si aucun formulaire n'est retourné, affiche un message
             var messageDiv = document.createElement('div');
             messageDiv.className = 'historique-unite2';
@@ -228,6 +233,101 @@ function filtrerFormulaireAccidentTravailEquipe(event) {
                     <span>Personne n'a rempli de formulaire</span>
                 </div>
             `;
+            historiqueSection.appendChild(messageDiv);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    })
+    .finally(() => {
+        console.log('Fetch request completed');
+        fermerModal(); // Ferme le modal après la soumission du formulaire
+    });
+
+    console.log('Après la requête Fetch');
+}
+
+
+/********************************************************************************FILTRER LES FORMULAIRES ADMIN************************* */
+   
+
+
+// Fonction pour soumettre le formulaire et filtrer les formulaires
+function filtrerFormulaireADmin(event) {
+    event.preventDefault(); // Empêche la soumission standard du formulaire
+
+    console.log('Avant lahxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx requête Fetc');
+    // Récupère les valeurs du formulaire de filtrage
+    var dateDebut = document.getElementById('date_debut').value;
+    var dateFin = document.getElementById('date_fin').value;
+    var typeFormulaire = document.getElementById('type').value;
+    console.log(typeFormulaire);
+    var nomEmploye = document.getElementById('nomEmploye').value;
+    var csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
+
+    console.log('Avant la requête Fetch');
+
+    // Prépare les données à envoyer
+    var data = {
+        _token: csrfToken,
+        date_debut: dateDebut,
+        date_fin: dateFin,
+        nom_employe: nomEmploye,
+        typeFormulaire: typeFormulaire,
+    };
+    console.log('toutes les données sont récupéres ');
+  
+    // Effectue la requête Fetch pour filtrer les formulaires
+    fetch('/filtrer-formulairesEquipes', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+           
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+       
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        var historiqueSection = document.querySelector('.menuProcedures');
+        historiqueSection.innerHTML = document.querySelector('.uniteProcedureHeader').outerHTML; // Conserve le header
+
+        if (data.length > 0) {
+            data.forEach(function (formulaire) {
+                var formattedDate = new Date(formulaire.created_at).toLocaleDateString('fr-FR');
+                var nomFormulaire = formulaire.nomFormulaire.toUpperCase();
+                var nomEmploye = formulaire.nomEmploye.charAt(0).toUpperCase() + formulaire.nomEmploye.slice(1);
+                var typeCompte = '';
+                if (Array.isArray(formulaire.usagers)) {
+                    typeCompte = formulaire.usagers.map(usager => usager.typeCompte).join(', ');
+                }
+                var formulaireDiv = document.createElement('div');
+                formulaireDiv.className = 'uniteProcedure';
+                formulaireDiv.innerHTML = `
+                    <span>${formattedDate}</span>
+                    <span>${nomFormulaire}</span>
+                    <span>${nomEmploye}</span>
+                    <span>${typeCompte}</span>
+                    <span style="color: ${formulaire.notifAdmin == 1 || formulaire.notifAdmin == 'oui' ? 'green' : 'red'};">
+                        ${formulaire.notifAdmin == 1 || formulaire.notifAdmin == 'oui' 
+                            ? '<i class="fa-solid fa-check"></i>' 
+                            : '<i class="fas fa-spinner fa-spin fa-2x"></i>'
+                        }
+                    </span>
+                `;
+                historiqueSection.appendChild(formulaireDiv);
+            });
+        } else {
+            historiqueSection.innerHTML = ''; // Vide la section si aucun formulaire n'est trouvé
+            var messageDiv = document.createElement('div');
+            messageDiv.className = 'uniteProcedure formulaireNonPrisEnCharge exclude-hover';
+            messageDiv.innerHTML = '<span>AUCUN FORMULAIRE REMPLI POUR LE MOMENT</span>';
             historiqueSection.appendChild(messageDiv);
         }
     })

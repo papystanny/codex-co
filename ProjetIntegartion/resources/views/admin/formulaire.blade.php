@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     
     <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -29,7 +30,7 @@
 @if($formulairesTous->isEmpty())           
 @else
                     <div>
-                        <i id="iconeFiltre" class="fas fa-filter fa-2x" style="color: rgb(99, 188, 85); cursor: pointer;" title="Filtrer les formulaires"  onclick="console.log('Clicked')" ></i>
+                        <i id="iconeFiltre" class="fas fa-filter fa-2x" style="color: rgb(99, 188, 85); cursor: pointer;" title="Filtrer les formulaires" onclick="toggleFiltre()"></i>
                     </div>
 @endif
             </div>
@@ -37,18 +38,42 @@
             
             <!-- Ligne de filtre -->
             <div id="ligneFiltre" class="ligneFiltre">
-                <form id="formulaireFiltre" class="formFiltre">
-                    <input type="date" id="date_debut" name="date_debut" required>
-                    <input type="date" id="date_fin" name="date_fin" required>
-                    <select id="nomEmploye" name="nomEmploye" required>
-                        <!-- Options d'employés ici -->
-                    </select>
-                    <select id="typeFormulaire" name="typeFormulaire" required>
-                        <!-- Options de types de formulaire ici -->
-                    </select>
-                    <button type="submit">Rechercher</button>
+                <form id="formulaireFiltrAccidentTravailEquipe" class="formFiltre" action="/filtrer-formulairesEquipes" method="POST" onsubmit="filtrerFormulaireADmin(event)" >
+                @csrf
+                    <div>
+                        <label for="date_debut">Date de début</label>
+                        <input type="date" id="date_debut" name="date_debut" required>
+                    </div>
+                    <div>
+                        <label for="date_fin">Date de fin</label>
+                        <input type="date" id="date_fin" name="date_fin" required>
+                    </div>
+                    <div>
+                        <label for="nomEmploye">Nom de l'employé</label>
+                        <select id="nomEmploye" name="nomEmploye" required>
+                            @foreach($usagersAvecFormulaires as $usager)
+                                <option value="{{$usager->matricule}}">{{$usager->nom}} {{$usager->prenom}} </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div>
+                        <label for="typeFormulaire">Type de formulaire</label>
+                        <select id="type" name="typeFormulaire" required>
+                            <option value="type1">Tous les formulaires </option>
+                            <option value="formaccidentstravails" data-formulaire="formaccidentstravails">Déclaration et accident de travail </option>
+                            <option value="formsitdangereuses" data-formulaire="usager_formsitdangereuse">Signalement d'acte de violence </option>         
+                            <option value="formulairesauditssts">Audi SST</option>
+                            <option value="formateliermecaniques">Rapport-Mécanique d'incident</option> 
+   
+                            <!-- Ajoutez d'autres options de type de formulaire au besoin -->
+                        </select>
+                    </div>
+                    <div class="formFiltreButton">
+                        <button type="submit">Rechercher</button>
+                    </div>
                 </form>
             </div>
+
 
             <div class="menuProcedures">
         <!-- En-têtes des colonnes -->
@@ -58,8 +83,7 @@
                     <span><i class="far fa-clock fa-2x"></i></span>
                     <span> <i class="far fa-file-alt fa-2x"></i> </i></span>
                     <span><i class="far fa-user fa-2x"></i></span>
-                    <span><i class="far fa-bell fa-2x"></i></span>
-                    <span><i class="fas fa-bell fa-2x"></i></span>
+                    <span><i class="far fa-id-card fa-2x"></i></span>        
                     <span><i class="fas fa-bell fa-2x"></i></span>
                 </div>   
 @endif        
@@ -75,25 +99,28 @@
                 @endif
                 <span>{{ $formulaire->created_at->format('d/m/Y') }}</span>
                 <span>{{ mb_strtoupper($formulaire->nomFormulaire, 'UTF-8') }}</span>
-                <span>{{$formulaire->nomEmploye}}</span>
+                @foreach($formulaire->usagers as $usager)
+                   <span>{{$usager->nom}} {{$usager->prenom}}</span>
+                @endforeach
+                
                 @foreach($formulaire->usagers as $usager)
                     <span>{{ $usager->typeCompte }}</span>
                 @endforeach
-                  <!-- Icône pour notifSup -->
+                  <!-- Icône pour notifSup 
                 <span style="color: {{$formulaire->notifSup == 1 || $formulaire->notifSup == 'oui' ? 'green' : 'red'}};">
                     @if($formulaire->notifSup == 1 || $formulaire->notifSup == 'oui')
                         <i class="fa-solid fa-check"></i>
                     @else
                         <i class="fas fa-spinner fa-spin fa-2x"></i>
                     @endif
-                </span>
+                </span>--->
 
                 <!-- Icône pour notifAdmin -->
                 <span style="color: {{$formulaire->notifAdmin == 1 || $formulaire->notifAdmin == 'oui' ? 'green' : 'red'}};">
                     @if($formulaire->notifAdmin == 1 || $formulaire->notifAdmin == 'oui')
-                        <i class="fa-solid fa-check"></i>
+                        <i class="fa-solid fa-check" title="Traité"></i>
                     @else
-                        <i class="fas fa-spinner fa-spin fa-2x"></i>
+                        <i class="fas fa-spinner fa-spin fa-2x" title="En cours"></i>
                     @endif
                 </span>
             </div>
@@ -151,25 +178,21 @@
     @endsection
     <script>
 
-        document.addEventListener('DOMContentLoaded', function() ){
-        const iconeFiltre = document.getElementById('iconeFiltre');
-        const ligneFiltre = document.getElementById('ligneFiltre');
+            function toggleFiltre() {
+                const ligneFiltre = document.getElementById('ligneFiltre');
+                if (ligneFiltre) {
+                    ligneFiltre.classList.toggle('ligneFiltre-visible');
+                } else {
+                    console.log("Erreur: L'élément 'ligneFiltre' n'a pas été trouvé.");
+                }
+            }
 
-        console.log(document.getElementById('iconeFiltre'));
 
-
-        iconeFiltre.addEventListener('click', function() {
-    console.log("Click détecté");
-    if (ligneFiltre.style.display === "none") {
-        ligneFiltre.style.display = "flex";
-    } else {
-        ligneFiltre.style.display = "none";
-    }
-});
 
     </script>
 
     <script src="js/employe/accueil.js" defer></script>
+    <script src="js/employe/accessoire/modal.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     
 </body>
@@ -178,62 +201,4 @@
 
 
 
-
-
-<div id="monModal" class="modal">
-    <div class="modal-content">
-        <div class="modalEnCours">
-
-            <div class="titreProcedures">
-                <span class="titre"> FILTRE DE FORMULAIRE  </span>  
-                <span class="close" id="fermerModal">&times;</span>       
-            </div>
-
-            <ul class="modalMenu">
-                <li>
-                    <form id="formulaireFiltre">
-                        <div  class="sectionModal">
-                            <label for="date_debut">Date de début :</label>
-                            <input type="date" id="date_debut" name="date_debut" required>
-                        </div>
-
-                        <div  class="sectionModal">
-                            <label for="date_fin">Date de fin :</label>
-                            <input type="date" id="date_fin" name="date_fin" required>
-                        </div>
-
-                        <div  class="sectionModal">
-                            <label for="type">Nom de l'employe :</label>
-                            <select id="type" name="nomEmploye" required>
-                                <option value="type2">Stan Pharel </option>
-                                <option value="type1"> Williams Antons </option>
-                                <option value="type3"> Lila Desmond </option>
-                                <option value="type4"> Richie Duchar</option>
-                                       <!-- Ajoutez d'autres options de type de formulaire au besoin -->
-                             </select>
-                        </div>
-
-                        <div  class="sectionModal">
-                            <label for="type">Type de formulaire :</label>
-                            <select id="type" name="typeFormulaire" required>
-                                <option value="type2">Tous les formulaires </option>
-                                <option value="type1">Déclaration et accident de travail </option>
-                                <option value="type3">Soins et sécurité  </option>
-                                <option value="type4"> Paie et Pensoins</option>
-                                       <!-- Ajoutez d'autres options de type de formulaire au besoin -->
-                             </select>
-                        </div>
-
-                        <div  class="submitModal">
-                             <button type="submit">Rechercher</button>
-                        </div>
-                     
-                    </form>
-                </li>
-            </ul>
-        </div>   
-    </div>
-
-    
-</div>
-
+  

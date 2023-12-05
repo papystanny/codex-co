@@ -32,12 +32,12 @@ class  Usager extends Authenticatable
 
    public function formulairessitdangeureuse()
    {
-       return $this->belongsToMany(Formsitdangereuse::class, 'usager_formsitdangereuse', 'usager_id', 'formSitDangereuse_id');
+       return $this->belongsToMany(Formsitdangereuse::class, 'formsitdangereuse_usager', 'usager_id', 'formSitDangereuse_id');
    }
 
    public function formulairesateliermecanique()
    {
-       return $this->belongsToMany(Formateliermecanique::class, 'usager_formateliermecanique', 'usager_id', 'formAtelierMecanique_id');
+       return $this->belongsToMany(Formateliermecanique::class, 'formateliermecanique_usager', 'usager_id', 'formAtelierMecanique_id');
    }
 
 

@@ -14,7 +14,7 @@ class Formateliermecanique extends Model
 
     public function usagers()
     {
-        return $this->belongsToMany(Usager::class, 'usager_formateliermecanique', 'formAtelierMecanique_id', 'usager_id');
+        return $this->belongsToMany(Usager::class, 'formateliermecanique_usager', 'formAtelierMecanique_id', 'usager_id');
     }
 
 }

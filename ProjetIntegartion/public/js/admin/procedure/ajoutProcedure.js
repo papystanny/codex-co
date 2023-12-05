@@ -1,4 +1,4 @@
-// Écouteurs d'événements pour les champs de formulaire
+/*Écouteurs d'événements pour les champs de formulaire
 const textNom = document.getElementById('textNom');
 const textNomError = document.getElementById('textNomError');
 
@@ -39,3 +39,4 @@ function validateTextLien() {
 }
 
 
+*/

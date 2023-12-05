@@ -67,12 +67,11 @@ Route::middleware(['auth','employe'])->group(function () {
     [FormulaireMecaniqueController::class, 'index'])->name('formulaires.atelierMec');
     Route::post('/adminFormMeca',[FormulaireMecaniqueController::class, 'store'])->name('formulairesMec.store');
 
+  
 
-    
-    Route::post('/filtrer-formulaires', [EmployesController::class, 'filtrerFormulaires'])->name('formulaire.filtres');
-    Route::post('/filtrer-formulairesEquipes', [EmployesController::class, 'filtrerFormulairesEquipes'])->name('formulaireEquipe.filtres');
 
 });
+
 
 
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -93,7 +92,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     
     Route::post('/procedures/add', [EmployesController::class, 'storeProcedure'])->name('procedures.store');
 
+    Route::post('/filtrer-formulaires', [EmployesController::class, 'filtrerFormulaires'])->name('formulaire.filtres');
+    Route::post('/filtrer-formulairesEquipes', [EmployesController::class, 'filtrerFormulairesEquipes'])->name('formulaireEquipe.filtres');
 
+   
 
 });
 
