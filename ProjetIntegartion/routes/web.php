@@ -95,6 +95,13 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/filtrer-formulaires', [EmployesController::class, 'filtrerFormulaires'])->name('formulaire.filtres');
     Route::post('/filtrer-formulairesEquipes', [EmployesController::class, 'filtrerFormulairesEquipes'])->name('formulaireEquipe.filtres');
 
+    Route::post('/procedure/update', [EmployesController::class, 'update'])->name('procedure.update');
+
+    Route::get('/AccidentTravail',
+    [FormAccidentTravailController::class, 'AccidentTravail'])->name('employe.formAccidentTravail');
+    Route::post('/AccidentTravailStore',
+    [FormAccidentTravailController::class, 'store'])->name('employe.formAccidentTravailStore');
+
    
 
 });

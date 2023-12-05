@@ -90,10 +90,11 @@
                         <div class="uniteProcedure">
                             <span>{{ mb_strtoupper($procedure->nom, 'UTF-8') }}</span>
                             <span>{{$procedure->created_at }}</span>
-                            <button onclick="openModal('{{ mb_strtoupper($procedure->nom, 'UTF-8') }}', 'lien-de-la-procedure')" class="edit-button">
+                            
+                            <button onclick="openModal('{{ mb_strtoupper($procedure->nom, 'UTF-8') }}', '{{$procedure->lien}}', '{{$procedure->nom}}', )" class="edit-button" style="border: none; background-color: transparent; cursor: pointer;margin-right:0px;">
                                 <i class="fas fa-edit fa-2x"></i>
                             </button>
-
+                            
 
                             <form action="{{ route('procedure.delete', ['departement' => $departement->id, 'procedure' => $procedure->id]) }}" method="POST">
                                             @csrf
@@ -144,10 +145,12 @@ function toggleFiltre() {
 
 
 
-function openModal(procedureName, procedureLink) {
+function openModal(procedureName, procedureLink,originalProcedureName) {
     document.getElementById('modalEditProcedure').style.display = 'block';
     document.getElementById('procedureName').value = procedureName;
     document.getElementById('procedureLink').value = procedureLink;
+    document.getElementById('originalProcedureName').value = originalProcedureName;
+    document.getElementById('procedureNom').value = procedureNom;
 }
 
 function closeModal() {
@@ -159,8 +162,11 @@ function closeModal() {
 <div id="modalEditProcedure" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        <h2>Modifier une procédure</h2>
-        <form id="editProcedureForm">
+        <h2>xxxxxx </h2>
+      
+        <form id="editProcedureForm" action="/procedure/update" method="POST">
+         @csrf
+            <input type="hidden" id="originalProcedureName" name="originalProcedureName">
             <label for="procedureName">Nom de la procédure</label>
             <input type="text" id="procedureName" name="procedureName" required>
             <label for="procedureLink">Lien de la procédure</label>

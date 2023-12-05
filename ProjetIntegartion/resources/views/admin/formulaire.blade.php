@@ -150,10 +150,10 @@
                         <span><i class="far fa-user fa-2x"></i></span>
                     </div> 
 
-                    <div class="uniteProcedure exclude-hover"> 
+                    <a href="/AccidentTravail">  <div class="uniteProcedure exclude-hover"> 
                                 <span > ACCIDENT DE TRAVAIL </span> 
                                 <span >EMPLOYE </span>  
-                    </div>
+                    </div> </a>
 
                     <div class="uniteProcedure exclude-hover"> 
                                 <span > ACTE DE VIOLENCE </span> 

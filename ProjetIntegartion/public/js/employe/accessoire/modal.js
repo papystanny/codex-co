@@ -296,39 +296,47 @@ function filtrerFormulaireADmin(event) {
     })
     .then(data => {
         var historiqueSection = document.querySelector('.menuProcedures');
-        historiqueSection.innerHTML = document.querySelector('.uniteProcedureHeader').outerHTML; // Conserve le header
-
+        historiqueSection.innerHTML = ''; // Vide la section actuelle
+    
         if (data.length > 0) {
+            // Reconstruire l'en-tête des colonnes
+            var headerHTML = `
+                <div class="uniteProcedureHeader">
+                    <span><i class="far fa-clock fa-2x"></i></span>
+                    <span><i class="far fa-file-alt fa-2x"></i></span>
+                    <span><i class="far fa-user fa-2x"></i></span>
+                    <span><i class="far fa-id-card fa-2x"></i></span>
+                    <span><i class="fas fa-bell fa-2x"></i></span>
+                </div>
+            `;
+            historiqueSection.innerHTML += headerHTML;
+    
+            // Ajouter chaque formulaire
             data.forEach(function (formulaire) {
                 var formattedDate = new Date(formulaire.created_at).toLocaleDateString('fr-FR');
                 var nomFormulaire = formulaire.nomFormulaire.toUpperCase();
                 var nomEmploye = formulaire.nomEmploye.charAt(0).toUpperCase() + formulaire.nomEmploye.slice(1);
-                var typeCompte = '';
-                if (Array.isArray(formulaire.usagers)) {
-                    typeCompte = formulaire.usagers.map(usager => usager.typeCompte).join(', ');
-                }
-                var formulaireDiv = document.createElement('div');
-                formulaireDiv.className = 'uniteProcedure';
-                formulaireDiv.innerHTML = `
-                    <span>${formattedDate}</span>
-                    <span>${nomFormulaire}</span>
-                    <span>${nomEmploye}</span>
-                    <span>${typeCompte}</span>
-                    <span style="color: ${formulaire.notifAdmin == 1 || formulaire.notifAdmin == 'oui' ? 'green' : 'red'};">
-                        ${formulaire.notifAdmin == 1 || formulaire.notifAdmin == 'oui' 
-                            ? '<i class="fa-solid fa-check"></i>' 
-                            : '<i class="fas fa-spinner fa-spin fa-2x"></i>'
-                        }
-                    </span>
+                var typeCompte = Array.isArray(formulaire.usagers) ? formulaire.usagers.map(usager => `${usager.nom} ${usager.prenom}`).join(', ') : '';
+    
+                var formulaireHTML = `
+                    <div class="uniteProcedure${formulaire.notifAdmin == 1 || formulaire.notifAdmin == 'oui' ? '' : ' formulaireNonPrisEnCharge exclude-hover'}">
+                        <span>${formattedDate}</span>
+                        <span>${nomFormulaire}</span>
+                        <span>${nomEmploye}</span>
+                        <span>${typeCompte}</span>
+                        <span style="color: ${formulaire.notifAdmin == 1 || formulaire.notifAdmin == 'oui' ? 'green' : 'red'};">
+                            ${formulaire.notifAdmin == 1 || formulaire.notifAdmin == 'oui' 
+                                ? '<i class="fa-solid fa-check" title="Traité"></i>'
+                                : '<i class="fas fa-spinner fa-spin fa-2x" title="En cours"></i>'
+                            }
+                        </span>
+                    </div>
                 `;
-                historiqueSection.appendChild(formulaireDiv);
+                historiqueSection.innerHTML += formulaireHTML;
             });
         } else {
-            historiqueSection.innerHTML = ''; // Vide la section si aucun formulaire n'est trouvé
-            var messageDiv = document.createElement('div');
-            messageDiv.className = 'uniteProcedure formulaireNonPrisEnCharge exclude-hover';
-            messageDiv.innerHTML = '<span>AUCUN FORMULAIRE REMPLI POUR LE MOMENT</span>';
-            historiqueSection.appendChild(messageDiv);
+            // Si aucun formulaire n'est trouvé
+            historiqueSection.innerHTML = '<div class="uniteProcedure formulaireNonPrisEnCharge exclude-hover"><span>AUCUN FORMULAIRE TROUVÉ </span></div>';
         }
     })
     .catch(error => {

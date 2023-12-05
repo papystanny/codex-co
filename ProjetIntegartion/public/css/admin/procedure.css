@@ -183,8 +183,7 @@ background-color: aqua;
 .formFiltre input:focus, .formFiltre select:focus {
     transform: scale(1.03);
     outline: none;
-    border: 2px solid transparent;
-    background-image: linear-gradient(white, white), linear-gradient(to right, red, white);
+    border: 1px solid transparent;
     background-origin: border-box;
     background-clip: content-box, border-box;
 }

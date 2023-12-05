@@ -362,4 +362,24 @@ class EmployesController extends Controller
         }
      
     }
+
+        public function update(Request $request)
+    {
+
+        $originalName = $request->input('originalProcedureName');
+        $newName = $request->input('procedureName');
+        $newLink = $request->input('procedureLink');
+    
+        $procedure = ProceduresTravail::where('nom', $originalName)->first();
+        if ($procedure) {
+            $procedure->nom = $newName;
+            $procedure->lien = $newLink;
+            $procedure->save();
+
+            return redirect()->back()->with('success', 'Procédure modifiée avec succès.');
+        }
+
+        return redirect()->back()->with('success', 'Procédure introuvable.');
+    }
+
 }
