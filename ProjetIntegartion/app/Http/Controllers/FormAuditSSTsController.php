@@ -48,7 +48,7 @@ class FormAuditSSTsController extends Controller
     
                $Formulairesauditsst = new Formulairesauditsst();
                 $Formulairesauditsst->nomFormulaire = "Audit SST";
-               $Formulairesauditsst->prenomNomEmploye = Session::get('prenom').' '.Session::get('nom');
+               $Formulairesauditsst->nomEmploye = Session::get('prenom').' '.Session::get('nom');
                $Formulairesauditsst->lieuTravail = $request->input('lieuTravail');
                $Formulairesauditsst->date = $request->input('date');
                 $Formulairesauditsst->heure = $request->input('heure');
@@ -65,8 +65,8 @@ class FormAuditSSTsController extends Controller
                 $Formulairesauditsst->portEpi= $request->input('portEpi');
                 $Formulairesauditsst->respectProcedures= $request->input('respectProcedures');
                 $Formulairesauditsst->descriptionTravailHauteur= $request->input('descriptionTravailHauteur');
-                $Formulairesauditsst->notifSup = 'oui';
-                $Formulairesauditsst->notifAdmin = 'oui';
+                $Formulairesauditsst->notifSup = 'non';
+                $Formulairesauditsst->notifAdmin = 'non';
 
                 $Formulairesauditsst->save();
                 $usagers=Usager::where ('nom', Session::get('nom'))->get();

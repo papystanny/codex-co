@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\Usager;
 use App\Models\Departement;
-use App\Models\FormaccidentsTravail;
+use App\Models\FormAccidentsTravail;
 use Illuminate\Support\Facades\Auth;
 
 class EmployesController extends Controller
@@ -25,7 +25,7 @@ class EmployesController extends Controller
     public function formulaire()
     { 
         $user = Usager::where('matricule', Session::get('matricule'))->first();
-        $formulaires = $user->formAccidentTravail;
+        $formulaires = $user->formAccidentsTravail;
         return view('employe.formulaire', compact('formulaires'));
     }
 

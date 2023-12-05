@@ -14,7 +14,7 @@ class Formaccidentstravail extends Model
 
     public function usagers()
     {
-        return $this->belongsToMany(Usager::class);
+        return $this->belongsToMany(Usager::class,'formaccidentstravail_usager','formaccidentstravail_id','usager_id');
        //return $this->belongsToMany('App\Models\Usager');
     }
     

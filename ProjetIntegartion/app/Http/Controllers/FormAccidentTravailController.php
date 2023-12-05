@@ -8,7 +8,7 @@ use App\Notifications\FormsRegisteredNotification;
 use App\Http\Requests\AccidentTravailRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use App\Models\FormAccidentsTravail;
+use App\Models\Formaccidentstravail;
 use App\Events\FormulaireSoumis;
 use Session;
 use Illuminate\Support\Carbon;
@@ -35,9 +35,9 @@ class FormAccidentTravailController extends Controller
             try {
     
     
-               $Formaccidentstravail = new FormAccidentsTravail();
+               $Formaccidentstravail = new Formaccidentstravail();
                $Formaccidentstravail->nomFormulaire = "Accident de travail";
-               $Formaccidentstravail->nomEmploye = Session::get('nom');
+               $Formaccidentstravail->nomEmploye =  Session::get('prenom').' '.Session::get('nom');
                 $Formaccidentstravail->fonctionMomentEvenement = $request->input('fonctionMomentEvenement');
                 $Formaccidentstravail->matriculeEmploye = $request->input('matriculeEmploye');
                 $Formaccidentstravail->dateAccident = $request->input('dateAccident');
@@ -127,8 +127,8 @@ class FormAccidentTravailController extends Controller
                 Log::debug($Formaccidentstravail->dateSuperviseurAvise);
                  $Formaccidentstravail->signatureEmploye =Session::get('nom');
                 $Formaccidentstravail->dateSignatureEmploye =  Carbon::now()->toDateString();
-                $Formaccidentstravail->notifSup = 'oui';
-                $Formaccidentstravail->notifAdmin = 'oui';
+                $Formaccidentstravail->notifSup = 'non';
+                $Formaccidentstravail->notifAdmin = 'non';
 
 
 
@@ -195,7 +195,7 @@ class FormAccidentTravailController extends Controller
     public function showFormulaires()
     {
         
-        $Formaccidentstravail = FormaccidentsTravail::all();
+        $Formaccidentstravail = Formaccidentstravail::all();
         return view('superviseurs.index',compact('Formaccidentstravail'));
     }
     /**
