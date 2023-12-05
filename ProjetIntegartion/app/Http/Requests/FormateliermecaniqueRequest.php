@@ -24,7 +24,6 @@ class FormateliermecaniqueRequest extends FormRequest
         return [
             'numUniteImplique'=>'required|min:5|max:50',
             'departement'=>'required|min:5|max:50',
-            'prenomNomEmploye'=>'required|min:5|max:50',
             'prenomNomSupImmediat'=>'required|min:5|max:50',
             'numPermisConduireEmploye'=>'required|min:5|max:50',
          
@@ -41,9 +40,6 @@ class FormateliermecaniqueRequest extends FormRequest
             'departement.required'=>'Le departement est obligatoire.',
             'departement.min'=>'Le departement doit avoir un minimum de 5 caractères.',
             'departement.max'=>'Le departement doit avoir un maximum de 1000 caractères.',
-            'prenomNomEmploye.required'=>'le prenomNomEmploye est obligatoire.',
-            'prenomNomEmploye.min'=>'Le prenomNomEmploye doit avoir un minimum de 5 caractères.',
-            'prenomNomEmploye.max'=>'La prenomNomEmploye  doit avoir un maximum de 500 caractères.',
             'prenomNomSupImmediat.required'=>'le prenomNomSupImmediat est obligatoire.',
             'prenomNomSupImmediat.min'=>'Le prenomNomSupImmediat doit avoir un minimum de 5 caractères.',
             'prenomNomSupImmediat.max'=>'La prenomNomSupImmediat  doit avoir un maximum de 500 caractères.',

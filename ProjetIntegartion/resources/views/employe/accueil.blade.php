@@ -36,7 +36,7 @@
             </div>
 
             <div class="formulaire">
-                <h5> SIGNALEMENT ACTE DE VIOLENCE  </h5>
+            <a href="/formSit">  <h5> Declaration de situation Dangereuse </h5> </a>
             </div>
 @if( Session::get('typeCompte') == 'superieur')   
             <div class="formulaire">
@@ -45,7 +45,7 @@
 @endauth
 @if( Session::get('typeCompte') == 'superieur')   
             <div class="formulaire">
-                <h5>MÉCANIQUE-RAPPORT D'ACCIDENT  </h5>
+            <a href="/formMeca">  <h5>MÉCANIQUE-RAPPORT D'ACCIDENT  </h5> </a>
             </div>
  @endauth
         </div>

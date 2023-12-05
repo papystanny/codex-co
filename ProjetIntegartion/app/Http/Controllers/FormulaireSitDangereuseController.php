@@ -7,8 +7,12 @@ use App\Http\Requests\FormsitdangereuseRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use App\Models\Usager;
+use App\Notifications\FormsRegisteredNotification;
+use App\Events\FormulaireSoumis;
 use DB;
-use Illuminate\Support\Facades\Session;
+use Session;
+use Illuminate\Support\Carbon;
 class FormulaireSitDangereuseController extends Controller
 {
 
@@ -24,19 +28,19 @@ class FormulaireSitDangereuseController extends Controller
 
     public function visualisezForm( Formsitdangereuse $formsit )
     {
-        //$formMec = Formateliermecanique::all();
-       // $formsit = Formsitdangereuse::all();
+        $formMec = Formateliermecanique::all();
+        $formsit = Formsitdangereuse::all();
 
-        return View('Formulaires.index' , compact('formsit'));
+        return View('Formulaires.index' , compact('formsit' , 'formMec'));
     }
     
-    public function visualisezForm1( Formatelier $formsit )
-    {
-        //$formMec = Formateliermecanique::all();
-       // $formsit = Formsitdangereuse::all();
+    // public function visualisezForm1( Formatelier $formsit )
+    // {
+    //     //$formMec = Formateliermecanique::all();
+    //    // $formsit = Formsitdangereuse::all();
 
-        return View('Formulaires.index' , compact('formsit'));
-    }
+    //     return View('Formulaires.index' , compact('formsit'));
+    // }
     
  
 
@@ -52,6 +56,7 @@ class FormulaireSitDangereuseController extends Controller
         return View('formulaires.create');
  
     }
+  
 
     /**
      * Store a newly created resource in storage.
@@ -75,11 +80,17 @@ class FormulaireSitDangereuseController extends Controller
             $form->dateSupeAvise =now();
             $form->dateSignatureEmploye = now();
             $form->nomSuperviseur = Session::get('nomSuperviseur');
-            $form->notifSup = 'oui';
-            $form->notifAdmin = 'oui';
+            $form->notifSup = 'non';
+            $form->notifAdmin = 'non';
            //$form->usager_id = auth()->user()->id;
             $form->save();
-            return redirect()->route('formulaires.atelierMec')->with('message', 'L\'ajout a été effectué');        
+            $usagers=Usager::where ('id', Session::get('id'))->get();
+            Log::debug($usagers);
+            $form->usagers()->attach($usagers);
+            $data=Carbon::now()->toDateString();
+            event(new FormulaireSoumis($data));
+            return redirect()->route('Formulaires.formsitdang')->with('message', 'L\'ajout a été effectué');   
+           
        
        }
     catch (\Throwable $e) {

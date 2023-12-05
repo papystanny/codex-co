@@ -46,11 +46,12 @@
             <div class = " center">
                 <h3  class="titreForm col-8 p-4">
                 3.Prenom et Nom de l'employé impliqué
-                 </h3>         
+                 </h3>  
+                 <div class = " center">
+            <div class="departement">{{$formMec->nomEmploye}}</div>  
+            </div>        
             </div>
-            <div class = " center">
-            <div class="prenomNomEmploye">{{$formMec->prenomNomEmploye}}</div>
-            </div>    
+               
             <div class = " center">
                 <h3  class="titreForm col-8 p-4">
                 4.Prenom et Nom du supérieur immédiat 
@@ -93,14 +94,14 @@
             </div> 
                                  
     </form>
-    
-    
-        
-    </div>                    
-                              
+
+    </div>                                                
 </div>
   @endforeach
                     </div>
+                    
+@section('contenu')    
+    @if(count($formMec))
 
                     <div class="div">
                         @foreach($formsit as $formsit)
@@ -128,8 +129,7 @@
                                     <div class="notifSup">{{$formsit->notifSup}}</div>
                                     <div class="notifAdmin">{{$formsit->notifAdmin}}</div>
                                     <div class="created_at">{{$formsit->created_at}}</div>
-                                    <div class="updated_at">{{$formsit->updated_at}}</div>
-                                             
+                                    <div class="updated_at">{{$formsit->updated_at}}</div>               
                                 </div>
                             </div>
                         @endforeach

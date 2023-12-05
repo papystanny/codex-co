@@ -97,3 +97,8 @@ Route::post('/formulairesMeca',[FormulaireMecaniqueController::class, 'store'])-
 
 Route::get('/visualiser', [FormulaireSitDangereuseController::class, 'visualisezForm'])->name('Formulaires.index');
 
+
+//Route::get('/visualisere', [FormulaireMecaniqueController::class, 'visualisere'])->name('Formulaires.index');
+
+Route::get('/Formulaires/{formulaire}/', [FormulaireMecaniqueController::class, 'show'])->name('formMec.show');
+

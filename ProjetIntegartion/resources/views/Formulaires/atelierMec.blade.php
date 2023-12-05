@@ -88,17 +88,7 @@
                                 <span class= "text-danger">{{$message}}</span>
                             @enderror
             </div>     
-            <div class = " center">
-                <h3  class="titreForm col-8 p-4">
-                3.Prenom et Nom de l'employé impliqué* 
-                 </h3>         
-            </div>
-            <div class = " center">
-            <input type="text" class="titreForm col-7 p-4 " placeholder="Entrez Votre Reponse" value="{{old('prenomNomEmploye')}}"   class="form-control @error('prenomNomEmploye') is-invalid @enderror" id="prenomNomEmploye" name="prenomNomEmploye" aria-describedby="prenomNomEmploye">
-                            @error('prenomNomEmploye')
-                                <span class= "text-danger">{{$message}}</span>
-                            @enderror
-            </div>    
+             
             <div class = " center">
                 <h3  class="titreForm col-8 p-4">
                 4.Prenom et Nom du supérieur immédiat* 

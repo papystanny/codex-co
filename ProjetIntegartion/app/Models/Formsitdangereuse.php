@@ -17,6 +17,6 @@ class Formsitdangereuse extends Model
     public function usagers()
     {
     // return $this->belongsToMany('App\Models\Campagne');
-    return $this->belongsToMany('App\Models\Usager');
+    return $this->belongsToMany(Usager::class,'formSitDangereuse_usager','formSitDangereuse_id','usager_id');
     }
 }

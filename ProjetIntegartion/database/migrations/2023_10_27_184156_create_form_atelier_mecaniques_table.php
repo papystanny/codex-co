@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string ('nomFormulaire',100);
             $table->integer('numUniteImplique');
             $table->string('departement',100);
-            $table->string('prenomNomEmploye',100);
+            $table->string('nomEmploye',100);
             $table->string('prenomNomSupImmediat',100);
             $table->string('numPermisConduireEmploye',100);
             $table->string('vehiculeCityonImplique',100);

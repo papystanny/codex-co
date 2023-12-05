@@ -95,6 +95,7 @@
             @forelse($formulairesTous ?? [] as $formulaire)
 
             <li> 
+            <a href="{{ route('formMec.show',[$formecanique->id])}}" style="color:#141414">
             <a href="{{ route('Formulaires.index',[$formulaire->id])}}">
                     <div class="uniteProcedure"> 
                         <div class="">
@@ -114,7 +115,7 @@
                         </div>
                     </div>
               </a>
-         
+              </a>
                 </li>
             @empty
                 <li> 
