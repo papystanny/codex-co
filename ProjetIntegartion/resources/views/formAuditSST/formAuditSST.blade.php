@@ -62,9 +62,7 @@
                     <tr>
                         <th scope="row"></th>
                         <td>Epi</td>
-                        @error('Epi')
-                            <span class="text-danger error-text">{{ $message }}</span>
-                        @enderror 
+                       
                         <td>
                             <div class="form-check">
                                 <input class="form-check-input Epi @error('Epi') is-invalid @enderror" type="radio" value="conforme" name="Epi" value="{{old('Epi')}}" >
@@ -84,9 +82,7 @@
                     <tr>
                         <th scope="row"></th>
                         <td>tenue des lieux</td>
-                        @error('tenueLieux')
-                            <span class="text-danger error-text">{{ $message }}</span>
-                        @enderror 
+                      
                         <td>
                             <div class="form-check">
                                 <input class="form-check-input tenueLieux @error('tenueLieux') is-invalid @enderror" type="radio" value="conforme" name="tenueLieux" value="{{old('tenueLieux')}}" >
@@ -106,9 +102,7 @@
                     <tr>
                         <th scope="row"></th>
                         <td>Comportement sécuritaire</td>
-                        @error('comportementSecuritaire')
-                            <span class="text-danger error-text">{{ $message }}</span>
-                        @enderror 
+                    
                         <td>
                             <div class="form-check">
                                 <input class="form-check-input comportementSecuritaire @error('comportementSecuritaire') is-invalid @enderror" type="radio" value="conforme" name="comportementSecuritaire" value="{{old('comportementSecuritaire')}}" >
@@ -128,9 +122,7 @@
                     <tr>
                         <th scope="row"></th>
                         <td>Signalisation</td>
-                        @error('signalisation')
-                            <span class="text-danger error-text">{{ $message }}</span>
-                        @enderror 
+                       
                         <td>
                             <div class="form-check">
                                 <input class="form-check-input signalisation @error ('signalisation') is-invalid @enderror" type="radio" value="conforme" name="signalisation" value="{{old('signalisation')}}" >
@@ -150,9 +142,7 @@
                     <tr>
                         <th scope="row"></th>
                         <td>Fiches Signalétiques</td>
-                        @error('fichesSignaletiques')
-                            <span class="text-danger error-text">{{ $message }}</span>
-                        @enderror 
+                    
                         <td>
                             <div class="form-check">
                                 <input class="form-check-input fichesSignaletiques @error ('fichesSignaletiques') is-invalid @enderror" type="radio" value="conforme" name="fichesSignaletiques" value="{{old('fichesSignaletiques')}}" >
@@ -172,9 +162,7 @@
                     <tr>
                         <th scope="row"></th>
                         <td>Travaux-Excavation</td>
-                        @error('travauxEscavation')
-                            <span class="text-danger error-text">{{ $message }}</span>
-                        @enderror 
+                       
                         <td>
                             <div class="form-check">
                                 <input class="form-check-input travauxEscavation @error ('travauxEscavation') is-invalid @enderror" type="radio" value="conforme" name="travauxEscavation" value="{{old('travauxEscavation')}}" >
@@ -194,9 +182,7 @@
                     <tr>
                         <th scope="row"></th>
                         <td>Espace clos</td>
-                        @error('espaceClos')
-                            <span class="text-danger error-text">{{ $message }}</span>
-                        @enderror 
+                       
                         <td>
                             <div class="form-check">
                                 <input class="form-check-input espaceClos @error ('espaceClos') is-invalid @enderror" type="radio" value="Conforme" name="espaceClos" value="{{old('espaceClos')}}" >
@@ -216,9 +202,7 @@
                     <tr>
                         <th scope="row"></th>
                         <td>Methode de travail</td>
-                        @error('methodeTravail')
-                            <span class="text-danger error-text">{{ $message }}</span>
-                        @enderror 
+                      
                         <td>
                             <div class="form-check">
                                 <input class="form-check-input methodeTravail @error ('methodeTravail') is-invalid @enderror" type="radio" value="conforme" name="methodeTravail" value="{{old('methodeTravail')}}" >
@@ -240,9 +224,7 @@
                         <td>Autre(s): Travaux en hauteur
                         <input type="text" class="form-control" id="formGroupExampleInput"  name="autre" value="{{old('autre')}}">
                         </td>
-                        @error('autre')
-                            <span class="text-danger error-text">{{ $message }}</span>
-                        @enderror 
+                      
 
                         <td>
                             <div class="form-check">
@@ -270,9 +252,7 @@
                     <tr>
                         <th scope="row"></th>
                         <td>Respect de la distanciation </td>
-                        @error('respectDistanciation')
-                            <span class="text-danger error-text">{{ $message }}</span>
-                        @enderror 
+                      
                         </td>
                         <td>
                             <div class="form-check">
@@ -293,9 +273,7 @@
                     <tr>
                         <th scope="row"></th>
                         <td>Port des EPI(Masque/visiere)</td>
-                        @error('portEpi')
-                            <span class="text-danger error-text">{{ $message }}</span>
-                        @enderror 
+                    
                         </td>
                         <td>
                             <div class="form-check">
@@ -316,9 +294,7 @@
                     <tr>
                         <th scope="row"></th>
                         <td>Respect des procédures établies</td>
-                        @error('respectProcedures')
-                            <span class="text-danger error-text">{{ $message }}</span>
-                        @enderror 
+                     
                         </td>
                         <td>
                             <div class="form-check">

@@ -52,18 +52,7 @@ class FormAuditSstRequest extends FormRequest
             'date.required' => 'ce champ est obligatoire',
             'date.before_or_equal' => 'La date doit être avant ou égale à aujourd\'hui',
             'heure.required' => 'ce champ est obligatoire',
-            'Epi.required' => 'ce champ est obligatoire',
-            'tenueLieux.required' => 'ce champ est obligatoire',
-            'comportementSecuritaire.required' => 'ce champ est obligatoire',
-            'signalisation.required' => 'ce champ est obligatoire',
-            'fichesSignaletiques.required' => 'ce champ est obligatoire',
-            'travauxEscavation.required' => 'ce champ est obligatoire',
-            'espaceClos.required' => 'ce champ est obligatoire',
-            'methodeTravail.required' => 'ce champ est obligatoire',
-            'autre.required' => 'ce champ est obligatoire',
-            'respectDistanciation.required' => 'ce champ est obligatoire',
-            'portEpi.required' => 'ce champ est obligatoire',
-            'respectProcedures.required' => 'ce champ est obligatoire',
+           
             'descriptionTravailHauteur.required' => 'ce champ est obligatoire',
         ];
     }
