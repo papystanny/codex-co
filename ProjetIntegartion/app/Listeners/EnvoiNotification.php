@@ -27,7 +27,6 @@ class EnvoiNotification implements ShouldQueue
     public function handle(FormulaireSoumis $event)
     {
         $data=$event->data;
-
         $condition1=Session::get('nom');
         $Usager=Usager::where('nom', $condition1)->first();
         $emailsuperviseur=$Usager->emailsuperviseur;
