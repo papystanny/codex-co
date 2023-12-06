@@ -135,6 +135,35 @@ class EmployesController extends Controller
         $formulairesTous = $formulairesTous->sortByDesc('created_at');
         return view('employe.equipe', compact('formulairesTous', 'usagers'));
     }
+
+    public function traiterFormulaire($id, $nomFormulaire) {
+
+        switch ($nomFormulaire) {
+            case 'Accident de travail':
+                $formulaire = FormulaireAccidentTravail::findOrFail($id);
+                break;
+            case 'Audit SST':
+                $formulaire = FormulaireAuditSST::findOrFail($id);
+                break;
+            case 'Atelier Mécanique':
+                $formulaire = Formateliermecanique::findOrFail($id);
+                break;
+
+            case 'Situation Dangereuses':
+                $formulaire = Formsitdangereuse::findOrFail($id);
+                break;
+        
+            // Ajouter d'autres cas pour les différents types de formulaires
+            default:
+                abort(404);
+        }
+       
+        $formulaire->notifSup = 'oui'; // ou 1 selon votre base de données
+        $formulaire->save();
+    
+        return back()->with('success', 'Le formulaire a été traité.');
+    }
+    
     
 
 

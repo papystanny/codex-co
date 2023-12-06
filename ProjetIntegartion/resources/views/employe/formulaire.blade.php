@@ -32,9 +32,6 @@
 
         <div class="accueil-titre">
             <h2> <b> HISTORIQUE FORMULAIRE </b> </h2>
-            <button id="ouvrirModalBtn" class="btn-filtre" style="border: none; background-color: transparent; cursor: pointer;">
-                 <i class="fas fa-filter"></i> 
-            </button>
         </div>
         
        
@@ -88,32 +85,30 @@
 
     </div>
 
-    <div class="main-section">
-
-        <div class="accueil-titre">
-                <h2> <b> FORMULAIRE À REMPLIR </b>  </h2>
+    <div class="accueil-titre">
+                <h2> <b> FORMULAIRE </b>  </h2>
         </div>
 
         <div class="accueil-formulaire">
             
             <div class="formulaire">
-                <h5> DÉCLARATION ACCIDENT DE TRAVAIL  </h5>
+                <a href="/AccidentTravail">  <h5> DÉCLARATION ACCIDENT DE TRAVAIL  </h5> </a>
             </div>
+
             <div class="formulaire">
-                <h5> SIGNALEMENT ACTE DE VIOLENCE  </h5>
+                <a href="/formSit">   <h5> SITUATION DANGEREUSE  </h5> </a>
             </div>
-        
-        @if( Session::get('typeCompte') == 'superieur')   
+@if( Session::get('typeCompte') == 'superieur')   
             <div class="formulaire">
-                <h5> AUDI SST  </h5>
+            <a href="/AuditSST"> <h5> AUDI SST  </h5> </a>
             </div>    
-        @endauth
-        @if( Session::get('typeCompte') == 'superieur')   
+@endauth
+@if( Session::get('typeCompte') == 'superieur')   
             <div class="formulaire">
-                <h5>MÉCANIQUE-RAPPORT D'ACCIDENT  </h5>
+                <a href="/formMeca"> <h5>MÉCANIQUE-RAPPORT D'ACCIDENT  </h5> </a>
             </div>
-        @endauth
-    </div>
+ @endauth
+        </div>
 
 
    

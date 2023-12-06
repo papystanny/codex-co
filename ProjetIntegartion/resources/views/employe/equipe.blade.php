@@ -37,7 +37,7 @@
            </button>
         </div>
 
-    <div class="historique-section2">
+        <div class="historique-section2">
         @forelse($formulairesTous ?? [] as $formulaire)
         @if($formulaire->notifSup == 1 || $formulaire->notifSup == "oui") 
                 <div class="historique-unite2" id="historique-section2">
@@ -45,10 +45,11 @@
                         <span class="statut"> Traité</span>
                 </div>
         @else
-                <div class="historique-uniteVide" id="historique-section2">
+        <div class="historique-unite2" id="historique-section2" onclick="confirmerEtTraiterFormulaire('{{ $formulaire->id }}', '{{ $formulaire->nomFormulaire }}')">
+ 
                 <div class="statut-container">
                         <span class="statut"> en cour de traitement </span>
-                </div>
+        </div>
         @endif
 
                     <div class="formulaire-info">
@@ -134,6 +135,18 @@
 
         // Ajoutez un écouteur d'événements pour le bouton de fermeture
         document.getElementById("fermerModal").addEventListener("click", closeModal);
+
+        function confirmerEtTraiterFormulaire(id, nomFormulaire) {
+    if (confirm('Voulez-vous vraiment prendre connaissance de ce formulaire?')) {
+        var url = '/traiter-formulaire/' + encodeURIComponent(id) + '/' + encodeURIComponent(nomFormulaire);
+        window.location.href = url;
+    }
+}
+
+
+
+
+
 
     </script>
     <script src="js/employe/accueil.js" defer></script>

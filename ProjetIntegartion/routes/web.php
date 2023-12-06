@@ -86,6 +86,10 @@ Route::post('/logout' , [UsagersController::class,'logout'])->name('logout');
     Route::get('/formMeca' , [FormulaireMecaniqueController::class , 'index'])->name('formulaires.atelierMec');
     Route::post('/formulairesMeca',[FormulaireMecaniqueController::class, 'store'])->name('formulairesMec.store');
 
+    Route::get('//traiter-formulaire/{id}/{nomFormulaire}' , [EmployesController::class , 'traiterFormulaire'])->name('traiter.formulaire');
+
+
+
     
 
 
