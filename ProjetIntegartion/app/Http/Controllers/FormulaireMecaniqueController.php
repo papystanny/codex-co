@@ -76,7 +76,7 @@ class FormulaireMecaniqueController extends Controller
             $data=Carbon::now()->toDateString();
             event(new FormulaireAudit($data));
              
-            return view('employe.accueil');
+            return redirect()->route('employe.accueil')->with('error', 'Connexion échouée !');
            // $formMec->usagers()->attach($usagers);
         }
         catch (\Throwable $e) {

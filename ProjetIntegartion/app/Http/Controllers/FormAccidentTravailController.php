@@ -171,7 +171,7 @@ class FormAccidentTravailController extends Controller
                 $Usager->notify(new FormsRegisteredNotification());*/
                 event(new FormulaireSoumis($data));
 
-                return view('employe.accueil');
+                return redirect()->route('employe.accueil')->with('error', 'Connexion échouée !');
                
                // return view('employe.accueil');
                 }

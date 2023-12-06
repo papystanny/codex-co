@@ -140,10 +140,10 @@ class EmployesController extends Controller
 
         switch ($nomFormulaire) {
             case 'Accident de travail':
-                $formulaire = FormulaireAccidentTravail::findOrFail($id);
+                $formulaire = FormaccidentsTravail::findOrFail($id);
                 break;
             case 'Audit SST':
-                $formulaire = FormulaireAuditSST::findOrFail($id);
+                $formulaire = Formulairesauditsst::findOrFail($id);
                 break;
             case 'Atelier Mécanique':
                 $formulaire = Formateliermecanique::findOrFail($id);

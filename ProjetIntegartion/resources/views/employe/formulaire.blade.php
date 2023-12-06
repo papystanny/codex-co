@@ -29,6 +29,31 @@
     </div>
 
 
+    <div class="accueil-titre">
+                <h2> <b> FORMULAIRE </b>  </h2>
+        </div>
+
+        <div class="accueil-formulaire">
+            
+            <div class="formulaire">
+                <a href="/AccidentTravail">  <h5> DÉCLARATION ACCIDENT DE TRAVAIL  </h5> </a>
+            </div>
+
+            <div class="formulaire">
+                <a href="/formSit">   <h5> SITUATION DANGEREUSE  </h5> </a>
+            </div>
+@if( Session::get('typeCompte') == 'superieur')   
+            <div class="formulaire">
+            <a href="/AuditSST"> <h5> AUDI SST  </h5> </a>
+            </div>    
+@endauth
+@if( Session::get('typeCompte') == 'superieur')   
+            <div class="formulaire">
+                <a href="/formMeca"> <h5>MÉCANIQUE-RAPPORT D'ACCIDENT  </h5> </a>
+            </div>
+ @endauth
+        </div>
+
 
         <div class="accueil-titre">
             <h2> <b> HISTORIQUE FORMULAIRE </b> </h2>
@@ -88,30 +113,7 @@
 
     </div>
 
-    <div class="accueil-titre">
-                <h2> <b> FORMULAIRE </b>  </h2>
-        </div>
-
-        <div class="accueil-formulaire">
-            
-            <div class="formulaire">
-                <a href="/AccidentTravail">  <h5> DÉCLARATION ACCIDENT DE TRAVAIL  </h5> </a>
-            </div>
-
-            <div class="formulaire">
-                <a href="/formSit">   <h5> SITUATION DANGEREUSE  </h5> </a>
-            </div>
-@if( Session::get('typeCompte') == 'superieur')   
-            <div class="formulaire">
-            <a href="/AuditSST"> <h5> AUDI SST  </h5> </a>
-            </div>    
-@endauth
-@if( Session::get('typeCompte') == 'superieur')   
-            <div class="formulaire">
-                <a href="/formMeca"> <h5>MÉCANIQUE-RAPPORT D'ACCIDENT  </h5> </a>
-            </div>
- @endauth
-        </div>
+    
 
 
    
@@ -119,6 +121,19 @@
   
 
     @endsection
+    <script>
+         document.addEventListener('DOMContentLoaded', function() {
+            var fermerModalBtn = document.getElementById('fermerModal');
+            if (fermerModalBtn) {
+                fermerModalBtn.addEventListener('click', closeModal);
+            }
+        });
+
+        function closeModal() {
+            var modal = document.getElementById("monModal");
+            modal.style.display = "none";
+}
+    </script>
  <!-- Inclure jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <!-- Inclure Bootstrap JS après jQuery -->

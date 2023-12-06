@@ -73,7 +73,7 @@ class FormAuditSSTsController extends Controller
                $Formulairesauditsst->usagers()->attach($usagers);
                $data=Carbon::now()->toDateString();
                event(new FormulaireAudit($data));
-               return view('employe.accueil');
+               return redirect()->route('employe.accueil')->with('error', 'Connexion échouée !');
                 }
                 
                catch (\Throwable $e) {

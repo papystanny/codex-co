@@ -128,13 +128,17 @@
     @endsection
     <script>
         // Fonction pour fermer le modal
+        document.addEventListener('DOMContentLoaded', function() {
+            var fermerModalBtn = document.getElementById('fermerModal');
+            if (fermerModalBtn) {
+                fermerModalBtn.addEventListener('click', closeModal);
+            }
+        });
+
         function closeModal() {
             var modal = document.getElementById("monModal");
             modal.style.display = "none";
-        }
-
-        // Ajoutez un écouteur d'événements pour le bouton de fermeture
-        document.getElementById("fermerModal").addEventListener("click", closeModal);
+}
 
         function confirmerEtTraiterFormulaire(id, nomFormulaire) {
     if (confirm('Voulez-vous vraiment prendre connaissance de ce formulaire?')) {

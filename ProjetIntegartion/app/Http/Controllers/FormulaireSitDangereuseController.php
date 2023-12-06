@@ -94,7 +94,7 @@ class FormulaireSitDangereuseController extends Controller
             $form->usagers()->attach($usagers);
             $data=Carbon::now()->toDateString();
             event(new FormulaireSoumis($data));
-            return view('employe.accueil');
+            return redirect()->route('employe.accueil')->with('error', 'Connexion échouée !');
            
        
        }
