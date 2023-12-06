@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
                 integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
                 crossorigin="anonymous">
-    <title>Formulaire Atelier Mecanique</title>
+    <title>Document</title>
     <style>
 
 .parent{
@@ -45,10 +45,9 @@
 @extends('layouts.app')
 
 @section('contenu')
-
            
 <section class="main-container border" >
-         
+          <h2 class="titreForm align-items center">Formulaire Atelier Mécanique - Rapport d'accident </h2><br><br>
     <form method="post" action="{{ route('formulairesMec.store') }}" enctype="multipart/form-data">
           @csrf
 
@@ -86,22 +85,12 @@
                  </h3>         
             </div>
             <div class = " center">
-            <input type="text" class="titreForm col-7 p-4 " placeholder="Entrez Votre Reponse"   class="form-control @error('departement') is-invalid @enderror" id="departement" name="departement" aria-describedby="departement">
+            <input type="text" class="titreForm col-7 p-4 " placeholder="Entrez Votre Reponse"  value="{{old('departement')}}"  class="form-control @error('departement') is-invalid @enderror" id="departement" name="departement" aria-describedby="departement">
                             @error('departement')
                                 <span class= "text-danger">{{$message}}</span>
                             @enderror
             </div>     
-            <div class = " center">
-                <h3  class="titreForm col-8 p-4">
-                3.Prenom et Nom de l'employé impliqué* 
-                 </h3>         
-            </div>
-            <div class = " center">
-            <input type="text" class="titreForm col-7 p-4 " placeholder="Entrez Votre Reponse" value="{{old('prenomNomEmploye')}}"   class="form-control @error('prenomNomEmploye') is-invalid @enderror" id="prenomNomEmploye" name="prenomNomEmploye" aria-describedby="prenomNomEmploye">
-                            @error('prenomNomEmploye')
-                                <span class= "text-danger">{{$message}}</span>
-                            @enderror
-            </div>    
+             
             <div class = " center">
                 <h3  class="titreForm col-8 p-4">
                 4.Prenom et Nom du supérieur immédiat* 
@@ -143,8 +132,8 @@
             <button type="submit" class="btn btn-primary col-4">Enregistrer</button>
             </div>                                             
     </form>
-</section>    
-
+</section>   
+ 
 @endsection
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -153,6 +142,3 @@
           
 </body>
 </html>
-
-
-

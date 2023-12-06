@@ -3,11 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Models\Formateliermecanique;
 use App\Http\Requests\FormateliermecaniqueRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
 use DB;
+use App\Models\Usager;
+use App\Notifications\FormsRegisteredNotification;
+use App\Events\FormulaireAudit;
+use Illuminate\Support\Carbon;
+use File;
+use Session;
+
 
 class FormulaireMecaniqueController extends Controller
 {
@@ -18,6 +26,20 @@ class FormulaireMecaniqueController extends Controller
     {
         return view('formulaires.atelierMec');
     }
+
+    public function visualisere()
+    {
+        $formecanique = Formateliermecanique::all();
+        
+
+        return View('Formulaires.index');
+    }
+
+    public function show(Formateliermecanique $formecanique)
+    {
+        return View('formMec.show', compact('formecanique'));
+    }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -32,20 +54,29 @@ class FormulaireMecaniqueController extends Controller
      */
     public function store(FormateliermecaniqueRequest $request)
     {
-        Log::debug('allo');
         try {
             $formMec = new Formateliermecanique();
+            $formMec->nomFormulaire ='Atelier Mécanique';
             $formMec->numUniteImplique =$request->input('numUniteImplique');
-            $formMec->departement =Session::get('departement');
-            $formMec->prenomNomEmploye =$request->input('prenomNomEmploye');
+            $formMec->departement =$request->input('departement');
+            $formMec->nomEmploye =Session::get('prenom').' '.Session::get('nom');
             $formMec->prenomNomSupImmediat =$request->input('prenomNomSupImmediat');
             $formMec->numPermisConduireEmploye =$request->input('numPermisConduireEmploye');
             $formMec->vehiculeCityonImplique =$request->input('vehiculeCityonImplique');
-            $formMec->notifSup = 'oui';
-            $formMec->notifAdmin = 'oui';
-            $formMec->save();
+            $formMec->notifSup = 'non';
+            $formMec->notifAdmin = 'non';
+            //$usagers=Usager::where ('id', Session::get('id'))->get();
             
+            
+            $formMec->save();
+            $usagers=Usager::where ('id', Session::get('id'))->get();
+            Log::debug($usagers);
+            $formMec->usagers()->attach($usagers);
+            $data=Carbon::now()->toDateString();
+            event(new FormulaireAudit($data));
+             
             return redirect()->route('Formulaires.formsitdang')->with('message', 'L\'ajout a été effectué');
+           // $formMec->usagers()->attach($usagers);
         }
         catch (\Throwable $e) {
             Log::debug($e);
@@ -58,10 +89,7 @@ class FormulaireMecaniqueController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+   
 
     /**
      * Show the form for editing the specified resource.

@@ -36,7 +36,7 @@
             </div>
 
             <div class="formulaire">
-                <h5> SIGNALEMENT ACTE DE VIOLENCE  </h5>
+                <a href="{{ route('Formulaires.formsitdang') }}">   <h5> SIGNALEMENT ACTE DE VIOLENCE  </h5> </a>
             </div>
 @if( Session::get('typeCompte') == 'superieur')   
             <div class="formulaire">

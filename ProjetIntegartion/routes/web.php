@@ -4,6 +4,8 @@ use App\Http\Controllers\EmployesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormAccidentTravailController;
 use App\Http\Controllers\FormulaireMecaniqueController;
+use App\Http\Controllers\FormAuditSSTsController;
+use App\Http\Controllers\FormulaireSitDangereuseController;
 use App\Http\Controllers\UsagersController;
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +34,7 @@ Route::post('/logout' , [UsagersController::class,'logout'])->name('logout');
 
 
 // -------------------------------------- Accueil employe ----------------------------
-Route::middleware(['auth','employe'])->group(function () {
+//Route::middleware(['auth','employe'])->group(function () {
    
     Route::get('/employeAccueil', 
     [EmployesController::class, 'index'])->name('employe.accueil');
@@ -52,12 +54,9 @@ Route::middleware(['auth','employe'])->group(function () {
      
 
 
-    Route::get('/AccidentTravail',
-    [FormAccidentTravailController::class, 'AccidentTravail'])->name('employe.formAccidentTravail');
-    Route::post('/AccidentTravailStore',
-    [FormAccidentTravailController::class, 'store'])->name('employe.formAccidentTravailStore');
+  
 
-        Route::get('/AuditSST',
+    Route::get('/AuditSST',
     [FormAuditSSTsController::class, 'formAuditSST'])->name('superviseur.formAuditSST');
     Route::post('/AuditSSTStore',
     [FormAuditSSTsController::class, 'store'])->name('superviseur.formAuditSSTStore');
@@ -67,10 +66,31 @@ Route::middleware(['auth','employe'])->group(function () {
     [FormulaireMecaniqueController::class, 'index'])->name('formulaires.atelierMec');
     Route::post('/adminFormMeca',[FormulaireMecaniqueController::class, 'store'])->name('formulairesMec.store');
 
-  
+    Route::get('/AccidentTravail',
+    [FormAccidentTravailController::class, 'AccidentTravail'])->name('employe.formAccidentTravail');
+    Route::post('/AccidentTravailStore',
+    [FormAccidentTravailController::class, 'store'])->name('employe.formAccidentTravailStore');
+
+    Route::get('/AuditSST',
+    [FormAuditSSTsController::class, 'formAuditSST'])->name('superviseur.formAuditSST');
+    Route::post('/AuditSSTStore',
+    [FormAuditSSTsController::class, 'store'])->name('superviseur.formAuditSSTStore');
+
+    
+    // Formulaires Dangereuses
+    Route::get('/formSit' , [FormulaireSitDangereuseController::class , 'index'])->name('Formulaires.formsitdang');
+    Route::post('/formulaires',[FormulaireSitDangereuseController::class, 'store'])->name('formulaires.store');
+    
+
+    // Formulaires Mécanique
+    Route::get('/formMeca' , [FormulaireMecaniqueController::class , 'index'])->name('formulaires.atelierMec');
+    Route::post('/formulairesMeca',[FormulaireMecaniqueController::class, 'store'])->name('formulairesMec.store');
+
+    
 
 
-});
+
+//});
 
 
 
@@ -97,10 +117,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::post('/procedure/update', [EmployesController::class, 'update'])->name('procedure.update');
 
-    Route::get('/AccidentTravail',
-    [FormAccidentTravailController::class, 'AccidentTravail'])->name('employe.formAccidentTravail');
-    Route::post('/AccidentTravailStore',
-    [FormAccidentTravailController::class, 'store'])->name('employe.formAccidentTravailStore');
+   
 
    
 

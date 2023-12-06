@@ -10,14 +10,11 @@ class Formateliermecanique extends Model
 {
     protected $table = 'formateliermecaniques';
     use HasFactory;
-    protected $fillable = ['numUniteImplique','departement','prenomNomEmploye','prenomNomSupImmediat','numPermisConduireEmploye','vehiculeCityonImplique'];
+    protected $fillable = ['numUniteImplique','departement','nomEmploye','prenomNomSupImmediat','numPermisConduireEmploye','vehiculeCityonImplique'];
 
-    public function usagers()
+     public function usagers()
     {
-        return $this->belongsToMany(Usager::class, 'formateliermecanique_usager', 'formAtelierMecanique_id', 'usager_id');
+    // return $this->belongsToMany('App\Models\Campagne');
+    return $this->belongsToMany(Usager::class,'formateliermecanique_usager','formateliermecanique_id','usager_id');
     }
-
 }
-
-
-

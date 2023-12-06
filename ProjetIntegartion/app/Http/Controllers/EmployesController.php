@@ -16,6 +16,14 @@ use App\Models\Formateliermecanique;
 use App\Models\ProceduresTravail;
 use Illuminate\Support\Facades\Auth;
 
+
+use App\Http\Requests\FormAccidentTravailRequest;
+use App\Http\Requests\AccidentTravailRequest;
+use App\Notifications\FormsRegisteredNotification;
+use App\Events\FormulaireSoumis;
+use Illuminate\Support\Carbon;
+
+
 class EmployesController extends Controller
 {
     public function index()
@@ -380,6 +388,61 @@ class EmployesController extends Controller
         }
 
         return redirect()->back()->with('success', 'Procédure introuvable.');
+    }
+
+
+    public function store(AccidentTravailRequest $request)
+    {
+        dd($request->all());
+        log::debug('J entre dans le store');
+            try {
+                
+                // Préparation des données pour la création
+                $formData = [
+                    'nomFormulaire' => "Accident de travail",
+                    'nomEmploye' => Session::get('prenom').' '.Session::get('nom'),
+                    'fonctionMomentEvenement' => $request->input('fonctionMomentEvenement'),
+                    'matriculeEmploye' => $request->input('matriculeEmploye'),
+                    'dateAccident' => $request->input('dateAccident'),
+                    'heureAccident' => $request->input('heureAccident'),
+                    'nomsTemoins' => $request->input('nomsTemoins'),
+                    'endroitAccident' => $request->input('endroitAccident'),
+                    'secteurActivite' => $request->input('secteurActivite'),
+                    'natureSiteBlessure' => implode(',', $request->input('natureSiteBlessure', [])),
+                    'descriptionBlessure' => implode(',', $request->input('descriptionBlessure', [])),
+                    'violence' => $request->input('violence'),
+                    'descriptionDeroulementBlessure' => $request->input('descriptionDeroulementBlessure'),
+                    'premiersSoins' => $request->input('premiersSoins'),
+                    'nomSecouriste' => $request->input('nomSecouriste'),
+                    'necessiteAccident' => $request->input('necessiteAccident'),
+                    'nomSuperviseurAvise' => Session::get('nomSuperviseur'),
+                    'prenomSuperviseurAvise' => Session::get('prenomSuperviseur'),
+                    'dateSuperviseurAvise' => Carbon::now()->toDateString(),
+                    'signatureEmploye' => Session::get('nom'),
+                    'dateSignatureEmploye' => Carbon::now()->toDateString(),
+                    'notifSup' => 'non',
+                    'notifAdmin' => 'non',
+                    // Autres champs non inclus dans le formulaire HTML
+                ];
+    
+                Log::debug('Données du formulaire préparées', $formData);
+
+                // Création de l'enregistrement en base de données
+                $formAccidentTravail = Formaccidentstravail::create($formData);
+                Log::debug('Formulaire créé avec succès', ['id' => $formAccidentTravail->id]);
+        
+                // Associer le formulaire aux usagers
+                $usagers = Usager::where('id', Session::get('id'))->get();
+                Log::debug('Usagers récupérés pour l\'association', ['usagers' => $usagers]);
+        
+                $formAccidentTravail->usagers()->attach($usagers);
+                Log::debug('Usagers associés au formulaire avec succès');
+    
+                return redirect()->route('employe.accueil')->with('success', 'Formulaire soumis avec succès.');
+            } catch (\Throwable $e) {
+                Log::error('Erreur lors de l\'enregistrement du formulaire: ' . $e->getMessage());
+                return redirect()->route('employe.accueil')->with('error', 'Une erreur s\'est produite lors de la soumission du formulaire.');
+            }
     }
 
 }
