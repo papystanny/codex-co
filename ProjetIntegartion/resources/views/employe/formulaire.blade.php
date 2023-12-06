@@ -51,7 +51,7 @@
             @else
                 <div class="historique-unite" style=" border-bottom: 2px solid #E5004D; border-left: 2px solid #E5004D">
                 <div class="statut-container">
-                        <span class="statut">  En Cours</span>
+                        <span class="statut"> en cour de traitement</span>
                 </div>
             @endif
                   
@@ -138,6 +138,7 @@
 <div id="monModal" class="modal">
     <div class="modal-content">
         <span class="close" id="fermerModal">&times;</span>
+        
         <div class="">  <h2>Filtre de recherche</h2></div>
       
        <form id="formulaireFiltrAccidentTravail" action="/filtrer-formulaires" method="POST" onsubmit="filtrerFormulaireAccidentTravail(event)">

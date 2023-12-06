@@ -47,7 +47,7 @@
         @else
                 <div class="historique-uniteVide" id="historique-section2">
                 <div class="statut-container">
-                        <span class="statut">  En Cours</span>
+                        <span class="statut"> en cour de traitement </span>
                 </div>
         @endif
 

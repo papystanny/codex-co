@@ -32,7 +32,11 @@
         </div>
 
         <div class="accueil-formulaire">
-            <h3>Procédures communes à tous les départements</h3>
+        
+            <div class="icon-container" style="text-align:center;  margin-top: 20px;">
+                <i class="fas fa-users fa-2x"></i>
+            </div>
+
        
             @forelse($proceduresCommunes ?? [] as $procedure)
                 <div class="formulaire">
@@ -40,18 +44,22 @@
                 </div>
             @empty
                 <div class="formulaire">
-                    <h1>Aucune procédure commune disponible</h1>
+                    <h5>procédure indisponible</h5>
                 </div>
             @endforelse
 
-            <h3>Procédures du département  {{ Session::get('nomDepartement') }}</h3>
+           
+            <div class="icon-container" style="text-align:center;  margin-top: 20px;">
+                <i class="fas fa-user fa-2x"></i>
+            </div>
+
             @forelse($proceduresDepartement ?? [] as $procedure)
                 <div class="formulaire">
                     <a href="{{ $procedure->lien }}"><h5>{{ mb_strtoupper($procedure->nom, 'UTF-8') }}</h5> </a>
                 </div>
             @empty
                 <div class="formulaire">
-                    <h1>Aucune procédure disponible pour ce département</h1>
+                    <h5>procédure indisponible</h5>
                 </div>
             @endforelse
         </div>
