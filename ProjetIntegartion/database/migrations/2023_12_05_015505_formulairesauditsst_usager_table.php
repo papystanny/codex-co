@@ -9,16 +9,12 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-
-     
- 
-
     public function up(): void
     {
-        Schema::create('departements', function (Blueprint $table) {
-            $table->id();
-            $table->string('nom',100);
-            $table->string('procedureTravail',100)->nullable();
+        Schema::create('formulairesauditsst_usager', function (Blueprint $table) {
+            $table->primary(['usager_id', 'formulairesauditsst_id']);
+            $table->foreignId('usager_id')->constrained()->onDelete('cascade');
+            $table->foreignId('formulairesauditsst_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('departements');
+        Schema::dropIfExists('formulairesauditsst_usager');
     }
 };

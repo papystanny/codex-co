@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('formulairesauditssts', function (Blueprint $table) {
             $table->id();
-            $table->string('prenomNomEmploye',100);
+            $table->string ('nomFormulaire',100);
+            $table->string('nomEmploye',100);
             $table->string('lieuTravail',100);
             $table->date('date',100);
             $table->time('heure');
             $table->string('Epi',100);
             $table->string('tenueLieux',100);
+            $table->string('comportementSecuritaire',100);
             $table->string('signalisation',100);
             $table->string('fichesSignaletiques',100);
             $table->string('traveauxEscavation',100);
@@ -28,6 +30,7 @@ return new class extends Migration
             $table->string('respectDistanciation',100);
             $table->string('portEpi',100);
             $table->string('respectProcedures',100);
+            $table->string('descriptionTravailHauteur',250)->nullable();
             $table->string('notifSup',100);
             $table->string('notifAdmin',100);
 
