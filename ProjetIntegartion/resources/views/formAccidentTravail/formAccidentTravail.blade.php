@@ -33,13 +33,7 @@
         <span class="text-danger error-text">{{ $message }}</span>
     @enderror
   </div>
-  <div class="form-group">
-    <label for="formGroupExampleInput">Matricule</label>
-    <input type="text" class="form-control matriculeEmploye @error('matriculeEmploye') is-invalid @enderror " id="formGroupExampleInput" placeholder="" name="matriculeEmploye" value="{{old('matriculeEmploye')}}" >
-    @error('matriculeEmploye')
-        <span class="text-danger error-text">{{ $message }}</span>
-    @enderror
-  </div>
+ 
   <div class="form-group col-md-6">
         <label for="inputPassword4">Date de l'accident</label>
         <input type="date" class="form-control dateAccident @error('dateAccident') is-invalid @enderror " id="inputPassword4" placeholder="" name="dateAccident" value="{{old('dateAccident')}}" >

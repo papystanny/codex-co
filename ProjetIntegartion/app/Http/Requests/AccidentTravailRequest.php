@@ -24,7 +24,7 @@ class AccidentTravailRequest extends FormRequest
         return [
             //
             'fonctionMomentEvenement' => 'required',
-            'matriculeEmploye' => 'required|numeric',
+          
             'dateAccident' => 'required|date|before_or_equal:today',
             'heureAccident' => 'required',
             'nomsTemoins' => 'required',
@@ -47,7 +47,7 @@ class AccidentTravailRequest extends FormRequest
     {
         return [
             'fonctionMomentEvenement.required' => 'La fonction de l\'employé au moment de l\'événement est requise',
-            'matriculeEmploye.required' => 'Le matricule de l\'employé est requis',
+          
             'dateAccident.required' => 'La date de l\'accident est requise',
             'dateAccident.before_or_equal' => 'La date de l\'accident doit être avant ou égale à aujourd\'hui',
             'heureAccident.required' => 'L\'heure de l\'accident est requise',

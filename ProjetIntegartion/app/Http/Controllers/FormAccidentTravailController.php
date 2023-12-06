@@ -40,7 +40,7 @@ class FormAccidentTravailController extends Controller
                $Formaccidentstravail->nomFormulaire = "Accident de travail";
                $Formaccidentstravail->nomEmploye =  Session::get('prenom').' '.Session::get('nom');
                 $Formaccidentstravail->fonctionMomentEvenement = $request->input('fonctionMomentEvenement');
-                $Formaccidentstravail->matriculeEmploye = $request->input('matriculeEmploye');
+                $Formaccidentstravail->matriculeEmploye = Session::get('matricule');
                 $Formaccidentstravail->dateAccident = $request->input('dateAccident');
                 $Formaccidentstravail->heureAccident = $request->input('heureAccident');
                 $Formaccidentstravail->nomsTemoins = $request->input('nomsTemoins');
