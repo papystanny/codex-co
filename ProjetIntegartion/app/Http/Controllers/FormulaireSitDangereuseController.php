@@ -67,10 +67,12 @@ class FormulaireSitDangereuseController extends Controller
         
             $form = new Formsitdangereuse();
             $form->nomFormulaire ='Situation Dangereuses';
-            $form->nomEmploye =$request->input('nomEmploye');
-            Log::debug( $form->nomEmploye);
-            $form->prenomEmploye =$request->input('prenomEmploye');
-            $form->matriculeEmploye =$request->input('matriculeEmploye');
+            $form->nomEmploye = Session::get('nom');
+            Log::debug( Session::get('nom'));
+            Log::debug( Session::get('prenom'));
+            Log::debug( Session::get('matricule'));
+            $form->prenomEmploye =Session::get('prenom');
+            $form->matriculeEmploye =Session::get('matricule');
             $form->fonctionLorsEvenement =$request->input('fonctionLorsEvenement');
             $form->secteurActivite =$request->input('secteurActivite');
             $form->dateObservation =$request->input('dateObservation');

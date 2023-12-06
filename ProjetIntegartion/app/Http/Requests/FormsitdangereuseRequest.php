@@ -18,9 +18,7 @@ class FormsitdangereuseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nomEmploye'=>'required|min:3|max:50',
-            'prenomEmploye'=>'required|min:3|max:50',
-            'matriculeEmploye'=>'required',
+            
             'fonctionLorsEvenement'=>'required|min:3|max:200',
             'secteurActivite'=>'required|min:3|max:200',
             'temoins'=>'required|min:3|max:200',
@@ -37,13 +35,7 @@ class FormsitdangereuseRequest extends FormRequest
 
         return [
             
-            'nomEmploye.required'=>'Le nomEmploye est obligatoire.',
-            'nomEmploye.min'=>'Le nomEmploye doit avoir un minimum de  3 caractères.',
-            'nomEmploye.max'=>'Le nomEmploye doit avoir un maximum de 50 caractères.',
-            'prenomEmploye.required'=>'Le prenomEmploye est obligatoire.',
-            'prenomEmploye.min'=>'Le prenomEmploye doit avoir un minimum de  3 caractères.',
-            'prenomEmploye.max'=>'Le prenomEmploye doit avoir un maximum de 50 caractères.',
-            'matriculeEmploye.required'=>'le matriculeEmploye est obligatoire.',
+           
             'fonctionLorsEvenement.required'=>'Le fonctionLorsEvenement est obligatoire.',
             'fonctionLorsEvenement.min'=>'Le fonctionLorsEvenement doit avoir un minimum de  3 caractères.',
             'fonctionLorsEvenement.max'=>'Le fonctionLorsEvenement doit avoir un maximum de 200 caractères.',

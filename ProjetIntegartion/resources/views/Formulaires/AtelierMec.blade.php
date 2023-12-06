@@ -60,7 +60,7 @@
             <div class = " center">
                 <h3  class="titreForm col-12 p-4">
                     Bonjour
-                    .Lorsque vous Soumettre ce formulaire,le propriétaire verra votre nom et votre adresse e-mail. </h3>         
+                    .Lorsque vous Soumettrez ce formulaire,le propriétaire verra votre nom et votre adresse e-mail. </h3>         
             </div>
     
             <div class = " center">
@@ -74,7 +74,7 @@
                  </h3>         
             </div>
             <div class = " center">
-            <input type="number" class="titreForm col-7 p-4 " placeholder="Entrez Votre Reponse"  class="form-control @error('numUniteImplique') is-invalid @enderror" id="numUniteImplique" name="numUniteImplique" aria-describedby="numUniteImplique">
+            <input type="number" class="titreForm col-7 p-4 " placeholder="Entrez Votre Reponse"  class="form-control @error('numUniteImplique') is-invalid @enderror" id="numUniteImplique" name="numUniteImplique" aria-describedby="numUniteImplique" required>
                             @error('numUniteImplique')
                                 <span class= "text-danger">{{$message}}</span>
                             @enderror
@@ -85,7 +85,7 @@
                  </h3>         
             </div>
             <div class = " center">
-            <input type="text" class="titreForm col-7 p-4 " placeholder="Entrez Votre Reponse"  value="{{old('departement')}}"  class="form-control @error('departement') is-invalid @enderror" id="departement" name="departement" aria-describedby="departement">
+            <input type="text" class="titreForm col-7 p-4 " placeholder="Entrez Votre Reponse"  value="{{old('departement')}}"  class="form-control @error('departement') is-invalid @enderror" id="departement" name="departement" aria-describedby="departement" required >
                             @error('departement')
                                 <span class= "text-danger">{{$message}}</span>
                             @enderror
@@ -97,7 +97,7 @@
                  </h3>         
             </div>
             <div class = " center">
-            <input type="text" class="titreForm col-7 p-4 " placeholder="Entrez Votre Reponse" value="{{old('prenomNomSupImmediat')}}"   class="form-control @error('prenomNomSupImmediat') is-invalid @enderror" id="prenomNomSupImmediat" name="prenomNomSupImmediat" aria-describedby="prenomNomSupImmediat">
+            <input type="text" class="titreForm col-7 p-4 " placeholder="Entrez Votre Reponse" value="{{old('prenomNomSupImmediat')}}"   class="form-control @error('prenomNomSupImmediat') is-invalid @enderror" id="prenomNomSupImmediat" name="prenomNomSupImmediat" aria-describedby="prenomNomSupImmediat" required>
                             @error('prenomNomSupImmediat')
                                 <span class= "text-danger">{{$message}}</span>
                             @enderror
@@ -108,7 +108,7 @@
                  </h3>         
             </div>
             <div class = " center">
-            <input type="text" class="titreForm col-7 p-4 " placeholder="Entrez Votre Reponse" value="{{old('numPermisConduireEmploye')}}"   class="form-control @error('numPermisConduireEmploye') is-invalid @enderror" id="numPermisConduireEmploye" name="numPermisConduireEmploye" aria-describedby="numPermisConduireEmploye">
+            <input type="text" class="titreForm col-7 p-4 " placeholder="Entrez Votre Reponse" value="{{old('numPermisConduireEmploye')}}"   class="form-control @error('numPermisConduireEmploye') is-invalid @enderror" id="numPermisConduireEmploye" name="numPermisConduireEmploye" aria-describedby="numPermisConduireEmploye" required>
                             @error('numPermisConduireEmploye')
                                 <span class= "text-danger">{{$message}}</span>
                             @enderror

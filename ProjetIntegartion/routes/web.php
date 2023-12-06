@@ -61,11 +61,11 @@ Route::post('/logout' , [UsagersController::class,'logout'])->name('logout');
     Route::post('/AuditSSTStore',
     [FormAuditSSTsController::class, 'store'])->name('superviseur.formAuditSSTStore');
 
-    
+/*    
     Route::get('/adminFormAtelier',
     [FormulaireMecaniqueController::class, 'index'])->name('formulaires.atelierMec');
     Route::post('/adminFormMeca',[FormulaireMecaniqueController::class, 'store'])->name('formulairesMec.store');
-
+*/
     Route::get('/AccidentTravail',
     [FormAccidentTravailController::class, 'AccidentTravail'])->name('employe.formAccidentTravail');
     Route::post('/AccidentTravailStore',

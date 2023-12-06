@@ -4,12 +4,12 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FormateliermecaniqueRequest extends FormRequest
+class FormatelierMecRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool
+    public function authorize()
     {
         return true;
     }
@@ -17,23 +17,22 @@ class FormateliermecaniqueRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules()
     {
         return [
-            'numUniteImplique'=>'required|min:5|max:50',
-            'departement'=>'required|min:5|max:50',
-           
-            'prenomNomSupImmediat'=>'required|min:5|max:50',
-            'numPermisConduireEmploye'=>'required|min:5|max:50',
-            'vehiculeCityonImplique'=>'required|min:5|max:50',
-            
-            
+
+            'numUniteImplique' => 'required|min:5',
+            'departement' => 'required|min:5|max:50',
+            'prenomNomEmploye' => 'required|min:5|max:50',
+            'prenomNomSupImmediat' => 'required|min:5|max:50',
+            'numPermisConduireEmploye' => 'required|min:5',
+            'vehiculeCityonImplique' => 'required|min:5',
+
+            //
         ];
     }
-
-    
     public function messages(){
         return [
             'numUniteImplique.required'=>'Le numUniteImplique est obligatoire.',
@@ -41,7 +40,9 @@ class FormateliermecaniqueRequest extends FormRequest
             'departement.required'=>'Le departement est obligatoire.',
             'departement.min'=>'Le departement doit avoir un minimum de 5 caractères.',
             'departement.max'=>'Le departement doit avoir un maximum de 1000 caractères.',
-           
+            'prenomNomEmploye.required'=>'le prenomNomEmploye est obligatoire.',
+            'prenomNomEmploye.min'=>'Le prenomNomEmploye doit avoir un minimum de 5 caractères.',
+            'prenomNomEmploye.max'=>'La prenomNomEmploye  doit avoir un maximum de 500 caractères.',
             'prenomNomSupImmediat.required'=>'le prenomNomSupImmediat est obligatoire.',
             'prenomNomSupImmediat.min'=>'Le prenomNomSupImmediat doit avoir un minimum de 5 caractères.',
             'prenomNomSupImmediat.max'=>'La prenomNomSupImmediat  doit avoir un maximum de 500 caractères.',

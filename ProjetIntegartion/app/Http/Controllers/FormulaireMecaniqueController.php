@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Formateliermecanique;
 use App\Http\Requests\FormateliermecaniqueRequest;
+use App\Http\Requests\FormatelierMecRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
 use DB;
@@ -35,11 +36,11 @@ class FormulaireMecaniqueController extends Controller
         return View('Formulaires.index');
     }
 
-    public function show(Formateliermecanique $formecanique)
+   /* public function show(Formateliermecanique $formecanique)
     {
         return View('formMec.show', compact('formecanique'));
     }
-    
+*/
 
     /**
      * Show the form for creating a new resource.
@@ -52,7 +53,7 @@ class FormulaireMecaniqueController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(FormateliermecaniqueRequest $request)
+    public function store(Request $request)
     {
         try {
             $formMec = new Formateliermecanique();
@@ -69,13 +70,13 @@ class FormulaireMecaniqueController extends Controller
             
             
             $formMec->save();
-            $usagers=Usager::where ('id', Session::get('id'))->get();
+            $usagers=Usager::where ('nom', Session::get('nom'))->get();
             Log::debug($usagers);
             $formMec->usagers()->attach($usagers);
             $data=Carbon::now()->toDateString();
             event(new FormulaireAudit($data));
              
-            return redirect()->route('Formulaires.formsitdang')->with('message', 'L\'ajout a été effectué');
+            return view('employe.accueil');
            // $formMec->usagers()->attach($usagers);
         }
         catch (\Throwable $e) {

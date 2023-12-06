@@ -63,27 +63,7 @@
 
           <div class="parent container-fluid">
              <div class="row">
-                <div class= "enfant enfant1 col-lg-4 p-4">
-                    <label for="fname">Nom:</label><br>
-                    <input type="text"  placeholder="nomEmploye" value="{{old('nomEmploye')}}"   class="form-control @error('nomEmploye') is-invalid @enderror" id="nomEmploye" name="nomEmploye" aria-describedby="nomEmploye">
-                            @error('nomEmploye')
-                                <span class= "text-danger">{{$message}}</span>
-                            @enderror
-                </div>
-               <div class= "enfant enfant1 col-lg-4 p-4">
-                    <label for="fname">Prenom:</label><br>
-                    <input type="text"  placeholder="prenomEmploye" value="{{old('prenomEmploye')}}"   class="form-control @error('prenomEmploye') is-invalid @enderror" id="prenomEmploye" name="prenomEmploye" aria-describedby="prenomEmploye">
-                            @error('prenomEmploye')
-                                <span class= "text-danger">{{$message}}</span>
-                            @enderror
-                </div>
-                <div class= "enfant enfant1 col-lg-4 p-4">
-                    <label for="fname">Matricule:</label><br>
-                    <input type="text"  placeholder="matriculeEmploye" value="{{old('matriculeEmploye')}}"   class="form-control @error('matriculeEmploye') is-invalid @enderror" id="matriculeEmploye" name="matriculeEmploye" aria-describedby="matriculeEmploye">
-                            @error('matriculeEmploye')
-                                <span class= "text-danger">{{$message}}</span>
-                            @enderror
-                </div>
+              
              </div>
           </div>
 
