@@ -109,7 +109,7 @@ class UsagersController extends Controller
                 Session::put('matricule', $user->matricule); 
                 Session::put('typeCompte', $user->typeCompte);
                 Session::put('nomDepartement', $departement->nom);
-                return redirect()->route('admin.accueil')->with('error', "Connexion réussie.");
+                return redirect()->route('admin.formulaire')->with('error', "Connexion réussie.");
             }
             else{
                 return redirect('/connexion') ->with('error', 'Connexion ok mais connexion no');

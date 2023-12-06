@@ -146,16 +146,16 @@
                         <i class="fas fa-bell "></i>
                     </div>
                 </li>
-                <li> 
-                    <!-- Icône de paramètres -->
-                    <div class="settings-icon">
-                        <i class="fas fa-cog"></i>
-                    </div>
-                </li>
-                <li> 
+
+                 <li> 
                     <!-- Icône de profil -->
                     <div class="profile-icon">
-                        <i class="fas fa-user"></i>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <a onclick="this.closest('form').submit(); return false;" class="logout" > 
+                        <i class="fas fa-sign-out-alt" style="color:black"></i>
+                        </a>
+                    </form>  
                     </div>
                  </li>
             </ul>

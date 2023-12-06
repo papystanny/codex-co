@@ -58,38 +58,27 @@
  </div>
 
  <div class="vuePc" >
-    <div class="all"> 
-        <div class ="image-un" style="display: none;">
-            <img src="img/examen.png" class="img-fluid logo-marge-10" width="200%" height="100px">
-        </div> 
 
-        <div class ="titreImage" >
-        </div> 
+ <div class="vuePc"  >
 
-        <div class="main-section" >
-
-        
-                <div class="section-gauche">
-                </div>
-
-                <div class="section-droite">
-                    <form  method="POST" action="/connexion"> <!-- Remplacez "login.php" par le script de traitement de la connexion -->
-                        @csrf
-                            <div class="form-group">
-                                <label>   Matricule  </label>
-                            <div class="form-groupUnite">   <i class="fas fa-user"></i> <input type="number" id="username" name="matricule" required class="custom-input"> </div>
-                            </div>
-                            <div class="form-group">
-                                <label>   Mot de passe  </label>
-                            <div class="form-groupUnite"> <i class="fas fa-lock"></i>   <input type="password" id="password" name="password" required class="custom-input"> </div>
-                            </div>
-                            <div class="custom-submit">
-                            <button type="submit" >Connexion</button>
-                            </div>
-                    </form>
-                </div>
+    <div class="background">
+            <div class="shape"></div>
+            <div class="shape"></div>
         </div>
-    </div>
+    <form  method="POST" action="/connexion"> <!-- Remplacez "login.php" par le script de traitement de la connexion -->
+    @csrf
+        <h3 style="color:black" >Connexion </h3>
+
+        <label for="username" style="color:grey" >matricule</label>
+        <input type="number" id="username" name="matricule"  style="color:black" required class="custom-input">
+
+        <label for="password" style="color:grey">mot de passe</label>
+        <input type="password" id="password" name="password"  style="color:black" required class="custom-input">
+
+        <button type="submit" style="background: #aeaeba; margin-top:30px;" >Connexion</button>
+        
+    </form>
+
  </div>
 
    

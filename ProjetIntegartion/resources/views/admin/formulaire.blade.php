@@ -137,8 +137,7 @@
 
             <div class="titreProcedures">
                 <span class="titre"> FORMULAIRES EN COURS  </span> 
-                
-                <i class="fas fa-plus fa-2x" style="color: rgb(99, 188, 85);"></i>              
+                      
              
             </div>
 
