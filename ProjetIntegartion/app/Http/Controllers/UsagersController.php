@@ -57,7 +57,7 @@ class UsagersController extends Controller
                 Session::put('typeCompte', $user->typeCompte);
                 Session::put('nomDepartement', $initialsString);
                 Session::put('nomSuperviseur', $user->nomSuperviseur);
-                Session::put('prenomSupervisuer', $user->prenomSuperviseur);
+                Session::put('prenomSuperviseur', $user->prenomSuperviseur);
                 
                 Log::debug($proceduresTravail );
                // Log::debug($user );
@@ -95,7 +95,7 @@ class UsagersController extends Controller
                 Session::put('typeCompte', $user->typeCompte);
                 Session::put('nomDepartement', $initialsString);
                 Session::put('nomSuperviseur', $user->nomSuperviseur);
-                Session::put('prenomSupervisuer', $user->prenomSuperviseur);
+                Session::put('prenomSuperviseur', $user->prenomSuperviseur);
 
                 return redirect()->route('employe.accueil')->with('error', 'Connexion échouée !');
             }
