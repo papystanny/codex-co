@@ -36,7 +36,7 @@
             </div>
 
             <div class="formulaire">
-                <a href="{{ route('Formulaires.formsitdang') }}">   <h5> SIGNALEMENT ACTE DE VIOLENCE  </h5> </a>
+                <a href="/formSit">   <h5> SITUATION DANGEREUSE  </h5> </a>
             </div>
 @if( Session::get('typeCompte') == 'superieur')   
             <div class="formulaire">
@@ -45,7 +45,7 @@
 @endauth
 @if( Session::get('typeCompte') == 'superieur')   
             <div class="formulaire">
-                <a href="{{ route('formulaires.atelierMec') }}"> <h5>MÉCANIQUE-RAPPORT D'ACCIDENT  </h5> </a>
+                <a href="/formMeca"> <h5>MÉCANIQUE-RAPPORT D'ACCIDENT  </h5> </a>
             </div>
  @endauth
         </div>

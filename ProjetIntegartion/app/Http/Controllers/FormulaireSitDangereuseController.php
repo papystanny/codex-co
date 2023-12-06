@@ -26,14 +26,14 @@ class FormulaireSitDangereuseController extends Controller
     //     return view ('Formulaires.atelierMec');
     // }
 
-    public function visualisezForm( Formsitdangereuse $formsit )
+  /*  public function visualisezForm( Formsitdangereuse $formsit )
     {
         $formMec = Formateliermecanique::all();
         $formsit = Formsitdangereuse::all();
 
         return View('Formulaires.index' , compact('formsit' , 'formMec'));
     }
-    
+   */ 
     // public function visualisezForm1( Formatelier $formsit )
     // {
     //     //$formMec = Formateliermecanique::all();
@@ -64,10 +64,11 @@ class FormulaireSitDangereuseController extends Controller
     public function store(FormsitdangereuseRequest $request)
     {
         try {
-            dd("ca entre dans le try");
+        
             $form = new Formsitdangereuse();
             $form->nomFormulaire ='Situation Dangereuses';
             $form->nomEmploye =$request->input('nomEmploye');
+            Log::debug( $form->nomEmploye);
             $form->prenomEmploye =$request->input('prenomEmploye');
             $form->matriculeEmploye =$request->input('matriculeEmploye');
             $form->fonctionLorsEvenement =$request->input('fonctionLorsEvenement');
@@ -84,14 +85,14 @@ class FormulaireSitDangereuseController extends Controller
             $form->notifSup = 'non';
             $form->notifAdmin = 'non';
            //$form->usager_id = auth()->user()->id;
-           dd("ca store");
+         //  dd("ca store");
             $form->save();
-            $usagers=Usager::where ('id', Session::get('id'))->get();
+            $usagers=Usager::where ('nom', Session::get('nom'))->get();
             Log::debug($usagers);
             $form->usagers()->attach($usagers);
             $data=Carbon::now()->toDateString();
             event(new FormulaireSoumis($data));
-            return redirect()->route('Formulaires.formsitdang')->with('message', 'L\'ajout a été effectué');   
+            return view('employe.accueil');
            
        
        }
