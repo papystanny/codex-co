@@ -200,38 +200,44 @@ function filtrerFormulaireAccidentTravailEquipe(event) {
             data.forEach(function (formulaire) {
                 var formulaireDiv = document.createElement('div');
                 formulaireDiv.className = 'historique-unite2';
-    
+                formulaireDiv.id = 'historique-section2';
+                if (formulaire.notifSup == 0 || formulaire.notifSup == "non") {
+                    formulaireDiv.setAttribute("onclick", "confirmerEtTraiterFormulaire('" + formulaire.id + "', '" + formulaire.nomFormulaire + "')");
+                }
+        
                 var formattedDate = new Date(formulaire.created_at).toLocaleDateString('fr-FR') + ' ' + new Date(formulaire.created_at).toLocaleTimeString('fr-FR');
                 var nomFormulaire = formulaire.nomFormulaire.toUpperCase();
                 var nomEmploye = formulaire.nomEmploye.charAt(0).toUpperCase() + formulaire.nomEmploye.slice(1);
-    
+        
+                var statut = formulaire.notifSup == 0 || formulaire.notifSup == "non" ? "en cour de traitement" : "Traité";
+                var iconClass = formulaire.notifSup == 0 || formulaire.notifSup == "non" ? "fa-xmark" : "fa-check";
+                var color = formulaire.notifSup == 0 || formulaire.notifSup == "non" ? "red" : "green";
+        
                 formulaireDiv.innerHTML = `
-                    <div class="unite1">
-                        <i class="fa-solid fa-folder left-fontAwesome"></i>
+                    <div class="statut-container">
+                        <span class="statut">${statut}</span>
+                    </div>
+                    <div class="formulaire-info">
+                        <i class="fas fa-file-alt" style="font-size:25px"></i>
                         <h5>${formattedDate}</h5>
-                        ${formulaire.notifSup === 0 
-                            ? '<i class="fa-solid fa-xmark" style="color:red;"></i>'
-                            : '<i class="fa-solid fa-check" style="color:green;"></i>'
-                        }
+                        <i class="fa-solid ${iconClass}" style="color:${color};"></i>
                     </div>
                     <h5>${nomFormulaire}</h5>
                     <h5>${nomEmploye}</h5>
                 `;
-    
+        
                 historiqueSection.appendChild(formulaireDiv);
             });
         } else {
             console.log('Ca marche');
             // Si aucun formulaire n'est retourné, affiche un message
             var messageDiv = document.createElement('div');
-            messageDiv.className = 'historique-unite2';
+            messageDiv.className = 'historique-unite x2';
             messageDiv.innerHTML = `
-                <div class="historique-unite x2">
-                    <i class="fa-solid fa-user-tie left-fontAwesome"></i>
-                    <h5>AUCUN FORMULAIRE</h5>
+             
                     <i class="fa-solid fa-xmark right-fontAwesome2"></i>
-                    <span>Personne n'a rempli de formulaire</span>
-                </div>
+                    <span> Aucun formulaire trouvé </span>
+          
             `;
             historiqueSection.appendChild(messageDiv);
         }

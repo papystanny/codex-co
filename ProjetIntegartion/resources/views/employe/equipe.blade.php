@@ -32,8 +32,8 @@
 
         <div class="accueil-titre">
             <h2> <b> FORMULAIRE D'ÉQUIPE </b>  </h2>
-            <button id="ouvrirModalBtn" class="btn-filtre"  style="border: none; background-color: transparent; cursor: pointer;">
-                <i class="fas fa-filter  fa-2x"  ></i> 
+            <button id="ouvrirModalBtn" class="btn-filtre" style="border: none; background-color: transparent; color:green; cursor: pointer;">
+                <i class="fas fa-filter "  ></i> 
            </button>
         </div>
 

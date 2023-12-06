@@ -32,6 +32,9 @@
 
         <div class="accueil-titre">
             <h2> <b> HISTORIQUE FORMULAIRE </b> </h2>
+            <button id="ouvrirModalBtn" class="btn-filtre" style="border: none; background-color: transparent; cursor: pointer;">
+                 <i class="fas fa-filter"></i> 
+            </button>
         </div>
         
        

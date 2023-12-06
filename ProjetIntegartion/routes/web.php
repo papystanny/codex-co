@@ -89,9 +89,9 @@ Route::post('/logout' , [UsagersController::class,'logout'])->name('logout');
     Route::get('//traiter-formulaire/{id}/{nomFormulaire}' , [EmployesController::class , 'traiterFormulaire'])->name('traiter.formulaire');
 
 
-
+    Route::post('/filtrer-formulairesEquipes', [EmployesController::class, 'filtrerFormulairesEquipes'])->name('formulaireEquipe.filtres');
     
-
+    Route::post('/filtrer-formulaires', [EmployesController::class, 'filtrerFormulaires'])->name('formulaire.filtres');
 
 
 //});
@@ -116,8 +116,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     
     Route::post('/procedures/add', [EmployesController::class, 'storeProcedure'])->name('procedures.store');
 
-    Route::post('/filtrer-formulaires', [EmployesController::class, 'filtrerFormulaires'])->name('formulaire.filtres');
-    Route::post('/filtrer-formulairesEquipes', [EmployesController::class, 'filtrerFormulairesEquipes'])->name('formulaireEquipe.filtres');
+    
+   
 
     Route::post('/procedure/update', [EmployesController::class, 'update'])->name('procedure.update');
 
