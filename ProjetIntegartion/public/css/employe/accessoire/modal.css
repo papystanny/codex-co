@@ -1,28 +1,30 @@
 .modal {
-    display: flex;
-    position: fixed;
-    z-index: 1;
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
     left: 0;
-    top: 100%;
-    width: 80%;
-    height: 80%;
-    overflow: auto;
-    
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(224, 213, 213, 0.7);
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
 .modal-content {
-    background-color: #fff;
-    margin: 15% auto;
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    
-    width: 60%;
-    height: 75%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin-left: 15%;
+    margin-right: 15%;
+    width: auto !important;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Optional shadow */
 }
+
+.modal.modal-filtre-recherche .modal-content {
+    width: auto; /* Ou une autre valeur selon vos besoins */
+}
+
 
 .close {
     color: #aaa;
@@ -33,16 +35,15 @@
 }
 
 .close:hover {
-    color: #000;
+    color: black;
 }
 
 h2 {
     color: #333;
+    margin-bottom: 20px; /* Adjust as needed */
 }
 
-p {
-    color: #555;
-}
+/* Add styles for input fields, buttons, etc., as needed */
 
 
 /* Styles pour les appareils mobiles (largeur d'écran maximale de 768px) */
