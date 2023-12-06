@@ -38,22 +38,49 @@
             <div class="formulaire">
                 <h5><a href="/AuditSST"> SIGNALEMENT ACTE DE VIOLENCE </a> </h5>
             </div>
-@if( Session::get('typeCompte') == 'superieur')   
+        @if( Session::get('typeCompte') == 'superieur')   
             <div class="formulaire">
                 <h5 > <a href="/AuditSST">AUDI SST </a> </h5>
+            </div> 
+            <div class="accueil-titre">
+                 <h2> <b> Details Formulaires </b>  </h2>
+            </div>
+            <div class="container-fluid">  
+                <div class="row">  
+                    @if( count($formulairesAccidentTravail))
+                        @foreach($formulairesAccidentTravail as $formulaireAccidentTravail)  
+                        <div class="col-xl-4">
+                           <h3>{{$formulaireAccidentTravail->nomFormulaire}}</h3>
+                
+                         </div> 
+                        @endforeach
+                    @endif
+
+                    @if( count($formulairesAccidentTravail1))
+                        @foreach($formulairesAccidentTravail1 as $formulaireAccidentTravail1)  
+                        <div class="col-xl-4">
+                           <h3>{{$formulaireAccidentTravail1->nomFormulaire}}</h3>
+                
+                         </div> 
+                        @endforeach
+                    @endif
+                </div> 
+
             </div>    
-@endauth
+        @endif
 @if( Session::get('typeCompte') == 'superieur')   
             <div class="formulaire">
                 <h5>MÉCANIQUE-RAPPORT D'ACCIDENT  </h5>
             </div>
- @endauth
+ @endif
         </div>
 
 
         <div class="accueil-titre">
             <h2> <b> PROCÉDURES DE TRAVAIL </b>  </h2>
         </div>
+
+        
        
 
 

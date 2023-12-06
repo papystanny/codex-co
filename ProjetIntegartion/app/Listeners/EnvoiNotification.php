@@ -30,14 +30,23 @@ class EnvoiNotification implements ShouldQueue
 
         $condition1=Session::get('nom');
         $Usager=Usager::where('nom', $condition1)->first();
+        
         $emailsuperviseur=$Usager->emailsuperviseur;
         $emailadmin=$Usager->emailadmin;
         Log::debug($emailsuperviseur);
         Log::debug($emailadmin);
        // $emailsuperviseur='fmatho@yahoo.com';
         $notification= new FormsRegisteredNotification($data);
+        if($emailsuperviseur==null)
+        {
+            \Notification::route('mail', $emailadmin)->notify($notification);
+        }
+        else
+        {
         \Notification::route('mail', $emailsuperviseur)->notify($notification);
         \Notification::route('mail', $emailadmin)->notify($notification);
+        }
+       
         //
     }
 }

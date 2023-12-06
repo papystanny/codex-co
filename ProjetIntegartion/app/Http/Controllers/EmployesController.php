@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\Usager;
 use App\Models\Departement;
-use App\Models\FormAccidentsTravail;
+use App\Models\Formaccidentstravail;
+use App\Models\Formulairesauditsst;
 use Illuminate\Support\Facades\Auth;
 
 class EmployesController extends Controller
@@ -17,9 +18,10 @@ class EmployesController extends Controller
     public function index()
     { 
         $user = Usager::where('matricule', Session::get('matricule'))->first();
-   
+        $formulairesAccidentTravail= Formaccidentstravail::where ('nomSuperviseurAvise', Session::get('nom'))->get();
+        $formulairesauditssT= Formulairesauditsst::where ('nomEmploye', Session::get('nom'))->get();
 
-        return view('employe.accueil');
+        return view('employe.accueil',compact('formulairesAccidentTravail','formulairesauditssT'));
     }
 
     public function formulaire()

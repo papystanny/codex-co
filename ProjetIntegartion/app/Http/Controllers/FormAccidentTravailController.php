@@ -9,6 +9,7 @@ use App\Http\Requests\AccidentTravailRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\Formaccidentstravail;
+use App\Models\Formulairesauditsst;
 use App\Events\FormulaireSoumis;
 use Session;
 use Illuminate\Support\Carbon;
@@ -122,7 +123,9 @@ class FormAccidentTravailController extends Controller
                 $Formaccidentstravail->nomSecouriste = $request->input('nomSecouriste');
                 $Formaccidentstravail->necessiteAccident = $request->input('necessiteAccident');
                 $Formaccidentstravail->nomSuperviseurAvise = Session::get('nomSuperviseur');
+                Log::debug($Formaccidentstravail->nomSuperviseurAvise);
                 $Formaccidentstravail->prenomSuperviseurAvise = Session::get('prenomSuperviseur');
+                Log::debug($Formaccidentstravail->prenomSuperviseurAvise);
                 $Formaccidentstravail->dateSuperviseurAvise = Carbon::now()->toDateString();
                 Log::debug($Formaccidentstravail->dateSuperviseurAvise);
                  $Formaccidentstravail->signatureEmploye =Session::get('nom');
@@ -166,17 +169,26 @@ class FormAccidentTravailController extends Controller
                 $Usager = Usager::where('nom', $condition1)->first();
                 $Usager->notify(new FormsRegisteredNotification());*/
                 event(new FormulaireSoumis($data));
+                $nom=Session::get('nom');
                 
-              
+                $formulairesAccidentTravail= Formaccidentstravail::where ('nomSuperviseurAvise', Session::get('nom') )->get();
+                $formulairesAccidentTravail1= Formaccidentstravail::where ('nomSuperviseurAvise', null)->get();
+                
+                Log::debug($formulairesAccidentTravail);
+                Log::debug($formulairesAccidentTravail1);
+                $formulairesauditssT= Formulairesauditsst::where ('nomEmploye', Session::get('prenom').' '.Session::get('nom'))->get();
+                Log::debug($formulairesauditssT);
+                return view('employe.accueil',compact('formulairesAccidentTravail','formulairesauditssT','formulairesAccidentTravail1'));
                
-               return view('employe.formulaire');
+               // return view('employe.accueil');
                 }
                 
                catch (\Throwable $e) {
                     
                         Log::debug($e);
                     //   return redirect()->route('campagne')->withErrors(['L\'ajout de campagne n\'a pas fonctionné']);
-                        return view('employe.accueil');
+                       
+                        return view('employe.formulaire');
                }
                
                 
