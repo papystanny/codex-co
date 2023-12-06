@@ -135,10 +135,10 @@
 
 
 
-<div id="monModal" class="modal">
+<div id="monModal"  class="modal modal-filtre-recherche">
     <div class="modal-content">
         <span class="close" id="fermerModal">&times;</span>
-        
+
         <div class="">  <h2>Filtre de recherche</h2></div>
       
        <form id="formulaireFiltrAccidentTravail" action="/filtrer-formulaires" method="POST" onsubmit="filtrerFormulaireAccidentTravail(event)">
@@ -162,7 +162,7 @@
                 <!-- Ajoutez d'autres options de type de formulaire au besoin -->
             </select>
             
-            <button type="submit">Rechercher</button>
+            <button type="submit" style="margin-top:20px">Rechercher</button>
         </form>
     </div>
 </div>

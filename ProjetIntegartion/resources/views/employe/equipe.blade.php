@@ -33,7 +33,7 @@
         <div class="accueil-titre">
             <h2> <b> FORMULAIRE D'ÉQUIPE </b>  </h2>
             <button id="ouvrirModalBtn" class="btn-filtre"  style="border: none; background-color: transparent; cursor: pointer;">
-                <i class="fas fa-filter "  ></i> 
+                <i class="fas fa-filter  fa-2x"  ></i> 
            </button>
         </div>
 
@@ -125,6 +125,17 @@
   
  
     @endsection
+    <script>
+        // Fonction pour fermer le modal
+        function closeModal() {
+            var modal = document.getElementById("monModal");
+            modal.style.display = "none";
+        }
+
+        // Ajoutez un écouteur d'événements pour le bouton de fermeture
+        document.getElementById("fermerModal").addEventListener("click", closeModal);
+
+    </script>
     <script src="js/employe/accueil.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="js/employe/accessoire/modal.js" defer></script>
@@ -136,7 +147,7 @@
 
 <div id="monModal" class="modal">
     <div class="modal-content">
-       
+        <span class="close" id="fermerModal">&times;</span>
         <h2>Filtre de recherche</h2>
         <form id="formulaireFiltrAccidentTravailEquipe" action="/filtrer-formulairesEquipes" method="POST" onsubmit="filtrerFormulaireAccidentTravailEquipe(event)">
              @csrf
@@ -160,7 +171,7 @@
                 <!-- Ajoutez d'autres options de type de formulaire au besoin -->
             </select>
 
-            <label for="type">Nom de l'employe :</label>
+            <label for="type" style="margin-top:20px" >Nom de l'employe :</label>
             <select id="nomEmploye" name="nomEmploye" required>
                 @forelse($usagers ?? [] as $usager)             
                     <option value="{{$usager->matricule}}">{{$usager->nom}} {{$usager->prenom}} </option>
@@ -168,8 +179,8 @@
                 @endforelse
             </select>
            
-            <button type="submit">Rechercher</button> 
-            <span class="close" id="fermerModal">&times;</span>
+            <button type="submit" style="margin-top:20px">Rechercher</button> 
+          
         </form>
     </div>
 </div>
