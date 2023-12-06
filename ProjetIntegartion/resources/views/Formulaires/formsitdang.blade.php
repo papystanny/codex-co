@@ -44,14 +44,14 @@
 @section('contenu')
            
 <section class="main-container border" >
-<h2 class="titreForm align-items center">Remplir le Formulaire de Signalement d'une Situation dangereuse,d'un acte de violence ou d'un passé proche</h2>
+
     <form method="post" action="{{ route('formulaires.store') }}" enctype="multipart/form-data">
           @csrf
 
           <div class="parent container-fluid">
              <div class="row h-25">
                 <div class= "enfant enfant1 col-lg-6 p-4">&nbsp</div>
-                <div class="enfant enfant2 col-lg-6 p-4"><h2>Création du Formulaire  Signalement d'une situation dangereuse,d'un acte de violence ou d'un  passé proche</h2></div>
+                
              </div>
           </div>
 
