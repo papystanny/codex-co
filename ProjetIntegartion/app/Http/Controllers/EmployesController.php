@@ -141,6 +141,8 @@ class EmployesController extends Controller
         switch ($nomFormulaire) {
             case 'Accident de travail':
                 $formulaire = FormaccidentsTravail::findOrFail($id);
+                $formulaire->signatureSuperviseur = Session::get('nom');
+                $formulaire->dateSignatureSuperviseur =  Carbon::now()->toDateString();
                 break;
             case 'Audit SST':
                 $formulaire = Formulairesauditsst::findOrFail($id);
