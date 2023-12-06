@@ -153,6 +153,8 @@ class EmployesController extends Controller
 
             case 'Situation Dangereuses':
                 $formulaire = Formsitdangereuse::findOrFail($id);
+                $formulaire->signatureSuperviseur = Session::get('nom');
+                $formulaire->dateSignatureSuperviseur =  Carbon::now()->toDateString();
                 break;
         
             // Ajouter d'autres cas pour les différents types de formulaires
