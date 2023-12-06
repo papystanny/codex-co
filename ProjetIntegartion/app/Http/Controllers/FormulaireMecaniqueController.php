@@ -61,7 +61,7 @@ class FormulaireMecaniqueController extends Controller
             $formMec->numUniteImplique =$request->input('numUniteImplique');
             $formMec->departement =$request->input('departement');
             $formMec->nomEmploye =Session::get('prenom').' '.Session::get('nom');
-            $formMec->prenomNomSupImmediat =$request->input('prenomNomSupImmediat');
+            $formMec->prenomNomSupImmediat =Session::get('prenomSupervisuer').' '.Session::get('nomSupervisuer');
             $formMec->numPermisConduireEmploye =$request->input('numPermisConduireEmploye');
             $formMec->vehiculeCityonImplique =$request->input('vehiculeCityonImplique');
             $formMec->notifSup = 'non';

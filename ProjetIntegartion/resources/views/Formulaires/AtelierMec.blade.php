@@ -91,17 +91,7 @@
                             @enderror
             </div>     
              
-            <div class = " center">
-                <h3  class="titreForm col-8 p-4">
-                4.Prenom et Nom du supérieur immédiat* 
-                 </h3>         
-            </div>
-            <div class = " center">
-            <input type="text" class="titreForm col-7 p-4 " placeholder="Entrez Votre Reponse" value="{{old('prenomNomSupImmediat')}}"   class="form-control @error('prenomNomSupImmediat') is-invalid @enderror" id="prenomNomSupImmediat" name="prenomNomSupImmediat" aria-describedby="prenomNomSupImmediat" required>
-                            @error('prenomNomSupImmediat')
-                                <span class= "text-danger">{{$message}}</span>
-                            @enderror
-            </div>      
+               
             <div class = " center">
                 <h3  class="titreForm col-9 p-4">
                 5.Numéro du permis de conduire de l'employé* 
